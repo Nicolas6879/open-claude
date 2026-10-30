@@ -65,7 +65,7 @@
       "descripcion": "Caza estrategias de inversión con rigor estadístico (walk-forward, pruebas múltiples, mundos de control) sobre datos reales embebidos en paquetes. Solo paper trading.",
       "carpeta": "city/casa-forja/",
       "log": "city/casa-forja/LOG.md",
-      "estado": "planeada"
+      "estado": "lista"
     },
     {
       "id": "casa-auditoria",
@@ -101,6 +101,15 @@
       "descripcion": "¿Mejora el cableado REAL de la mosca (conectoma MaleCNS) como algoritmo de IA frente a cableado aleatorio equivalente? Búsqueda de similitud, clasificación y escalado, con control de potencia.",
       "carpeta": "city/casa-flyhash/",
       "log": "city/casa-flyhash/LOG.md",
+      "estado": "planeada"
+    },
+    {
+      "id": "casa-ministro",
+      "nombre": "Casa Ministro",
+      "habitante": "Ministro Loco",
+      "descripcion": "Tres ideas descabelladas de un agente Opus, sin sugerencias del usuario ni del Alcalde, fuera de moscas, mercados y revisión.",
+      "carpeta": "city/casa-ministro/",
+      "log": "city/casa-ministro/IDEAS.md",
       "estado": "planeada"
     }
   ],
