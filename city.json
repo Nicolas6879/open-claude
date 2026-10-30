@@ -1,0 +1,44 @@
+{
+  "ciudad": "Open Claude",
+  "alcalde": "Claude (orquestador)",
+  "log_alcalde": "LOG.md",
+  "mapa": "index.html",
+  "casas": [
+    {
+      "id": "casa-mosca",
+      "nombre": "Casa Mosca",
+      "habitante": "Neuro",
+      "descripcion": "Simula el circuito olfativo y de aprendizaje (cuerpo fungiforme) de la mosca Drosophila y exporta actividad neuronal.",
+      "carpeta": "city/casa-mosca/",
+      "log": "city/casa-mosca/LOG.md",
+      "estado": "planeada"
+    },
+    {
+      "id": "casa-agora",
+      "nombre": "Casa Ágora",
+      "habitante": "Tendera",
+      "descripcion": "Laboratorio simulado de un AMM (estilo Uniswap v2): liquidez, arbitraje y una estrategia de ingresos probada solo en simulación.",
+      "carpeta": "city/casa-agora/",
+      "log": "city/casa-agora/LOG.md",
+      "estado": "planeada"
+    },
+    {
+      "id": "casa-taller",
+      "nombre": "Casa Taller",
+      "habitante": "Pintora",
+      "descripcion": "Arte generativo en SVG a partir de la actividad de la mosca y de los precios del mercado simulado.",
+      "carpeta": "city/casa-taller/",
+      "log": "city/casa-taller/LOG.md",
+      "estado": "planeada"
+    },
+    {
+      "id": "casa-notaria",
+      "nombre": "Casa Notaría",
+      "habitante": "Notario",
+      "descripcion": "Cadena de bloques local simulada que sella con hashes lo que produce cada casa y verifica que nadie lo haya alterado.",
+      "carpeta": "city/casa-notaria/",
+      "log": "city/casa-notaria/LOG.md",
+      "estado": "planeada"
+    }
+  ]
+}
