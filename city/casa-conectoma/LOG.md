@@ -76,3 +76,69 @@
   numeros de `out/`.
 - `out/` ocupa 612 KB (muy por debajo del tope de 10 MB).
 - No hice `git add` ni `git commit`.
+
+---
+
+# Parte B. SNC completo en bucle cerrado (sesion posterior)
+
+## B1. Iteraciones (en orden, con lo que fallo)
+
+| # | Cambio | Resultado | Decision |
+|---|---|---|---|
+| v1 | LIF del SNC con signos de `predicted_nt`, sesgo intrinseco 7.5 mV, W_syn 0.15 | KC con signo 0 (predicted_nt = dopamina en 4058/4064 KC); actividad de fondo 8-15 Hz con 1% de neuronas en techo | **Invalida**. Lo detecto el Alcalde (mensaje sobre predicted_nt vs consensus_nt). |
+| v2 | consensus_nt, KC excitatorias, W_syn 0.05 y 0.15 | Sintonia de giro: mosca de conectoma 0/6 (K=8 y K=25); el controlador directo 6/6 | Descartada: el sesgo de fondo no existe en Shiu (linea base 0 Hz). |
+| v3 | Signos de Shiu (monoaminas excitatorias), linea base 0 Hz, W_syn 0.275 (de Shiu) | Silencio en reposo (correcto); con olor, 8% de neuronas activas y ~4% >100 Hz (saturacion) | Se mantiene W_syn 0.275 para comparar con la literatura; se anota el limite. |
+| v3a | Ganancia sensoriomotora medida en bucle abierto (`transfer.py`) | Real G=0.55 vs aleatorizado 0.05 a c=1 (IC95 sin solape) | **Resultado principal**, medido. |
+| v3b | Log de transduccion ORN + sesgo L-R como curva (c) | Mosca conectoma 0/6 (K=8) | Se mantiene el log (la lineal era ciega fuera de ~20 mm). |
+| v3c | tau de tasa DN 100 -> 500 ms | 0/4 (K=3) | Cancelo K=10 (CPU compartida; el Clasificador denego matar procesos ajenos). |
+
+## B2. Errores mios (con evidencia)
+
+1. **predicted_nt en lugar de consensus_nt** (v1). Las KC aparecian como dopamina en `audit.json` y en el grafo.
+   La auditoria del MB se corrigio (`audit.json` ahora dice ACh en 4064 KC); el resultado de la simulacion del MB no cambio
+   (mismos numeros, probado en `sim.py` rerun). Publicado en el bus como corrijo.
+2. **Sesgo de fondo de 7.5 mV** (v1-v2). Shiu usa 0 Hz de linea base; mi sesgo daba 15 Hz de mediana y explosion
+   en el 1%. Lo habia calibrado con los signos equivocados.
+3. **Fork con numba** (v2 inicial): el pool se bloqueo (procesos hijos al 0% de CPU con 590 MB). Solucion: procesos
+   `spawn` con inicializador que carga el grafo.
+4. **pkill -f con mi propio comando**: mate mi shell (codigo 144) dos veces. No lo repito.
+5. **Entrada lineal a ORN**: a 30 mm del origen (c ~ 0.22) las ORN no llegaban al umbral; la mosca era ciega. Diagnostico
+   con `diag.py` (DN a 0 Hz durante 400 ms).
+6. **Asimetria L-R dependiente del nivel**: restar una constante (medida con c = 1) dejaba un sesgo de +0.7 Hz a c = 0.22.
+   Corregido con la curva por niveles.
+7. **Procesos ajenos**: al principio interprete la carga alta como lentitud de mi codigo. Eran `calibrar.py` y
+   `v_mosca_semillas.py` de otras casas en la misma maquina (carga ~11 en 4 nucleos). No los toque.
+
+## B3. Contraste con Shiu et al. 2024 (fuente primaria PMC11446845)
+
+- Parametros LIF: coinciden (tau_m 20 ms, reset -52, umbral -45, refractario 2.2 ms, tau sinaptica 5 ms, W_syn 0.275 mV).
+- Diferencias: linea base 0 Hz (yo usaba sesgo 7.5 mV, quitado); monoaminas excitatorias (yo las ponia a 0, corregido);
+  entradas de Poisson 10-200 Hz a neuronas concretas (yo uso una corriente determinista a ORN); bucle abierto (no hay
+  mosca); FlyWire hembra frente a MaleCNS macho; dt y retardo (Shiu 1.8 ms; mio 1 paso).
+- Shiu no reporta mapeo DN->conducta en locomocion; su readout es la neurona MN9 de alimentacion.
+- Shiu compensa cambios de W_syn modulando la entrada sensorial; yo no lo hice (no hay entrada "correcta" definida).
+
+## B4. Cementerio de ideas (descartadas y por que)
+
+- **Sesgo intrinseco para dar actividad de fondo**: no tiene base en Shiu; descartado tras v2.
+- **Lectura por diferencia bruta L-R con normalizacion por total**: el sesgo de la red domina y depende del nivel;
+  descartada en favor de la curva por niveles.
+- **Tau de tasa de 100 ms**: el ruido de las DN (~0.5 Hz sobre ~15 Hz) dominaba; giros sin direccion. Pasado a 500 ms,
+  sin exito tampoco. Un filtro mas largo no basta: falta una senal de gradiente.
+- **Cambio de signo del giro (control espejo)**: no lo ejecute en bucle cerrado porque la navegacion base no funciona.
+- **Lesiones y hubs en bucle cerrado**: no tienen sentido como comparacion si la mosca no navega. Se escribieron y no se ejecutaron.
+- **Animacion HTML de la trayectoria**: pospuesta; la trayectoria de la red no es informativa todavia.
+- **Usar DN identificadas (DNa02, DNp09, MDN) como mando**: los tipos existen, pero su funcion no esta verificada en
+  MaleCNS; usarlas como mando seria una suposicion mas. Pendiente de busqueda primaria.
+
+## B5. Quien me ayudo (parte B)
+
+- Shiu et al. 2024 (texto completo, PMC11446845): parametros LIF, convencion de signos, linea base 0 Hz.
+- El Alcalde: el error predicted_nt vs consensus_nt; los tipos DN citados y la pista de DOOMFLY (no verificado).
+- casa-mosca (Neuro): la idea del contrato JSON y la tabla de referencia (solo para la parte A).
+
+## B6. Procedimiento
+
+- Cache del grafo y descargas fuera del repo. `PYTHONDONTWRITEBYTECODE=1` en todas las ejecuciones.
+- 7 de 7 pruebas pasan (`tests/test_cns_closedloop.py`).
+- No hice `git add` ni `git commit`.

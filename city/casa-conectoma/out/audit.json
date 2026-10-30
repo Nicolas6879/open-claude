@@ -39,8 +39,7 @@
   "PN_out_grado_max": 489,
   "nt_de_PN_en_sinapsis_a_KC": {
    "acetylcholine": 390321,
-   "unclear": 285,
-   "gaba": 289,
+   "gaba": 574,
    "glutamate": 33
   }
  },
@@ -75,27 +74,21 @@
  },
  "neurotransmisores": {
   "KC": {
-   "dopamine": 4058,
-   "unclear": 5,
-   "gaba": 1
+   "acetylcholine": 4064
   },
   "MBON": {
-   "glutamate": 24,
+   "glutamate": 26,
    "acetylcholine": 50,
-   "unclear": 2,
    "gaba": 21
   },
   "DAN": {
-   "dopamine": 330,
-   "unclear": 8,
-   "serotonin": 2
+   "dopamine": 338,
+   "unclear": 2
   },
   "ALPN": {
-   "acetylcholine": 461,
-   "gaba": 208,
-   "unclear": 4,
-   "glutamate": 8,
-   "serotonin": 5
+   "acetylcholine": 469,
+   "gaba": 209,
+   "glutamate": 8
   }
  },
  "tipos_MBON": {

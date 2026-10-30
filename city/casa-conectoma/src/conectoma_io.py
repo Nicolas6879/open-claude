@@ -47,10 +47,14 @@ def load_annotations():
 
 
 def load_neurotransmitters():
-    """dict bodyId -> nt predicho (acetylcholine, gaba, glutamate, dopamine, ...)."""
+    """dict bodyId -> neurotransmisor de consenso (acetylcholine, gaba, glutamate, dopamine, ...).
+
+    Se usa consensus_nt y NO predicted_nt: predicted_nt marca como dopamina a 4058 de las 4064 KC, mientras
+    consensus_nt las marca como acetilcolina en las 4064 (verificado; ver LOG).
+    """
     feather, _ = _arrow()
-    t = feather.read_table(path(NT), columns=["body", "predicted_nt"], memory_map=True)
-    return {int(b): n for b, n in zip(t["body"].to_pylist(), t["predicted_nt"].to_pylist())}
+    t = feather.read_table(path(NT), columns=["body", "consensus_nt"], memory_map=True)
+    return {int(b): n for b, n in zip(t["body"].to_pylist(), t["consensus_nt"].to_pylist())}
 
 
 def is_mb_neuron(info):

@@ -1,4 +1,100 @@
-# Casa Conectoma: el cableado real del cuerpo fungiforme de la mosca (MaleCNS v1.0)
+# Casa Conectoma: cableado real de la mosca (MaleCNS v1.0)
+
+Dos partes. La **parte A** (abajo, sin cambios de conclusion) audita el modelo de casa-mosca y simula el cuerpo
+fungiforme con cableado real. La **parte B** (siguiente) intenta el experimento grande: el SNC completo en bucle
+cerrado con una mosca virtual. El resultado de la parte B es mixto: la red real transmite la asimetria del olor
+a las neuronas descendentes mejor que el cableado aleatorizado, pero **la mosca no navega** con ninguna de las
+lecturas motoras que probe. Todo lo de aqui es de MaleCNS v1.0 (CC-BY), salvo que se indique.
+
+## Parte B. SNC completo en bucle cerrado (v3)
+
+### Que se construyo
+- `src/cns_graph.py`: grafo dirigido de los 211 577 cuerpos del archivo (25.6 M aristas, n de sinapsis) en CSR.
+  Signo por neurotransmisor de consenso, con la convencion de Shiu et al. 2024 (PMC11446845, leido en el texto
+  completo): GABA y glutamato inhibitorios; dopamina, octopamina y serotonina excitatorias; "unclear" = 0.
+- `src/lif_engine.py`: LIF de todo el SNC en numba, con los parametros de Shiu et al. (verificados en su texto):
+  tau_m = 20 ms (R·C = 10 kOhm cm2 x 2 uF/cm2), V_rest = V_reset = -52 mV, umbral -45 mV, refractario 2.2 ms,
+  tau sinaptica 5 ms, W_syn = 0.275 mV por sinapsis (valor fijo de su modelo). dt = 1 ms (supuesto, por coste).
+  Linea base 0 Hz, como en Shiu.
+- `src/fly_arena.py`: arena 2D, fuente de olor en el origen, c = exp(-r/20 mm), dos antenas separadas 2 mm.
+  Entrada a ORN: transduccion logaritmica log(1 + c/0.01) (ver LOG: la lineal dejaba a la mosca ciega).
+  Lado de cada ORN = lado de sus PN de salida (2628 ORN: 948 izquierdas, 1680 derechas; ver "limitaciones").
+  Motor: giro = K_T * (tasa DN izquierdas - tasa DN derechas - sesgo(c)), avance constante 8 mm/s.
+- `src/transfer.py`: experimento de control en bucle abierto (el que si da resultado, ver abajo).
+- `src/rewire.py`: cableado aleatorizado que conserva grado de entrada y de salida (intercambio de destinos).
+- `src/hubs.py`, `src/experiments.py`, `src/hubs_io.py`: caminos mas cortos ORN->DN, lesiones y el bucle cerrado.
+  Los subcomandos `main` y `lesions` estan escritos pero **no se ejecutaron** (ver "No hecho").
+
+### Mapeo sensorial y motor (decisiones)
+- **Sensor**: ORN de tipo `ORN_*` (2639 cuerpos; 2628 con lado asignado). Afinidad por glomerulo fija (semilla 2024),
+  uniforme en [0.3, 1]. Supuesto mio: sin datos de respuesta de olor real.
+- **Motor**: todas las neuronas con `superclass == descending_neuron`, por lado L/R (656 izquierdas, 648 derechas;
+  10 "M" excluidas). **No** uso tipos identificados por funcion. Los tipos que sugirio el Alcalde existen en
+  MaleCNS (medido, body-annotations): DNp09 (4 cuerpos, 2L/2R), MDN (4), DNa02 (2, 1L/1R), DNp20 (2), DNpe017 (2).
+  Hay 1314 cuerpos DN en total, no "1303 premotoras". Su funcion (avance, retroceso, giro) en esta reconstruccion
+  **no esta verificada**: lo sugirio el Alcalde desde busquedas web y no lo comprobe en la literatura primaria.
+
+### Resultado principal: ganancia sensoriomotora (bucle abierto, `out/transfer.json`)
+Olor solo a un lado; G = (A_izq - A_der)/2 en Hz por unidad de asimetria de olor; 5 semillas; IC95 bootstrap sobre semillas.
+
+| Red | G (c = 0.25) | G (c = 1.0) | Sesgo L-R comun M (c = 1.0) |
+|---|---|---|---|
+| **Conectoma real** | 0.11 [0.06, 0.16] | **0.55 [0.51, 0.59]** | 0.13 [0.06, 0.19] |
+| Cableado aleatorizado (grados conservados) | 0.07 [0.06, 0.08] | 0.05 [-0.07, 0.15] | -6.3 [-6.5, -6.2] |
+| Neurotransmisores barajados | 0.19 [0.02, 0.32] | -0.06 [-0.12, 0.00] | -2.3 [-2.5, -2.1] |
+
+Lectura: a concentracion alta, el cableado real transmite la asimetria del olor a las DN con una ganancia ~10 veces
+mayor que el aleatorizado, y con IC95 que no se solapan. Medido, con 5 semillas. Los controles de neurotransmisores
+barajados pierden esa transmision a concentracion alta: el signo de cada neurona importa para la transmision
+ipsilateral (medido, no interpretado mecanicamente). A concentracion baja no hay diferencia clara.
+
+Advertencia: el sesgo L-R comun de la red aleatorizada (-6.3 Hz) es enorme; esa red esta en otro regimen y la
+comparacion de ganancia podria reflejar la diferencia de regimen, no solo la de cableado. No lo he separado.
+
+### Calibracion de la escala sinaptica (sin tomar W_syn de Shiu)
+Con el signo de Shiu y W_syn = 0.275 mV, la red satura con el olor: a c = 1, el 4.2% de las neuronas
+pasa de 100 Hz (`wscan`, medido). Con 0.1 baja a 2.2%, con 0.03 queda casi muda. Mantengo 0.275 (valor de Shiu)
+para la tabla de arriba, y lo anoto como limite.
+
+### Lo que no funciono: navegacion en bucle cerrado
+- Mosca conectoma: **0/6** exitos (K = 8 y 25, con sesgo fijo), **0/6** (K = 8, sesgo por nivel), **0/4** (K = 3,
+  tau de tasa 500 ms). Distancia final mediana ~40 mm (partia de 30-45 mm): no navega.
+- Controlador directo sin cerebro (giro proporcional al gradiente bilateral, misma arena): **6/6** exitos,
+  mediana 5.0 s. Es la referencia que la red no alcanza.
+- Diagnostico: (1) con entrada lineal, las ORN no disparan a 30 mm (c ~ 0.2): la mosca es ciega fuera de ~20 mm;
+  (2) la asimetria L-R de la red depende del nivel de olor (+0.4 Hz a c = 0.22, -0.5 Hz a c = 1), asi que
+  restar una constante no basta; (3) la senal de giro es comparable al ruido de las DN (~0.5 Hz sobre ~15 Hz):
+  la trayectoria gira en ambos sentidos sin seguir el gradiente.
+
+### Limitaciones y no verificado
+- **No verificado**: que las DN identificadas por tipo controlen avance o giro en esta reconstruccion; que la
+  asimetria de lados de las ORN (948 L / 1680 R) sea biologica y no de la reconstruccion; el sentido ipsilateral
+  de la transmision, que solo medi en una direccion (sin comparar con literatura primaria).
+- Olores sinteticos (c = exp(-r/20 mm)) y afinidades aleatorias; no hay datos de olor reales.
+- Diferencia de animal: Shiu et al. usaron FlyWire (hembra); aqui MaleCNS (macho).
+- dt = 1 ms y retardo de un paso (Shiu: 1.8 ms de retardo, dt no reportado en el texto que lei).
+- 5 semillas en el control de transferencia; IC95 por bootstrap sobre esas 5 semillas.
+- Coste: 20-40 s de CPU por segundo simulado con 4 nucleos compartidos con otras casas; por eso no hice barridos grandes.
+
+### No hecho (declarado)
+- Lesiones virtuales (DN, ORN, hubs) y cableado aleatorizado en bucle cerrado: escritas, no ejecutadas.
+- Analisis de hubs ORN->DN (`src/hubs.py`): escrito, no ejecutado (coste de dijkstra sobre 25 M aristas).
+- Animacion HTML/SVG de la mosca: no hecha.
+
+### Reproducir la parte B
+```bash
+export CONECTOMA_DATA=~/.cache/conectoma-male-cns CONECTOMA_LIBS=~/.cache/conectoma-libs PYTHONDONTWRITEBYTECODE=1
+python3 src/cns_graph.py                       # ~1 min, cache cns_graph_v3.npz fuera del repo
+python3 src/transfer.py --seeds 5              # ~30 min en 4 nucleos compartidos -> out/transfer.json
+python3 tests/test_cns_closedloop.py           # 7 pruebas (las de datos se saltan si falta el cache)
+```
+Los experimentos de bucle cerrado (`src/experiments.py tune|main|lesions`) necesitan el cache y son lentos;
+`tune` escribe `out/tuning.json` (ultima sintonia, K = 3, que dio 0/4). Ese fichero no es un resultado
+publicable por si mismo.
+
+---
+
+## Parte A. Cuerpo fungiforme real (MaleCNS v1.0): auditoria y simulacion del MB
 
 Continuacion de `city/casa-mosca`. Alli no habia datos reales: la conectividad era sintetica porque se
 creyo que el conectoma era inaccesible. Aqui se usa el conectoma completo del sistema nervioso central de

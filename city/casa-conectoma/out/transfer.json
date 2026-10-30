@@ -1,0 +1,138 @@
+{
+ "descripcion": "Ganancia sensoriomotora ORN->DN en bucle abierto. G = ganancia ipsilateral (Hz por asimetria de olor), M = sesgo L-R comun. Controles: cableado aleatorizado conservando grados, neurotransmisores barajados.",
+ "w_syn": 0.275,
+ "seeds": [
+  1,
+  2,
+  3,
+  4,
+  5
+ ],
+ "levels": [
+  0.25,
+  1.0
+ ],
+ "resultados": {
+  "connectome": {
+   "c=0.25": {
+    "G_media": 0.1124,
+    "G_ic95": [
+     0.0617,
+     0.1631
+    ],
+    "M_media": 0.5719,
+    "M_ic95": [
+     0.4164,
+     0.7103
+    ],
+    "G_por_semilla": [
+     0.1829,
+     0.1235,
+     0.0409,
+     0.0515,
+     0.1631
+    ]
+   },
+   "c=1.0": {
+    "G_media": 0.5503,
+    "G_ic95": [
+     0.5143,
+     0.5866
+    ],
+    "M_media": 0.1281,
+    "M_ic95": [
+     0.0607,
+     0.1924
+    ],
+    "G_por_semilla": [
+     0.6176,
+     0.5319,
+     0.548,
+     0.566,
+     0.488
+    ]
+   }
+  },
+  "rewired": {
+   "c=0.25": {
+    "G_media": 0.0705,
+    "G_ic95": [
+     0.0614,
+     0.0796
+    ],
+    "M_media": -0.2761,
+    "M_ic95": [
+     -0.287,
+     -0.2651
+    ],
+    "G_por_semilla": [
+     0.0748,
+     0.0574,
+     0.0588,
+     0.079,
+     0.0825
+    ]
+   },
+   "c=1.0": {
+    "G_media": 0.0544,
+    "G_ic95": [
+     -0.0739,
+     0.1474
+    ],
+    "M_media": -6.3215,
+    "M_ic95": [
+     -6.4522,
+     -6.2185
+    ],
+    "G_por_semilla": [
+     -0.1602,
+     0.1623,
+     0.1785,
+     0.0554,
+     0.0361
+    ]
+   }
+  },
+  "signshuffle": {
+   "c=0.25": {
+    "G_media": 0.1867,
+    "G_ic95": [
+     0.02,
+     0.319
+    ],
+    "M_media": -2.2582,
+    "M_ic95": [
+     -2.405,
+     -2.1114
+    ],
+    "G_por_semilla": [
+     0.2161,
+     0.352,
+     0.1536,
+     0.3447,
+     -0.1327
+    ]
+   },
+   "c=1.0": {
+    "G_media": -0.0595,
+    "G_ic95": [
+     -0.1203,
+     0.0037
+    ],
+    "M_media": -2.3032,
+    "M_ic95": [
+     -2.5057,
+     -2.1006
+    ],
+    "G_por_semilla": [
+     -0.0674,
+     -0.1722,
+     0.0476,
+     -0.0947,
+     -0.0106
+    ]
+   }
+  }
+ },
+ "wall_s": 1877.5
+}
