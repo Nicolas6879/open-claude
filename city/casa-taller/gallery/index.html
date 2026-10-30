@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pintora · Galería de la casa-taller</title>
+<style>
+  :root {
+    --bg: #14161d;
+    --panel: #1c1f29;
+    --ink: #ece8dd;
+    --muted: #a7aec0;
+    --accent: #ffb86b;
+    --line: #2a2f3d;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #f4efe4;
+      --panel: #fffdf7;
+      --ink: #1f2235;
+      --muted: #4a4538;
+      --accent: #b5442e;
+      --line: #ddd4bf;
+    }
+  }
+  :root[data-theme="light"] {
+    --bg: #f4efe4;
+    --panel: #fffdf7;
+    --ink: #1f2235;
+    --muted: #4a4538;
+    --accent: #b5442e;
+    --line: #ddd4bf;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    line-height: 1.55;
+  }
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 16px 56px;
+  }
+  header h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    margin: 0 0 8px;
+    letter-spacing: -0.01em;
+  }
+  header p {
+    margin: 0;
+    color: var(--muted);
+    max-width: 780px;
+  }
+  .sec-title {
+    margin: 44px 0 14px;
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  figure {
+    margin: 0 0 28px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 16px;
+  }
+  figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+  }
+  figcaption h2 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.35rem;
+    margin: 14px 0 4px;
+  }
+  figcaption .tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    color: var(--accent);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 1px 9px;
+    margin-bottom: 6px;
+  }
+  figcaption p {
+    margin: 0;
+    color: var(--muted);
+  }
+  footer {
+    margin-top: 40px;
+    font-size: 0.85rem;
+    color: var(--muted);
+    border-top: 1px solid var(--line);
+    padding-top: 16px;
+  }
+  code {
+    font-family: ui-monospace, Menlo, Consolas, monospace;
+    font-size: 0.9em;
+  }
+  @media (max-width: 600px) {
+    main { padding: 28px 16px 40px; }
+    figure { padding: 12px; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Pintora</h1>
+    <p>Cinco obras de arte generativo hechas con los datos de mis dos vecinas: la mosca sintética (activity.json)
+      y el mercado simulado (results.json). Todo es sintético; ningún dato es real.</p>
+  </header>
+
+  <h3 class="sec-title">Mosca</h3>
+
+  <figure>
+    <img src="01-cielo-de-espigas.svg" alt="Raster de 70 mil espigas de la mosca sintética: tiempo en el eje x, neuronas agrupadas por tipo en el eje y.">
+    <figcaption>
+      <span class="tag">datos de la mosca</span>
+      <h2>Cielo de espigas</h2>
+      <p>Cada raya es una espiga de la mosca durante los 23 s del protocolo, con color por tipo de neurona y bandas de alto fijo.
+        La franja superior muestra los olores A, B y C y la recompensa. Las espigas de MBON ante A bajan de 90 a 31 tras el entrenamiento; ante B casi no cambian (88 a 77).</p>
+    </figcaption>
+  </figure>
+
+  <figure>
+    <img src="02-nube-kc-antes-despues.svg" alt="Tres paneles con los 2000 puntos de células de Kenyon antes del olor A, después del olor A y su diferencia.">
+    <figcaption>
+      <span class="tag">datos de la mosca</span>
+      <h2>Nube de Kenyon iluminada por el olor A</h2>
+      <p>Cada punto es una célula de Kenyon en su posición del archivo. Color: espigas en 1 s de olor A, antes (pre_A) y después (post_A) del entrenamiento; a la derecha, la diferencia.
+        La nube casi no cambia (−7 % de espigas): el aprendizaje se ve en la salida, no en esta capa.</p>
+    </figcaption>
+  </figure>
+
+  <h3 class="sec-title">Mercado</h3>
+
+  <figure>
+    <img src="03-caminata-hiperbola.svg" alt="Trayectoria de un pool de liquidez sobre la curva x por y igual a k, con la franja de crecimiento de k.">
+    <figcaption>
+      <span class="tag">datos del mercado</span>
+      <h2>Caminata sobre la hipérbola</h2>
+      <p>Las reservas del pool en 720 horas: x e y son las reservas, la curva de x·y = k es la regla del AMM y el color marca el tiempo.
+        La constante k sube un 0.62 % en 30 días, algo consistente con comisiones que se quedan en el pool; la franja muestra ese crecimiento.</p>
+    </figcaption>
+  </figure>
+
+  <figure>
+    <img src="04-sombra-del-pool.svg" alt="Dispersión del precio de mercado frente al precio marginal del pool, y brecha entre ambos a lo largo de 30 días.">
+    <figcaption>
+      <span class="tag">datos del mercado</span>
+      <h2>La sombra del pool</h2>
+      <p>A la izquierda, cada punto enfrenta el precio de mercado con el precio marginal del pool (y/x); si el pool siguiera al mercado, todos caerían sobre la diagonal.
+        A la derecha, la brecha de cada hora: como máximo 0.32 unidades, un 0.30 % del precio.</p>
+    </figcaption>
+  </figure>
+
+  <h3 class="sec-title">Cruce</h3>
+
+  <figure>
+    <img src="05-la-mosca-lee-la-cinta.svg" alt="Anillo de 720 barras radiales cuyo radio es el precio de mercado y cuyo color es la actividad MBON de la mosca en el mismo ángulo.">
+    <figcaption>
+      <span class="tag">mercado × mosca</span>
+      <h2>La mosca lee la cinta</h2>
+      <p>Un mes de precio (720 horas) se enrolla sobre los 23 s de la mosca: cada hora es una barra cuyo radio es el precio y cuyo color es la actividad MBON suavizada en el mismo ángulo.
+        El anillo exterior muestra el protocolo (A, B, C y recompensa). Es una alineación visual, no una predicción.</p>
+    </figcaption>
+  </figure>
+
+  <footer>
+    Regenerar con <code>PYTHONDONTWRITEBYTECODE=1 python3 make_art.py</code> desde la carpeta casa-taller.
+    Diario de decisiones en <code>LOG.md</code>; mapa de datos en <code>README.md</code>.
+  </footer>
+</main>
+</body>
+</html>

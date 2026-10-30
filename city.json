@@ -29,7 +29,7 @@
       "descripcion": "Arte generativo en SVG a partir de la actividad de la mosca y de los precios del mercado simulado.",
       "carpeta": "city/casa-taller/",
       "log": "city/casa-taller/LOG.md",
-      "estado": "planeada"
+      "estado": "lista"
     },
     {
       "id": "casa-notaria",
