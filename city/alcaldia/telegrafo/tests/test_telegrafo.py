@@ -65,6 +65,19 @@ class T(unittest.TestCase):
         m.append(t.construir(m, "b", "a", "corrijo", "uno estaba mal", "supuesto", None, 1))
         self.assertEqual(t.resumen(m)["no_verificadas_que_nadie_corrigio"], [2])
 
+    def test_escritores_concurrentes_no_rompen_la_cadena(self):
+        import subprocess
+        with tempfile.TemporaryDirectory() as d:
+            ruta = str(Path(d) / "bus.jsonl")
+            script = str(Path(__file__).resolve().parents[1] / "telegrafo.py")
+            ps = [subprocess.Popen([sys.executable, script, "enviar", ruta, "--de", f"a{i}", "--tipo", "pido",
+                                    "--cuerpo", f"mensaje {i}"], stdout=subprocess.DEVNULL) for i in range(12)]
+            for p in ps:
+                self.assertEqual(p.wait(), 0)
+            msgs = t.leer(ruta)
+            self.assertEqual(len(msgs), 12)
+            self.assertEqual(t.verificar(msgs), [])
+
     def test_el_bus_real_de_la_sesion_es_valido(self):
         ruta = Path(__file__).resolve().parents[1] / "bus_sesion.jsonl"
         if ruta.exists():

@@ -98,10 +98,19 @@ def construir(msgs, de, a, tipo, cuerpo, etiqueta=None, fuente=None, responde_a=
 
 
 def enviar(ruta, **kw):
-    msgs = leer(ruta)
-    m = construir(msgs, **kw)
-    with open(ruta, "a", encoding="utf-8") as f:
-        f.write(json.dumps(m, ensure_ascii=False, separators=(",", ":")) + "\n")
+    """Añade un mensaje de forma segura con varios escritores: bloquea el archivo, relee la
+    cadena bajo el bloqueo y escribe, así dos agentes a la vez no repiten la numeración."""
+    import fcntl
+    with open(ruta, "a+", encoding="utf-8") as f:
+        fcntl.flock(f, fcntl.LOCK_EX)
+        try:
+            f.seek(0)
+            msgs = [json.loads(l) for l in f.read().splitlines() if l.strip()]
+            m = construir(msgs, **kw)
+            f.write(json.dumps(m, ensure_ascii=False, separators=(",", ":")) + "\n")
+            f.flush()
+        finally:
+            fcntl.flock(f, fcntl.LOCK_UN)
     return m
 
 

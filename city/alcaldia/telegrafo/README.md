@@ -19,3 +19,6 @@ python3 tests/test_telegrafo.py              # 9 tests
 - `bus_sesion.jsonl` (30 mensajes) se construyó a partir de las correcciones ya conocidas, así que es válido por construcción: demuestra el formato, no que los agentes lo usen. La prueba real sería que Neuro, Tendera y el resto lo usaran en vivo; ninguno lo ha hecho.
 - La cadena de hashes detecta ediciones descuidadas, no a quien reescriba todo el archivo (para eso existe la Notaría, que no sella esta carpeta salvo que se vuelva a ejecutar).
 - No hay autenticación del emisor: cualquiera puede escribir `de: casa-x`.
+
+## Uso en vivo (añadido después)
+`enviar` bloquea el archivo (flock) y relee la cadena bajo el bloqueo, así que varios agentes pueden escribir a la vez sin repetir numeración (hay un test con 12 procesos simultáneos). El bus vivo de la ciudad es `../bus/ciudad.jsonl`: el Alcalde dio permiso expreso a la Cartógrafa, al Fundador y al Cazador para escribir **solo ahí** y solo con este comando. Sigue sin haber autenticación del emisor.
