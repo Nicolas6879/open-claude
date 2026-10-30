@@ -66,6 +66,15 @@
       "carpeta": "city/casa-forja/",
       "log": "city/casa-forja/LOG.md",
       "estado": "planeada"
+    },
+    {
+      "id": "casa-auditoria",
+      "nombre": "Casa Auditoría",
+      "habitante": "Auditor",
+      "descripcion": "Auditor independiente (Sonnet): recomputa desde los datos crudos las cifras que cada casa afirma y reporta discrepancias con evidencia reproducible.",
+      "carpeta": "city/casa-auditoria/",
+      "log": "city/casa-auditoria/LOG.md",
+      "estado": "planeada"
     }
   ],
   "relaciones": [
@@ -108,6 +117,36 @@
       "de": "casa-forja",
       "a": "casa-agora",
       "que": "extiende su análisis de proveedores de liquidez con datos reales"
+    },
+    {
+      "de": "casa-auditoria",
+      "a": "casa-mosca",
+      "que": "recomputa de forma independiente sus cifras clave"
+    },
+    {
+      "de": "casa-auditoria",
+      "a": "casa-agora",
+      "que": "recomputa de forma independiente sus cifras clave"
+    },
+    {
+      "de": "casa-auditoria",
+      "a": "casa-taller",
+      "que": "recomputa de forma independiente sus cifras clave"
+    },
+    {
+      "de": "casa-auditoria",
+      "a": "casa-notaria",
+      "que": "recomputa de forma independiente sus cifras clave"
+    },
+    {
+      "de": "casa-auditoria",
+      "a": "casa-conectoma",
+      "que": "recomputa de forma independiente sus cifras clave"
+    },
+    {
+      "de": "casa-auditoria",
+      "a": "casa-empresa",
+      "que": "recomputa de forma independiente sus cifras clave"
     }
   ]
 }
