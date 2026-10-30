@@ -1,0 +1,32 @@
+{
+ "GOOG_diario_2004_2013": {
+  "IL_sin_comisiones": -0.37251468491815687,
+  "tau_por_periodo": 0.12174820568588254,
+  "rotacion_anual_necesaria": 30.6805478328424,
+  "apr_comisiones_necesario": 0.0920416434985272,
+  "periodos": 2147,
+  "anios": 8.51984126984127,
+  "vol_anual_precio": 0.341649580534247,
+  "tau_por_periodo_segun_comision": {
+   "0.0005": 0.7304892341152953,
+   "0.001": 0.36524461705764766,
+   "0.003": 0.12174820568588254,
+   "0.01": 0.03652446170576476
+  }
+ },
+ "EURUSD_horario_2017_2018": {
+  "IL_sin_comisiones": -0.0023255424701343896,
+  "tau_por_periodo": 0.0001596350047178885,
+  "rotacion_anual_necesaria": 0.9654725085337896,
+  "apr_comisiones_necesario": 0.002896417525601369,
+  "periodos": 4999,
+  "anios": 0.8265542328042328,
+  "vol_anual_precio": 0.07241177365725038,
+  "tau_por_periodo_segun_comision": {
+   "0.0005": 0.000957810028307331,
+   "0.001": 0.0004789050141536655,
+   "0.003": 0.0001596350047178885,
+   "0.01": 4.789050141536655e-05
+  }
+ }
+}

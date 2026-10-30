@@ -1,0 +1,31 @@
+Procedencia de los datos copiados en esta carpeta (todo reproducible sin red):
+- sp500_1990_2022.csv.gz: indice S&P 500 (precio, sin dividendos), cierre diario 1990-01-02..2022-12-28.
+  Origen: paquete PyPI skfolio 1.12.5, skfolio/datasets/data/sp500_index.csv.gz. Verificado: en el solape con
+  arch.data.sp500 (1999-2018) coincide con el Close de arch a 6e-8 relativo.
+- acciones20_1990_2022.csv.gz: precios diarios de 20 acciones del S&P 500 (AAPL, AMD, BAC, BBY, CVX, GE, HD, JNJ,
+  JPM, KO, LLY, MRK, MSFT, PEP, PFE, PG, RRC, UNH, WMT, XOM). Origen: skfolio 1.12.5,
+  skfolio/datasets/data/sp500_dataset.csv.gz. SESGO DE SUPERVIVENCIA: son nombres elegidos a posteriori.
+- sp500_ohlc_1999_2018.csv.gz: Open y Close diarios del S&P 500. Origen: paquete PyPI arch (arch/data/sp500).
+- french_mensual_1926_2018.csv: factores Fama-French mensuales Mkt-RF, SMB, HML, RF (decimal).
+  Origen: arch 'frenchdata' (arch/data/frenchdata/frenchdata.csv.gz, en %), convertido a decimal, fecha AAAAMM.
+- french_momentum_mensual_1949_2017.csv: Mom (momentum) y los demas factores mensuales. Origen: paquete PyPI
+  linearmodels 7.1 (linearmodels/datasets/french/french.csv.bz2). Cruce con arch en solape: Mkt-RF dif. max 3e-4,
+  SMB 3.7e-3, HML 5.6e-3 (distinta version de la biblioteca de Ken French). Solo se usa Mom de este fichero.
+- wti_diario_1986_2019.csv.gz: WTI spot diario (EIA, serie DCOILWTICO). Origen: arch 'wti'. Se descartan 290
+  dias NaN (principalmente 2019 y huecos); no hay precios negativos antes de 2019.
+- nasdaq_1999_2018.csv.gz: cierre diario NASDAQ Composite. Origen: arch 'nasdaq'. Solo para replicacion.
+- goog_2004_2013.csv.gz, eurusd_h1_2017_2018.csv.gz: Close y Volume de backtesting.test (GOOG diario, EURUSD
+  horario). Origen: paquete PyPI backtesting.
+NO disponible en el entorno: tipos de corto plazo (T-bill/LIBOR/FRED) posteriores a 2017, serie VIX anterior a
+2014 (arch 'vix' solo cubre 2014-2019), volumen de acciones fiable anterior a 2014, cotizaciones de ETFs de factor
+anteriores a 2014, datos de constituyentes historicos del S&P 500 (sin sesgo de supervivencia).
+
+--- Anadido tras ampliar la red (solo lectura, publico, sin claves) ---
+- spy_ajustado_1993_2026.csv.gz: SPY precio ajustado por dividendos, diario 1993-01-29..2026-10-30.
+  Origen: Yahoo Finance chart API (period1/period2, interval=1d, events=div), cabecera User-Agent.
+  Verificado: retornos alineados con el indice (correlacion maxima en retardo 0). Diferencias SPY/indice
+  (~0,98 diario) son de SPY frente al indice; se usa como replica de retorno total, no como sustituto.
+- btc_usdt_1d_2017_2026.csv.gz: BTCUSDT cierre diario 2017-08-17..2026-10-30. Origen: Binance public
+  klines (data-api.binance.vision), paginado. Cotiza en USDT, no es dinero real: solo datos.
+- dtb3_tasa_bill_3m_1990_2026.csv.gz: letra del Tesoro a 3 meses (%), FRED DTB3. Tipo sin riesgo diario.
+- vix_fred_1990_2026.csv.gz: VIX de cierre diario, FRED VIXCLS.

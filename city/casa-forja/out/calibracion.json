@@ -1,0 +1,106 @@
+{
+  "protocolo": {
+    "n_signo": 300,
+    "n_iid": 200,
+    "n_bloques": 100,
+    "n_plantados": 150,
+    "sr_plantados": [
+      0.3,
+      0.6
+    ],
+    "alfa": 0.05,
+    "puerta": 0.1,
+    "q_bh": 0.05,
+    "k": 5,
+    "B": 1000,
+    "coste_bps": 5.0
+  },
+  "resumen": {
+    "nulo_signo": {
+      "mundo": "nulo_signo",
+      "n_mundos": 300,
+      "n_configs": 324,
+      "tasa_puerta_seleccion": 0.023333333333333334,
+      "tasa_campeon": 0.0,
+      "error_estandar_campeon": 1.8257418583505539e-06,
+      "campeon_ic95": [
+        0.0,
+        3.5784540423670855e-06
+      ],
+      "familias_campeon": {},
+      "naive_tasa_p_dinero_menor_05": 0.023333333333333334,
+      "naive_tasa_p_alfa_menor_05": 0.02
+    },
+    "nulo_iid": {
+      "mundo": "nulo_iid",
+      "n_mundos": 200,
+      "n_configs": 324,
+      "tasa_puerta_seleccion": 0.025,
+      "tasa_campeon": 0.0,
+      "error_estandar_campeon": 2.23606797749979e-06,
+      "campeon_ic95": [
+        0.0,
+        4.3826932358995885e-06
+      ],
+      "familias_campeon": {},
+      "naive_tasa_p_dinero_menor_05": 0.03,
+      "naive_tasa_p_alfa_menor_05": 0.025
+    },
+    "diagnostico_nulo_bloques": {
+      "mundo": "diagnostico_nulo_bloques",
+      "n_mundos": 100,
+      "n_configs": 324,
+      "tasa_puerta_seleccion": 0.48,
+      "tasa_campeon": 0.15,
+      "error_estandar_campeon": 0.035707142142714254,
+      "campeon_ic95": [
+        0.08001400140028006,
+        0.21998599859971993
+      ],
+      "familias_campeon": {
+        "zscore": 14,
+        "ml": 1
+      },
+      "naive_tasa_p_dinero_menor_05": 0.24,
+      "naive_tasa_p_alfa_menor_05": 0.23
+    },
+    "plantado_s0.3": {
+      "mundo": "plantado_s0.3",
+      "n_mundos": 150,
+      "n_configs": 324,
+      "tasa_puerta_seleccion": 0.12666666666666668,
+      "tasa_campeon": 0.02,
+      "error_estandar_campeon": 0.011430952132988163,
+      "campeon_ic95": [
+        0.0,
+        0.0424046661806568
+      ],
+      "familias_campeon": {
+        "tsmom": 2,
+        "donchian": 1
+      },
+      "naive_tasa_p_dinero_menor_05": 0.04,
+      "naive_tasa_p_alfa_menor_05": 0.05333333333333334
+    },
+    "plantado_s0.6": {
+      "mundo": "plantado_s0.6",
+      "n_mundos": 150,
+      "n_configs": 324,
+      "tasa_puerta_seleccion": 0.6066666666666667,
+      "tasa_campeon": 0.14666666666666667,
+      "error_estandar_campeon": 0.02888546988315008,
+      "campeon_ic95": [
+        0.0900511456956925,
+        0.20328218763764083
+      ],
+      "familias_campeon": {
+        "tsmom": 17,
+        "cruce": 4,
+        "zscore": 1
+      },
+      "naive_tasa_p_dinero_menor_05": 0.3,
+      "naive_tasa_p_alfa_menor_05": 0.28
+    }
+  },
+  "segundos": 2123.5
+}

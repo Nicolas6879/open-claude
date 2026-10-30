@@ -1,0 +1,21 @@
+{
+ "descripcion": "nulo signo aleatorio, costes=0, financiacion=0 (frontera de la hipotesis compuesta)",
+ "resumen": {
+  "mundo": "nulo_signo_sin_costes",
+  "n_mundos": 120,
+  "n_configs": 324,
+  "tasa_puerta_seleccion": 0.08333333333333333,
+  "tasa_campeon": 0.016666666666666666,
+  "error_estandar_campeon": 0.011686491093312571,
+  "campeon_ic95": [
+   0.0,
+   0.03957218920955931
+  ],
+  "familias_campeon": {
+   "zscore": 2
+  },
+  "naive_tasa_p_dinero_menor_05": 0.03333333333333333,
+  "naive_tasa_p_alfa_menor_05": 0.03333333333333333
+ },
+ "segundos": 377.9
+}
