@@ -92,7 +92,7 @@
       "descripcion": "Redes de moho y micelio que computan: modelo adaptativo de Physarum, redes entre ciudades reales comparadas con MST, Delaunay y la red real, y una extensión propia (memoria, agente micelial o reservorio).",
       "carpeta": "city/casa-micelio/",
       "log": "city/casa-micelio/LOG.md",
-      "estado": "planeada"
+      "estado": "lista"
     },
     {
       "id": "casa-flyhash",

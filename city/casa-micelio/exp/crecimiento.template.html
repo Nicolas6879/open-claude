@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Micelio: como crece la red</title>
+<style>
+:root{--bg:#0e1116;--fg:#e6edf3;--mut:#8b949e;--acc:#f2b705;--rail:#4c7fb8}
+@media (prefers-color-scheme:light){:root{--bg:#f6f4ef;--fg:#1c1b19;--mut:#6b675f;--acc:#b97a00;--rail:#2b5f9e}}
+html,body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.45 system-ui,sans-serif}
+main{max-width:980px;margin:0 auto;padding:16px}
+h1{font-size:20px;margin:4px 0}p{color:var(--mut);margin:4px 0 10px}
+canvas{width:100%;height:auto;background:transparent;border:1px solid #8884;border-radius:8px;display:block}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0}
+select,button,input{font:inherit;color:var(--fg);background:transparent;border:1px solid #8886;border-radius:6px;padding:4px 8px}
+input[type=range]{flex:1;min-width:160px;padding:0}
+.k{color:var(--mut);font-size:13px}
+</style></head><body><main>
+<h1>Un moho calcula una red entre ciudades</h1>
+<p>Modelo de Physarum de campo medio (casa-micelio): cada tubo engorda si lo cruza flujo y se atrofia si no. Cada fotograma es un instante de la simulacion; el grosor es la conductividad D. Los puntos son las ciudades; los tubos nacen de una malla triangular con puntos de Steiner.</p>
+<div class="row">
+<select id="reg"><option value="kanto">Kanto (37 ciudades, como Tero 2010)</option><option value="espana">Espana peninsular (40)</option></select>
+<select id="scn"></select>
+<button id="play">Pausa</button>
+<label class="k"><input type="checkbox" id="rail"> ferrocarril real (Natural Earth)</label>
+<label class="k"><input type="checkbox" id="mesh" checked> malla inicial</label>
+</div>
+<canvas id="cv" width="960" height="720"></canvas>
+<div class="row"><span class="k" id="tl">t=0</span><input type="range" id="sl" min="0" max="0" value="0"><span class="k" id="st"></span></div>
+<p class="k">Datos: GeoNames (ciudades) y Natural Earth 10m (ferrocarril generalizado; es una referencia aproximada, no el mapa completo). Pagina autonoma, sin red.</p>
+<script>
+const DATA=/*DATA*/null;
+const cv=document.getElementById('cv'),cx=cv.getContext('2d');
+const reg=document.getElementById('reg'),scn=document.getElementById('scn'),sl=document.getElementById('sl');
+let R,S,frames,k=0,playing=true,acc=0,last=0,box;
+function dec(b){const s=atob(b),a=new Uint8Array(s.length);for(let i=0;i<s.length;i++)a[i]=s.charCodeAt(i);return a;}
+function load(){R=DATA[reg.value];scn.innerHTML='';for(const id in R.scen){const o=document.createElement('option');o.value=id;o.textContent=R.scen[id].label;scn.appendChild(o);}pick();}
+function pick(){S=R.scen[scn.value];frames=S.frames.map(f=>[f[0],dec(f[1])]);sl.max=frames.length-1;k=0;
+ let x0=1e9,x1=-1e9,y0=1e9,y1=-1e9;for(const p of R.pts){x0=Math.min(x0,p[0]);x1=Math.max(x1,p[0]);y0=Math.min(y0,p[1]);y1=Math.max(y1,p[1]);}
+ box={x0,x1,y0,y1,s:Math.min((cv.width-40)/(x1-x0),(cv.height-40)/(y1-y0))};draw();}
+function X(x){return 20+(x-box.x0)*box.s}function Y(y){return cv.height-20-(y-box.y0)*box.s}
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n);
+function draw(){cx.clearRect(0,0,cv.width,cv.height);const acc=css('--acc'),fg=css('--fg'),mut=css('--mut');
+ if(document.getElementById('rail').checked){cx.strokeStyle=css('--rail');cx.globalAlpha=.55;cx.lineWidth=1.2;cx.beginPath();const r=R.rail;for(let i=0;i<r.length;i+=4){cx.moveTo(X(r[i]/2),Y(r[i+1]/2));cx.lineTo(X(r[i+2]/2),Y(r[i+3]/2));}cx.stroke();cx.globalAlpha=1;}
+ const a=frames[k][1];
+ if(document.getElementById('mesh').checked){cx.strokeStyle=mut;cx.globalAlpha=.12;cx.lineWidth=.6;cx.beginPath();R.edges.forEach((e,i)=>{if(a[i]<30){const p=R.pts[e[0]],q=R.pts[e[1]];cx.moveTo(X(p[0]),Y(p[1]));cx.lineTo(X(q[0]),Y(q[1]));}});cx.stroke();cx.globalAlpha=1;}
+ cx.strokeStyle=acc;cx.lineCap='round';
+ R.edges.forEach((e,i)=>{if(a[i]>=30){const p=R.pts[e[0]],q=R.pts[e[1]];cx.globalAlpha=Math.min(1,.35+a[i]/255);cx.lineWidth=.6+5.5*(a[i]/255)*(a[i]/255);cx.beginPath();cx.moveTo(X(p[0]),Y(p[1]));cx.lineTo(X(q[0]),Y(q[1]));cx.stroke();}});
+ cx.globalAlpha=1;cx.fillStyle=fg;
+ for(let i=0;i<R.nc;i++){const r=2.5+3*Math.sqrt(R.pop[i]/R.pop[0]);cx.beginPath();cx.arc(X(R.xy[i][0]),Y(R.xy[i][1]),r,0,6.3);cx.fill();}
+ cx.font='11px system-ui';cx.fillStyle=mut;for(let i=0;i<Math.min(R.nc,12);i++)cx.fillText(R.names[i],X(R.xy[i][0])+6,Y(R.xy[i][1])-5);
+ document.getElementById('tl').textContent='t = '+frames[k][0].toFixed(1);
+ let n=0;for(let i=0;i<a.length;i++)if(a[i]>=30)n++;document.getElementById('st').textContent=n+' tubos activos';sl.value=k;}
+function loop(ts){if(playing){acc+=ts-last;if(acc>60){acc=0;if(k<frames.length-1){k++;draw();}else playing=false,document.getElementById('play').textContent='Repetir';}}last=ts;requestAnimationFrame(loop);}
+document.getElementById('play').onclick=()=>{if(k>=frames.length-1)k=0;playing=!playing;document.getElementById('play').textContent=playing?'Pausa':'Reanudar';};
+sl.oninput=()=>{k=+sl.value;playing=false;document.getElementById('play').textContent='Reanudar';draw();};
+reg.onchange=load;scn.onchange=pick;document.getElementById('rail').onchange=draw;document.getElementById('mesh').onchange=draw;
+load();requestAnimationFrame(loop);
+</script></main></body></html>

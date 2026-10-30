@@ -1,0 +1,114 @@
+{
+ "kanto": {
+  "ferrocarril_NE": {
+   "rho_bet": 0.4295884741553878,
+   "rho_deg": NaN,
+   "madrid_or_tokyo_deg": 3,
+   "maxdeg": 3
+  },
+  "MST": {
+   "rho_bet": 0.386689296768509,
+   "rho_deg": 0.37056349757950846,
+   "madrid_or_tokyo_deg": 2,
+   "maxdeg": 3
+  },
+  "RNG": {
+   "rho_bet": 0.168962475193657,
+   "rho_deg": 0.2507054255549829,
+   "madrid_or_tokyo_deg": 3,
+   "maxdeg": 4
+  },
+  "PhysarumA_g1.5": {
+   "rho_bet": 0.015058991590685928,
+   "rho_deg": -0.057312144777538036,
+   "madrid_or_tokyo_deg": 3,
+   "maxdeg": 4
+  },
+  "PhysarumA_g2.0": {
+   "rho_bet": 0.18803935013954515,
+   "rho_deg": 0.244778996664016,
+   "madrid_or_tokyo_deg": 2,
+   "maxdeg": 5
+  },
+  "PhysarumB_g1.5": {
+   "rho_bet": 0.2632891551583156,
+   "rho_deg": 0.07070875821027192,
+   "madrid_or_tokyo_deg": 2,
+   "maxdeg": 4
+  },
+  "PhysarumB_g2.0": {
+   "rho_bet": 0.15560536064115374,
+   "rho_deg": 0.08933114472931547,
+   "madrid_or_tokyo_deg": 2,
+   "maxdeg": 3
+  },
+  "PhysarumG_g1.5": {
+   "rho_bet": 0.4277664590504717,
+   "rho_deg": 0.34066160682236996,
+   "madrid_or_tokyo_deg": 4,
+   "maxdeg": 4
+  },
+  "PhysarumG_g2.0": {
+   "rho_bet": 0.3270755676816916,
+   "rho_deg": 0.37286354627385726,
+   "madrid_or_tokyo_deg": 4,
+   "maxdeg": 4
+  }
+ },
+ "espana": {
+  "ferrocarril_NE": {
+   "rho_bet": 0.32323457103331404,
+   "rho_deg": 0.15018785229652765,
+   "madrid_or_tokyo_deg": 3,
+   "maxdeg": 4
+  },
+  "MST": {
+   "rho_bet": 0.10147605685426705,
+   "rho_deg": 0.24239017365087354,
+   "madrid_or_tokyo_deg": 2,
+   "maxdeg": 4
+  },
+  "RNG": {
+   "rho_bet": 0.06411642049113508,
+   "rho_deg": 0.19327533667769192,
+   "madrid_or_tokyo_deg": 2,
+   "maxdeg": 4
+  },
+  "PhysarumA_g1.5": {
+   "rho_bet": 0.29489124661965227,
+   "rho_deg": 0.26573603828167625,
+   "madrid_or_tokyo_deg": 3,
+   "maxdeg": 4
+  },
+  "PhysarumA_g2.0": {
+   "rho_bet": 0.22058003547131025,
+   "rho_deg": 0.23639742999477625,
+   "madrid_or_tokyo_deg": 3,
+   "maxdeg": 4
+  },
+  "PhysarumB_g1.5": {
+   "rho_bet": 0.12024219631391063,
+   "rho_deg": 0.08488197407001496,
+   "madrid_or_tokyo_deg": 2,
+   "maxdeg": 3
+  },
+  "PhysarumB_g2.0": {
+   "rho_bet": -0.11264865797807717,
+   "rho_deg": 0.07934264236200697,
+   "madrid_or_tokyo_deg": 2,
+   "maxdeg": 4
+  },
+  "PhysarumG_g1.5": {
+   "rho_bet": 0.3730706178176911,
+   "rho_deg": 0.2873228176634378,
+   "madrid_or_tokyo_deg": 3,
+   "maxdeg": 4
+  },
+  "PhysarumG_g2.0": {
+   "rho_bet": 0.3768878944324076,
+   "rho_deg": 0.4120619900562267,
+   "madrid_or_tokyo_deg": 3,
+   "maxdeg": 4
+  }
+ }
+}
