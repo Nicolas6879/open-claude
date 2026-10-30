@@ -7,6 +7,7 @@ import random
 import sys
 from pathlib import Path
 
+MODO = sys.argv[2] if len(sys.argv) > 2 else "v1"
 TRABAJO = Path(sys.argv[1] if len(sys.argv) > 1 else
                "/tmp/claude-0/-home-user-open-claude/e7f872ff-c04d-5af4-a3a1-8d2199c39026/scratchpad/estudio")
 DATOS = "/tmp/claude-0/-home-user-open-claude/e7f872ff-c04d-5af4-a3a1-8d2199c39026/scratchpad/conectoma_data"
@@ -33,6 +34,41 @@ PREGUNTAS = {
         "tiene que ser un efecto autocrino de dopamina liberada por las propias KC». ¿Estás de acuerdo?",
         '{"de_acuerdo": <true|false>, "razon": "<texto>"}'),
 }
+
+PREGUNTAS_V2 = dict(PREGUNTAS)
+PREGUNTAS_V2["Q4"] = ("Una app gastó 30 000 USD en anuncios durante 3 años. En ese tiempo adquirió 600 suscriptores en total; al final del periodo "
+                      "quedan activos 80 (el resto abandonó). ¿Cuánto cuesta cada suscriptor?",
+                      '{"coste_por_suscriptor": <número>}')
+PREGUNTAS_V2["Q5"] = ("Una estrategia de inversión simulada rindió de media 29 USD menos que simplemente mantener los activos (diferencia media = −29), "
+                      "con un error estándar de 11,8 USD sobre 500 simulaciones. ¿Es la diferencia estadísticamente distinta de cero al 95 %? Da el intervalo.",
+                      '{"distinta_de_cero": <true|false>, "ic95": [<inferior>, <superior>]}')
+PREGUNTAS_V2["Q6"] = ("¿Qué fracción de las SINAPSIS PN→KC (neuronas de proyección olfativas → células de Kenyon) usan acetilcolina como neurotransmisor presináptico? "
+                      "Solo dispones de los dos ficheros indicados; no descargues nada más ni busques otras fuentes.",
+                      '{"fraccion": <número entre 0 y 1>}')
+
+PLANTILLA_V2 = """# Encargo de análisis (agente {id})
+
+Trabajas solo y sin interacción: no hagas preguntas a nadie. Es un experimento ciego: **no leas ni busques nada dentro de /home/user/open-claude** y no uses internet. Trabaja solo con estos dos ficheros del conectoma real de la mosca macho (MaleCNS v1.0), en formato Apache Feather:
+
+- `{datos}/body-annotations-male-cns-v1.0-minconf-0.5.feather`: columnas, entre otras, `bodyId`, `type`, `class`, `subclass`, `superclass`, `somaSide`.
+- `{datos}/body-neurotransmitters-male-cns-v1.0.feather`: columnas, entre otras, `body` (equivale a `bodyId`), `predicted_nt`, `consensus_nt`.
+
+Una neurona es de tipo KC si su `type` empieza por «KC», y MBON si empieza por «MBON». Lee los ficheros con pyarrow: `{py}` (haz `cd` a un directorio nuevo tuyo, p. ej. `{trabajo}/tmp_{id}`, antes de ejecutar Python).
+
+Responde a las 7 preguntas siguientes. Cada una lleva un **id interno (Q1…Q7)**: úsalo exactamente como clave en tu respuesta; no es el número de orden en que aparece.
+
+{preguntas}
+
+## Formato de entrega
+Escribe un único fichero JSON en `{trabajo}/respuestas/{id}.json` con esta forma (crea el directorio si no existe):
+
+```
+{{"id": "{id}", "respuestas": {{
+{esquema}
+}}}}
+```
+Cada `Qn` es un objeto con los campos indicados más `"confianza"` (número de 0 a 1) y `"metodo"` (una o dos frases: qué hiciste). Cuando hayas escrito el fichero, termina tu respuesta con la sola palabra «hecho» (no repitas las respuestas en el chat).
+"""
 
 PLANTILLA = """# Encargo de análisis (agente {id})
 
@@ -64,13 +100,19 @@ def main():
     (TRABAJO / "respuestas").mkdir(parents=True, exist_ok=True)
     ids = [f"{m}{i:02d}" for m in "HS" for i in range(1, 9)]
     for k, ident in enumerate(ids):
-        orden = list(PREGUNTAS)
+        PQ = PREGUNTAS_V2 if MODO == "v2" else PREGUNTAS
+        orden = list(PQ)
         random.Random(1000 + k).shuffle(orden)
         txt = []
         for n, q in enumerate(orden, 1):
-            txt.append(f"### Pregunta {n} (id interno {q})\n{PREGUNTAS[q][0]}\nCampo JSON `{q}`: `{PREGUNTAS[q][1]}`\n")
-        esquema = ",\n".join(f'  "{q}": {{...campos de la pregunta, "confianza": 0.0, "metodo": "", "advertencias": ""}}' for q in sorted(PREGUNTAS))
-        (TRABAJO / "briefs" / f"{ident}.md").write_text(PLANTILLA.format(
+            txt.append(f"### Pregunta {n} (id interno {q})\n{PQ[q][0]}\nClave `{q}`: `{PQ[q][1]}`\n")
+        if MODO == "v2":
+            esquema = ",\n".join(f'  "{q}": {{...campos de la pregunta, "confianza": 0.0, "metodo": ""}}' for q in sorted(PREGUNTAS))
+            plant = PLANTILLA_V2
+        else:
+            esquema = ",\n".join(f'  "{q}": {{...campos de la pregunta, "confianza": 0.0, "metodo": "", "advertencias": ""}}' for q in sorted(PREGUNTAS))
+            plant = PLANTILLA
+        (TRABAJO / "briefs" / f"{ident}.md").write_text(plant.format(
             id=ident, datos=DATOS, py=PY, trabajo=TRABAJO, preguntas="\n".join(txt), esquema=esquema), encoding="utf-8")
     (TRABAJO / "orden.json").write_text(json.dumps({i: None for i in ids}), encoding="utf-8")
     print(f"{len(ids)} briefs en {TRABAJO/'briefs'}")

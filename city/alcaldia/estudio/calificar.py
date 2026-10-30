@@ -45,8 +45,8 @@ def texto(r):
     return " ".join(str(r.get(k, "")) for k in ("metodo", "advertencias", "explicacion", "razon", "definicion")).lower()
 
 
-CAMPOS_UNICOS = {"neurotransmisor": "Q1", "n_MBON": "Q2", "KC_izquierda": "Q3", "coste_por_suscriptor_adquirido": "Q4",
-                 "distinta_de_cero": "Q5", "se_puede_responder": "Q6", "de_acuerdo": "Q7"}
+CAMPOS_UNICOS = {"neurotransmisor": "Q1", "n_MBON": "Q2", "KC_izquierda": "Q3", "coste_por_suscriptor_adquirido": "Q4", "coste_por_suscriptor": "Q4",
+                 "distinta_de_cero": "Q5", "se_puede_responder": "Q6", "fraccion": "Q6", "de_acuerdo": "Q7"}
 
 
 def por_contenido(resp):
@@ -80,8 +80,13 @@ def corrige(resp, V):
     a, b = num(r.get("coste_por_suscriptor_adquirido")), num(r.get("coste_por_suscriptor_activo_final"))
     oka = a is not None and abs(a - V["q4"][0]) <= 1
     okb = b is not None and abs(b - V["q4"][1]) <= 1
-    defin = len(str(r.get("definicion", ""))) > 10
+    defin = len(str(r.get("definicion") or r.get("metodo") or "")) > 10
     p = 2 if (oka and okb) else (1 if ((oka or okb) and defin) else 0)
+    if a is None and b is None and num(r.get("coste_por_suscriptor")) is not None:      # esquema v2: un solo número
+        v = num(r.get("coste_por_suscriptor"))
+        txt = texto(r)
+        ambos = ("50" in txt and "375" in txt)
+        p = 2 if ambos and (abs(v - 50) <= 1 or abs(v - 375) <= 1) else (1 if (abs(v - 50) <= 1 or abs(v - 375) <= 1) and defin else 0)
     out["Q4"] = {"puntos": p, "completo": int(p == 2)}
     r = resp.get("Q5", {})
     ic = r.get("ic95") if isinstance(r.get("ic95"), list) and len(r.get("ic95")) == 2 else [None, None]
@@ -90,7 +95,7 @@ def corrige(resp, V):
     out["Q5"] = {"puntos": int(ok), "completo": int(ok)}
     r = resp.get("Q6", {})
     fr = num(r.get("fraccion"))
-    if r.get("se_puede_responder") is False:
+    if r.get("se_puede_responder") is False or (r.get("se_puede_responder") is None and fr is None and r):
         p = 2
     elif fr is not None:
         p = 1 if re.search(r"neurona|neuron|proxy|aproxim|no son sinapsis|no sinapsis|recuento de", texto(r)) else 0
