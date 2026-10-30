@@ -1,17 +1,121 @@
 [
-  {"quien": "Alcalde", "casa": "alcaldia", "que": "Di por inalcanzables los datos reales de la mosca tras tres o cuatro curl a hosts equivocados, sin usar WebSearch.", "como_se_detecto": "Crítica del usuario; luego una búsqueda real encontró el bucket público de MaleCNS.", "costo": "Neuro construyó un modelo sintético partiendo de una premisa falsa que yo le di."},
-  {"quien": "Alcalde", "casa": "alcaldia", "que": "Escribí 2 059 neuronas en mi LOG; la suma correcta es 2 109.", "como_se_detecto": "El LOG de la Pintora contaba 2 109 y no coincidía.", "costo": "Una errata que además el Notario atribuyó por error a Neuro en su LOG."},
-  {"quien": "Alcalde", "casa": "alcaldia", "que": "Un pkill -f coincidió con mi propia línea de comando y mató mi shell (dos veces).", "como_se_detecto": "Código de salida 144 sin salida.", "costo": "Un servidor de prueba sin cerrar durante unos minutos; lo maté por PID."},
-  {"quien": "Alcalde", "casa": "alcaldia", "que": "Mi script de capturas escribió PNG con ruta relativa dentro del repo.", "como_se_detecto": "git status mostró cuatro archivos sin trackear antes de commitear.", "costo": "Ninguno: los moví al scratchpad y no llegaron a un commit."},
-  {"quien": "Alcalde", "casa": "alcaldia", "que": "La primera instalación grande de librerías se colgó sin salida durante 10 minutos.", "como_se_detecto": "El directorio del venv seguía en 13 MB.", "costo": "Unos 15 minutos; relancé en segundo plano con registro."},
-  {"quien": "Alcalde", "casa": "alcaldia", "que": "Mi diseño de la Notaría crea una tensión: sellar casas y poder pedir correcciones a la vez.", "como_se_detecto": "Al revisar el sello, vi que cualquier cambio posterior rompe verify.py hasta volver a sellar.", "costo": "Hay que pedir un re-sellado cada vez que una casa cambia."},
-  {"quien": "Neuro", "casa": "casa-mosca", "que": "Con plasticidad lineal, el olor no reforzado B también bajaba un 66 %.", "como_se_detecto": "Su propia tabla antes/después.", "costo": "Cambió la regla a umbral con coincidencia no lineal; B bajó a un 13 %. Esa regla es una suposición suya."},
-  {"quien": "Neuro", "casa": "casa-mosca", "que": "Invirtió por error dos parámetros (inhibición APL→KC y KC→APL).", "como_se_detecto": "El APL no coincidía con su calibración.", "costo": "Corregido y recalibrado."},
-  {"quien": "Tendera", "casa": "casa-agora", "que": "El óptimo de su rejilla de umbrales estaba en el borde.", "como_se_detecto": "Lo vio al mirar los resultados de la sintonización.", "costo": "Amplió la rejilla; el óptimo quedó otra vez en el borde y lo reportó como hallazgo (lo mejor es estar fuera)."},
-  {"quien": "Pintora", "casa": "casa-taller", "que": "Solapes de texto en las obras 3, 4 y 5 y una frase que afirmaba causalidad sin datos.", "como_se_detecto": "Renderizó con Chromium y miró las capturas.", "costo": "Corregidos; la frase causal se suavizó a «consistente con»."},
-  {"quien": "Notario", "casa": "casa-notaria", "que": "El minado hasheaba el JSON completo en cada intento: 4,7 s.", "como_se_detecto": "Midió el tiempo de notarize.", "costo": "Serializó una vez y varió solo el nonce: 0,04 s."},
-  {"quien": "Notario", "casa": "casa-notaria", "que": "Su LOG atribuyó a Neuro un error de conteo que era del Alcalde.", "como_se_detecto": "Lo vi yo al revisar su LOG.", "costo": "Lo corrigió cuando se lo pedí."},
-  {"quien": "Cartógrafa", "casa": "casa-conectoma", "que": "Presentó como posible hallazgo un solapamiento medio que es una identidad matemática.", "como_se_detecto": "El nulo con grados daba exactamente el mismo valor.", "costo": "Lo retiró y usó la fracción de pares con alguna entrada compartida."},
-  {"quien": "Arquitecto", "casa": "index.html", "que": "Caminos del mapa en negro y sello inflado tapando etiquetas en la primera versión.", "como_se_detecto": "Miró sus propias capturas.", "costo": "Corregidos antes de entregar."},
-  {"quien": "Todos", "casa": "alcaldia", "que": "git push devuelve 403: Claude no tiene acceso de escritura al repo remoto.", "como_se_detecto": "Primer intento de push.", "costo": "Sin resolver: los commits siguen solo en local."}
+  {
+    "quien": "Alcalde",
+    "casa": "alcaldia",
+    "que": "Di por inalcanzables los datos reales de la mosca tras tres o cuatro curl a hosts equivocados, sin usar WebSearch.",
+    "como_se_detecto": "Crítica del usuario; luego una búsqueda real encontró el bucket público de MaleCNS.",
+    "costo": "Neuro construyó un modelo sintético partiendo de una premisa falsa que yo le di."
+  },
+  {
+    "quien": "Alcalde",
+    "casa": "alcaldia",
+    "que": "Escribí 2 059 neuronas en mi LOG; la suma correcta es 2 109.",
+    "como_se_detecto": "El LOG de la Pintora contaba 2 109 y no coincidía.",
+    "costo": "Una errata que además el Notario atribuyó por error a Neuro en su LOG."
+  },
+  {
+    "quien": "Alcalde",
+    "casa": "alcaldia",
+    "que": "Un pkill -f coincidió con mi propia línea de comando y mató mi shell (dos veces).",
+    "como_se_detecto": "Código de salida 144 sin salida.",
+    "costo": "Un servidor de prueba sin cerrar durante unos minutos; lo maté por PID."
+  },
+  {
+    "quien": "Alcalde",
+    "casa": "alcaldia",
+    "que": "Mi script de capturas escribió PNG con ruta relativa dentro del repo.",
+    "como_se_detecto": "git status mostró cuatro archivos sin trackear antes de commitear.",
+    "costo": "Ninguno: los moví al scratchpad y no llegaron a un commit."
+  },
+  {
+    "quien": "Alcalde",
+    "casa": "alcaldia",
+    "que": "La primera instalación grande de librerías se colgó sin salida durante 10 minutos.",
+    "como_se_detecto": "El directorio del venv seguía en 13 MB.",
+    "costo": "Unos 15 minutos; relancé en segundo plano con registro."
+  },
+  {
+    "quien": "Alcalde",
+    "casa": "alcaldia",
+    "que": "Mi diseño de la Notaría crea una tensión: sellar casas y poder pedir correcciones a la vez.",
+    "como_se_detecto": "Al revisar el sello, vi que cualquier cambio posterior rompe verify.py hasta volver a sellar.",
+    "costo": "Hay que pedir un re-sellado cada vez que una casa cambia."
+  },
+  {
+    "quien": "Neuro",
+    "casa": "casa-mosca",
+    "que": "Con plasticidad lineal, el olor no reforzado B también bajaba un 66 %.",
+    "como_se_detecto": "Su propia tabla antes/después.",
+    "costo": "Cambió la regla a umbral con coincidencia no lineal; B bajó a un 13 %. Esa regla es una suposición suya."
+  },
+  {
+    "quien": "Neuro",
+    "casa": "casa-mosca",
+    "que": "Invirtió por error dos parámetros (inhibición APL→KC y KC→APL).",
+    "como_se_detecto": "El APL no coincidía con su calibración.",
+    "costo": "Corregido y recalibrado."
+  },
+  {
+    "quien": "Tendera",
+    "casa": "casa-agora",
+    "que": "El óptimo de su rejilla de umbrales estaba en el borde.",
+    "como_se_detecto": "Lo vio al mirar los resultados de la sintonización.",
+    "costo": "Amplió la rejilla; el óptimo quedó otra vez en el borde y lo reportó como hallazgo (lo mejor es estar fuera)."
+  },
+  {
+    "quien": "Pintora",
+    "casa": "casa-taller",
+    "que": "Solapes de texto en las obras 3, 4 y 5 y una frase que afirmaba causalidad sin datos.",
+    "como_se_detecto": "Renderizó con Chromium y miró las capturas.",
+    "costo": "Corregidos; la frase causal se suavizó a «consistente con»."
+  },
+  {
+    "quien": "Notario",
+    "casa": "casa-notaria",
+    "que": "El minado hasheaba el JSON completo en cada intento: 4,7 s.",
+    "como_se_detecto": "Midió el tiempo de notarize.",
+    "costo": "Serializó una vez y varió solo el nonce: 0,04 s."
+  },
+  {
+    "quien": "Notario",
+    "casa": "casa-notaria",
+    "que": "Su LOG atribuyó a Neuro un error de conteo que era del Alcalde.",
+    "como_se_detecto": "Lo vi yo al revisar su LOG.",
+    "costo": "Lo corrigió cuando se lo pedí."
+  },
+  {
+    "quien": "Cartógrafa",
+    "casa": "casa-conectoma",
+    "que": "Presentó como posible hallazgo un solapamiento medio que es una identidad matemática.",
+    "como_se_detecto": "El nulo con grados daba exactamente el mismo valor.",
+    "costo": "Lo retiró y usó la fracción de pares con alguna entrada compartida."
+  },
+  {
+    "quien": "Arquitecto",
+    "casa": "index.html",
+    "que": "Caminos del mapa en negro y sello inflado tapando etiquetas en la primera versión.",
+    "como_se_detecto": "Miró sus propias capturas.",
+    "costo": "Corregidos antes de entregar."
+  },
+  {
+    "quien": "Cartógrafa",
+    "casa": "casa-conectoma",
+    "que": "Usó la columna predicted_nt del conectoma, que da dopamina para 4 058 de las 4 064 células de Kenyon (falso: son colinérgicas); audit.json repetía «KC: dopamine».",
+    "como_se_detecto": "El Alcalde lo vio al leer audit.json y lo comprobó contra los datos crudos: consensus_nt da acetilcolina para las 4 064. Se lo comunicó por el bus (mensajes 10 y 11).",
+    "costo": "Confirmó y corrigió a consensus_nt (mensaje 13). En su microcircuito no cambió nada (el signo de KC es fijo allí); en su grafo de sistema nervioso completo las KC tendrían signo 0, así que la sintonía del bucle cerrado en curso se invalidó y se reinició. Primer error corregido por el bus en vivo."
+  },
+  {
+    "quien": "Fundador",
+    "casa": "casa-empresa",
+    "que": "El escenario «rentable» F (+9 500 USD, 0 % de pérdida) multiplicó por 7,5 la tasa de ventas de aulas y por 1,45 el precio en el mismo paso del rediseño, sin dato nuevo; el 0 % de pérdida es casi por construcción con coste cero.",
+    "como_se_detecto": "El Alcalde comparó los supuestos base con los de los escenarios E y F en sim/supuestos.json.",
+    "costo": "Pendiente: se le pidió un tercer bucle (umbral de rentabilidad, mecánica viral, revisar los supuestos)."
+  },
+  {
+    "quien": "Todos",
+    "casa": "alcaldia",
+    "que": "git push devuelve 403: Claude no tiene acceso de escritura al repo remoto.",
+    "como_se_detecto": "Primer intento de push.",
+    "costo": "Sin resolver: los commits siguen solo en local."
+  }
 ]
