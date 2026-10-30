@@ -48,6 +48,24 @@
       "carpeta": "city/casa-conectoma/",
       "log": "city/casa-conectoma/LOG.md",
       "estado": "lista"
+    },
+    {
+      "id": "casa-empresa",
+      "nombre": "Casa Empresa",
+      "habitante": "Fundador",
+      "descripcion": "Una empresa/app con alma y un modelo de negocio probado en simulación: producto jugable, plan de negocio y simulador basado en agentes. Todo el dinero es simulado.",
+      "carpeta": "city/casa-empresa/",
+      "log": "city/casa-empresa/LOG.md",
+      "estado": "planeada"
+    },
+    {
+      "id": "casa-forja",
+      "nombre": "Casa Forja",
+      "habitante": "Cazador",
+      "descripcion": "Caza estrategias de inversión con rigor estadístico (walk-forward, pruebas múltiples, mundos de control) sobre datos reales embebidos en paquetes. Solo paper trading.",
+      "carpeta": "city/casa-forja/",
+      "log": "city/casa-forja/LOG.md",
+      "estado": "planeada"
     }
   ],
   "relaciones": [
@@ -80,6 +98,16 @@
       "de": "casa-conectoma",
       "a": "casa-mosca",
       "que": "audita con datos reales los supuestos de su modelo sintético"
+    },
+    {
+      "de": "casa-empresa",
+      "a": "casa-conectoma",
+      "que": "usa su mosca virtual como mente de la criatura (si la idea se mantiene)"
+    },
+    {
+      "de": "casa-forja",
+      "a": "casa-agora",
+      "que": "extiende su análisis de proveedores de liquidez con datos reales"
     }
   ]
 }
