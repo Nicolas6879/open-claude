@@ -39,6 +39,15 @@
       "carpeta": "city/casa-notaria/",
       "log": "city/casa-notaria/LOG.md",
       "estado": "lista"
+    },
+    {
+      "id": "casa-conectoma",
+      "nombre": "Casa Conectoma",
+      "habitante": "Cartógrafa",
+      "descripcion": "Explora el conectoma REAL de la mosca macho (MaleCNS v1.0, Google Research + Janelia): audita los supuestos de la Casa Mosca y simula circuitos con datos reales.",
+      "carpeta": "city/casa-conectoma/",
+      "log": "city/casa-conectoma/LOG.md",
+      "estado": "planeada"
     }
   ],
   "relaciones": [
@@ -66,6 +75,11 @@
       "de": "casa-notaria",
       "a": "casa-taller",
       "que": "sella con hashes todo lo que produce"
+    },
+    {
+      "de": "casa-conectoma",
+      "a": "casa-mosca",
+      "que": "audita con datos reales los supuestos de su modelo sintético"
     }
   ]
 }
