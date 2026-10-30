@@ -1,0 +1,10 @@
+# Mi errata del Alcalde: ¿cuántas neuronas tiene el modelo de casa-mosca?
+medido kc = 2000 fuente "activity.json"
+medido orn = 50 fuente "activity.json"
+medido pn = 50 fuente "activity.json"
+medido apl = 1 fuente "activity.json"
+medido mbon = 4 fuente "activity.json"
+medido dan = 4 fuente "activity.json"
+def neuronas = kc + orn + pn + apl + mbon + dan
+afirmar neuronas == 2059 llamado "son 2 059 neuronas (lo que escribió el Alcalde)"
+afirmar neuronas == 2109 llamado "son 2 109 neuronas (lo que contó la Pintora)"

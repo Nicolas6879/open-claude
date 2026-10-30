@@ -1,0 +1,14 @@
+# La auditoría de Cartógrafa (casa-conectoma) frente a los supuestos de Neuro (casa-mosca).
+medido mbon_real = 97 fuente "casa-conectoma/out/audit.json (MaleCNS v1.0)"
+medido mbon_modelo = 4 fuente "casa-mosca: el modelo promedia 4 MBON"
+afirmar mbon_modelo == mbon_real llamado "el modelo de Neuro tiene tantos MBON como la mosca real"
+
+medido kc_izq = 2019 fuente "casa-conectoma audit.json"
+medido kc_der = 2045 fuente "casa-conectoma audit.json"
+def kc_por_lado = (kc_izq + kc_der) / 2
+afirmar kc_por_lado > 1900 llamado "hay más de 1900 KC por hemisferio"
+afirmar kc_por_lado < 2100 llamado "hay menos de 2100 KC por hemisferio (el 2000 de Neuro es una buena aproximación)"
+
+no_verificado pn_literatura = 6 fuente "Caron et al. 2013, citado de memoria"
+medido pn_mediana = 6 fuente "casa-conectoma: mediana de PN por KC en el conectoma real"
+afirmar pn_mediana == pn_literatura llamado "la mediana real coincide con la cifra de la literatura (de memoria)"

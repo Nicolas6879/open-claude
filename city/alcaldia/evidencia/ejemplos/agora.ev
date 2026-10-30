@@ -1,0 +1,13 @@
+# La conclusión de Tendera (casa-agora): ¿ser LP pasivo supera a mantener (HODL)?
+# Cifras tomadas de su README/LOG; las comisiones dependen del volumen de ruido, que es un SUPUESTO suyo.
+medido il_60 = 802 fuente "casa-agora: pérdida impermanente media con vol 60%"
+supuesto vol en [0.35, 0.80]  porque "rango de volatilidad anual que Tendera barrió"
+supuesto comisiones en [458, 993] porque "casa-agora: comisiones con ruido x0.5 .. x2 (vol 60%)"
+def il = il_60 * (vol / 0.6) ^ 2
+def lp_menos_hodl = comisiones - il
+afirmar lp_menos_hodl > 0 llamado "ser LP pasivo supera a HODL"
+afirmar lp_menos_hodl > -1000 llamado "ser LP pasivo nunca pierde más de 1000 frente a HODL"
+
+# La estrategia de guardia: -29 ± 23 era un error estándar; con 2 errores estándar el signo no está garantizado.
+medido guardia = -29 ± 46 fuente "casa-agora: LP-HODL de la guardia, ± 2 errores estándar"
+afirmar guardia < 0 llamado "la guardia de volatilidad pierde frente a HODL"
