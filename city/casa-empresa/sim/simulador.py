@@ -60,6 +60,7 @@ def simula(par, presupuesto_semana, aula, T=156, seed=0):
 
     lab_stock = np.zeros(n)
     esc_stock = np.zeros(n)
+    adquiridos = np.zeros(n)          # suscriptores del Laboratorio que entran (acumulado, antes de abandonar)
     for t in range(T):
         k_viral = par["regalo_prob"] * par["regalo_aceptacion"] * par["abandono_final"]
         viral = k_viral * act[:, t - 1] if t > 0 else 0.0
@@ -77,7 +78,9 @@ def simula(par, presupuesto_semana, aula, T=156, seed=0):
         act[:, t] = np.maximum(act[:, t], 0.0)
 
         # suscriptores del Laboratorio
-        lab_stock = lab_stock * (1 - par["lab_abandono_semana"]) + par["lab_conversion_semana"] * act[:, t]
+        nuevos = par["lab_conversion_semana"] * act[:, t]
+        adquiridos += nuevos
+        lab_stock = lab_stock * (1 - par["lab_abandono_semana"]) + nuevos
         pagos_lab[:, t] = lab_stock
         precio_lab_sem = par["lab_precio_mes_efectivo"] * mes_sem
         ing["lab"][:, t] = lab_stock * precio_lab_sem
@@ -105,7 +108,7 @@ def simula(par, presupuesto_semana, aula, T=156, seed=0):
     return {
         "activos": act, "instalaciones": inst, "paid_instalaciones": paid_inst,
         "lab_suscriptores": pagos_lab, "aulas": escuelas,
-        "ingreso": ingreso_total, "coste": coste_total, "margen_semanal": margen,
+        "ingreso": ingreso_total, "coste": coste_total, "margen_semanal": margen, "suscriptores_adquiridos": adquiridos,
         "margen_acumulado": np.cumsum(margen, axis=1),
         "ingreso_por_fuente": ing, "coste_por_fuente": cost,
     }
@@ -124,11 +127,15 @@ def resume(res, par):
     primera_pos = np.where(positivo.any(axis=1), positivo.argmax(axis=1), -1)
     gasto = res["coste_por_fuente"]["marketing"].sum(axis=1)
     lab_total = res["lab_suscriptores"][:, -1]
+    adq = res["suscriptores_adquiridos"]
     # Margen por suscriptor del Laboratorio y semana, y vida media (1/abandono semanas)
     margen_sus = (par["lab_precio_mes_efectivo"] / 4.33) * (1 - par["comision_pago"]) - par["soporte_por_pago_semana"]
     ltv = margen_sus / par["lab_abandono_semana"]
-    # Coste de adquisicion: gasto en paid / suscriptores que llegan a existir (orientativo)
-    cac = np.where(lab_total > 0, gasto / np.maximum(lab_total, 1), np.nan)
+    # Dos denominadores, con definicion explicita:
+    #  - por suscriptor ADQUIRIDO: gasto total / suscriptores que entran en toda la simulacion (incluye organicos y virales)
+    #  - por suscriptor en STOCK FINAL: gasto total / suscriptores vivos al final (sobrestima el coste: quedan fuera los que abandonaron)
+    cac_adq = np.where(adq > 0, gasto / np.maximum(adq, 1e-9), np.nan)
+    cac_stock = np.where(lab_total > 0, gasto / np.maximum(lab_total, 1), np.nan)
     return {
         "margen_final_mediana": float(np.median(fin)),
         "margen_final_p10": float(np.percentile(fin, 10)),
@@ -140,7 +147,10 @@ def resume(res, par):
         "aulas_final_mediana": float(np.median(res["aulas"][:, -1])),
         "ltv_suscriptor_lab_mediana": float(np.median(ltv)),
         "gasto_marketing_mediana": float(np.median(gasto)),
-        "coste_por_suscriptor_mediana": float(np.nanmedian(cac)) if np.isfinite(cac).any() else None,
+        "suscriptores_adquiridos_mediana": float(np.median(adq)),
+        "coste_por_suscriptor_adquirido_mediana": float(np.nanmedian(cac_adq)) if np.isfinite(cac_adq).any() else None,
+        "coste_por_suscriptor_stock_final_mediana": float(np.nanmedian(cac_stock)) if np.isfinite(cac_stock).any() else None,
+        "nota_denominadores": "gasto/adquiridos: denominador = todos los suscriptores que entran (incluye organicos y virales; es una cota inferior del coste pagado por suscriptor). gasto/stock final: denominador = suscriptores vivos al final (sobrestima).",
     }
 
 

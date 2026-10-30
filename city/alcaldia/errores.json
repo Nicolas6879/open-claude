@@ -137,7 +137,7 @@
     "casa": "casa-empresa",
     "que": "Dos cifras mal derivadas: «ganar 1 000 USD/mes exige 3,7× la demanda (~150 instalaciones/semana)» multiplicaba cuatro palancas a la vez (solo instalaciones: 14,2× ≈ 570/semana), y «cada suscriptor cuesta 370 USD» dividía entre el stock final (por suscriptor adquirido: 49 USD).",
     "como_se_detecto": "El Auditor leyó umbral.py y simulador.py y reprodujo los cruces con su propia bisección.",
-    "costo": "La conclusión «paid pierde» se mantiene (LTV 10 USD < 49), pero las cifras operativas estaban sesgadas."
+    "costo": "Corregido (corrijos n=42 y 43): 3,55× con las cuatro palancas a la vez (~142 instalaciones/semana) y 14,5× (~580/semana) solo con instalaciones; coste por suscriptor 370 USD sobre el stock final y ~50 USD sobre los adquiridos, ambos con su definición. El Alcalde reprodujo el umbral (3,55 y 14,46). «k<1» pasó a CONDICIONAL en Evidencia."
   },
   {
     "quien": "Pintora",

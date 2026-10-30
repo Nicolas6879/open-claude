@@ -9,6 +9,7 @@ Uso: PYTHONDONTWRITEBYTECODE=1 python3 umbral.py [--n 1000]
 """
 import argparse
 import json
+import math
 import os
 
 import numpy as np
@@ -42,11 +43,26 @@ def barre(sup, n, seed, aula, claves, factores):
     return out
 
 
-def primer_cruce(tabla, objetivo):
-    for fila in tabla:
-        if fila["margen_mes_mediana"] >= objetivo:
-            return fila["m"]
-    return None
+def mediana_mes(sup, n, seed, claves, m):
+    R = np.random.default_rng(seed)
+    par = S.muestra_parametros(sup, n, R)
+    for k in claves:
+        par[k] = par[k] * m
+    return float(np.median(margen_mes_anio3(par, True, seed)))
+
+
+def bisecta(sup, n, seed, claves, objetivo, lo=1.0, hi=200.0, iters=18):
+    """Cruce exacto del margen mensual mediano con objetivo (el margen crece con m).
+    Biseccion en escala logaritmica sobre la misma muestra de supuestos (misma semilla)."""
+    if mediana_mes(sup, n, seed, claves, lo) >= objetivo:
+        return lo
+    for _ in range(iters):
+        mid = math.sqrt(lo * hi)
+        if mediana_mes(sup, n, seed, claves, mid) >= objetivo:
+            hi = mid
+        else:
+            lo = mid
+    return round(hi, 2)
 
 
 def main():
@@ -57,7 +73,6 @@ def main():
     seed = sup["semilla"]
     tabla_todo = barre(sup, args.n, seed, True, DEMANDA, FACTORES)
     tabla_inst = barre(sup, args.n, seed, True, ["instalaciones_organicas_semana"], FACTORES)
-    tabla_aula = barre(sup, args.n, seed, True, ["aula_ventas_semana"], FACTORES)
     # Bucle viral: instalaciones que genera cada usuaria a lo largo de su vida (valores medianos).
     med = {k: float(v["moda"]) for k, v in sup["parametros"].items() if v.get("dist") == "tri"}
     b, c = med["retencion_b"], med["retencion_c"]
@@ -76,11 +91,10 @@ def main():
         "demanda_multiplicada": DEMANDA,
         "tabla_toda_la_demanda": tabla_todo,
         "tabla_solo_adquisicion": tabla_inst,
-        "tabla_solo_aulas": tabla_aula,
-        "umbral_no_perder_toda_demanda": primer_cruce(tabla_todo, 0.0),
-        "umbral_1000_mes_toda_demanda": primer_cruce(tabla_todo, 1000.0),
-        "umbral_no_perder_solo_aulas": primer_cruce(tabla_aula, 0.0),
-        "umbral_1000_mes_solo_aulas": primer_cruce(tabla_aula, 1000.0),
+        "umbral_1000_mes_cuatro_palancas": bisecta(sup, args.n, seed, DEMANDA, 1000.0),
+        "umbral_1000_mes_solo_instalaciones": bisecta(sup, args.n, seed, ["instalaciones_organicas_semana"], 1000.0),
+        "umbral_no_perder_cuatro_palancas": bisecta(sup, args.n, seed, DEMANDA, 0.0),
+        "definicion": "m multiplica a la vez instalaciones organicas, conversion a Laboratorio, cosmeticos y ventas de aulas (cuatro palancas). En la fila 'solo instalaciones' solo se multiplican las instalaciones organicas.",
         "nota": "Monte Carlo con los supuestos de sim/supuestos.json; el factor se aplica a la mediana de cada supuesto de demanda.",
     }
     ruta = os.path.join(HERE, "out", "umbral.json")
@@ -88,10 +102,9 @@ def main():
         json.dump(res, f, ensure_ascii=False, indent=1)
     for fila in tabla_todo:
         print("m=%4d  margen mensual mediano anio 3 = %10.1f  P(<0)=%.2f" % (fila["m"], fila["margen_mes_mediana"], fila["p_negativo"]))
-    print("umbral no perder (toda la demanda):", res["umbral_no_perder_toda_demanda"])
-    print("umbral 1000 USD/mes (toda la demanda):", res["umbral_1000_mes_toda_demanda"])
-    print("umbral no perder (solo aulas):", res["umbral_no_perder_solo_aulas"])
-    print("umbral 1000 USD/mes (solo aulas):", res["umbral_1000_mes_solo_aulas"])
+    print("umbral 1000 USD/mes, cuatro palancas:", res["umbral_1000_mes_cuatro_palancas"])
+    print("umbral 1000 USD/mes, solo instalaciones:", res["umbral_1000_mes_solo_instalaciones"])
+    print("umbral 0 USD/mes, cuatro palancas:", res["umbral_no_perder_cuatro_palancas"])
 
 
 if __name__ == "__main__":

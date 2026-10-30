@@ -17,8 +17,10 @@
 |---|---|---|
 | Coste por instalacion (CPI) | 1,5 USD (mediana; sigma 0,6) | supuesto, sin referencia verificada |
 | Gasto en publicidad | 750 USD/semana | decision de escenario |
-| Coste por suscriptor del Laboratorio | ~370 USD (mediana) | simulacion |
-| LTV / CAC | ~0,03 | calculo |
+| Coste por suscriptor del Laboratorio, dividido entre el stock final | 370 USD (mediana). Sobrestima: los que abandonaron no entran en el denominador | simulacion |
+| Coste por suscriptor adquirido (gasto / suscriptores que entran, todas las fuentes) | 50 USD (mediana). Es una cota inferior del coste pagado por suscriptor | simulacion |
+| LTV / CAC, con coste por adquirido (50 USD) | ~0,2 | calculo |
+| LTV / CAC, con coste por stock final (370 USD) | ~0,03 | calculo (sobrestima el coste) |
 
 Con estos valores la publicidad pagada no se sostiene. No hace falta mas precision para decidirlo.
 

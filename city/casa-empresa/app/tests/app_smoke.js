@@ -25,9 +25,9 @@ function ok(cond, msg) { console.log((cond ? 'OK   ' : 'FALLO') + ' ' + msg); if
   // aprendizaje con un par: azucar + plátano
   await p.evaluate(() => { const M = __mosquita; M.setFuentes([{tipo:'olor', o:'menta', x:0.5, y:0.5, fuerza:1, vida:110000, vidaMax:110000}]); });
   await p.waitForTimeout(1500);
-  const w1 = await p.evaluate(() => Array.from(__mosquita.cer.W.slice(0, 40)).join(','));
+  const w1 = await p.evaluate(() => Array.from(__mosquita.cer.W).join(','));
   await p.evaluate(() => __mosquita.recompensa('azucar'));
-  const w2 = await p.evaluate(() => Array.from(__mosquita.cer.W.slice(0, 40)).join(','));
+  const w2 = await p.evaluate(() => Array.from(__mosquita.cer.W).join(','));
   ok(w1 !== w2, 'la recompensa cambia los pesos');
   await p.waitForTimeout(4500); // deja que guarde
   const antesRecarga = await p.evaluate(() => ({ nombre: __mosquita.A.nombre, seed: __mosquita.A.seed, edad: __mosquita.A.edadMs, pares: JSON.stringify(__mosquita.A.pares) }));
@@ -43,6 +43,13 @@ function ok(cond, msg) { console.log((cond ? 'OK   ' : 'FALLO') + ' ' + msg); if
   ok(await p.isVisible('#fin'), 'al cumplir 45 dias aparece el final de vida');
   const txtFin = await p.textContent('#finTxt');
   ok(txtFin.indexOf('Prueba') >= 0, 'el final menciona su nombre');
+  // cableado: estadisticas del conectoma (casa-conectoma/out/audit.json)
+  const est = await p.evaluate(() => window.__mosquita.estadisticasCableado(4242));
+  ok(est.mediana === 6 && est.p10 === 4 && est.p90 === 9, 'PN por KC: mediana 6, p10 4, p90 9 (audit.json)');
+  ok(est.media > 5.7 && est.media < 6.1, 'PN por KC: media ' + est.media.toFixed(2) + ' (audit 5,92)');
+  ok(est.frac4a8 > 0.75 && est.frac4a8 < 0.85, 'KC con 4-8 PN: ' + (est.frac4a8 * 100).toFixed(1) + ' % (audit 80,4 %)');
+  ok(est.fracMenos4 > 0.05 && est.fracMenos4 < 0.15, 'KC con menos de 4 PN: ' + (est.fracMenos4 * 100).toFixed(1) + ' % (audit ~9,6 %)');
+  ok(est.sinapsisMediana === 16 && est.sinapsisP10 === 4 && est.sinapsisP90 > 28 && est.sinapsisP90 < 36, 'sinapsis por arista: mediana 16, p10 4, p90 ' + est.sinapsisP90 + ' (audit 31)');
   // premio junto a un olor: cuenta como par y mueve la valencia del olor
   const pares0 = await p.evaluate(() => __mosquita.A.pares.menta || 0);
   await p.evaluate(() => { const M = __mosquita; M.setFuentes([]); M.F.enfriar = 1e12; M.F.olfato = null; });
@@ -58,7 +65,7 @@ function ok(cond, msg) { console.log((cond ? 'OK   ' : 'FALLO') + ' ' + msg); if
   await p.waitForTimeout(400);
   const hija = await p.evaluate(() => ({ nombre: __mosquita.A.nombre, gen: __mosquita.A.gen, madre: __mosquita.A.madreNombre, comp: __mosquita.A.compartido, pares: JSON.stringify(__mosquita.A.pares), linaje: __mosquita.A.linaje.length, w: __mosquita.cer.W[0] }));
   ok(hija.nombre === 'Hija' && hija.gen === 2 && hija.madre === 'Prueba', 'la hija nace con generacion 2 y madre registrada');
-  ok(hija.comp > 0.35 && hija.comp < 0.75, 'comparte ' + Math.round(hija.comp * 100) + ' % de conexiones con la madre (esperado ~50 %)');
+  ok(hija.comp > 0.5 && hija.comp < 0.66, 'comparte ' + Math.round(hija.comp * 100) + ' % de conexiones con la madre (esperado 56-60 %: mitad copiada mas coincidencias por azar)');
   ok(hija.linaje === 1, 'el linaje guarda a la madre (' + hija.linaje + ' entrada)');
   ok(hija.pares === '{}', 'la hija no hereda pares aprendidos');
   ok(await p.evaluate(() => !!localStorage.getItem('mosquita.v1')), 'el estado queda guardado en localStorage');

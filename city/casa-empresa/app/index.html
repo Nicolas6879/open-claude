@@ -276,14 +276,24 @@ var PERFIL={};
 /* Parametros del cerebro (calibrados en simulacion, ver README) */
 var P={
   dt:0.5, tauM:10, vTh:1, tRef:2,
-  pnBase:2, pnGain:200, kick:0.25,
-  aplIn:0.02, aplTau:25, aplInh:0.6,
+  pnBase:2, pnGain:200, kick:0.2,
+  aplIn:0.02, aplTau:25, aplInh:0.8,
   tauE:4000, tauMB:60, mbGain:0.012, innGain:0.6,
-  eta:0.035, wMax:2.0, wMin:0, w0:0.3,
+  eta:0.05, wMax:2.0, wMin:0, w0:0.3,
   tauDia:36*HORA_MS, tauNoche:120*HORA_MS,
   umbral:0.12
 };
-var KDIST=[[4,.12],[5,.16],[6,.19],[7,.20],[8,.15],[9,.08],[10,.04],[11,.03],[12,.02],[13,.01]];
+// Distribucion de PN por KC: ajustada a casa-conectoma/out/audit.json (p10=4, mediana=6, p90=9;
+// 80 % con 4-8 PN; 18,9 % con exactamente 6). La cola por encima de 13 se trunca (el maximo es 39).
+var KDIST=[[1,.005],[2,.015],[3,.076],[4,.20],[5,.13],[6,.189],[7,.16],[8,.121],[9,.07],[10,.02],[11,.008],[12,.004],[13,.002]];
+// Sinapsis por arista: cuantiles interpolados (p10=4, mediana=16, p90=31; maximo 89), como en audit.json.
+var SQ_U=[0,0.1,0.5,0.9,1], SQ_V=[1,4,16,31,89];
+function muestraSinapsis(R){
+  var u=R(), i=0;
+  while(i<SQ_U.length-2 && u>SQ_U[i+1]) i++;
+  var f=(u-SQ_U[i])/(SQ_U[i+1]-SQ_U[i]);
+  return Math.max(1,Math.min(89,Math.round(SQ_V[i]+f*(SQ_V[i+1]-SQ_V[i]))));
+}
 function muestraK(R){ var u=R(),a=0; for(var i=0;i<KDIST.length;i++){ a+=KDIST[i][1]; if(u<a) return KDIST[i][0]; } return 6; }
 
 /* Cableado: la madre (si la hay) transmite la mitad de sus conexiones PN->KC, con mutaciones.
@@ -293,7 +303,7 @@ function muestraKC(R, idx){
   for(var a=0;a<n;a++){
     var j=a+Math.floor(R()*(NPN-a)); var t=idx[a]; idx[a]=idx[j]; idx[j]=t;
     pn.push(idx[a]);
-    syn.push(Math.max(1,Math.min(89,Math.round(16*Math.exp(0.6*gauss(R))))));
+    syn.push(muestraSinapsis(R));
   }
   return {pn:pn, syn:syn};
 }
@@ -318,7 +328,7 @@ function construyeCableado(seed, madre, mezcla){
     for(var m=0;m<NM;m++) W0[k*4+m]=clamp(P.w0*(1+0.12*gauss(RH)),0.05,1.5);
   }
   for(var r=0;r<NPN;r++){ outK[r]=Int32Array.from(outK[r]); outW[r]=Float32Array.from(outW[r]); }
-  return {outK:outK,outW:outW,W0:W0,kcPN:kcPN,kcSyn:kcSyn};
+  return {outK:outK,outW:outW,W0:W0,kcPN:kcPN,kcSyn:kcSyn,seed:seed};
 }
 /* El cableado de la generación actual, a partir de la cadena de semillas madre->hija. */
 function cableadoDeCadena(cadena){
@@ -353,6 +363,7 @@ function Cerebro(cab){
   this.aprendiendo=false; this.aplOn=true;
   this.rt=new Float64Array(RN); this.rk=new Int32Array(RN); this.rh=0; this.rn=0;
   this.nspLast=0;
+  this.R=mulberry32(((cab.seed||1)^0x51ed2701)>>>0);
 }
 Cerebro.prototype.setEstimulo=function(conc){
   this.intens=0;
@@ -372,7 +383,7 @@ Cerebro.prototype.paso=function(dt){
   var pDisp=Math.exp(-dt/P.tauM), decE=Math.exp(-dt/P.tauE), decMB=Math.exp(-dt/P.tauMB);
   for(p=0;p<NPN;p++){
     var tasa=P.pnBase+P.pnGain*this.drive[p];
-    if(Math.random()<tasa*dt*0.001){
+    if(this.R()<tasa*dt*0.001){
       var ks=this.outK[p], ws=this.outW[p];
       for(var j=0;j<ks.length;j++) this.v[ks[j]]+=P.kick*ws[j];
     }
@@ -1264,7 +1275,11 @@ function arrancaVida(){
   guardar();
 }
 // Ganchos para pruebas (no afectan al juego)
-window.__mosquita={get cer(){return cer;}, get F(){return F;}, get A(){return A;}, P:P, ODORES:ODORES, ORDEN:ORDEN, get fuentes(){return fuentes;}, recompensa:recompensa, iniciaOlfateo:iniciaOlfateo, tickMosca:tickMosca, pasosCerebro:pasosCerebro, medirRasgos:miraRasgos, nuevaMosquita:nuevaMosquita, setFuentes:function(f){fuentes=f;}, morir:morir};
+window.__mosquita={estadisticasCableado:function(sd){ var kc=cableadoDeCadena([sd]); var n=[], syn=[]; for(var k=0;k<NKC;k++){ n.push(kc.kcPN[k].length); for(var j=0;j<kc.kcSyn[k].length;j++) syn.push(kc.kcSyn[k][j]); }
+  function q(a,p){ var b=a.slice().sort(function(x,y){return x-y;}); return b[Math.min(b.length-1,Math.floor(p*b.length))]; }
+  var mean=n.reduce(function(x,y){return x+y;},0)/n.length, conCero=n.filter(function(x){return x>0;}), t=conCero.length;
+  return {media:mean, mediana:q(conCero,0.5), p10:q(conCero,0.1), p90:q(conCero,0.9), frac4a8:conCero.filter(function(x){return x>=4&&x<=8;}).length/t, frac6:conCero.filter(function(x){return x===6;}).length/t, fracMenos4:conCero.filter(function(x){return x<4;}).length/t, sinapsisMediana:q(syn,0.5), sinapsisP10:q(syn,0.1), sinapsisP90:q(syn,0.9)}; },
+  compartido:function(m,h){ var cm=cableadoDeCadena([m]).kcPN, ch=cableadoDeCadena([m,h]).kcPN; return conexionesCompartidas(cm,ch); }, medirSemilla:function(sd){ var prev=cer; cer=new Cerebro(cableadoDeCadena([sd])); var r=miraRasgos(); cer=prev; return r; }, get cer(){return cer;}, get F(){return F;}, get A(){return A;}, P:P, ODORES:ODORES, ORDEN:ORDEN, get fuentes(){return fuentes;}, recompensa:recompensa, iniciaOlfateo:iniciaOlfateo, tickMosca:tickMosca, pasosCerebro:pasosCerebro, medirRasgos:miraRasgos, nuevaMosquita:nuevaMosquita, setFuentes:function(f){fuentes=f;}, morir:morir};
 init();
 })();
 </script>

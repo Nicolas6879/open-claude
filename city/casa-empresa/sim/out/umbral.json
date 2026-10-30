@@ -126,66 +126,9 @@
    "p_negativo": 0.0
   }
  ],
- "tabla_solo_aulas": [
-  {
-   "m": 1,
-   "margen_mes_mediana": 79.77421775071011,
-   "p_negativo": 0.041
-  },
-  {
-   "m": 2,
-   "margen_mes_mediana": 124.2279768785891,
-   "p_negativo": 0.01
-  },
-  {
-   "m": 3,
-   "margen_mes_mediana": 170.1651139253878,
-   "p_negativo": 0.001
-  },
-  {
-   "m": 5,
-   "margen_mes_mediana": 264.201221277956,
-   "p_negativo": 0.0
-  },
-  {
-   "m": 10,
-   "margen_mes_mediana": 463.7122978681448,
-   "p_negativo": 0.0
-  },
-  {
-   "m": 20,
-   "margen_mes_mediana": 882.9529874495522,
-   "p_negativo": 0.0
-  },
-  {
-   "m": 30,
-   "margen_mes_mediana": 1274.7717832950984,
-   "p_negativo": 0.0
-  },
-  {
-   "m": 50,
-   "margen_mes_mediana": 2095.620429383224,
-   "p_negativo": 0.0
-  },
-  {
-   "m": 100,
-   "margen_mes_mediana": 4050.0360489411596,
-   "p_negativo": 0.0
-  },
-  {
-   "m": 200,
-   "margen_mes_mediana": 8119.314493290491,
-   "p_negativo": 0.0
-  },
-  {
-   "m": 500,
-   "margen_mes_mediana": 20237.44141056732,
-   "p_negativo": 0.0
-  }
- ],
- "umbral_no_perder_toda_demanda": 1,
- "umbral_1000_mes_toda_demanda": 5,
- "umbral_no_perder_solo_aulas": 1,
- "umbral_1000_mes_solo_aulas": 30,
+ "umbral_1000_mes_cuatro_palancas": 3.55,
+ "umbral_1000_mes_solo_instalaciones": 14.46,
+ "umbral_no_perder_cuatro_palancas": 1.0,
+ "definicion": "m multiplica a la vez instalaciones organicas, conversion a Laboratorio, cosmeticos y ventas de aulas (cuatro palancas). En la fila 'solo instalaciones' solo se multiplican las instalaciones organicas.",
  "nota": "Monte Carlo con los supuestos de sim/supuestos.json; el factor se aplica a la mediana de cada supuesto de demanda."
 }

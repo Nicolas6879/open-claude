@@ -25,15 +25,15 @@ Lo que decide el resultado (sensibilidad en escenario C, correlacion de rango): 
 
 ## 4. Umbral (sim/umbral.py)
 
-- **Base:** margen mensual mediano del anio 3 de unos **80 USD**. Ganar **1 000 USD/mes** exige aproximadamente **3,7 veces la demanda base** (entre 3 y 5 en la rejilla).
-- Demanda base = 40 instalaciones organicas por semana. Eso son unas **150 por semana sostenidas** sin pagar publicidad, unas 7 800 al anio. Es el umbral en unidades fisicas, y es el numero que mas importa.
-- **Regalo de la hija (bucle viral):** cada usuaria genera de media unas 0,12 instalaciones en toda su vida. No es un bucle supercritico: para k = 1 haria falta una aceptacion de 2,1 (imposible). Evidencia lo confirma sobre los rangos: `k < 1` es GARANTIZADA (business/conclusiones.ev).
+- **Base:** margen mensual mediano del anio 3 de unos **80 USD**. Ganar **1 000 USD/mes** exige **3,55 veces la demanda base** si suben a la vez las cuatro palancas (instalaciones, conversion a Laboratorio, cosmeticos y aulas). Si solo suben las instalaciones, exige **14,5 veces**.
+- Demanda base = 40 instalaciones organicas por semana. Con las cuatro palancas a la vez, las instalaciones tendrian que llegar a unas **142 por semana**. Si solo suben las instalaciones, unas **580 por semana** sostenidas, sin publicidad (unas 30 000 al anio). Es el umbral en unidades fisicas, y el numero que mas importa.
+- **Regalo de la hija (bucle viral):** cada usuaria genera de media unas 0,12 instalaciones en toda su vida con los medianos. Para k = 1 haria falta una aceptacion de 2,1. Con los rangos de `supuestos.json`, Evidencia da `k < 1` como **CONDICIONAL**: se cumple en el ~98 % de la caja de supuestos, y k llega a 2,0 en el extremo (business/conclusiones.ev).
 
 ## 5. Conclusion honesta
 
 - **No hay evidencia de que esto genere dinero de forma relevante.** Con los supuestos base gana unos 1 000 USD al anio en la mediana, y la probabilidad de perder en tres anios es del 14 % con aulas y del 41 % sin ellas.
-- Para llegar a 1 000 USD al mes hace falta unas 3,7 veces la demanda base, es decir unas 150 instalaciones organicas por semana sostenidas. **Ese es el dato que habria que medir antes de hacer nada mas**, y no tenemos ninguno.
-- La via de consumidor con publicidad pagada **no se sostiene**: cada suscriptor del Laboratorio vale unos 10 USD de margen de vida y cuesta de media 370 USD de gasto en publicidad.
+- Para llegar a 1 000 USD al mes hace falta 3,55 veces la demanda base (cuatro palancas) o 14,5 veces (solo instalaciones, unas 580 por semana). **Ese es el dato que habria que medir antes de hacer nada mas**, y no tenemos ninguno.
+- La via de consumidor con publicidad pagada **no se sostiene**: cada suscriptor del Laboratorio vale unos 10 USD de margen de vida. Con publicidad, cada suscriptor que queda al final cuesta 370 USD de gasto; dividiendo entre los suscriptores adquiridos, 50 USD (cota inferior: el denominador incluye organicos).
 - El producto puede ser un **proyecto pequeno de bajo coste** (alojamiento de unos 30 USD al mes). No es una empresa que pague un equipo.
 
 ## 6. Criterios de parada

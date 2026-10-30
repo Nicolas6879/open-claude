@@ -34,8 +34,8 @@ Ajustes de prueba (solo para desarrollo): `?speed=N` acelera el tiempo (hasta 10
 
 ## Numeros del cerebro (medidos en la simulacion)
 
-- En reposo, 0 % de las celulas de Kenyon (KC) se encienden. Con olor, entre 4 % y 5 %.
-- Solapamiento entre plátano y vinagre: 0,12 a 0,18 segun la semilla.
+- En reposo, 0 % de las celulas de Kenyon (KC) disparan con 5 o mas espigas por segundo (5 Hz). Si basta con una sola espiga en 4 s, en reposo se encienden el 8 %. Con olor, entre 4,5 % y 5 % (5 Hz, 12 semillas).
+- Solapamiento entre plátano y vinagre: 0,11 a 0,22 segun la semilla (12 semillas fijas; con la misma semilla, el mismo resultado).
 - Un par de azucar sube la valencia del platano unos +0,2; tres pares, unos +0,6.
 
 Estos valores son del modelo, no de una mosca real. Los parametros de aprendizaje, olvido y vida son supuestos.
@@ -46,10 +46,10 @@ Tres anios, 4 000 trayectorias Monte Carlo, equipo a coste cero por convencion (
 
 - Organico + regalo de la hija: margen mediano +345 USD (perdida en el 41 %).
 - Organico + regalo + aulas: **+1 437 USD mediano** (perdida en el 14 %). Es el caso base mas favorable.
-- Paid social 3 000 USD/mes: -95 800 USD (perdida en el 98 %). Cada suscriptor cuesta unos 370 USD.
+- Paid social 3 000 USD/mes: -95 800 USD (perdida en el 98 %). Coste por suscriptor: 370 USD si se divide entre los suscriptores que quedan al final (sobrestima); 50 USD si se divide entre los suscriptores adquiridos (cota inferior, porque el denominador incluye organicos y virales).
 - Aulas con equipo de 1 500 USD/mes: -52 600 USD.
 
-**Umbral:** ganar 1 000 USD al mes en el anio 3 exige unas 3,7 veces la demanda base (~150 instalaciones organicas por semana sostenidas, frente a 40 en la base). El bucle del regalo no es supercritico (k = 0,12 por usuaria; k = 1 exigiria aceptacion 2,1). Detalle en `sim/out/umbral.json`, `business/conclusiones.ev` y `business/plan.md`.
+**Umbral (cruce exacto, sim/umbral.py):** ganar 1 000 USD al mes en el anio 3 exige **3,55 veces** la demanda base si suben a la vez las instalaciones, la conversion a Laboratorio, los cosmeticos y las aulas (las cuatro palancas). Si solo suben las instalaciones organicas, exige **14,5 veces** (unas 580 por semana, frente a 40 en la base). El bucle del regalo no es supercritico con los medianos (k = 0,12 instalaciones por usuaria en su vida; k = 1 exigiria aceptacion 2,1). Con los rangos de `supuestos.json`, k < 1 se cumple en el ~98 % de la caja: no esta garantizado (business/conclusiones.ev).
 
 Conclusion: no hay evidencia de que esto genere dinero de forma relevante. Como proyecto pequeno de bajo coste, si.
 
@@ -73,6 +73,7 @@ Para la semilla fija (`supuestos.json`), los resultados son reproducibles.
 ## Limitaciones
 
 - La red es simplificada: 40 canales de PN (el conectoma tiene 686 ALPN), conexiones densas KC-MBON, MBON como integradores de tasa y saltos de potencial en vez de conductancias.
+- Cableado: PN por KC ajustado a `audit.json` (media 5,9; mediana 6; p10 4; p90 9; 9,9 % con menos de 4; cola truncada en 13, el maximo real es 39). Sinapsis por arista con cuantiles 4-16-31 (p90 medido en la app: 34).
 - Las reglas de aprendizaje y olvido son supuestos del modelo. La consolidacion durante el sueno es una hipotesis.
 - Los supuestos de negocio no tienen datos de mercado propios. Las referencias externas que use son de blogs del sector y no estan verificadas en profundidad.
 - La app no tiene pruebas con usuarios reales. La retencion y el interes son desconocidos.

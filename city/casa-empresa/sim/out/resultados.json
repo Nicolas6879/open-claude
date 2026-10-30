@@ -18,7 +18,10 @@
     "aulas_final_mediana": 0.0,
     "ltv_suscriptor_lab_mediana": 9.914222389856793,
     "gasto_marketing_mediana": 0.0,
-    "coste_por_suscriptor_mediana": 0.0
+    "suscriptores_adquiridos_mediana": 170.62938512395095,
+    "coste_por_suscriptor_adquirido_mediana": 0.0,
+    "coste_por_suscriptor_stock_final_mediana": 0.0,
+    "nota_denominadores": "gasto/adquiridos: denominador = todos los suscriptores que entran (incluye organicos y virales; es una cota inferior del coste pagado por suscriptor). gasto/stock final: denominador = suscriptores vivos al final (sobrestima)."
    },
    "margen_acumulado_percentiles": {
     "10": [
@@ -79,7 +82,10 @@
     "aulas_final_mediana": 0.0,
     "ltv_suscriptor_lab_mediana": 9.914222389856793,
     "gasto_marketing_mediana": 117000.0,
-    "coste_por_suscriptor_mediana": 370.58022736046746
+    "suscriptores_adquiridos_mediana": 2354.6925314559303,
+    "coste_por_suscriptor_adquirido_mediana": 49.688019755922966,
+    "coste_por_suscriptor_stock_final_mediana": 370.58022736046746,
+    "nota_denominadores": "gasto/adquiridos: denominador = todos los suscriptores que entran (incluye organicos y virales; es una cota inferior del coste pagado por suscriptor). gasto/stock final: denominador = suscriptores vivos al final (sobrestima)."
    },
    "margen_acumulado_percentiles": {
     "10": [
@@ -140,7 +146,10 @@
     "aulas_final_mediana": 5.670616653289827,
     "ltv_suscriptor_lab_mediana": 9.914222389856793,
     "gasto_marketing_mediana": 0.0,
-    "coste_por_suscriptor_mediana": 0.0
+    "suscriptores_adquiridos_mediana": 170.7348443127637,
+    "coste_por_suscriptor_adquirido_mediana": 0.0,
+    "coste_por_suscriptor_stock_final_mediana": 0.0,
+    "nota_denominadores": "gasto/adquiridos: denominador = todos los suscriptores que entran (incluye organicos y virales; es una cota inferior del coste pagado por suscriptor). gasto/stock final: denominador = suscriptores vivos al final (sobrestima)."
    },
    "margen_acumulado_percentiles": {
     "10": [
@@ -201,7 +210,10 @@
     "aulas_final_mediana": 5.670616653289827,
     "ltv_suscriptor_lab_mediana": 9.914222389856793,
     "gasto_marketing_mediana": 117000.0,
-    "coste_por_suscriptor_mediana": 370.5560210540947
+    "suscriptores_adquiridos_mediana": 2354.9207246068822,
+    "coste_por_suscriptor_adquirido_mediana": 49.683201188881576,
+    "coste_por_suscriptor_stock_final_mediana": 370.5560210540947,
+    "nota_denominadores": "gasto/adquiridos: denominador = todos los suscriptores que entran (incluye organicos y virales; es una cota inferior del coste pagado por suscriptor). gasto/stock final: denominador = suscriptores vivos al final (sobrestima)."
    },
    "margen_acumulado_percentiles": {
     "10": [
@@ -271,7 +283,10 @@
     "aulas_final_mediana": 5.670616653289827,
     "ltv_suscriptor_lab_mediana": 9.914222389856793,
     "gasto_marketing_mediana": 0.0,
-    "coste_por_suscriptor_mediana": 0.0
+    "suscriptores_adquiridos_mediana": 170.7348443127637,
+    "coste_por_suscriptor_adquirido_mediana": 0.0,
+    "coste_por_suscriptor_stock_final_mediana": 0.0,
+    "nota_denominadores": "gasto/adquiridos: denominador = todos los suscriptores que entran (incluye organicos y virales; es una cota inferior del coste pagado por suscriptor). gasto/stock final: denominador = suscriptores vivos al final (sobrestima)."
    },
    "margen_acumulado_percentiles": {
     "10": [

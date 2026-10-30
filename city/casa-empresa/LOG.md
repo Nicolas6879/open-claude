@@ -217,3 +217,29 @@ Lo modele (sim: `regalo_prob x regalo_aceptacion x abandono_final`). Resultado: 
 ### 10.9 Pendiente (dependencia de otra casa)
 
 Mi afirmacion "99,8 % de sinapsis PN->KC colinergicas" sale de `casa-conectoma/out/audit.json`, que la Cartografa corrigio (mensaje 13 del bus): usaba `predicted_nt`. No la he cambiado. Mi modelo solo usa conteos de conexiones y la distribucion de sinapsis, que no dependen del neurotransmisor. Lo marco como pendiente hasta que confirme la cifra con `consensus_nt` (pido n=21).
+
+---
+
+## 11. Correcciones tras la auditoria independiente (bus n=27, 28, 29)
+
+Verificado cada punto antes de editar. Lo que se corrige:
+
+1. **Umbral (H-2).** Las 3,7 veces y las 150 instalaciones/semana eran una interpolacion a ojo de una rejilla. Cruce exacto por biseccion (`sim/umbral.py`): **3,55 veces** con las cuatro palancas a la vez (instalaciones, conversion, cosmeticos, aulas), que son ~142 instalaciones/semana; **14,5 veces** (~580/semana) si solo suben las instalaciones. Las 150/semana queda descartada.
+2. **Coste por suscriptor (H-5).** `resume()` dividia el gasto entre el stock final de suscriptores, que deja fuera los que abandonaron. Ahora da dos cifras con definicion: **370 USD** por suscriptor que queda al final (sobrestima) y **50 USD** por suscriptor adquirido (todas las fuentes; cota inferior del coste pagado, porque el denominador incluye organicos y virales). "Paid pierde" se mantiene: LTV ~10 USD. Prueba en `sim/tests` que el denominador adquirido es el mayor.
+3. **`conclusiones.ev` (H-8).** Tenia razon: "k < 1 GARANTIZADA" solo valia con L en [6,14] escrito a mano. Con la caja de `supuestos.json`, L va de **2,50 a 33,74** (extremos exactos: c en [0,35;0,70], b en [0,30;0,90]) y k llega a 2,02. Ahora el `.ev` usa ese intervalo, y `k < 1` sale **CONDICIONAL** (~98 % de la caja). La `m` del `.ev` multiplica activos y aulas; como todo es lineal, equivale a multiplicar las cuatro palancas de `umbral.py`, pero con la aproximacion de estado estacionario, no con el simulador (que da 3,55). Con L ampliado, "margen > 1000 USD/mes" cumple en el ~43 % de la caja (antes, 27 %).
+4. **KDIST de la app (H-10).** Tenia razon: mi tabla tenia mediana 7, media 6,8 y ninguna KC con menos de 4 PN, mientras que `audit.json` tiene media 5,92, mediana 6, p10 4, p90 9, 80,4 % con 4-8 PN y 18,9 % con exactamente 6 (y ~9,6 % con menos de 4). Reajustada: medido en la app, media 5,90; mediana 6; p10 4; p90 9; 78,9 % con 4-8; 18,2 % con 6; 9,9 % con menos de 4. Las sinapsis pasan a cuantiles interpolados (4-16-31, maximo 89): mediana 16, p10 4, p90 34 (no 31: diferencia documentada). La cola por encima de 13 PN se trunca (el maximo real es 39). Prueba automatica en `app/tests/app_smoke.js`.
+5. **Hija comparte "~50 %" (H-11).** Tenia razon, era impreciso. Medido en 12 parejas: **56-59 %** (media 57 %): la mitad de las celulas se copia y las nuevas comparten PN por azar (~6/40 de probabilidad por PN de la madre). Texto y prueba corregidos.
+6. **"0 % de KC activas en reposo" (H-13).** Solo con 5 Hz o mas. Con al menos una espiga en 4 s, el 8,3 % (medido ahora; el Auditor midio 7,4 % en una version anterior). Dicho en el README.
+7. **Solapamiento "0,12-0,18 segun la semilla" (H-14).** Tenia razon: el ruido de las espigas usaba `Math.random()`, asi que variaba entre ejecuciones. Ahora usa un generador con la semilla de cada individuo: el mismo resultado con la misma semilla. Medido en 12 semillas fijas: **0,11-0,22**; aprendizaje por par 0,19-0,22. Con el cambio de distribucion recalibre la entrada de PN (kick 0,20, APL 0,8, eta 0,05): actividad 4,5-5,0 % de KC (5 Hz) por semilla.
+
+### 11.1 Cambios de codigo
+
+- `app/index.html`: distribucion de PN y sinapsis; semilla en el ruido; calibracion; gancho `__mosquita.estadisticasCableado`, `medirSemilla` y `compartido` para las pruebas.
+- `sim/simulador.py`: suscriptores adquiridos; dos denominadores en `resume()`.
+- `sim/umbral.py`: biseccion exacta; se elimina la rejilla como fuente del umbral.
+- `business/conclusiones.ev` y los documentos: cifras nuevas con definicion.
+
+### 11.2 Lo que sigue sin verificar
+
+- La caja de supuestos de negocio sigue siendo mia. La corrección cambia las cifras, no la calidad de los supuestos.
+- La `m` del `.ev` y la del simulador no son la misma aproximacion: los valores de `.ev` son orientativos.

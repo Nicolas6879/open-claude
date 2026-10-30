@@ -1,9 +1,12 @@
 # Conclusiones de Mosquita con rangos. Estado estacionario del ano 3 (aproximacion analitica
 # de las mismas formulas que sim/simulador.py). Todo es SUPUESTO: no hay medicion de mercado.
-supuesto m en [1, 5]                 porque "factor sobre la demanda base; en sim el umbral de 1000 USD/mes cae entre 3 y 5 (sim/out/umbral.json)"
-supuesto inst_org en [15, 120]       porque "instalaciones organicas por semana (supuesto; sim usa mediana 40)"
+# m: multiplica activos (inst x activacion x L) y ventas de aulas. Como todo es lineal, equivale a multiplicar
+# a la vez instalaciones, conversion a Laboratorio, cosmeticos y aulas: las cuatro palancas de sim/umbral.py.
+# En el simulador (no en esta aproximacion) el cruce de 1000 USD/mes esta en m = 3,55 (sim/out/umbral.json).
+supuesto m en [1, 5]                 porque "factor sobre la demanda base de las cuatro palancas (ver comentario)"
+supuesto inst_org en [15, 120]       porque "instalaciones organicas por semana: rango p10-p90 de la lognormal de supuestos.json (mediana 40), no el soporte total"
 supuesto activ en [0.30, 0.65]       porque "fraccion de instalaciones que cuidan su mosquita (supuesto)"
-supuesto L en [6, 14]                porque "semanas-usuaria activas por instalacion; sim: mediana 11,8 con c=0,5 y b=0,5"
+supuesto L en [2.501, 33.735]        porque "semanas-usuaria activas por instalacion: L = c * sum_k (1+k)^-b en 156 semanas; extremos exactos de la caja c in [0,35;0,70], b in [0,30;0,90]"
 supuesto conv en [0.002, 0.02]       porque "conversion semanal de activos a Laboratorio (supuesto)"
 supuesto aband_lab en [0.03, 0.12]   porque "abandono semanal del Laboratorio (supuesto)"
 supuesto precio_mes en [2.5, 3.99]   porque "precio efectivo mensual del Laboratorio (supuesto)"
@@ -30,5 +33,5 @@ def k = regalo_p * regalo_a * h * L
 
 afirmar margen_mes > 0 llamado "la demanda supuesta cubre el alojamiento al menos en el ano 3"
 afirmar margen_mes > 1000 llamado "la demanda supuesta gana 1000 USD/mes en el ano 3"
-afirmar k < 1 llamado "el regalo de la hija no es un bucle viral supercritico"
+afirmar k < 1 llamado "el regalo de la hija no es supercritico con los rangos de supuestos.json (k = P x A x h x L)"
 afirmar margen_mes < 5000 llamado "el margen mensual no supera 5000 USD con demanda entre 1 y 5 veces la base"

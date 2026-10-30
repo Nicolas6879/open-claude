@@ -62,6 +62,12 @@ check(np.allclose(rb["ingreso_por_fuente"]["lab"], 2 * ra["ingreso_por_fuente"][
 check(np.all(S.muestrea(np.random.default_rng(0), {"dist": "tri", "min": 0, "moda": 0, "max": 0}, 5) == 0),
       "tri con min=max devuelve el valor fijo")
 
+# 6b. denominadores del coste por suscriptor: adquiridos >= stock final, y coste por adquirido <= por stock
+resB = S.resume(S.simula(S.muestra_parametros(sup, 200, np.random.default_rng(6)), 750, False, T=156, seed=6),
+                S.muestra_parametros(sup, 200, np.random.default_rng(6)))
+check(resB["suscriptores_adquiridos_mediana"] >= resB["suscriptores_lab_final_mediana"], "suscriptores adquiridos >= stock final")
+check(resB["coste_por_suscriptor_adquirido_mediana"] <= resB["coste_por_suscriptor_stock_final_mediana"], "coste por adquirido <= coste por stock final")
+
 # 7. resultados publicados: coherentes
 ruta = os.path.join(HERE, "out", "resultados.json")
 if os.path.exists(ruta):
