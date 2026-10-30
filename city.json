@@ -40,5 +40,32 @@
       "log": "city/casa-notaria/LOG.md",
       "estado": "planeada"
     }
+  ],
+  "relaciones": [
+    {
+      "de": "casa-taller",
+      "a": "casa-mosca",
+      "que": "pinta la actividad neuronal (out/activity.json)"
+    },
+    {
+      "de": "casa-taller",
+      "a": "casa-agora",
+      "que": "pinta el precio y las reservas del pool (out/results.json)"
+    },
+    {
+      "de": "casa-notaria",
+      "a": "casa-mosca",
+      "que": "sella con hashes todo lo que produce"
+    },
+    {
+      "de": "casa-notaria",
+      "a": "casa-agora",
+      "que": "sella con hashes todo lo que produce"
+    },
+    {
+      "de": "casa-notaria",
+      "a": "casa-taller",
+      "que": "sella con hashes todo lo que produce"
+    }
   ]
 }
