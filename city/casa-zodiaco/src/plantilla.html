@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zodiaco de Alfa Centauri</title>
+<style>
+:root{
+  --bg:#f6f4ef; --panel:#ffffff; --ink:#1d2330; --muted:#5b6475; --line:#d9d5ca;
+  --accent:#1f5fbf; --accent2:#c2570c; --warn-bg:#fff1d6; --warn-ink:#6b3f00; --warn-line:#e3b45a;
+  --ok:#17794a; --bad:#a3262a; --sky:#070b18;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#10131a; --panel:#181d28; --ink:#e8ebf2; --muted:#9aa4b8; --line:#2a3142;
+    --accent:#6aa5ff; --accent2:#ff9a52; --warn-bg:#2d2310; --warn-ink:#ffd58a; --warn-line:#7a5a1d;
+    --ok:#4cc38a; --bad:#ff7b7f; --sky:#04060d;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#10131a; --panel:#181d28; --ink:#e8ebf2; --muted:#9aa4b8; --line:#2a3142;
+  --accent:#6aa5ff; --accent2:#ff9a52; --warn-bg:#2d2310; --warn-ink:#ffd58a; --warn-line:#7a5a1d;
+  --ok:#4cc38a; --bad:#ff7b7f; --sky:#04060d;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:1040px;margin:0 auto;padding:24px 16px 64px}
+h1{font-size:1.9rem;line-height:1.2;margin:.2em 0 .1em}
+h2{font-size:1.25rem;margin:2em 0 .5em}
+p{margin:.5em 0}
+.sub{color:var(--muted);margin:0 0 1em}
+.banner{background:var(--warn-bg);color:var(--warn-ink);border:1px solid var(--warn-line);border-radius:10px;padding:12px 14px;margin:14px 0}
+.banner b{font-weight:650}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;margin:12px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.card .n{font-size:1.7rem;font-weight:700;font-variant-numeric:tabular-nums}
+.card .l{color:var(--muted);font-size:.85rem}
+.bad{color:var(--bad)} .ok{color:var(--ok)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0}
+select,button,input{font:inherit;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:6px 10px}
+button{cursor:pointer}
+.sky{position:relative;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--sky)}
+canvas{display:block;width:100%;touch-action:none}
+.etq{position:absolute;left:8px;top:8px;background:rgba(0,0,0,.6);color:#ffd58a;border:1px solid #7a5a1d;border-radius:6px;padding:3px 8px;font-size:.78rem;pointer-events:none;max-width:70%}
+.tip{position:absolute;pointer-events:none;background:rgba(0,0,0,.8);color:#fff;font-size:.8rem;border-radius:6px;padding:3px 7px;display:none;white-space:nowrap}
+.leg{display:flex;flex-wrap:wrap;gap:14px;color:var(--muted);font-size:.88rem;margin-top:6px}
+.sw{display:inline-block;width:22px;height:0;border-top:3px solid;vertical-align:middle;margin-right:5px}
+table{border-collapse:collapse;width:100%;font-size:.9rem;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:4px 8px;border-bottom:1px solid var(--line)}
+th{color:var(--muted);font-weight:600}
+svg text{fill:var(--ink);font:12px system-ui,sans-serif}
+svg .m{fill:var(--muted)}
+details{margin:.6em 0} summary{cursor:pointer;color:var(--accent)}
+footer{color:var(--muted);font-size:.85rem;margin-top:3em;border-top:1px solid var(--line);padding-top:1em}
+code{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:0 4px}
+</style>
+</head>
+<body>
+<main>
+<h1>Zodiaco de Alfa Centauri</h1>
+<p class="sub">¿Dibujan las culturas el cielo con una gramática perceptiva común? Réplica ampliada de Kemp et al. (2022) a 60 culturas de Stellarium, con validación dejando fuera familias enteras, y una demostración exploratoria desde otras estrellas.</p>
+
+<div class="banner"><b>La compuerta preregistrada no pasó.</b> El modelo (brillo y proximidad, aprendido con otras culturas) no supera de forma clara al «vecino más cercano» en la prueba sellada, así que <b>nada de lo que se dibuja más abajo es una predicción validada</b> de lo que dibujarían humanos. Son aristas <b>generadas por el modelo</b>, no la tradición de ningún pueblo, y no se les atribuye nombre, mito ni historia alguna.</div>
+
+<h2>Qué se midió</h2>
+<div class="cards" id="cards"></div>
+<p class="sub" id="cards-nota"></p>
+
+<h2>Prueba sellada por familias de culturas</h2>
+<p>14 familias (34 culturas) que no se usaron para diseñar el modelo v2. F1 de aristas medio por familia: <b style="color:var(--accent)">modelo</b>, <b style="color:var(--accent2)">vecino más cercano</b> y <b style="color:var(--muted)">techo de consenso</b> (aristas compartidas por otras familias, sin geometría).</p>
+<div class="row"><label><input type="radio" name="vers" value="prereg" checked> Preregistrado (K elegido con otras familias)</label>
+<label><input type="radio" name="vers" value="kmatch"> Exploratorio post hoc (mismo número de aristas que el vecino más cercano)</label></div>
+<div class="panel"><svg id="chart" width="100%" role="img" aria-label="F1 por familia: modelo, vecino más cercano y consenso"></svg></div>
+<p class="sub" id="chart-nota"></p>
+
+<h2>El cielo visto desde otra estrella (exploratorio, no validado)</h2>
+<p>Se recalculan las direcciones y magnitudes aparentes de las estrellas de HYG desde la posición del observador y se aplica el mismo grafo del modelo (K aristas = tamaño del grafo de vecino más cercano de las estrellas de magnitud ≤ 3,5 de ese cielo). Mapa de todo el cielo (proyección de Hammer, ascensión recta creciente hacia la izquierda). Rueda del ratón para acercar, arrastre para mover.</p>
+<div class="row"><label>Observador <select id="obs"></select></label>
+<label><input type="checkbox" id="solo-nuevas"> resaltar solo aristas que cambian respecto a la Tierra</label>
+<button id="reset">Restablecer vista</button></div>
+<div class="sky" id="skybox"><canvas id="sky"></canvas><div class="etq">GENERADO POR EL MODELO · no es tradición de ningún pueblo · no validado</div><div class="tip" id="tip"></div></div>
+<div class="leg"><span><span class="sw" style="border-color:#6aa5ff"></span>arista que ya tenía el modelo desde la Tierra</span><span><span class="sw" style="border-color:#ff9a52"></span>arista nueva en este cielo</span><span><span style="color:#ffd24a">●</span> el Sol visto desde aquí</span></div>
+<div class="panel" style="margin-top:10px" id="obs-info"></div>
+
+<details><summary>¿Cuánto cambia el cielo al moverse? (61 estrellas a menos de 5 pc)</summary>
+<div class="panel"><div id="est-res"></div><div style="max-height:260px;overflow:auto"><table id="est-tab"></table></div></div></details>
+
+<h2>Potencia del procedimiento</h2>
+<p>Se inyecta en el cielo real una «cultura» sintética con una fracción <i>q</i> de aristas gestálticas y el resto de aristas de Delaunay al azar, con los tamaños de las 56 culturas reales (3 repeticiones cada una). <b>G1</b> es «F1 ≥ 2× grafo aleatorio con los mismos grados»; <b>G2</b>, «modelo mejor que el vecino más cercano».</p>
+<div class="panel"><table id="pot"></table></div>
+<p class="sub">Lectura: G1 se supera incluso con <i>q</i> = 0 (el azar local de Delaunay ya triplica al nulo de grados), así que no discrimina. G2 solo detecta estructura cuando al menos la mitad de las aristas de una cultura son gestálticas; con <i>q</i> ≤ 0,3 el procedimiento apenas la ve.</p>
+
+<footer>
+<p><b>Datos.</b> Culturas celestes: Stellarium (<code>skycultures/*/index.json</code>), con licencias propias de cada cultura (CC BY-SA 4.0, CC BY-ND, CC BY-NC-ND, GPL v2…; ver <code>out/contabilidad_culturas.csv</code>). Esta página <b>no redistribuye</b> ninguna arista cultural. Estrellas: HYG v4.1 (CC BY-SA 4.0). Referencia: Kemp, Hamacher, Little &amp; Cropper (2022), <i>Perceptual grouping explains similarities in constellations across cultures</i>, Psychological Science, arXiv:2010.06108.</p>
+<p><b>Límites.</b> HYG no incluye todas las estrellas útiles para observadores lejanos; sin movimiento propio; sin extinción; estrellas sin paralaje conservan su dirección terrestre. TRAPPIST-1 no está en HYG y no se incluyó. Los detalles están en <code>README.md</code> y <code>LOG.md</code>.</p>
+</footer>
+</main>
+<script>
+const D = /*DATOS*/null;
+const pct = x => (100*x).toFixed(0)+" %";
+// ---------- tarjetas
+(function(){
+  const R=D.resumen, c=document.getElementById('cards');
+  const items=[
+   ["v1 · estrellas conocidas", pct(R.A.g2), "culturas donde el modelo supera al vecino más cercano (umbral 75 %)", 'bad'],
+   ["v1 · cielo ciego", pct(R.B.g2)+" / "+pct(R.B.g2f), "culturas / ponderado por familias", 'bad'],
+   ["v2 · prueba sellada", pct(R.v2.g2)+" / "+pct(R.v2.g2f), "culturas / familias (n="+R.v2.n+", "+R.v2.nf+" familias)", 'bad'],
+   ["exploratorio · mismo presupuesto", pct(R.v2k.g2)+" / "+pct(R.v2k.g2f), "post hoc: no cuenta como confirmación", ''],
+   ["nulo de grados aleatorios", "100 %", "lo superan todas las culturas: no discrimina (ver potencia)", '']
+  ];
+  c.innerHTML=items.map(i=>`<div class="card"><div class="n ${i[3]}">${i[1]}</div><div><b>${i[0]}</b></div><div class="l">${i[2]}</div></div>`).join('');
+  document.getElementById('cards-nota').textContent="F1 mediano (aristas): v1 estrellas conocidas "+R.A.f1.toFixed(2)+" frente a "+R.A.nn.toFixed(2)+" del vecino más cercano; v1 cielo ciego "+R.B.f1.toFixed(3)+" frente a "+R.B.nn.toFixed(3)+"; v2 sellado "+R.v2.f1.toFixed(3)+" frente a "+R.v2.nn.toFixed(3)+" (con presupuesto igualado: "+R.v2k.f1.toFixed(3)+").";
+})();
+// ---------- gráfico por familias (SVG)
+function dibujaChart(ver){
+  const rows=D[ver].slice().sort((a,b)=>b.c-a.c);
+  const svg=document.getElementById('chart'); const W=svg.clientWidth||700, rh=24, H=rows.length*rh+34, L=150;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`); svg.setAttribute('height',H);
+  const mx=Math.max(...rows.map(r=>Math.max(r.m,r.nn,r.c)))*1.1||0.5; const X=v=>L+(W-L-20)*v/mx;
+  let s='';
+  for(let t=0;t<=mx;t+=0.1){s+=`<line x1="${X(t)}" x2="${X(t)}" y1="6" y2="${H-24}" stroke="var(--line)"/><text class="m" x="${X(t)}" y="${H-8}" text-anchor="middle">${t.toFixed(1)}</text>`}
+  rows.forEach((r,i)=>{const y=14+i*rh;
+    s+=`<text x="${L-8}" y="${y+4}" text-anchor="end">${r.f} (${r.n})</text>`;
+    s+=`<line x1="${X(r.nn)}" x2="${X(r.m)}" y1="${y}" y2="${y}" stroke="var(--line)" stroke-width="3"/>`;
+    s+=`<rect x="${X(r.c)-4}" y="${y-4}" width="8" height="8" fill="var(--muted)" transform="rotate(45 ${X(r.c)} ${y})"><title>consenso ${r.c}</title></rect>`;
+    s+=`<circle cx="${X(r.nn)}" cy="${y}" r="5" fill="var(--accent2)"><title>vecino más cercano ${r.nn}</title></circle>`;
+    s+=`<circle cx="${X(r.m)}" cy="${y}" r="5" fill="var(--accent)"><title>modelo ${r.m} · gana en ${pct(r.g)} de sus culturas</title></circle>`;
+  });
+  svg.innerHTML=s;
+  const R=D.resumen[ver==='prereg'?'v2':'v2k'];
+  document.getElementById('chart-nota').textContent=(ver==='prereg'
+    ?"Preregistrado: el K se eligió con las demás familias y resultó pequeño (40–70 aristas) para las familias china y occidental, con más de 1000 aristas cada cultura; eso hunde su F1 y es la causa de que el modelo pierda ahí."
+    :"Exploratorio post hoc (tras ver el resultado preregistrado): mismo número de aristas que el grafo del vecino más cercano. Con presupuesto igual el modelo gana en "+pct(R.g2)+" de las culturas y "+pct(R.g2f)+" de las familias, pero esta comparación se decidió después de ver los datos y no puede confirmarse con ellos.")
+    +" Entre paréntesis, número de culturas de la familia.";
+}
+document.querySelectorAll('input[name=vers]').forEach(e=>e.addEventListener('change',()=>dibujaChart(e.value)));
+dibujaChart('prereg'); addEventListener('resize',()=>dibujaChart(document.querySelector('input[name=vers]:checked').value));
+// ---------- tabla de potencia
+document.getElementById('pot').innerHTML='<tr><th>q (fracción gestáltica)</th><th>F1 modelo</th><th>F1 vecino</th><th>G1</th><th>G2</th></tr>'+D.potencia.map(r=>`<tr><td>${r.q}</td><td>${r.F1_modelo}</td><td>${r.F1_NN}</td><td>${pct(r.G1)}</td><td>${pct(r.G2)}</td></tr>`).join('');
+// ---------- estabilidad
+(function(){
+  const e=D.est.filter(r=>r.observador!=='Tierra (Sol)');
+  const cons=e.map(r=>r.aristas_terrestres_conservadas), med=cons.slice().sort((a,b)=>a-b)[Math.floor(cons.length/2)];
+  const sol=e.filter(r=>r.sol_con_lineas===true||r.sol_con_lineas===1||r.sol_con_lineas==="True").length;
+  document.getElementById('est-res').innerHTML=`<p>Mediana de aristas terrestres que se conservan: <b>${pct(med)}</b> (de ${pct(Math.min(...cons))} a ${pct(Math.max(...cons))}). El Sol queda unido por líneas en <b>${sol} de ${e.length}</b> de esos cielos (su magnitud aparente va de ${Math.min(...e.map(r=>r.mag_sol)).toFixed(1)} a ${Math.max(...e.map(r=>r.mag_sol)).toFixed(1)}). Hay estrellas dobles repetidas en la lista (p. ej. Sirio A/B), así que el recuento no son sistemas independientes.</p>`;
+  document.getElementById('est-tab').innerHTML='<tr><th>Observador</th><th>pc</th><th>aristas conservadas</th><th>mag Sol</th><th>Sol unido</th></tr>'+e.map(r=>`<tr><td>${r.observador}</td><td>${r.dist_pc}</td><td>${pct(r.aristas_terrestres_conservadas)}</td><td>${r.mag_sol<0?'-':r.mag_sol.toFixed(2)}</td><td>${(r.sol_con_lineas===true||r.sol_con_lineas==="True"||r.sol_con_lineas===1)?'sí':'no'}</td></tr>`).join('');
+})();
+// ---------- visor del cielo
+const cv=document.getElementById('sky'), ctx=cv.getContext('2d'), box=document.getElementById('skybox'), tip=document.getElementById('tip');
+const sel=document.getElementById('obs'); D.ext.observadores.forEach((o,i)=>{const op=document.createElement('option');op.value=i;op.textContent=o.nombre+(o.dist_al?` (${o.dist_al} años luz)`:'');sel.appendChild(op)});
+const NOMB_EST={'Alfa Centauri A':'Rigil Kentaurus','Próxima Centauri':'Proxima Centauri','Estrella de Barnard':"Barnard's Star",'Sirio':'Sirius','Epsilon Eridani':'Ran','Tau Ceti':'Gl 71','Proción':'Procyon','Tierra (Sol)':'Tierra (Sol)'};
+let view={k:1,tx:0,ty:0}, proj=[], W=0, H=0, dpr=1;
+function hammer(raDeg,decDeg){const lam=(raDeg-180)*Math.PI/180, ph=decDeg*Math.PI/180; const d=Math.sqrt(1+Math.cos(ph)*Math.cos(lam/2));
+  return [-2*Math.SQRT2*Math.cos(ph)*Math.sin(lam/2)/d, -Math.SQRT2*Math.sin(ph)/d];}
+function resize(){dpr=window.devicePixelRatio||1; W=box.clientWidth; H=Math.max(260,Math.round(W/2)); cv.width=W*dpr; cv.height=H*dpr; cv.style.height=H+'px'; draw();}
+function toScreen(p){const sc=(W-16)/(4*Math.SQRT2)*view.k; return [W/2+p[0]*sc+view.tx, H/2+p[1]*sc+view.ty];}
+function draw(){
+  const o=D.ext.observadores[+sel.value]; if(!o) return;
+  ctx.setTransform(dpr,0,0,dpr,0,0); ctx.clearRect(0,0,W,H);
+  const cs=getComputedStyle(document.documentElement);
+  // elipse del cielo
+  ctx.beginPath(); for(let a=0;a<=360;a+=3){const t=a*Math.PI/180; const s=toScreen([2*Math.SQRT2*Math.cos(t),Math.SQRT2*Math.sin(t)]); a?ctx.lineTo(s[0],s[1]):ctx.moveTo(s[0],s[1]);}
+  ctx.closePath(); ctx.fillStyle='#050813'; ctx.fill(); ctx.strokeStyle='#2a3350'; ctx.stroke();
+  proj=o.ra.map((r,i)=>toScreen(hammer(r,o.de[i])));
+  const solo=document.getElementById('solo-nuevas').checked;
+  ctx.lineWidth=1.3;
+  o.aristas.forEach((e,i)=>{const a=e[0],b=e[1]; if(Math.abs(o.ra[a]-o.ra[b])>180) return;
+    const per=o.persiste[i]===1||sel.value==='0';
+    ctx.strokeStyle=per?(solo?'rgba(106,165,255,.25)':'rgba(106,165,255,.9)'):'rgba(255,154,82,.95)';
+    ctx.beginPath(); ctx.moveTo(proj[a][0],proj[a][1]); ctx.lineTo(proj[b][0],proj[b][1]); ctx.stroke();});
+  for(let i=0;i<o.mag.length;i++){const m=o.mag[i]; const r=Math.max(.7,Math.min(9,(6.4-Math.max(m,-3))*.85)); ctx.beginPath(); ctx.arc(proj[i][0],proj[i][1],r*Math.pow(view.k,.15),0,6.2832);
+    ctx.fillStyle=m<1?'#fff6dd':(m<3?'#e8eeff':'#aab6d6'); ctx.fill();}
+  o.sol.forEach(i=>{ctx.beginPath();ctx.arc(proj[i][0],proj[i][1],7,0,6.2832);ctx.strokeStyle='#ffd24a';ctx.lineWidth=2;ctx.stroke();ctx.fillStyle='#ffd24a';ctx.font='12px system-ui';ctx.fillText('Sol  (mag '+o.mag[i].toFixed(1)+')',proj[i][0]+10,proj[i][1]-8);});
+  ctx.fillStyle='#c9d3ee'; ctx.font='11px system-ui';
+  o.nombres.forEach((n,i)=>{if(n&&o.mag[i]<2.3&&view.k>1.6) ctx.fillText(n,proj[i][0]+6,proj[i][1]-6)});
+  // info
+  const est=D.est.find(r=>r.observador===NOMB_EST[o.nombre]);
+  let h=`<b>${o.nombre}</b> · ${o.dist_al} años luz · ${o.aristas.length} aristas del modelo · ${o.mag.length} estrellas con magnitud aparente ≤ ${D.ext.mag_max}`;
+  if(est && est.aristas_terrestres_conservadas>=0 && sel.value!=='0') h+=`<br>Conserva ${pct(est.aristas_terrestres_conservadas)} de las aristas que el modelo dibuja desde la Tierra. El Sol se ve de magnitud ${est.mag_sol.toFixed(2)} y ${(est.sol_con_lineas===true||est.sol_con_lineas==="True"||est.sol_con_lineas===1)?'<b>queda unido por líneas</b>':'no queda unido por líneas'}.`;
+  if(o.mag.some(m=>m<-5)) h+=`<br><i>Nota: en este cielo hay una estrella compañera o cercana de magnitud ${Math.min(...o.mag).toFixed(1)}; domina el cielo y deforma cualquier agrupación.</i>`;
+  document.getElementById('obs-info').innerHTML=h;
+}
+sel.addEventListener('change',draw); document.getElementById('solo-nuevas').addEventListener('change',draw);
+document.getElementById('reset').addEventListener('click',()=>{view={k:1,tx:0,ty:0};draw()});
+cv.addEventListener('wheel',e=>{e.preventDefault();const r=cv.getBoundingClientRect(),mx=e.clientX-r.left,my=e.clientY-r.top;const f=e.deltaY<0?1.2:1/1.2;const nk=Math.min(30,Math.max(1,view.k*f));const g=nk/view.k;
+  view.tx=(mx-W/2)-(mx-W/2-view.tx)*g; view.ty=(my-H/2)-(my-H/2-view.ty)*g; view.k=nk; if(nk===1){view.tx=0;view.ty=0} draw();},{passive:false});
+let drag=null; cv.addEventListener('pointerdown',e=>{drag=[e.clientX,e.clientY,view.tx,view.ty];cv.setPointerCapture(e.pointerId)});
+cv.addEventListener('pointermove',e=>{if(drag){view.tx=drag[2]+e.clientX-drag[0];view.ty=drag[3]+e.clientY-drag[1];draw();return}
+  const r=cv.getBoundingClientRect(),mx=e.clientX-r.left,my=e.clientY-r.top; const o=D.ext.observadores[+sel.value]; let best=-1,bd=100;
+  for(let i=0;i<proj.length;i++){const dx=proj[i][0]-mx,dy=proj[i][1]-my,d=dx*dx+dy*dy; if(d<bd&&(o.mag[i]<4.2||view.k>3)){bd=d;best=i}}
+  if(best>=0){tip.style.display='block';tip.style.left=(mx+12)+'px';tip.style.top=(my+12)+'px';tip.textContent=(o.nombres[best]||'estrella')+' · mag '+o.mag[best].toFixed(2)}else tip.style.display='none';});
+cv.addEventListener('pointerup',()=>drag=null); cv.addEventListener('pointerleave',()=>{drag=null;tip.style.display='none'});
+addEventListener('resize',resize); resize();
+</script>
+</body>
+</html>

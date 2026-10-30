@@ -1,0 +1,61 @@
+cultura,n_const,n_aster,aristas_brutas,aristas_no_hip,aristas_autolazo,aristas_hip_fuera_hyg,aristas_duplicadas,aristas_finales,estrellas_finales,familia,licencia,elegible_>=15_aristas
+anutan,11,0,49,0,0,0,0,49,55,polinesia,CC BY-SA 4.0,True
+arabic_al-sufi,51,140,1512,2,6,5,338,1161,1032,occidental,CC BY-ND 4.0,True
+arabic_arabian_peninsula,45,0,184,54,4,0,21,105,115,arabe_popular,CC BY-NC-ND 4.0,True
+arabic_indigenous,118,34,1077,465,9,1,206,396,435,arabe_popular,CC BY-NC-ND 4.0,True
+aztec,5,0,39,0,0,0,0,39,42,aztec,GNU GPL v2.0,True
+babylonian_mulapin,58,1,499,0,3,4,6,486,486,babilonia,CC BY-ND 4.0,True
+babylonian_seleucid,60,1,595,0,6,7,14,568,578,babilonia,CC BY-ND 4.0,True
+balinese,31,0,193,0,0,0,5,188,205,balinese,CC BY-ND 4.0,True
+belarusian,20,0,111,0,3,0,1,107,112,belarusian,Text and data: CC BY-SA 4.0 Illustrations: Free Art License,True
+boorong,29,0,239,30,6,0,2,201,216,boorong,CC BY-SA 4.0,True
+chinese,312,0,1153,5,55,3,0,1090,1348,china,CC BY-SA 4.0,True
+chinese_chenzhuo,317,0,1289,4,61,6,2,1216,1401,china,CC BY-SA 4.0,True
+chinese_manchu,24,312,1434,2,63,3,78,1288,1440,china,CC BY-SA 4.0,True
+chinese_song_dynasty,339,0,1250,2,61,3,2,1182,1403,china,CC BY-SA 4.0,True
+chinese_xianglin,317,0,1261,4,69,4,43,1141,1343,china,CC BY-SA 4.0,True
+chinese_yuan_dynasty,187,29,771,4,47,4,78,638,735,china,CC BY-SA 4.0,True
+egyptian_dendera,34,0,424,0,0,0,1,423,427,egyptian_dendera,CC BY-ND 4.0,True
+greek_almagest,49,0,883,2,1,0,2,878,854,occidental,CC BY-ND 4.0,True
+greek_dante,30,0,303,0,15,0,1,287,283,occidental,CC BY-ND 4.0,True
+greek_farnese,51,0,884,0,3,0,2,879,854,occidental,CC BY-ND 4.0,True
+greek_leidenAratea,50,0,872,0,2,0,2,868,843,occidental,CC BY-ND 4.0,True
+hawaiian_starlines,13,0,82,0,0,0,0,82,84,polinesia,CC BY-SA 4.0,True
+inuit,14,0,38,1,3,0,1,33,37,inuit,Text and data: GNU GPL v2.0 Illustrations: Free Art License,True
+indian,49,28,361,0,14,0,73,274,275,india,CC BY-SA 4.0,True
+indian_nakshatras,28,0,116,5,6,0,0,105,124,india,CC BY 4.0,True
+japanese,373,0,1384,6,73,6,7,1292,1546,china,CC BY-SA 4.0,True
+kamilaroi,13,0,99,86,10,0,0,3,4,kamilaroi,CC BY-NC-ND 4.0,False
+khoi-san,6,0,6,0,0,0,0,6,12,khoi-san,CC BY-ND 4.0,False
+korean,312,0,1339,4,60,4,2,1269,1408,china,GNU GPL v2.0,True
+lokono,12,0,120,0,1,0,1,118,126,lokono,CC BY-NC-ND 4.0,True
+macedonian,19,0,59,0,0,0,0,59,74,macedonian,GNU GPL v2.0,True
+maori,6,0,26,0,0,0,6,20,24,polinesia,CC BY-SA 4.0,True
+modern,88,92,1201,100,0,0,163,938,904,occidental,Text and data: CC BY-SA 4.0 Illustrations: Free Art License,True
+modern_chinese,88,327,1826,5,54,3,230,1534,1505,china,Text and data: CC BY-SA 4.0 Illustrations: Free Art License,True
+modern_rey,170,22,1189,0,10,2,294,883,837,occidental,CC BY-SA 4.0,True
+modern_iau,88,0,843,0,4,1,87,751,744,occidental,CC BY-SA 4.0,True
+modern_hlad,88,0,612,0,0,2,1,609,660,occidental,GNU GPL v2.0,True
+modern_st,88,0,844,0,5,1,87,751,744,occidental,CC BY-SA 2.0,True
+modern_journey_to_the_west,88,0,646,0,4,0,0,642,665,china,CC BY-NC-ND 4.0,True
+mongolian,4,0,23,0,0,0,0,23,24,mongolian,CC BY-SA 4.0,True
+navajo,8,0,131,0,0,3,1,127,125,navajo,GNU GPL v2.0,True
+norse,6,0,32,0,0,0,0,32,35,nordica,CC BY-SA 4.0,True
+norse_edda,19,0,140,22,0,0,4,114,117,nordica,CC BY 4.0,True
+northern_andes,5,3,90,0,0,0,0,90,87,northern_andes,GNU GPL v2.0,True
+potawatomi,18,0,157,0,5,0,4,148,145,potawatomi,"License (artwork): CC BY-NC-SA 4.0 The artwork in this Sky Culture may be shared, copied, redistributed, and adapted (remix, tweak, build upon) for non-commerci",True
+romanian,39,0,359,0,0,0,10,349,354,romanian,CC BY-SA 3.0 Unported,True
+ruanui_sky_tahiti_and_society_islands,19,0,147,0,0,0,14,133,133,polinesia,CC BY-SA 4.0,True
+russian_siberian,3,0,19,0,0,0,0,19,20,russian_siberian,CC BY-SA 4.0,True
+sami,10,0,29,0,8,0,0,21,25,sami,CC BY-SA 4.0,True
+samoan,14,0,63,0,0,0,3,60,67,polinesia,CC BY-SA 4.0,True
+sardinian,12,0,66,0,0,0,0,66,71,sardinian,GNU GPL v2.0,True
+seri,15,0,55,0,3,2,3,47,58,seri,CC BY-SA 4.0,True
+tibetan,18,27,335,0,0,0,36,299,294,tibetan,CC BY-SA,True
+tongan,11,0,34,0,0,0,2,32,43,polinesia,CC BY-SA 4.0,True
+tukano,11,0,187,0,0,0,0,187,186,tukano,CC BY-SA 4.0,True
+tikuna,4,0,26,0,0,0,0,26,31,tikuna,CC BY-SA 4.0,True
+tupi,7,0,151,0,0,0,8,143,139,tupi,GNU GPL v2.0,True
+vanuatu_netwar,10,0,28,0,3,0,0,25,28,vanuatu_netwar,CC BY-SA 4.0,True
+xhosa,5,0,5,0,0,0,0,5,10,xhosa,CC BY-ND 4.0,False
+zulu,5,0,5,0,0,0,0,5,10,zulu,CC BY-ND 4.0,False
