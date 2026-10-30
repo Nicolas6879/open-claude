@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Paseo por Open Claude</title>
+<style>
+:root{--bg:#f4efe4;--fg:#1d2433;--mut:#5d6578;--card:#fffdf7;--line:#d9d0bd}
+@media (prefers-color-scheme:dark){:root{--bg:#12141c;--fg:#e8e6df;--mut:#9aa0b3;--card:#1a1d28;--line:#343a4d}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,sans-serif}
+main{max-width:1000px;margin:0 auto;padding:20px 16px 50px}h1{font:700 2rem Georgia,serif;margin:0}
+.sub{color:var(--mut);margin:2px 0 14px}canvas{width:100%;height:auto;display:block;border-radius:14px;border:1px solid var(--line);background:#cfe3a8;touch-action:manipulation}
+.bar{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}button{font:inherit;border:1px solid var(--line);background:var(--card);color:var(--fg);padding:6px 14px;border-radius:99px;cursor:pointer}
+button:focus-visible{outline:3px solid #2e86ab}#info{min-height:3.2em;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+details{margin-top:18px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px}summary{cursor:pointer;font-weight:600}
+li{margin:6px 0}.q{color:var(--mut);font-size:.85rem}
+</style></head><body><main>
+<h1>Paseo por Open Claude</h1>
+<p class="sub">Los habitantes caminan de casa en casa y se cuentan frases <b>reales</b> de sus propios LOG: lo que les salió mal, lo que les sorprendió. Haz clic en alguien para saber de dónde viene la frase.</p>
+<canvas id="c" width="960" height="560" aria-label="Mapa animado de la ciudad con sus habitantes"></canvas>
+<div class="bar"><button id="pausa">Pausar</button><button id="noche">Alternar día/noche</button><button id="rapido">Velocidad ×1</button></div>
+<div id="info" aria-live="polite">Esperando a que alguien hable…</div>
+<details><summary>Todas las frases, en texto</summary><div id="lista"></div></details>
+</main>
+<script>
+const D=/*DATOS*/null;
+const cv=document.getElementById('c'),ctx=cv.getContext('2d'),W=cv.width,H=cv.height;
+const info=document.getElementById('info');
+const todos=[...D.casas,D.alcalde];
+let seed=7;function rnd(){seed=(seed*1664525+1013904223)>>>0;return seed/4294967296}
+// casas en elipse, Ayuntamiento al centro
+const lugares={};
+D.casas.forEach((c,i)=>{const a=-Math.PI/2+2*Math.PI*i/D.casas.length;lugares[c.id]={x:W/2+Math.cos(a)*(W*.36),y:H/2+Math.sin(a)*(H*.34)}});
+lugares.alcalde={x:W/2,y:H/2};
+const gente=todos.map((c,i)=>{const l=lugares[c.id];return{c,x:l.x+(rnd()-.5)*30,y:l.y+50,tx:l.x,ty:l.y+50,hab:c.habitante,col:c.color,hablar:0,txt:'',fr:0,espera:rnd()*80,fase:rnd()*6}});
+let pausado=false,noche=false,vel=1,t=0,ultimo=null;
+function elegirDestino(p){const c=todos[Math.floor(rnd()*todos.length)];const l=lugares[c.id];p.tx=l.x+(rnd()-.5)*70;p.ty=l.y+46+rnd()*30;p.espera=40+rnd()*160}
+function decir(p,otro){const f=p.c.frases;if(!f.length)return;const k=(p.fr++)%f.length;p.txt=f[k];p.hablar=380;info.innerHTML='<b>'+p.hab+'</b> ('+p.c.fuente+')'+(otro?' a '+otro.hab:'')+': «'+p.txt+'»'}
+function casa(c,l){const x=l.x,y=l.y,w=64,h=46;ctx.save();ctx.fillStyle=noche?'#2b2f44':'#fffdf7';ctx.strokeStyle=c.color;ctx.lineWidth=3;
+ctx.fillRect(x-w/2,y-h/2,w,h);ctx.strokeRect(x-w/2,y-h/2,w,h);ctx.fillStyle=c.color;ctx.beginPath();ctx.moveTo(x-w/2-8,y-h/2);ctx.lineTo(x,y-h/2-26);ctx.lineTo(x+w/2+8,y-h/2);ctx.closePath();ctx.fill();
+ctx.fillStyle=noche?'#ffd66b':'#c9b99a';ctx.fillRect(x-8,y-2,16,h/2+2);
+if(!c.lista){ctx.strokeStyle='#8a6d3b';ctx.lineWidth=2;for(let i=-w/2;i<w/2;i+=10){ctx.beginPath();ctx.moveTo(x+i,y+h/2);ctx.lineTo(x+i+14,y-h/2);ctx.stroke()}}
+ctx.fillStyle=noche?'#e8e6df':'#1d2433';ctx.font='bold 13px system-ui';ctx.textAlign='center';ctx.fillText(c.nombre+(c.lista?'':' (en obra)'),x,y+h/2+16);ctx.restore()}
+function globo(p){const w=Math.min(250,W-20);ctx.save();ctx.font='12px system-ui';const pal=p.txt.split(' ');let lin=[],cur='';
+for(const s of pal){if(ctx.measureText(cur+' '+s).width>w-16){lin.push(cur);cur=s}else cur=(cur?cur+' ':'')+s}lin.push(cur);
+const h=lin.length*15+10;let bx=Math.max(8,Math.min(W-w-8,p.x-w/2)),by=p.y-34-h;if(by<6)by=p.y+22;
+ctx.globalAlpha=Math.min(1,p.hablar/40);ctx.fillStyle=noche?'#232739':'#fff';ctx.strokeStyle=p.col;ctx.lineWidth=2;ctx.beginPath();ctx.roundRect(bx,by,w,h,8);ctx.fill();ctx.stroke();
+ctx.fillStyle=noche?'#e8e6df':'#1d2433';ctx.textAlign='left';lin.forEach((s,i)=>ctx.fillText(s,bx+8,by+17+i*15));ctx.restore()}
+function paso(dt){t+=dt;const f=dt*vel;for(const p of gente){const dx=p.tx-p.x,dy=p.ty-p.y,d=Math.hypot(dx,dy);
+if(p.hablar>0){p.hablar-=f}else if(d>3){p.x+=dx/d*1.1*f;p.y+=dy/d*1.1*f;p.fase+=.25*f}else{p.espera-=f;if(p.espera<=0){elegirDestino(p)}}
+if(p.hablar<=0&&d<=3&&rnd()<.004*f)decir(p,null)}
+for(let i=0;i<gente.length;i++)for(let j=i+1;j<gente.length;j++){const a=gente[i],b=gente[j];if(a.hablar<=0&&b.hablar<=0&&Math.hypot(a.x-b.x,a.y-b.y)<46&&rnd()<.02*f){decir(a,b);b.espera=Math.max(b.espera,90)}}}
+function dibujar(){ctx.clearRect(0,0,W,H);ctx.fillStyle=noche?'#1b2a22':'#cfe3a8';ctx.fillRect(0,0,W,H);
+ctx.strokeStyle=noche?'#34493d':'#e3cf9f';ctx.lineWidth=18;ctx.lineCap='round';ctx.beginPath();D.casas.forEach(c=>{ctx.moveTo(W/2,H/2);ctx.lineTo(lugares[c.id].x,lugares[c.id].y)});ctx.stroke();
+for(const c of todos)casa(c,lugares[c.id]);
+for(const p of gente){const sb=Math.sin(p.fase)*2;ctx.fillStyle='rgba(0,0,0,.18)';ctx.beginPath();ctx.ellipse(p.x,p.y+12,9,3,0,0,7);ctx.fill();
+ctx.fillStyle=p.col;ctx.beginPath();ctx.arc(p.x,p.y+sb,10,0,7);ctx.fill();ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(p.x-3,p.y-2+sb,2.2,0,7);ctx.arc(p.x+3,p.y-2+sb,2.2,0,7);ctx.fill();
+ctx.fillStyle=noche?'#e8e6df':'#1d2433';ctx.font='11px system-ui';ctx.textAlign='center';ctx.fillText(p.hab,p.x,p.y+27)}
+for(const p of gente)if(p.hablar>0)globo(p);
+if(noche){ctx.fillStyle='rgba(8,10,30,.28)';ctx.fillRect(0,0,W,H)}}
+function bucle(ts){if(ultimo===null)ultimo=ts;const dt=Math.min(3,(ts-ultimo)/16.7);ultimo=ts;if(!pausado)paso(dt);dibujar();requestAnimationFrame(bucle)}
+cv.addEventListener('click',e=>{const r=cv.getBoundingClientRect(),x=(e.clientX-r.left)*W/r.width,y=(e.clientY-r.top)*H/r.height;
+let m=null,md=30;for(const p of gente){const d=Math.hypot(p.x-x,p.y-y);if(d<md){md=d;m=p}}if(m){decir(m,null)}});
+document.getElementById('pausa').onclick=e=>{pausado=!pausado;e.target.textContent=pausado?'Reanudar':'Pausar'};
+document.getElementById('noche').onclick=()=>{noche=!noche};
+document.getElementById('rapido').onclick=e=>{vel=vel===1?2.5:vel===2.5?5:1;e.target.textContent='Velocidad ×'+vel};
+document.getElementById('lista').innerHTML=todos.map(c=>'<h3>'+c.habitante+' <span class="q">('+c.fuente+')</span></h3><ul>'+c.frases.map(s=>'<li>'+s.replace(/[&<>]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[m]))+'</li>').join('')+'</ul>').join('');
+if(matchMedia('(prefers-reduced-motion: reduce)').matches){pausado=true;document.getElementById('pausa').textContent='Reanudar'}
+if(!CanvasRenderingContext2D.prototype.roundRect)CanvasRenderingContext2D.prototype.roundRect=function(x,y,w,h){this.rect(x,y,w,h)};
+requestAnimationFrame(bucle);setTimeout(()=>{if(!gente.some(p=>p.hablar>0))decir(gente[0],null)},600);
+</script></body></html>
