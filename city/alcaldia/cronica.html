@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Crónica de Open Claude</title>
+<style>
+:root{--bg:#f4efe4;--fg:#1d2433;--mut:#5d6578;--card:#fffdf7;--line:#d9d0bd;--ac:#9a3b2e;--ok:#2a7f62;--alc:#9a3b2e}
+@media (prefers-color-scheme:dark){:root{--bg:#12141c;--fg:#e8e6df;--mut:#9aa0b3;--card:#1a1d28;--line:#343a4d;--ac:#e0705f;--ok:#4fc29b;--alc:#e0705f}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 system-ui,sans-serif}
+main{max-width:980px;margin:0 auto;padding:28px 16px 60px}
+h1{font:700 2.1rem Georgia,serif;margin:0 0 4px}h2{font:700 1.3rem Georgia,serif;margin:34px 0 8px}
+.sub{color:var(--mut);margin:0 0 20px}.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;overflow-x:auto}
+.kpis{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}.kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 14px}
+.kpi b{font-size:1.5rem;display:block}svg{width:100%;height:auto;min-width:560px}.grafo svg{max-width:600px;display:block;margin:0 auto}
+.grid{stroke:var(--line);stroke-width:1}.lbl{fill:var(--fg);font-size:12px}.tick{fill:var(--mut);font-size:10px}
+.dot{fill:var(--ok);stroke:var(--card);stroke-width:2}.dot.a{fill:var(--alc)}
+.arista{stroke:var(--mut);stroke-width:1.6}.flecha{fill:var(--mut)}.nodo{fill:var(--ok);opacity:.85}.nodo.alc{fill:var(--alc)}
+table{width:100%;border-collapse:collapse;font-size:.92rem;min-width:640px}th,td{text-align:left;vertical-align:top;padding:8px 8px;border-bottom:1px solid var(--line)}
+th{color:var(--mut);font-weight:600}.quien{display:inline-block;padding:1px 9px;border-radius:99px;border:1px solid var(--line);font-size:.8rem;white-space:nowrap}
+.q-alcalde{border-color:var(--alc);color:var(--alc)}ul.bar{list-style:none;padding:0;margin:0}ul.bar li{display:flex;align-items:center;gap:8px;margin:5px 0}
+ul.bar b{display:inline-block;height:12px;background:var(--ac);border-radius:6px}.nota{color:var(--mut);font-size:.9rem}
+</style></head><body><main>
+<h1>Crónica de Open Claude</h1>
+<p class="sub">Escrita por el Alcalde a partir del historial real de git y de un registro de errores que él mismo mantiene. Se regenera con <code>python3 city/alcaldia/chronicle.py</code>.</p>
+<div class="kpis"><div class="kpi"><b>15</b>commits</div><div class="kpi"><b>7</b>casas (5 listas)</div><div class="kpi"><b>15</b>errores registrados</div><div class="kpi"><b>6</b>de ellos, del Alcalde</div></div>
+<h2>Línea de tiempo</h2><div class="card"><svg viewBox="0 0 920 372" role="img" aria-label="Línea de tiempo de commits por casa">
+<line x1="150" y1="36" x2="900" y2="36" class="grid"/>
+<text x="140" y="40" text-anchor="end" class="lbl">alcaldia</text>
+<line x1="150" y1="70" x2="900" y2="70" class="grid"/>
+<text x="140" y="74" text-anchor="end" class="lbl">casa-mosca</text>
+<line x1="150" y1="104" x2="900" y2="104" class="grid"/>
+<text x="140" y="108" text-anchor="end" class="lbl">casa-agora</text>
+<line x1="150" y1="138" x2="900" y2="138" class="grid"/>
+<text x="140" y="142" text-anchor="end" class="lbl">casa-taller</text>
+<line x1="150" y1="172" x2="900" y2="172" class="grid"/>
+<text x="140" y="176" text-anchor="end" class="lbl">casa-notaria</text>
+<line x1="150" y1="206" x2="900" y2="206" class="grid"/>
+<text x="140" y="210" text-anchor="end" class="lbl">casa-conectoma</text>
+<line x1="150" y1="240" x2="900" y2="240" class="grid"/>
+<text x="140" y="244" text-anchor="end" class="lbl">casa-empresa</text>
+<line x1="150" y1="274" x2="900" y2="274" class="grid"/>
+<text x="140" y="278" text-anchor="end" class="lbl">casa-forja</text>
+<line x1="150" y1="308" x2="900" y2="308" class="grid"/>
+<text x="140" y="312" text-anchor="end" class="lbl">mapa</text>
+<circle cx="150.0" cy="36" r="6.5" class="dot a"><title>17:03 · 1091503 · Alcalde: plan de la ciudad y city.json inicial (4 casas planeadas)</title></circle>
+<text x="150.0" y="362" text-anchor="middle" class="tick">17:03</text>
+<circle cx="202.9" cy="104" r="6.5" class="dot"><title>17:15 · 18b6d35 · casa-agora: laboratorio AMM simulado (Tendera), revisado y aprobado</title></circle>
+<circle cx="255.7" cy="70" r="6.5" class="dot"><title>17:18 · 99ec663 · casa-mosca: simulador del cuerpo fungiforme de Drosophila (Neuro), revisado y aprobado</title></circle>
+<circle cx="308.6" cy="138" r="6.5" class="dot"><title>17:26 · 230f346 · casa-taller: galeria generativa con datos de mosca y mercado (Pintora), revisada y aprobada</title></circle>
+<text x="308.6" y="362" text-anchor="middle" class="tick">17:26</text>
+<circle cx="361.4" cy="36" r="6.5" class="dot a"><title>17:26 · 88c0c09 · Alcalde: city.json con relaciones entre casas</title></circle>
+<circle cx="414.3" cy="172" r="6.5" class="dot"><title>17:34 · 85f1b08 · casa-notaria: cadena notarial simulada con Merkle y verificador (Notario), revisada y aprobada</title></circle>
+<circle cx="467.1" cy="308" r="6.5" class="dot"><title>17:41 · be9be5e · index.html: mapa grafico de la ciudad (Arquitecto), revisado y aprobado</title></circle>
+<text x="467.1" y="362" text-anchor="middle" class="tick">17:41</text>
+<circle cx="520.0" cy="36" r="6.5" class="dot a"><title>17:42 · 8b577a1 · Alcalde: resumen final de la ciudad en LOG.md</title></circle>
+<circle cx="572.9" cy="308" r="6.5" class="dot"><title>17:42 · 21a1150 · index.html: instantanea regenerada con el LOG final del Alcalde</title></circle>
+<circle cx="625.7" cy="36" r="6.5" class="dot a"><title>18:06 · 8916213 · Alcalde: registra casa-conectoma (en obra) y reconoce errores de la primera ronda</title></circle>
+<text x="625.7" y="362" text-anchor="middle" class="tick">18:06</text>
+<circle cx="678.6" cy="206" r="6.5" class="dot"><title>18:18 · 5462e37 · casa-conectoma: auditoria del conectoma real de la mosca (Cartografa), revisada y aprobada</title></circle>
+<circle cx="731.4" cy="172" r="6.5" class="dot"><title>18:18 · 675ed01 · casa-notaria: bloque 2 sella casa-conectoma; LOG del Alcalde con resumen final actualizado</title></circle>
+<circle cx="784.3" cy="36" r="6.5" class="dot a"><title>18:20 · 2a99d4c · Alcalde: LOG con la revision del mapa de 5 casas</title></circle>
+<text x="784.3" y="362" text-anchor="middle" class="tick">18:20</text>
+<circle cx="837.1" cy="308" r="6.5" class="dot"><title>18:20 · 005f58e · index.html: mapa con casa-conectoma (observatorio), sello de 3 bloques e instantanea final</title></circle>
+<circle cx="890.0" cy="36" r="6.5" class="dot a"><title>20:07 · 89a8be5 · Alcalde: registra casa-empresa y casa-forja (en obra); tercera ronda en LOG</title></circle>
+<text x="890.0" y="362" text-anchor="middle" class="tick">20:07</text>
+</svg></div>
+<p class="nota">Un punto por commit, una fila por casa; en rojo, los commits del Alcalde. El eje es el orden de los commits (las horas son de reloj y hay pausas largas entre rondas).</p>
+<h2>Quién usa los datos de quién</h2><div class="card grafo"><svg viewBox="0 0 580 420" role="img" aria-label="Quién usa los datos de quién">
+<defs><marker id="f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" class="flecha"/></marker></defs>
+<line x1="421.6" y1="240.0" x2="306.2" y2="95.3" class="arista" marker-end="url(#f)"><title>casa-taller → casa-mosca: pinta la actividad neuronal (out/activity.json)</title></line>
+<line x1="421.6" y1="240.0" x2="401.3" y2="151.2" class="arista" marker-end="url(#f)"><title>casa-taller → casa-agora: pinta el precio y las reservas del pool (out/results.json)</title></line>
+<line x1="348.6" y1="331.6" x2="295.8" y2="100.3" class="arista" marker-end="url(#f)"><title>casa-notaria → casa-mosca: sella con hashes todo lo que produce</title></line>
+<line x1="348.6" y1="331.6" x2="389.8" y2="151.2" class="arista" marker-end="url(#f)"><title>casa-notaria → casa-agora: sella con hashes todo lo que produce</title></line>
+<line x1="348.6" y1="331.6" x2="405.4" y2="260.4" class="arista" marker-end="url(#f)"><title>casa-notaria → casa-taller: sella con hashes todo lo que produce</title></line>
+<line x1="231.4" y1="331.6" x2="284.2" y2="100.3" class="arista" marker-end="url(#f)"><title>casa-conectoma → casa-mosca: audita con datos reales los supuestos de su modelo sintético</title></line>
+<line x1="158.4" y1="240.0" x2="215.2" y2="311.3" class="arista" marker-end="url(#f)"><title>casa-empresa → casa-conectoma: usa su mosca virtual como mente de la criatura (si la idea se mantiene)</title></line>
+<line x1="184.5" y1="125.8" x2="369.5" y2="125.8" class="arista" marker-end="url(#f)"><title>casa-forja → casa-agora: extiende su análisis de proveedores de liquidez con datos reales</title></line>
+<circle cx="290.0" cy="210.0" r="22" class="nodo alc"/>
+<text x="290.0" y="250.0" text-anchor="middle" class="lbl">Alcaldía</text>
+<circle cx="290.0" cy="75.0" r="22" class="nodo"/>
+<text x="290.0" y="43.0" text-anchor="middle" class="lbl">Casa Mosca</text>
+<circle cx="395.5" cy="125.8" r="22" class="nodo"/>
+<text x="426.8" y="107.4" text-anchor="start" class="lbl">Casa Ágora</text>
+<circle cx="421.6" cy="240.0" r="22" class="nodo"/>
+<text x="460.6" y="252.1" text-anchor="start" class="lbl">Casa Taller</text>
+<circle cx="348.6" cy="331.6" r="22" class="nodo"/>
+<text x="365.9" y="368.1" text-anchor="start" class="lbl">Casa Notaría</text>
+<circle cx="231.4" cy="331.6" r="22" class="nodo"/>
+<text x="214.1" y="368.1" text-anchor="end" class="lbl">Casa Conectoma</text>
+<circle cx="158.4" cy="240.0" r="22" class="nodo"/>
+<text x="119.4" y="252.1" text-anchor="end" class="lbl">Casa Empresa</text>
+<circle cx="184.5" cy="125.8" r="22" class="nodo"/>
+<text x="153.2" y="107.4" text-anchor="end" class="lbl">Casa Forja</text>
+</svg></div>
+<p class="nota">Flecha de A a B: A usa o audita lo que produce B. Pasa el cursor sobre una flecha para ver qué.</p>
+<h2>Registro de errores</h2>
+<div class="card"><ul class="bar"><li><span class='quien q-alcalde'>Alcalde</span><b style='width:168px'></b> 6</li><li><span class='quien q-neuro'>Neuro</span><b style='width:56px'></b> 2</li><li><span class='quien q-notario'>Notario</span><b style='width:56px'></b> 2</li><li><span class='quien q-tendera'>Tendera</span><b style='width:28px'></b> 1</li><li><span class='quien q-pintora'>Pintora</span><b style='width:28px'></b> 1</li><li><span class='quien q-cartógrafa'>Cartógrafa</span><b style='width:28px'></b> 1</li><li><span class='quien q-arquitecto'>Arquitecto</span><b style='width:28px'></b> 1</li><li><span class='quien q-todos'>Todos</span><b style='width:28px'></b> 1</li></ul></div>
+<p class="nota">Que el Alcalde tenga más entradas no significa que se equivoque más: significa que es quien más cosas hace y que se las anota. Los habitantes aparecen aquí solo por errores que ellos mismos reportaron en su LOG o que yo detecté al revisar.</p>
+<div class="card"><table><thead><tr><th>Quién</th><th>Qué pasó</th><th>Cómo se detectó</th><th>Qué costó / cómo se resolvió</th></tr></thead><tbody>
+<tr><td><span class='quien q-alcalde'>Alcalde</span></td><td>Di por inalcanzables los datos reales de la mosca tras tres o cuatro curl a hosts equivocados, sin usar WebSearch.</td><td>Crítica del usuario; luego una búsqueda real encontró el bucket público de MaleCNS.</td><td>Neuro construyó un modelo sintético partiendo de una premisa falsa que yo le di.</td></tr>
+<tr><td><span class='quien q-alcalde'>Alcalde</span></td><td>Escribí 2 059 neuronas en mi LOG; la suma correcta es 2 109.</td><td>El LOG de la Pintora contaba 2 109 y no coincidía.</td><td>Una errata que además el Notario atribuyó por error a Neuro en su LOG.</td></tr>
+<tr><td><span class='quien q-alcalde'>Alcalde</span></td><td>Un pkill -f coincidió con mi propia línea de comando y mató mi shell (dos veces).</td><td>Código de salida 144 sin salida.</td><td>Un servidor de prueba sin cerrar durante unos minutos; lo maté por PID.</td></tr>
+<tr><td><span class='quien q-alcalde'>Alcalde</span></td><td>Mi script de capturas escribió PNG con ruta relativa dentro del repo.</td><td>git status mostró cuatro archivos sin trackear antes de commitear.</td><td>Ninguno: los moví al scratchpad y no llegaron a un commit.</td></tr>
+<tr><td><span class='quien q-alcalde'>Alcalde</span></td><td>La primera instalación grande de librerías se colgó sin salida durante 10 minutos.</td><td>El directorio del venv seguía en 13 MB.</td><td>Unos 15 minutos; relancé en segundo plano con registro.</td></tr>
+<tr><td><span class='quien q-alcalde'>Alcalde</span></td><td>Mi diseño de la Notaría crea una tensión: sellar casas y poder pedir correcciones a la vez.</td><td>Al revisar el sello, vi que cualquier cambio posterior rompe verify.py hasta volver a sellar.</td><td>Hay que pedir un re-sellado cada vez que una casa cambia.</td></tr>
+<tr><td><span class='quien q-neuro'>Neuro</span></td><td>Con plasticidad lineal, el olor no reforzado B también bajaba un 66 %.</td><td>Su propia tabla antes/después.</td><td>Cambió la regla a umbral con coincidencia no lineal; B bajó a un 13 %. Esa regla es una suposición suya.</td></tr>
+<tr><td><span class='quien q-neuro'>Neuro</span></td><td>Invirtió por error dos parámetros (inhibición APL→KC y KC→APL).</td><td>El APL no coincidía con su calibración.</td><td>Corregido y recalibrado.</td></tr>
+<tr><td><span class='quien q-tendera'>Tendera</span></td><td>El óptimo de su rejilla de umbrales estaba en el borde.</td><td>Lo vio al mirar los resultados de la sintonización.</td><td>Amplió la rejilla; el óptimo quedó otra vez en el borde y lo reportó como hallazgo (lo mejor es estar fuera).</td></tr>
+<tr><td><span class='quien q-pintora'>Pintora</span></td><td>Solapes de texto en las obras 3, 4 y 5 y una frase que afirmaba causalidad sin datos.</td><td>Renderizó con Chromium y miró las capturas.</td><td>Corregidos; la frase causal se suavizó a «consistente con».</td></tr>
+<tr><td><span class='quien q-notario'>Notario</span></td><td>El minado hasheaba el JSON completo en cada intento: 4,7 s.</td><td>Midió el tiempo de notarize.</td><td>Serializó una vez y varió solo el nonce: 0,04 s.</td></tr>
+<tr><td><span class='quien q-notario'>Notario</span></td><td>Su LOG atribuyó a Neuro un error de conteo que era del Alcalde.</td><td>Lo vi yo al revisar su LOG.</td><td>Lo corrigió cuando se lo pedí.</td></tr>
+<tr><td><span class='quien q-cartógrafa'>Cartógrafa</span></td><td>Presentó como posible hallazgo un solapamiento medio que es una identidad matemática.</td><td>El nulo con grados daba exactamente el mismo valor.</td><td>Lo retiró y usó la fracción de pares con alguna entrada compartida.</td></tr>
+<tr><td><span class='quien q-arquitecto'>Arquitecto</span></td><td>Caminos del mapa en negro y sello inflado tapando etiquetas en la primera versión.</td><td>Miró sus propias capturas.</td><td>Corregidos antes de entregar.</td></tr>
+<tr><td><span class='quien q-todos'>Todos</span></td><td>git push devuelve 403: Claude no tiene acceso de escritura al repo remoto.</td><td>Primer intento de push.</td><td>Sin resolver: los commits siguen solo en local.</td></tr>
+</tbody></table></div>
+</main></body></html>
