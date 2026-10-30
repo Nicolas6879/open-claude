@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Una mosca aprende a querer el olor A</title>
+<style>
+:root{--bg:#0d0f18;--fg:#ece8dd;--mut:#9aa0b3;--card:#161a27;--line:#2b3148}
+@media (prefers-color-scheme:light){:root{--bg:#f4efe4;--fg:#1d2433;--mut:#5d6578;--card:#fffdf7;--line:#d9d0bd}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 system-ui,sans-serif}
+main{max-width:1000px;margin:0 auto;padding:22px 16px 60px}h1{font:700 2rem Georgia,serif;margin:0 0 4px}
+.sub{color:var(--mut);margin:0 0 16px}canvas{width:100%;height:auto;display:block;background:#080a12;border:1px solid var(--line);border-radius:12px}
+audio{width:100%;margin:12px 0}.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin-top:14px}
+table{border-collapse:collapse;width:100%;font-size:.92rem}td,th{text-align:left;padding:5px 8px;border-bottom:1px solid var(--line)}th{color:var(--mut)}
+#ahora{min-height:1.6em;font-weight:600}.nota{color:var(--mut);font-size:.88rem}
+</style></head><body><main>
+<h1>Una mosca aprende a querer el olor A</h1>
+<p class="sub">23 segundos de actividad neuronal convertidos en 72 segundos de música (69 más una cola). Cada nota es una espiga de una neurona.</p>
+<audio id="a" controls preload="auto" src="mosca.wav"></audio>
+<div id="ahora" aria-live="polite">Pulsa play y escucha. Al principio el olor A suena a campanas; al final, casi no.</div>
+<canvas id="c" width="1000" height="420" aria-label="Raster de espigas sincronizado con la música"></canvas>
+<div class="card"><b>Qué estás oyendo</b>
+<table><tr><th>Neuronas</th><th>Suena como</th><th>Qué significa</th></tr>
+<tr><td>Células de Kenyon (KC)</td><td>plucks pentatónicos; cada célula, su nota</td><td>el código del olor: solo unas pocas suenan a la vez</td></tr>
+<tr><td>Proyección (PN) y olfativas (ORN)</td><td>sinusoides suaves y llovizna de clics</td><td>lo que entra desde la antena</td></tr>
+<tr><td>APL</td><td>pulso grave</td><td>inhibición que mantiene el código disperso</td></tr>
+<tr><td>Dopamina (DAN)</td><td>acorde cálido de Do mayor</td><td>la recompensa (azúcar) durante el entrenamiento</td></tr>
+<tr><td>Neuronas de salida (MBON)</td><td>campanas de Mi menor 7</td><td>la decisión: tras aprender, el olor A las hace sonar mucho menos</td></tr></table>
+<p class="nota">Honestidad: es un circuito <b>sintético</b> (casa-mosca), no una mosca real; la regla de aprendizaje es una suposición de su autor. La música no demuestra nada: ilustra un resultado que está medido en esa casa (la respuesta de las MBON al olor A baja ≈66 %, la del olor B ≈13 %). Lo que sí se comprueba en este directorio es que el audio lleva ese dato (ver `sonificar.py` y los tests). Si te suena bonito o no es cosa tuya: quien lo hizo no puede oírlo.</p></div>
+<script>
+const SP=/*SPIKES*/[],EST=/*ESTIMULOS*/[],ESTIRA=/*ESTIRA*/3,DUR=/*DUR*/0;
+const cv=document.getElementById('c'),ctx=cv.getContext('2d'),au=document.getElementById('a'),W=cv.width,H=cv.height,L=70,R=10,T=26,B=24;
+const COL=['#6fa8dc','#e6a23c','#3cb4a0','#c586c0','#ff6b6b','#ffd166'],NOM=['ORN','PN','KC','APL','MBON','DAN'];
+const alto=(H-T-B)/6;const X=t=>L+(W-L-R)*t/DUR;
+const base=document.createElement('canvas');base.width=W;base.height=H;const b=base.getContext('2d');
+function nombre(n){if(n.startsWith('reward'))return 'recompensa';if(n.startsWith('train_AR'))return 'olor A + recompensa';if(n.startsWith('train_B'))return 'olor B';return n.replace('pre_','antes: ').replace('post_','después: ').replace('_rep',' (repetido)')}
+b.fillStyle='#080a12';b.fillRect(0,0,W,H);
+for(const e of EST){const r=e.n.startsWith('reward');b.fillStyle=r?'rgba(255,209,102,.16)':'rgba(255,255,255,.05)';b.fillRect(X(e.a),T,X(e.b)-X(e.a),H-T-B)}
+for(let i=0;i<6;i++){b.fillStyle=COL[i];b.font='12px system-ui';b.textAlign='right';b.fillText(NOM[i],L-8,T+alto*i+alto/2+4)}
+for(const [t,f,y] of SP){b.fillStyle=COL[f];b.fillRect(X(t),T+alto*f+y*(alto-3)+1,2,2)}
+b.fillStyle='#9aa0b3';b.font='11px system-ui';b.textAlign='center';
+for(const e of EST){if(e.n.startsWith('reward')||e.n.endsWith('_rep'))continue;b.save();b.translate((X(e.a)+X(e.b))/2,T-6);b.fillText(nombre(e.n).replace('olor ','').replace(' + recompensa','+🍬'),0,0);b.restore()}
+function pinta(){ctx.drawImage(base,0,0);const t=au.currentTime/ESTIRA*1000;if(t>=0&&t<=DUR){ctx.fillStyle='rgba(255,255,255,.85)';ctx.fillRect(X(t),T,2,H-T-B);
+const e=EST.find(e=>t>=e.a&&t<=e.b);document.getElementById('ahora').textContent=e?('Ahora: '+nombre(e.n)):'…'}requestAnimationFrame(pinta)}
+pinta();
+</script></main></body></html>
