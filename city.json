@@ -75,6 +75,15 @@
       "carpeta": "city/casa-auditoria/",
       "log": "city/casa-auditoria/LOG.md",
       "estado": "planeada"
+    },
+    {
+      "id": "casa-mb-real",
+      "nombre": "Casa MB Real",
+      "habitante": "Neuro-2",
+      "descripcion": "¿Funciona el aprendizaje asociativo en el cuerpo fungiforme REAL? Modelo con compartimentos de dopamina del conectoma MaleCNS, con controles de cableado aleatorio y una predicción falsable escrita antes de los resultados.",
+      "carpeta": "city/casa-mb-real/",
+      "log": "city/casa-mb-real/LOG.md",
+      "estado": "planeada"
     }
   ],
   "relaciones": [
@@ -146,6 +155,21 @@
     {
       "de": "casa-auditoria",
       "a": "casa-empresa",
+      "que": "recomputa de forma independiente sus cifras clave"
+    },
+    {
+      "de": "casa-mb-real",
+      "a": "casa-conectoma",
+      "que": "usa sus datos y su conclusión negativa sobre métricas gruesas como punto de partida"
+    },
+    {
+      "de": "casa-mb-real",
+      "a": "casa-mosca",
+      "que": "sustituye su circuito sintético por el cableado real"
+    },
+    {
+      "de": "casa-auditoria",
+      "a": "casa-mb-real",
       "que": "recomputa de forma independiente sus cifras clave"
     }
   ]
