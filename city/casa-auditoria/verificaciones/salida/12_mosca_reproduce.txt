@@ -1,0 +1,2 @@
+29a001e31b450b019398a1ed811177ca  out/activity.json
+29a001e31b450b019398a1ed811177ca  /tmp/claude-0/-home-user-open-claude/e7f872ff-c04d-5af4-a3a1-8d2199c39026/scratchpad/auditor/ejecucion/act_orig.json

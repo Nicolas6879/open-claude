@@ -1,0 +1,1 @@
+condiciones identicas a out/sim_summary.json: True

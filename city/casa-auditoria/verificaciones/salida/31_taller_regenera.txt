@@ -1,0 +1,6 @@
+ok gallery/01-cielo-de-espigas.svg
+ok gallery/02-nube-kc-antes-despues.svg
+ok gallery/03-caminata-hiperbola.svg
+ok gallery/04-sombra-del-pool.svg
+ok gallery/05-la-mosca-lee-la-cinta.svg
+ok gallery/index.html

@@ -1,0 +1,28 @@
+pre_A KC espigas totales 2199 | KC con >=1 espiga 778 | KC >=5 espigas (def. casa-mosca) 136 | MBON espigas 90
+post_A KC espigas totales 2041 | KC con >=1 espiga 772 | KC >=5 espigas (def. casa-mosca) 115 | MBON espigas 31
+pre_B MBON espigas 88
+post_B MBON espigas 77
+declarado taller: KC espigas 2199->2041 (-7%), KC activas 778->772, MBON A 90->31, B 88->77
+k inicio/fin 2.5 2.5155771627443824 crec %  0.6230865097752947 monotono True n puntos 721
+brecha |media| 0.21852534018580366 max 0.3166211935576797 max % precio 0.300893663931777 precio ini/fin 100.0 74.251686 marg fin 74.03051076308421
+rango x 4873.295128 5846.641179
+precio marginal dentro de banda [p(1-f),p/(1-f)] (f=.003): True (es consecuencia del arbitrajista por construccion)
+[CONFIRMADA] KC espigas pre_A: recomputado 2199 | declarado 2199 | tolerancia 0
+[CONFIRMADA] KC espigas post_A: recomputado 2041 | declarado 2041 | tolerancia 0
+[CONFIRMADA] variacion KC espigas (%): recomputado -7.1851 | declarado -7 | tolerancia 0.5
+[CONFIRMADA] 'KC activas' pre_A (taller; = >=1 espiga): recomputado 778 | declarado 778 | tolerancia 0
+[CONFIRMADA] 'KC activas' post_A (taller): recomputado 772 | declarado 772 | tolerancia 0
+[DISCREPANTE] KC activas pre_A con la definicion de casa-mosca (>=5 espigas) vs 778 de taller: recomputado 136 | declarado 778 | tolerancia 0 <- DEFINICION DISTINTA a la de casa-mosca
+[CONFIRMADA] MBON A pre: recomputado 90 | declarado 90 | tolerancia 0
+[CONFIRMADA] MBON A post: recomputado 31 | declarado 31 | tolerancia 0
+[CONFIRMADA] MBON B pre: recomputado 88 | declarado 88 | tolerancia 0
+[CONFIRMADA] MBON B post: recomputado 77 | declarado 77 | tolerancia 0
+[CONFIRMADA] k inicio (1e9): recomputado 2.5 | declarado 2.5 | tolerancia 0.0001
+[CONFIRMADA] k final (1e9): recomputado 2.5156 | declarado 2.5156 | tolerancia 0.0001
+[CONFIRMADA] crecimiento k (%): recomputado 0.62309 | declarado 0.62 | tolerancia 0.005
+[CONFIRMADA] brecha media: recomputado 0.21853 | declarado 0.22 | tolerancia 0.005
+[CONFIRMADA] brecha maxima: recomputado 0.31662 | declarado 0.32 | tolerancia 0.005
+[CONFIRMADA] precio marginal final: recomputado 74.031 | declarado 74 | tolerancia 0.05
+[CONFIRMADA] rango x min: recomputado 4873.3 | declarado 4870 | tolerancia 5
+[CONFIRMADA] rango x max: recomputado 5846.6 | declarado 5830 | tolerancia 20
+RESUMEN: 17 confirmadas, 1 discrepantes de 18

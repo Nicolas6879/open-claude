@@ -1,0 +1,8 @@
+kcPct                  media 4.258 min 3.800 max 4.700
+solap                  media 0.138 min 0.090 max 0.190
+aprende1               media 0.191 min 0.170 max 0.200
+reposo_pct_ge5Hz       media 0.000 min 0.000 max 0.000
+reposo_pct_ge1spike    media 7.217 min 6.150 max 8.400
+v0                     media 0.546 min 0.523 max 0.567
+d1                     media 0.187 min 0.172 max 0.200
+d3                     media 0.584 min 0.545 max 0.619

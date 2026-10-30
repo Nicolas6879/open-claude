@@ -1,0 +1,4 @@
+tipos MBON en anatomy.json: 37 | en datos: 37 | discrepancias: 0
+tipos de datos no recogidos en anatomy.json: []
+tipos con NT mixto: {}
+valencia por NT (Aso 2014b) aplicada a las 97 neuronas: n evitacion 26 n atraccion 71 otros 0

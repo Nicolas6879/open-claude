@@ -1,0 +1,10 @@
+bloques 3 | problemas internos de la cadena: 0
+alcaldia: SIN SELLAR (no esta en ningun bloque)
+casa-agora: coincide con el bloque 2 (11 archivos)
+casa-conectoma: DIFIERE del bloque 2: [('anadido', 'src/fly_arena.py'), ('anadido', 'src/rewire.py'), ('anadido', 'src/cns_graph.py'), ('anadido', 'src/hubs.py'), ('anadido', 'src/lif_engine.py'), ('anadido', 'src/experiments.py'), ('anadido', 'src/hubs_io.py'), ('anadido', 'tests/test_cns_closedloop.py'), ('modificado', 'out/audit.json'), ('modificado', 'src/conectoma_io.py')]
+casa-empresa: SIN SELLAR (no esta en ningun bloque)
+casa-forja: SIN SELLAR (no esta en ningun bloque)
+casa-mb-real: SIN SELLAR (no esta en ningun bloque)
+casa-mosca: coincide con el bloque 2 (6 archivos)
+casa-taller: coincide con el bloque 2 (9 archivos)
+PROBLEMA: casa-conectoma difiere de su sello

@@ -1,0 +1,3 @@
+7 MBON reposo 1-10 s (Hz): 8.33 | KC>=5Hz %: 0.0 | KC>=1 espiga %: 90.1
+8 MBON reposo 1-10 s (Hz): 8.61 | KC>=5Hz %: 0.0 | KC>=1 espiga %: 90.6
+9 MBON reposo 1-10 s (Hz): 8.61 | KC>=5Hz %: 0.0 | KC>=1 espiga %: 90.1

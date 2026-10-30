@@ -1,0 +1,5 @@
+copia de /home/user/open-claude/city a /tmp/claude-0/-home-user-open-claude/e7f872ff-c04d-5af4-a3a1-8d2199c39026/scratchpad/auditor/ejecucion/city (2026-10-30T20:57:11Z); casas: alcaldia casa-agora casa-conectoma casa-empresa casa-forja casa-mb-real casa-mosca casa-notaria casa-taller 
+6c34c7b alcaldia: sonificacion de la mosca que aprende (wav + pagina sincronizada), con tests
+5801152 alcaldia: instantanea del bus (23 mensajes, incl. prediccion previa de casa-mb-real)
+7a61ad5 Alcalde: exploracion libre de la web y prediccion previa sobre veracidad de los logs
+05272525ed404c379047c65394dc9e5beb3b3b22035d51a2fb7c94fbdc191dca  -

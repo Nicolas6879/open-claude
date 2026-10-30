@@ -1,0 +1,27 @@
+CADENA: 3 bloques (génesis + 2)
+  integridad: OK (enlaces, hashes, génesis y prueba de trabajo de 4 ceros)
+CASAS:
+  alcaldia: SIN_SELLAR
+    no está en ningún bloque (aviso, no cuenta como manipulación)
+  casa-agora: OK (sellada en bloque 2) · 11 archivos · raíz af6b5b8a1f2fe830…
+  casa-conectoma: MODIFICADA (sellada en bloque 2)
+    modificado: out/audit.json
+    añadido: src/cns_graph.py
+    modificado: src/conectoma_io.py
+    añadido: src/experiments.py
+    añadido: src/fly_arena.py
+    añadido: src/hubs.py
+    añadido: src/hubs_io.py
+    añadido: src/lif_engine.py
+    añadido: src/rewire.py
+    añadido: tests/test_cns_closedloop.py
+  casa-empresa: SIN_SELLAR
+    no está en ningún bloque (aviso, no cuenta como manipulación)
+  casa-forja: SIN_SELLAR
+    no está en ningún bloque (aviso, no cuenta como manipulación)
+  casa-mb-real: SIN_SELLAR
+    no está en ningún bloque (aviso, no cuenta como manipulación)
+  casa-mosca: OK (sellada en bloque 2) · 6 archivos · raíz 644e335c58bfd911…
+  casa-taller: OK (sellada en bloque 2) · 9 archivos · raíz 611baca3dafbe6aa…
+RESULTADO: MANIPULACIÓN DETECTADA
+exit=1

@@ -1,0 +1,18 @@
+sp500_1990_2022 columnas ['Date', 'sp500'] 8313 ['1990-01-02', np.float64(359.69)] ['2022-12-28', np.float64(3783.22)]
+ohlc columnas ['Date', 'Open', 'Close'] 5031
+solape 5031 diferencia relativa max 5.738964314883077e-08 (declarado 6e-8)
+seleccion dias 6049 1990-01-02 2013-12-31 | final dias 2264 2014-01-02 2022-12-28 (declarado 6049 / 2264)
+autocorr lag1 retorno (seleccion) -0.058  (declarado -0,059)
+autocorr lag1 |r| 0.231 (declarado 0,23 real)
+autocorr bloques-20 (media 200 remuestreos) -0.054 (declarado -0,048) | iid -0.001 (declarado +0,011)
+signo aleatorio: autocorr r 0.001 ; autocorr |r| 0.216 (declarado 0,22)
+[CONFIRMADA] solape skfolio vs arch: dif relativa max (declarado 6e-8): recomputado 5.739e-08 | declarado 6e-08 | tolerancia 1e-08
+[CONFIRMADA] dias seleccion: recomputado 6049 | declarado 6049 | tolerancia 0
+[CONFIRMADA] dias final: recomputado 2264 | declarado 2264 | tolerancia 0
+[CONFIRMADA] autocorr lag1 retorno: recomputado -0.057654 | declarado -0.059 | tolerancia 0.002
+[CONFIRMADA] autocorr lag1 |r|: recomputado 0.23143 | declarado 0.23 | tolerancia 0.005
+IC95 exacto nulo signo: campeones: 0/300 -> [0.00 %, 1.22 %]
+IC95 exacto nulo iid: campeones: 0/200 -> [0.00 %, 1.83 %]
+IC95 exacto potencia SR 0,3 (2,0 %): 3/150 -> [0.41 %, 5.73 %]
+IC95 exacto potencia SR 0,6 (14,7 %): 22/150 -> [9.43 %, 21.36 %]
+RESUMEN: 5 confirmadas, 0 discrepantes de 5

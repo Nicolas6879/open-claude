@@ -1,0 +1,31 @@
+meta 7 23000.0 | neuronas 2109
+[CONFIRMADA] neuronas totales: recomputado 2109 | declarado 2109 | tolerancia 0
+[CONFIRMADA] espigas totales: recomputado 70149 | declarado 70149 | tolerancia 0
+[CONFIRMADA] espigas ORN: recomputado 21236 | declarado 21236 | tolerancia 0
+[CONFIRMADA] espigas PN: recomputado 6602 | declarado 6602 | tolerancia 0
+[CONFIRMADA] espigas KC: recomputado 38877 | declarado 38877 | tolerancia 0
+[CONFIRMADA] espigas APL: recomputado 1807 | declarado 1807 | tolerancia 0
+[CONFIRMADA] espigas MBON: recomputado 1308 | declarado 1308 | tolerancia 0
+[CONFIRMADA] espigas DAN: recomputado 319 | declarado 319 | tolerancia 0
+[CONFIRMADA] MBON pre A (Hz): recomputado 23.125 | declarado 23.1 | tolerancia 0.05
+[CONFIRMADA] MBON post A (Hz): recomputado 7.75 | declarado 7.8 | tolerancia 0.05
+[CONFIRMADA] cambio A (%): recomputado -66.486 | declarado -66.5 | tolerancia 0.05
+[CONFIRMADA] KC activas A (%): recomputado 6.625 | declarado 6.6 | tolerancia 0.05
+[CONFIRMADA] MBON pre B (Hz): recomputado 22 | declarado 22 | tolerancia 0.05
+[CONFIRMADA] MBON post B (Hz): recomputado 19.25 | declarado 19.2 | tolerancia 0.05
+[CONFIRMADA] cambio B (%): recomputado -12.5 | declarado -12.5 | tolerancia 0.05
+[CONFIRMADA] KC activas B (%): recomputado 4.3 | declarado 4.3 | tolerancia 0.05
+[CONFIRMADA] MBON pre C (Hz): recomputado 23.75 | declarado 23.8 | tolerancia 0.05
+[CONFIRMADA] MBON post C (Hz): recomputado 17 | declarado 17 | tolerancia 0.05
+[CONFIRMADA] cambio C (%): recomputado -28.421 | declarado -28.4 | tolerancia 0.05
+[CONFIRMADA] KC activas C (%): recomputado 6.05 | declarado 6 | tolerancia 0.05
+[CONFIRMADA] discriminacion A-B (pp): recomputado -53.986 | declarado -54 | tolerancia 0.05
+[CONFIRMADA] Jaccard pre_A-pre_B: recomputado 0.027778 | declarado 0.03 | tolerancia 0.006
+[CONFIRMADA] Jaccard pre_A-pre_C: recomputado 0.044715 | declarado 0.05 | tolerancia 0.006
+[CONFIRMADA] Jaccard pre_B-pre_C: recomputado 0.08377 | declarado 0.08 | tolerancia 0.006
+[CONFIRMADA] Jaccard pre_A-pre_A_rep: recomputado 0.48876 | declarado 0.49 | tolerancia 0.006
+[CONFIRMADA] curva A par1..4: recomputado 0.1 | declarado 0 | tolerancia 0.2
+[DISCREPANTE] MBON en reposo, primeros 500 ms (Hz) [README: ~3.5]: recomputado 7 | declarado 3.5 | tolerancia 0.5 (4 neuronas x 0,5 s: granularidad 0,5 Hz)
+[DISCREPANTE] MBON en reposo, media de 14 huecos (Hz) [README: ~3.5]: recomputado 7.6339 | declarado 3.5 | tolerancia 1
+[CONFIRMADA] KC >=5 Hz en reposo, primeros 500 ms (%) [README: casi nada / 0,2]: recomputado 0.25 | declarado 0.2 | tolerancia 0.2
+RESUMEN: 27 confirmadas, 2 discrepantes de 29

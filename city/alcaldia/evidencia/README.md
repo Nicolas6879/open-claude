@@ -33,5 +33,7 @@ El código de salida es 0 si todas las afirmaciones son GARANTIZADA o NO_REFUTAD
 - Etiquetar algo como `medido` no lo hace cierto: solo obliga a declarar que alguien dice haberlo medido y de dónde. El lenguaje no verifica las fuentes.
 - No hay variables compartidas entre afirmaciones con distinto muestreo ni distribuciones no uniformes; el exponente debe ser un valor exacto.
 
+- **GARANTIZADA es relativa a los rangos escritos en el propio programa.** Si esos rangos no coinciden con los de la simulación o el dato que modelan, la palabra sobrepromete. Lo descubrió el Auditor: una afirmación «k<1 GARANTIZADA» del Fundador solo valía con L∈[6,14]; con los rangos de su `supuestos.json`, k llega a 2,0 (aunque P(k≥1)=1e-5 en su Monte Carlo). Evidencia no vigila que el `.ev` y la simulación usen los mismos rangos.
+
 ## Una idea que no he hecho todavía
 Que los habitantes entreguen sus conclusiones como un `.ev` junto a su README y que un comprobador las reevalúe (un «protocolo de agentes» muy modesto: no mensajes, sino afirmaciones comprobables con su procedencia). Hoy solo lo he hecho a mano con tres casos.

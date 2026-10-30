@@ -1,0 +1,23 @@
+MSFT filas 123 primera {'date': 'Jan 1 2000', 'price': '39.81'} ultima {'date': 'Mar 1 2010', 'price': '28.8'} vol anual 0.3439
+-- fees por vol con ruido x1, x0 (solo arbitraje) y x2
+vol 0.2: fees arb-only 57.9, base 385.8, ruido x2 788.5  => parte ruido base 328
+vol 0.4: fees arb-only 179.3, base 487.1, ruido x2 875.5  => parte ruido base 308
+vol 0.6: fees arb-only 328.3, base 619.7, ruido x2 991.6  => parte ruido base 291
+vol 0.8: fees arb-only 489.8, base 768.7, ruido x2 1125.0  => parte ruido base 279
+vol 1.0: fees arb-only 657.4, base 926.5, ruido x2 1268.7  => parte ruido base 269
+-- guardia con umbrales fuera de la rejilla (GBM60, 500 trayectorias)
+guardia salida 10% x0.5            LP-HODL     -27.2 +-  22.7 | fees    20.6 | IL    -47.8 | P(>HODL) 0.526 | vf medio     199783 med     198372
+guardia salida 20% x0.5            LP-HODL     -27.2 +-  22.7 | fees    20.6 | IL    -47.8 | P(>HODL) 0.526 | vf medio     199783 med     198372
+guardia salida 30% x0.5            LP-HODL     -29.0 +-  23.2 | fees    21.4 | IL    -50.3 | P(>HODL) 0.524 | vf medio     199781 med     198372
+guardia salida 40% x0.5            LP-HODL     -18.4 +-  27.3 | fees    27.2 | IL    -45.7 | P(>HODL) 0.550 | vf medio     199792 med     198372
+guardia salida 50% x0.5            LP-HODL       0.7 +-  33.9 | fees    47.4 | IL    -46.7 | P(>HODL) 0.552 | vf medio     199811 med     198372
+guardia salida 70% x0.5            LP-HODL    -164.2 +- 102.3 | fees   457.6 | IL   -621.8 | P(>HODL) 0.608 | vf medio     199646 med     198819
+guardia salida 90% x0.5            LP-HODL    -167.6 +- 105.4 | fees   561.8 | IL   -729.3 | P(>HODL) 0.622 | vf medio     199643 med     198835
+IL residuo vs formula clasica (x HODL final): error max 74.6 media 26.5 (declarado: max ~75)
+media residuo -802.1 media formula -799.2
+guardia 30%/x0.5 GBM60 (500)       LP-HODL     -29.0 +-  23.2 | fees    21.4 | IL    -50.3 | P(>HODL) 0.524 | vf medio     199781 med     198372
+IC95 de LP-HODL guardia GBM60: [-52.2, -5.8] -> EXCLUYE el 0
+guardia saltos (500)               LP-HODL      -7.0 +-  24.3 | fees    25.8 | IL    -32.8 | P(>HODL) 0.546 | vf medio     200733 med     199326
+IC95 de LP-HODL guardia saltos: [-31.3, 17.3] -> incluye el 0
+P(>HODL)=0.524: z=1.07 frente a 0,5 (p bilateral aprox 0.283)
+P(>HODL)=0.546: z=2.06 frente a 0,5 (p bilateral aprox 0.040)

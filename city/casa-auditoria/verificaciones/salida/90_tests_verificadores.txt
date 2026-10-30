@@ -1,0 +1,14 @@
+OK    mosca: espigas MBON de post_A borradas -> se marca 'cambio A' y 'MBON post A' | discrepantes base 2 -> 7
+OK    mosca: 100 espigas KC anadidas -> se marca 'espigas totales'
+OK    taller: reserva Y final +1% -> se marca 'k final' y 'crecimiento de k' | discrepantes base 1 -> 5
+OK    notaria: copia intacta -> exit 0 | casa-taller: coincide con el bloque 2 (9 archivos)
+OK    notaria: 1 bit cambiado en casa-mosca/README.md -> exit 1 y nombra el archivo
+OK    notaria: sha256 de un archivo alterado DENTRO de la cadena -> exit 1 (hash/raiz no cuadran)
+OK    notaria: nonce del ultimo bloque alterado -> exit 1
+fee 0.0035                         LP-HODL    -106.9 +- 110.5 | fees   695.5 | IL   -802.4 | P(>HODL) 0.668 | vf medio     199703 med     199002
+OK    agora: con fee 0,35% en vez de 0,30% el LP-HODL deja de ser -181 | -106.9
+[DISCREPANTE] x: recomputado -150 | declarado -181 | tolerancia 0.6
+[CONFIRMADA] y: recomputado -181.3 | declarado -181 | tolerancia 0.6
+OK    veredicto.check marca DISCREPANTE fuera de tolerancia y CONFIRMADA dentro
+OK    empresa: aulas x7,5 y precio 129 -> se marca 'C_aula_regalo margen mediano'
+RESUMEN: todas las pruebas pasan

@@ -1,0 +1,33 @@
+margen mensual mediano, anio 3 (escenario C, equipo 0), n=2000
+     m   toda demanda  solo install.
+     1             80             80
+     2            335            148
+     3            723            215
+   3.5            962            250
+   3.7           1077            266
+     4           1253            284
+     5           1908            358
+     8           4785            560
+    10           7350            703
+    14          14236            981
+    15          16324           1061
+    20          28821           1403
+factor que alcanza 1000 USD/mes: toda la demanda 3.56 (=143 inst/sem) | solo instalaciones 14.2 (=570 inst/sem)  [declarado: 3,7x = ~150 inst/sem]
+escenario B (paid 3000/mes): coste/suscriptor con stock final (codigo) mediana 355 | con suscriptores adquiridos acumulados mediana 49 | adquiridos/stock mediana 7.3
+LTV suscriptor mediana 10.1 USD (margen semanal/abandono)
+L=11.78 k por usuaria activa=0.118 ; por instalacion (x activacion .45)=0.053 ; aceptacion critica k=1: 2.12
+[CONFIRMADA] A_organico_regalo margen mediano: recomputado 344.85 | declarado 345 | tolerancia 1.52
+[CONFIRMADA] A_organico_regalo P(perdida): recomputado 0.40675 | declarado 0.41 | tolerancia 0.006
+[CONFIRMADA] C_aula_regalo margen mediano: recomputado 1437.4 | declarado 1437 | tolerancia 3.16
+[CONFIRMADA] C_aula_regalo P(perdida): recomputado 0.139 | declarado 0.14 | tolerancia 0.006
+[CONFIRMADA] B_paid margen mediano: recomputado -95815 | declarado -95800 | tolerancia 145
+[CONFIRMADA] B_paid P(perdida): recomputado 0.977 | declarado 0.98 | tolerancia 0.006
+[CONFIRMADA] B_paid coste por suscriptor (README ~370), definicion del codigo (gasto/stock final): recomputado 370.58 | declarado 370 | tolerancia 1
+[CONFIRMADA] E_aula_equipo_1500 margen mediano: recomputado -52604 | declarado -52600 | tolerancia 79.9
+[CONFIRMADA] E_aula_equipo_1500 P(perdida): recomputado 1 | declarado 1 | tolerancia 0.006
+[CONFIRMADA] umbral 'toda la demanda' (README 3,7x): recomputado 3.564 | declarado 3.7 | tolerancia 0.2
+[DISCREPANTE] README: ~150 inst/sem para 1000 USD/mes -> recomputado con SOLO instalaciones: recomputado 569.5 | declarado 150 | tolerancia 10 <- el 3,7x multiplica 4 parametros a la vez
+[DISCREPANTE] coste por suscriptor con adquiridos acumulados (README 370): recomputado 49.345 | declarado 370 | tolerancia 20 <- cada suscriptor adquirido, no el stock final
+[CONFIRMADA] k por usuaria: recomputado 0.1178 | declarado 0.12 | tolerancia 0.005
+[CONFIRMADA] aceptacion critica k=1: recomputado 2.1223 | declarado 2.1 | tolerancia 0.05
+RESUMEN: 12 confirmadas, 2 discrepantes de 14

@@ -74,7 +74,7 @@
       "descripcion": "Auditor independiente (Sonnet): recomputa desde los datos crudos las cifras que cada casa afirma y reporta discrepancias con evidencia reproducible.",
       "carpeta": "city/casa-auditoria/",
       "log": "city/casa-auditoria/LOG.md",
-      "estado": "planeada"
+      "estado": "lista"
     },
     {
       "id": "casa-mb-real",

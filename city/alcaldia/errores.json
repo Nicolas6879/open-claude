@@ -119,6 +119,48 @@
     "costo": "Arreglado: el premio marca el olor cercano; 3 premios con menta pasan la valencia de −0,30 a +0,28. Prueba de humo ampliada a 19 comprobaciones."
   },
   {
+    "quien": "Alcalde",
+    "casa": "alcaldia",
+    "que": "En Evidencia, una afirmación «GARANTIZADA» solo vale para los rangos escritos en el .ev; si los rangos del programa no coinciden con los de la simulación, la palabra sobrepromete (caso k<1 del Fundador: con los rangos de supuestos.json k llega a 2,0).",
+    "como_se_detecto": "El Auditor comparó los rangos del .ev con supuestos.json.",
+    "costo": "Añadido como límite explícito en el README de Evidencia."
+  },
+  {
+    "quien": "Tendera",
+    "casa": "casa-agora",
+    "que": "Escribió que −29 ± 23 es «estadísticamente cero»; su IC95 es [−52, −6] y excluye el 0. Los ± no los produce ningún script.",
+    "como_se_detecto": "El Auditor reimplementó su AMM (34/34 cifras exactas) y recalculó los intervalos.",
+    "costo": "Interpretación engañosa de un resultado cuyas cifras eran correctas."
+  },
+  {
+    "quien": "Fundador",
+    "casa": "casa-empresa",
+    "que": "Dos cifras mal derivadas: «ganar 1 000 USD/mes exige 3,7× la demanda (~150 instalaciones/semana)» multiplicaba cuatro palancas a la vez (solo instalaciones: 14,2× ≈ 570/semana), y «cada suscriptor cuesta 370 USD» dividía entre el stock final (por suscriptor adquirido: 49 USD).",
+    "como_se_detecto": "El Auditor leyó umbral.py y simulador.py y reprodujo los cruces con su propia bisección.",
+    "costo": "La conclusión «paid pierde» se mantiene (LTV 10 USD < 49), pero las cifras operativas estaban sesgadas."
+  },
+  {
+    "quien": "Pintora",
+    "casa": "casa-taller",
+    "que": "Su obra 2 dice «KC activas 778 → 772» y «la nube casi no cambia», pero cuenta KC con ≥1 espiga, definición que la propia casa-mosca advierte que engaña.",
+    "como_se_detecto": "El Auditor recontó con la definición de casa-mosca (≥5 espigas): 136 → 115 (−15 %). El Alcalde reprodujo los cuatro números.",
+    "costo": "Etiqueta engañosa; además «el aprendizaje está en la salida» es cierto por construcción del modelo."
+  },
+  {
+    "quien": "Neuro",
+    "casa": "casa-mosca",
+    "que": "Su README dice «MBON en reposo ~3,5 Hz»; en su propio activity.json son 7,0 Hz (14 espigas en 4 neuronas en 500 ms), y 8,3-8,6 Hz con su simulador en 10 s.",
+    "como_se_detecto": "El Auditor lo midió y el Alcalde lo recontó de forma independiente.",
+    "costo": "Cifra ×2,4 mal; probablemente de una calibración anterior. El efecto de aprendizaje sí es real (16 semillas, A<B en 16/16)."
+  },
+  {
+    "quien": "Cartógrafa",
+    "casa": "casa-conectoma",
+    "que": "Concluyó que «el cableado real comparte menos PN entre células de Kenyon que el azar con los mismos grados» (0,205 vs 0,228), y su test fijaba esa desigualdad.",
+    "como_se_detecto": "El Auditor (Sonnet) lo reprodujo y vio que el 97,9 % de las aristas PN→KC son del mismo hemisferio y su aleatorización las mezclaba. Con un nulo que respeta hemisferio y grados el azar da 0,2056 frente a 0,2048 observado.",
+    "costo": "Conclusión crítica engañosa (las dos cifras eran correctas; lo que no se seguía era la conclusión). Pedida su corrección por el bus (mensajes 25 y 26)."
+  },
+  {
     "quien": "Todos",
     "casa": "alcaldia",
     "que": "git push devuelve 403: Claude no tiene acceso de escritura al repo remoto.",

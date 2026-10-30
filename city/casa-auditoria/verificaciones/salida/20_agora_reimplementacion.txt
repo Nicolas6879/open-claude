@@ -1,0 +1,66 @@
+N = 500
+GBM60 pasivo                       LP-HODL    -181.4 +- 110.6 | fees   620.8 | IL   -802.1 | P(>HODL) 0.640 | vf medio     199629 med     198929
+[CONFIRMADA] GBM60 pasivo LP-HODL: recomputado -181.36 | declarado -181 | tolerancia 0.6
+[CONFIRMADA] GBM60 pasivo +-95%: recomputado 110.56 | declarado 111 | tolerancia 0.6
+GBM60 guardia 30%/x0.5             LP-HODL     -29.0 +-  23.2 | fees    21.4 | IL    -50.3 | P(>HODL) 0.524 | vf medio     199781 med     198372
+[CONFIRMADA] GBM60 guardia 30%/x0.5 LP-HODL: recomputado -28.983 | declarado -29 | tolerancia 0.6
+[CONFIRMADA] GBM60 guardia 30%/x0.5 +-95%: recomputado 23.205 | declarado 23 | tolerancia 0.6
+saltos pasivo                      LP-HODL    -160.9 +- 101.3 | fees   513.3 | IL   -674.2 | P(>HODL) 0.620 | vf medio     200579 med     199747
+[CONFIRMADA] saltos pasivo LP-HODL: recomputado -160.9 | declarado -161 | tolerancia 0.6
+[CONFIRMADA] saltos pasivo +-95%: recomputado 101.28 | declarado 101 | tolerancia 0.6
+saltos guardia                     LP-HODL      -7.0 +-  24.3 | fees    25.8 | IL    -32.8 | P(>HODL) 0.546 | vf medio     200733 med     199326
+[CONFIRMADA] saltos guardia LP-HODL: recomputado -7.0057 | declarado -7 | tolerancia 0.6
+[CONFIRMADA] saltos guardia +-95%: recomputado 24.33 | declarado 24 | tolerancia 0.6
+sens vol0.2 fee0.0005              LP-HODL      -5.0 +-  11.6 | fees    83.4 | IL    -88.4 | P(>HODL) 0.692 | vf medio     199905 med     199848
+[CONFIRMADA] sensibilidad vol 0.2 fee 0.0005: recomputado -5.0041 | declarado -5 | tolerancia 0.6
+sens vol0.2 fee0.003               LP-HODL     296.7 +-  11.7 | fees   385.8 | IL    -89.1 | P(>HODL) 0.966 | vf medio     200206 med     200145
+[CONFIRMADA] sensibilidad vol 0.2 fee 0.003: recomputado 296.66 | declarado 297 | tolerancia 0.6
+sens vol0.2 fee0.01                LP-HODL     900.4 +-  13.1 | fees   990.1 | IL    -89.7 | P(>HODL) 0.998 | vf medio     200810 med     200743
+[CONFIRMADA] sensibilidad vol 0.2 fee 0.01: recomputado 900.4 | declarado 900 | tolerancia 0.6
+sens vol0.4 fee0.0005              LP-HODL    -247.3 +-  47.7 | fees   107.1 | IL   -354.4 | P(>HODL) 0.426 | vf medio     199598 med     199310
+[CONFIRMADA] sensibilidad vol 0.4 fee 0.0005: recomputado -247.34 | declarado -247 | tolerancia 0.6
+sens vol0.4 fee0.003               LP-HODL     131.9 +-  47.5 | fees   487.6 | IL   -355.6 | P(>HODL) 0.764 | vf medio     199977 med     199679
+[CONFIRMADA] sensibilidad vol 0.4 fee 0.003: recomputado 131.94 | declarado 132 | tolerancia 0.6
+sens vol0.4 fee0.01                LP-HODL     806.7 +-  47.4 | fees  1163.1 | IL   -356.4 | P(>HODL) 0.934 | vf medio     200652 med     200341
+[CONFIRMADA] sensibilidad vol 0.4 fee 0.01: recomputado 806.67 | declarado 807 | tolerancia 0.6
+sens vol0.6 fee0.0005              LP-HODL    -666.5 +- 111.3 | fees   133.4 | IL   -799.9 | P(>HODL) 0.320 | vf medio     199144 med     198450
+[CONFIRMADA] sensibilidad vol 0.6 fee 0.0005: recomputado -666.53 | declarado -667 | tolerancia 0.6
+sens vol0.6 fee0.003               LP-HODL    -181.4 +- 110.6 | fees   620.8 | IL   -802.1 | P(>HODL) 0.640 | vf medio     199629 med     198929
+[CONFIRMADA] sensibilidad vol 0.6 fee 0.003: recomputado -181.36 | declarado -181 | tolerancia 0.6
+sens vol0.6 fee0.01                LP-HODL     618.3 +- 109.6 | fees  1421.8 | IL   -803.5 | P(>HODL) 0.802 | vf medio     200428 med     199692
+[CONFIRMADA] sensibilidad vol 0.6 fee 0.01: recomputado 618.32 | declarado 618 | tolerancia 0.6
+sens vol0.8 fee0.0005              LP-HODL   -1265.7 +- 206.2 | fees   161.0 | IL  -1426.7 | P(>HODL) 0.258 | vf medio     198542 med     197271
+[CONFIRMADA] sensibilidad vol 0.8 fee 0.0005: recomputado -1265.7 | declarado -1266 | tolerancia 0.6
+sens vol0.8 fee0.003               LP-HODL    -660.0 +- 204.7 | fees   770.5 | IL  -1430.5 | P(>HODL) 0.540 | vf medio     199148 med     197870
+[CONFIRMADA] sensibilidad vol 0.8 fee 0.003: recomputado -660.02 | declarado -660 | tolerancia 0.6
+sens vol0.8 fee0.01                LP-HODL     312.1 +- 202.5 | fees  1745.5 | IL  -1433.4 | P(>HODL) 0.742 | vf medio     200120 med     198781
+[CONFIRMADA] sensibilidad vol 0.8 fee 0.01: recomputado 312.1 | declarado 312 | tolerancia 0.6
+sens vol1.0 fee0.0005              LP-HODL   -2047.2 +- 337.6 | fees   189.3 | IL  -2236.4 | P(>HODL) 0.240 | vf medio     197795 med     195777
+[CONFIRMADA] sensibilidad vol 1.0 fee 0.0005: recomputado -2047.2 | declarado -2047 | tolerancia 0.6
+sens vol1.0 fee0.003               LP-HODL   -1313.3 +- 335.0 | fees   929.6 | IL  -2242.9 | P(>HODL) 0.484 | vf medio     198528 med     196505
+[CONFIRMADA] sensibilidad vol 1.0 fee 0.003: recomputado -1313.3 | declarado -1313 | tolerancia 0.6
+sens vol1.0 fee0.01                LP-HODL    -129.8 +- 330.9 | fees  2118.6 | IL  -2248.4 | P(>HODL) 0.680 | vf medio     199712 med     197605
+[CONFIRMADA] sensibilidad vol 1.0 fee 0.01: recomputado -129.84 | declarado -130 | tolerancia 0.6
+guardia vol0.2                     LP-HODL     268.1 +-  13.6 | fees   349.1 | IL    -81.0 | P(>HODL) 0.938 | vf medio     200178 med     200115
+[CONFIRMADA] Tendera guardia vol 0.2: recomputado 268.05 | declarado 268 | tolerancia 0.6
+guardia vol0.4                     LP-HODL       6.2 +-  13.4 | fees    27.0 | IL    -20.8 | P(>HODL) 0.590 | vf medio     199852 med     199237
+[CONFIRMADA] Tendera guardia vol 0.4: recomputado 6.2025 | declarado 6 | tolerancia 0.6
+guardia vol0.6                     LP-HODL     -29.0 +-  23.2 | fees    21.4 | IL    -50.3 | P(>HODL) 0.524 | vf medio     199781 med     198372
+[CONFIRMADA] Tendera guardia vol 0.6: recomputado -28.983 | declarado -29 | tolerancia 0.6
+guardia vol0.8                     LP-HODL     -59.7 +-  40.8 | fees    25.6 | IL    -85.3 | P(>HODL) 0.502 | vf medio     199748 med     197202
+[CONFIRMADA] Tendera guardia vol 0.8: recomputado -59.684 | declarado -60 | tolerancia 0.6
+guardia vol1.0                     LP-HODL    -103.2 +-  64.4 | fees    30.9 | IL   -134.1 | P(>HODL) 0.488 | vf medio     199739 med     195737
+[CONFIRMADA] Tendera guardia vol 1.0: recomputado -103.19 | declarado -103 | tolerancia 0.6
+ruido x0.5 vol0.4                  LP-HODL     -39.5 +-  47.5 | fees   315.1 | IL   -354.6 | P(>HODL) 0.678 | vf medio     199806 med     199514
+[CONFIRMADA] ruido x0.5 vol 0.4: recomputado -39.49 | declarado -39 | tolerancia 0.6
+ruido x1.0 vol0.4                  LP-HODL     131.9 +-  47.5 | fees   487.6 | IL   -355.6 | P(>HODL) 0.764 | vf medio     199977 med     199679
+[CONFIRMADA] ruido x1.0 vol 0.4: recomputado 131.94 | declarado 132 | tolerancia 0.6
+ruido x2.0 vol0.4                  LP-HODL     517.2 +-  47.5 | fees   876.2 | IL   -359.0 | P(>HODL) 0.876 | vf medio     200363 med     200070
+[CONFIRMADA] ruido x2.0 vol 0.4: recomputado 517.2 | declarado 517 | tolerancia 0.6
+ruido x0.5 vol0.6                  LP-HODL    -342.6 +- 110.7 | fees   458.2 | IL   -800.8 | P(>HODL) 0.554 | vf medio     199468 med     198770
+[CONFIRMADA] ruido x0.5 vol 0.6: recomputado -342.57 | declarado -343 | tolerancia 0.6
+ruido x1.0 vol0.6                  LP-HODL    -181.4 +- 110.6 | fees   620.8 | IL   -802.1 | P(>HODL) 0.640 | vf medio     199629 med     198929
+[CONFIRMADA] ruido x1.0 vol 0.6: recomputado -181.36 | declarado -181 | tolerancia 0.6
+ruido x2.0 vol0.6                  LP-HODL     187.3 +- 110.2 | fees   993.4 | IL   -806.2 | P(>HODL) 0.744 | vf medio     199997 med     199291
+[CONFIRMADA] ruido x2.0 vol 0.6: recomputado 187.28 | declarado 187 | tolerancia 0.6
+RESUMEN: 34 confirmadas, 0 discrepantes de 34

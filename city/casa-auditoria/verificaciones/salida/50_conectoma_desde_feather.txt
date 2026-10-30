@@ -1,0 +1,230 @@
+filas pesos 25568639
+[CONFIRMADA] KC total: recomputado 4064 | declarado 4064 | tolerancia 0
+[CONFIRMADA] KC izq: recomputado 2019 | declarado 2019 | tolerancia 0
+[CONFIRMADA] KC der: recomputado 2045 | declarado 2045 | tolerancia 0
+[CONFIRMADA] APL: recomputado 2 | declarado 2 | tolerancia 0
+[CONFIRMADA] KC<->APL socios (ambos sentidos): recomputado 4063 | declarado 4063 | tolerancia 0
+[CONFIRMADA] MBON: recomputado 97 | declarado 97 | tolerancia 0
+[CONFIRMADA] MBON tipos: recomputado 37 | declarado 37 | tolerancia 0
+[CONFIRMADA] MBON ACh: recomputado 50 | declarado 50 | tolerancia 0
+[CONFIRMADA] MBON glu: recomputado 26 | declarado 26 | tolerancia 0
+[CONFIRMADA] MBON GABA: recomputado 21 | declarado 21 | tolerancia 0
+[CONFIRMADA] DAN: recomputado 340 | declarado 340 | tolerancia 0
+[CONFIRMADA] DAN tipos: recomputado 27 | declarado 27 | tolerancia 0
+[CONFIRMADA] DAN tipos PAM: recomputado 15 | declarado 15 | tolerancia 0
+[CONFIRMADA] DAN tipos PPL: recomputado 12 | declarado 12 | tolerancia 0
+[CONFIRMADA] DAN dopaminergicas (consensus): recomputado 338 | declarado 338 | tolerancia 0
+[CONFIRMADA] PN->KC mediana PN por KC: recomputado 6 | declarado 6 | tolerancia 0
+[CONFIRMADA] PN->KC fraccion exactamente 6: recomputado 0.18861 | declarado 0.19 | tolerancia 0.005
+[CONFIRMADA] PN->KC fraccion 4-8: recomputado 0.80378 | declarado 0.8 | tolerancia 0.005
+[CONFIRMADA] PN->KC max: recomputado 39 | declarado 39 | tolerancia 0
+[CONFIRMADA] sinapsis/arista mediana: recomputado 16 | declarado 16 | tolerancia 0
+[CONFIRMADA] sinapsis/arista p10: recomputado 4 | declarado 4 | tolerancia 0
+[CONFIRMADA] sinapsis/arista p90: recomputado 31 | declarado 31 | tolerancia 0
+[CONFIRMADA] sinapsis/arista max: recomputado 89 | declarado 89 | tolerancia 0
+[CONFIRMADA] KC->KC aristas: recomputado 6.4293e+05 | declarado 6.4293e+05 | tolerancia 0
+[CONFIRMADA] KC->KC >=5: recomputado 33247 | declarado 33247 | tolerancia 0
+[CONFIRMADA] KC->KC frac>=5: recomputado 0.051711 | declarado 0.05 | tolerancia 0.005
+[CONFIRMADA] PN->KC sinapsis ACh: recomputado 3.9032e+05 | declarado 3.9032e+05 | tolerancia 0
+[CONFIRMADA] PN->KC sinapsis total: recomputado 3.9093e+05 | declarado 3.9093e+05 | tolerancia 0
+[CONFIRMADA] PN->KC % ACh: recomputado 99.845 | declarado 99.8 | tolerancia 0.05
+[CONFIRMADA] ALPN GABA (consensus): recomputado 209 | declarado 209 | tolerancia 0
+[CONFIRMADA] ALPN total: recomputado 686 | declarado 686 | tolerancia 0
+[CONFIRMADA] KC->MBON >=5 sinapsis (mapa): recomputado 4.0285e+05 | declarado 4.0285e+05 | tolerancia 0
+[CONFIRMADA] tipos KC en mapa: recomputado 14 | declarado 14 | tolerancia 0
+[CONFIRMADA] tipos MBON en mapa: recomputado 36 | declarado 36 | tolerancia 0
+[CONFIRMADA] KCg-m % de KC->MBON fuerte: recomputado 40.98 | declarado 41 | tolerancia 0.5
+[CONFIRMADA] KCg-m -> 4 MBON %: recomputado 74.123 | declarado 74 | tolerancia 0.5
+[CONFIRMADA] 4 MBON % de KC->MBON fuerte: recomputado 44.201 | declarado 44 | tolerancia 0.5
+[CONFIRMADA] KCg-m->MBON09: recomputado 37313 | declarado 37313 | tolerancia 0
+[CONFIRMADA] KCg-m->MBON01: recomputado 30635 | declarado 30635 | tolerancia 0
+[CONFIRMADA] DAN->MBON >=5 sinapsis: recomputado 36583 | declarado 36583 | tolerancia 0
+[CONFIRMADA] DAN->KC aristas: recomputado 1.2911e+05 | declarado 1.2911e+05 | tolerancia 0
+[CONFIRMADA] DAN->KC >=5: recomputado 5624 | declarado 5624 | tolerancia 0
+[CONFIRMADA] fraccion pares con PN comun, observado: recomputado 0.20485 | declarado 0.205 | tolerancia 0.001
+[CONFIRMADA] media PN compartidas: recomputado 0.25557 | declarado 0.256 | tolerancia 0.001
+[CONFIRMADA] nulo grados (ignora hemisferio), como declarado: recomputado 0.22789 | declarado 0.228 | tolerancia 0.001
+[CONFIRMADA] nulo uniforme: recomputado 0.10612 | declarado 0.106 | tolerancia 0.002
+[CONFIRMADA] NULO QUE RESPETA HEMISFERIO vs observado [README concluye 'menos que el azar']: recomputado 0.20562 | declarado 0.20485 | tolerancia 0.002 <- si CONFIRMADA, la diferencia 0,205 vs 0,228 es un artefacto de ignorar el hemisferio
+[CONFIRMADA] aristas PN->KC mismo hemisferio: recomputado 0.97932 | declarado 0.98 | tolerancia 0.005
+RESUMEN: 48 confirmadas, 0 discrepantes de 48
+{
+ "KC": [
+  4064,
+  {
+   "R": 2045,
+   "L": 2019
+  }
+ ],
+ "APL": {
+  "KC_a_APL_partners": 4063,
+  "APL_a_KC_partners": 4063,
+  "sin_KC_a_APL": 210352,
+  "sin_APL_a_KC": 196200
+ },
+ "MBON": [
+  97,
+  37
+ ],
+ "DAN": [
+  340,
+  27
+ ],
+ "DAN_tipos_PAM_PPL": [
+  15,
+  12,
+  []
+ ],
+ "nt_consensus_KC": {
+  "acetylcholine": 4064
+ },
+ "nt_predicted_KC": {
+  "dopamine": 4058,
+  "unclear": 5,
+  "gaba": 1
+ },
+ "nt_consensus_MBON": {
+  "acetylcholine": 50,
+  "glutamate": 26,
+  "gaba": 21
+ },
+ "nt_predicted_MBON": {
+  "acetylcholine": 50,
+  "glutamate": 24,
+  "gaba": 21,
+  "unclear": 2
+ },
+ "nt_consensus_DAN": {
+  "dopamine": 338,
+  "unclear": 2
+ },
+ "nt_predicted_DAN": {
+  "dopamine": 330,
+  "unclear": 8,
+  "serotonin": 2
+ },
+ "nt_consensus_ALPN": {
+  "acetylcholine": 469,
+  "gaba": 209,
+  "glutamate": 8
+ },
+ "nt_predicted_ALPN": {
+  "acetylcholine": 461,
+  "gaba": 208,
+  "glutamate": 8,
+  "serotonin": 5,
+  "unclear": 4
+ },
+ "nt_consensus_APL": {
+  "gaba": 2
+ },
+ "nt_predicted_APL": {
+  "gaba": 2
+ },
+ "PN_KC_aristas": 22586,
+ "PN_KC_sinapsis_total": 390928,
+ "PN_KC_sinapsis_por_NT_consensus": {
+  "acetylcholine": 390321,
+  "gaba": 574,
+  "glutamate": 33
+ },
+ "KC_con_PN": 3812,
+ "KC_sin_PN": 252,
+ "PN_por_KC": {
+  "media": 5.924973767051417,
+  "mediana": 6.0,
+  "frac6": 0.1886149003147954,
+  "frac4_8": 0.8037775445960126,
+  "max": 39,
+  "p10_p90": [
+   4.0,
+   9.0
+  ]
+ },
+ "hist_PN_por_KC_(grado: fraccion de KC con PN)": {
+  "1": 0.015,
+  "2": 0.0186,
+  "3": 0.0622,
+  "4": 0.1445,
+  "5": 0.2062,
+  "6": 0.1886,
+  "7": 0.1571,
+  "8": 0.1073,
+  "9": 0.0601,
+  "10": 0.0223,
+  "11": 0.0094,
+  "12": 0.0047,
+  "13": 0.0026,
+  "14": 0.0005
+ },
+ "frac_KC_con_PN_<4": 0.09575026232948583,
+ "sinapsis_por_arista": {
+  "mediana": 16.0,
+  "p10_p90": [
+   4.0,
+   31.0
+  ],
+  "max": 89
+ },
+ "PN_KC_aristas_mismo_lado": 0.9793234747188524,
+ "KC_KC": {
+  "aristas": 642933,
+  "mediana": 1.0,
+  "ge5": 33247,
+  "frac_ge5": 0.05171145360403028
+ },
+ "KC_MBON_aristas": 61210,
+ "KC_MBON_ge5_sinapsis": 402850,
+ "KC_MBON_ge5_aristas": 33496,
+ "KC_MBON_ge5_por_tipo_KC": {
+  "KCg-m": 0.4098,
+  "KCab-s": 0.1296,
+  "KCa'b'-ap2": 0.1009,
+  "KCa'b'-ap1": 0.0867,
+  "KCab-m": 0.0744
+ },
+ "KCg-m_a_MBON_top": {
+  "MBON09": 37313,
+  "MBON01": 30635,
+  "MBON05": 30269,
+  "MBON11": 24165,
+  "MBON30": 10857
+ },
+ "KCg-m_top4_frac": 0.7412329049216867,
+ "MBON_top4_frac_de_todo_KC_MBON_fuerte": 0.44201067394811966,
+ "MBON_top4": {
+  "MBON09": 63018,
+  "MBON01": 40574,
+  "MBON11": 38852,
+  "MBON05": 35620
+ },
+ "n_tipos_KC_en_mapa": 14,
+ "n_tipos_MBON_en_mapa": 36,
+ "mapa_ge5_sinapsis": 402850,
+ "DAN_MBON_ge5_sinapsis": 36583,
+ "DAN_MBON_top": {
+  "PAM06->MBON03": 3292,
+  "PAM10->MBON06": 3274,
+  "PPL101->MBON11": 2311,
+  "PAM08->MBON05": 2176,
+  "PAM11->MBON07": 1918
+ },
+ "DAN_KC": {
+  "aristas": 129113,
+  "ge5": 5624,
+  "mediana": 1.0
+ },
+ "pares_observado(media, frac>=1)": [
+  0.2555681171447428,
+  0.20484621888976048
+ ],
+ "nulo_grados_ignora_lado_frac_pares": [
+  0.22789326271431834,
+  7.941412718523874e-05
+ ],
+ "nulo_grados_respeta_lado_frac_pares": [
+  0.20562217083167786,
+  0.00015531324532456982
+ ],
+ "nulo_uniforme_frac_pares": 0.10612222365092708
+}

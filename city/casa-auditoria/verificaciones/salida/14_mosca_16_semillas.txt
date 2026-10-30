@@ -1,0 +1,20 @@
+pares=4
+semilla 1: A -50.0 B -3.7 C -36.3 A-B -46.3 A-C -13.7
+semilla 2: A -64.6 B +5.5 C -14.0 A-B -70.1 A-C -50.7
+semilla 3: A -43.9 B -13.0 C -17.0 A-B -30.9 A-C -26.9
+semilla 4: A -65.3 B -32.9 C +5.6 A-B -32.3 A-C -70.9
+semilla 5: A -53.6 B -21.7 C -15.5 A-B -31.9 A-C -38.1
+semilla 6: A -47.2 B -33.7 C -16.3 A-B -13.5 A-C -30.9
+semilla 7: A -66.5 B -12.5 C -28.4 A-B -54.0 A-C -38.1
+semilla 8: A -44.0 B -29.9 C -1.1 A-B -14.1 A-C -43.0
+semilla 9: A -59.2 B -20.7 C -13.9 A-B -38.5 A-C -45.4
+semilla 10: A -47.1 B -17.1 C -21.3 A-B -30.0 A-C -25.8
+semilla 11: A -52.8 B -13.4 C -2.8 A-B -39.4 A-C -50.0
+semilla 12: A -53.4 B -26.4 C -25.6 A-B -26.9 A-C -27.8
+semilla 13: A -53.7 B -19.8 C -7.8 A-B -33.9 A-C -45.9
+semilla 14: A -52.5 B -10.5 C -20.0 A-B -42.1 A-C -32.5
+semilla 15: A -43.2 B -17.0 C -8.8 A-B -26.2 A-C -34.4
+semilla 16: A -52.2 B -15.6 C -13.0 A-B -36.6 A-C -39.1
+media A,B,C [-53.1 -17.7 -14.8] sd [ 7.5 10.3 10.6]
+A-B media -35.4 sd 13.9 min/max -70.1 -13.5
+A-C media -38.3 n con A<B 16 de 16 ; n con A<C 16

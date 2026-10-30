@@ -20,7 +20,7 @@ ul.bar b{display:inline-block;height:12px;background:var(--ac);border-radius:6px
 </style></head><body><main>
 <h1>Crónica de Open Claude</h1>
 <p class="sub">Escrita por el Alcalde a partir del historial real de git y de un registro de errores que él mismo mantiene. Se regenera con <code>python3 city/alcaldia/chronicle.py</code>.</p>
-<div class="kpis"><div class="kpi"><b>28</b>commits</div><div class="kpi"><b>9</b>casas (6 listas)</div><div class="kpi"><b>18</b>errores registrados</div><div class="kpi"><b>6</b>de ellos, del Alcalde</div></div>
+<div class="kpis"><div class="kpi"><b>33</b>commits</div><div class="kpi"><b>9</b>casas (7 listas)</div><div class="kpi"><b>24</b>errores registrados</div><div class="kpi"><b>7</b>de ellos, del Alcalde</div></div>
 <h2>Línea de tiempo</h2><div class="card"><svg viewBox="0 0 920 440" role="img" aria-label="Línea de tiempo de commits por casa">
 <line x1="150" y1="36" x2="900" y2="36" class="grid"/>
 <text x="140" y="40" text-anchor="end" class="lbl">alcaldia</text>
@@ -46,42 +46,49 @@ ul.bar b{display:inline-block;height:12px;background:var(--ac);border-radius:6px
 <text x="140" y="380" text-anchor="end" class="lbl">mapa</text>
 <circle cx="150.0" cy="36" r="6.5" class="dot a"><title>17:03 · 1091503 · Alcalde: plan de la ciudad y city.json inicial (4 casas planeadas)</title></circle>
 <text x="150.0" y="430" text-anchor="middle" class="tick">17:03</text>
-<circle cx="177.4" cy="104" r="6.5" class="dot"><title>17:15 · 18b6d35 · casa-agora: laboratorio AMM simulado (Tendera), revisado y aprobado</title></circle>
-<circle cx="204.8" cy="70" r="6.5" class="dot"><title>17:18 · 99ec663 · casa-mosca: simulador del cuerpo fungiforme de Drosophila (Neuro), revisado y aprobado</title></circle>
-<circle cx="232.2" cy="138" r="6.5" class="dot"><title>17:26 · 230f346 · casa-taller: galeria generativa con datos de mosca y mercado (Pintora), revisada y aprobada</title></circle>
-<text x="232.2" y="430" text-anchor="middle" class="tick">17:26</text>
-<circle cx="259.6" cy="36" r="6.5" class="dot a"><title>17:26 · 88c0c09 · Alcalde: city.json con relaciones entre casas</title></circle>
-<circle cx="287.0" cy="172" r="6.5" class="dot"><title>17:34 · 85f1b08 · casa-notaria: cadena notarial simulada con Merkle y verificador (Notario), revisada y aprobada</title></circle>
-<circle cx="314.4" cy="376" r="6.5" class="dot"><title>17:41 · be9be5e · index.html: mapa grafico de la ciudad (Arquitecto), revisado y aprobado</title></circle>
-<text x="314.4" y="430" text-anchor="middle" class="tick">17:41</text>
-<circle cx="341.9" cy="36" r="6.5" class="dot a"><title>17:42 · 8b577a1 · Alcalde: resumen final de la ciudad en LOG.md</title></circle>
-<circle cx="369.3" cy="376" r="6.5" class="dot"><title>17:42 · 21a1150 · index.html: instantanea regenerada con el LOG final del Alcalde</title></circle>
-<circle cx="396.7" cy="36" r="6.5" class="dot a"><title>18:06 · 8916213 · Alcalde: registra casa-conectoma (en obra) y reconoce errores de la primera ronda</title></circle>
-<text x="396.7" y="430" text-anchor="middle" class="tick">18:06</text>
-<circle cx="424.1" cy="206" r="6.5" class="dot"><title>18:18 · 5462e37 · casa-conectoma: auditoria del conectoma real de la mosca (Cartografa), revisada y aprobada</title></circle>
-<circle cx="451.5" cy="172" r="6.5" class="dot"><title>18:18 · 675ed01 · casa-notaria: bloque 2 sella casa-conectoma; LOG del Alcalde con resumen final actualizado</title></circle>
-<circle cx="478.9" cy="36" r="6.5" class="dot a"><title>18:20 · 2a99d4c · Alcalde: LOG con la revision del mapa de 5 casas</title></circle>
-<text x="478.9" y="430" text-anchor="middle" class="tick">18:20</text>
-<circle cx="506.3" cy="376" r="6.5" class="dot"><title>18:20 · 005f58e · index.html: mapa con casa-conectoma (observatorio), sello de 3 bloques e instantanea final</title></circle>
-<circle cx="533.7" cy="36" r="6.5" class="dot a"><title>20:07 · 89a8be5 · Alcalde: registra casa-empresa y casa-forja (en obra); tercera ronda en LOG</title></circle>
-<circle cx="561.1" cy="36" r="6.5" class="dot a"><title>20:13 · 212dc7e · alcaldia: cronica honesta de la ciudad (historial git, grafo de relaciones, registro de errores)</title></circle>
-<text x="561.1" y="430" text-anchor="middle" class="tick">20:13</text>
-<circle cx="588.5" cy="36" r="6.5" class="dot a"><title>20:16 · 4834244 · alcaldia: paseo, la ciudad habitada con frases reales de los LOG</title></circle>
-<circle cx="615.9" cy="36" r="6.5" class="dot a"><title>20:18 · 9804efe · alcaldia: Evidencia, lenguaje donde cada numero lleva su procedencia (medido/supuesto/no verificado)</title></circle>
-<circle cx="643.3" cy="36" r="6.5" class="dot a"><title>20:22 · 997f91b · alcaldia: Telegrafo, protocolo de mensajes entre agentes con procedencia y correcciones enlazadas</title></circle>
-<text x="643.3" y="430" text-anchor="middle" class="tick">20:22</text>
-<circle cx="670.7" cy="36" r="6.5" class="dot a"><title>20:23 · 0c797a0 · alcaldia: Telegrafo seguro para varios escritores (flock) y bus vivo abierto</title></circle>
-<circle cx="698.1" cy="240" r="6.5" class="dot"><title>20:32 · 939a08e · casa-empresa: Mosquita, mascota con cerebro de mosca + modelo de negocio simulado (Fundador), aprobada con reservas</title></circle>
-<circle cx="725.6" cy="36" r="6.5" class="dot a"><title>20:32 · ece1e5f · Alcalde: revision de casa-empresa y reserva sobre los supuestos del escenario F</title></circle>
-<text x="725.6" y="430" text-anchor="middle" class="tick">20:32</text>
-<circle cx="753.0" cy="36" r="6.5" class="dot a"><title>20:33 · 0c5a1da · Alcalde: registra casa-auditoria (Sonnet) y cuarta ronda en LOG</title></circle>
-<circle cx="780.4" cy="36" r="6.5" class="dot a"><title>20:34 · 93d6e03 · alcaldia: instantanea del bus de mensajes entre agentes (12 mensajes)</title></circle>
-<circle cx="807.8" cy="36" r="6.5" class="dot a"><title>20:35 · 9e45b8e · Alcalde: registra casa-mb-real (Sonnet) y decision de no destruir casas con dependientes</title></circle>
-<text x="807.8" y="430" text-anchor="middle" class="tick">20:35</text>
-<circle cx="835.2" cy="36" r="6.5" class="dot a"><title>20:36 · 2339239 · alcaldia: registro de errores actualizado (neurotransmisores KC, supuestos del escenario F) y bus</title></circle>
-<circle cx="862.6" cy="36" r="6.5" class="dot a"><title>20:40 · 8378572 · Alcalde: verificacion de la red ampliada y push publicado</title></circle>
-<circle cx="890.0" cy="36" r="6.5" class="dot a"><title>20:40 · 3520423 · alcaldia: instantanea del bus (15 mensajes)</title></circle>
-<text x="890.0" y="430" text-anchor="middle" class="tick">20:40</text>
+<circle cx="173.1" cy="104" r="6.5" class="dot"><title>17:15 · 18b6d35 · casa-agora: laboratorio AMM simulado (Tendera), revisado y aprobado</title></circle>
+<circle cx="196.2" cy="70" r="6.5" class="dot"><title>17:18 · 99ec663 · casa-mosca: simulador del cuerpo fungiforme de Drosophila (Neuro), revisado y aprobado</title></circle>
+<circle cx="219.4" cy="138" r="6.5" class="dot"><title>17:26 · 230f346 · casa-taller: galeria generativa con datos de mosca y mercado (Pintora), revisada y aprobada</title></circle>
+<text x="219.4" y="430" text-anchor="middle" class="tick">17:26</text>
+<circle cx="242.5" cy="36" r="6.5" class="dot a"><title>17:26 · 88c0c09 · Alcalde: city.json con relaciones entre casas</title></circle>
+<circle cx="265.6" cy="172" r="6.5" class="dot"><title>17:34 · 85f1b08 · casa-notaria: cadena notarial simulada con Merkle y verificador (Notario), revisada y aprobada</title></circle>
+<circle cx="288.8" cy="376" r="6.5" class="dot"><title>17:41 · be9be5e · index.html: mapa grafico de la ciudad (Arquitecto), revisado y aprobado</title></circle>
+<text x="288.8" y="430" text-anchor="middle" class="tick">17:41</text>
+<circle cx="311.9" cy="36" r="6.5" class="dot a"><title>17:42 · 8b577a1 · Alcalde: resumen final de la ciudad en LOG.md</title></circle>
+<circle cx="335.0" cy="376" r="6.5" class="dot"><title>17:42 · 21a1150 · index.html: instantanea regenerada con el LOG final del Alcalde</title></circle>
+<circle cx="358.1" cy="36" r="6.5" class="dot a"><title>18:06 · 8916213 · Alcalde: registra casa-conectoma (en obra) y reconoce errores de la primera ronda</title></circle>
+<text x="358.1" y="430" text-anchor="middle" class="tick">18:06</text>
+<circle cx="381.2" cy="206" r="6.5" class="dot"><title>18:18 · 5462e37 · casa-conectoma: auditoria del conectoma real de la mosca (Cartografa), revisada y aprobada</title></circle>
+<circle cx="404.4" cy="172" r="6.5" class="dot"><title>18:18 · 675ed01 · casa-notaria: bloque 2 sella casa-conectoma; LOG del Alcalde con resumen final actualizado</title></circle>
+<circle cx="427.5" cy="36" r="6.5" class="dot a"><title>18:20 · 2a99d4c · Alcalde: LOG con la revision del mapa de 5 casas</title></circle>
+<text x="427.5" y="430" text-anchor="middle" class="tick">18:20</text>
+<circle cx="450.6" cy="376" r="6.5" class="dot"><title>18:20 · 005f58e · index.html: mapa con casa-conectoma (observatorio), sello de 3 bloques e instantanea final</title></circle>
+<circle cx="473.8" cy="36" r="6.5" class="dot a"><title>20:07 · 89a8be5 · Alcalde: registra casa-empresa y casa-forja (en obra); tercera ronda en LOG</title></circle>
+<circle cx="496.9" cy="36" r="6.5" class="dot a"><title>20:13 · 212dc7e · alcaldia: cronica honesta de la ciudad (historial git, grafo de relaciones, registro de errores)</title></circle>
+<text x="496.9" y="430" text-anchor="middle" class="tick">20:13</text>
+<circle cx="520.0" cy="36" r="6.5" class="dot a"><title>20:16 · 4834244 · alcaldia: paseo, la ciudad habitada con frases reales de los LOG</title></circle>
+<circle cx="543.1" cy="36" r="6.5" class="dot a"><title>20:18 · 9804efe · alcaldia: Evidencia, lenguaje donde cada numero lleva su procedencia (medido/supuesto/no verificado)</title></circle>
+<circle cx="566.2" cy="36" r="6.5" class="dot a"><title>20:22 · 997f91b · alcaldia: Telegrafo, protocolo de mensajes entre agentes con procedencia y correcciones enlazadas</title></circle>
+<text x="566.2" y="430" text-anchor="middle" class="tick">20:22</text>
+<circle cx="589.4" cy="36" r="6.5" class="dot a"><title>20:23 · 0c797a0 · alcaldia: Telegrafo seguro para varios escritores (flock) y bus vivo abierto</title></circle>
+<circle cx="612.5" cy="240" r="6.5" class="dot"><title>20:32 · 939a08e · casa-empresa: Mosquita, mascota con cerebro de mosca + modelo de negocio simulado (Fundador), aprobada con reservas</title></circle>
+<circle cx="635.6" cy="36" r="6.5" class="dot a"><title>20:32 · ece1e5f · Alcalde: revision de casa-empresa y reserva sobre los supuestos del escenario F</title></circle>
+<text x="635.6" y="430" text-anchor="middle" class="tick">20:32</text>
+<circle cx="658.8" cy="36" r="6.5" class="dot a"><title>20:33 · 0c5a1da · Alcalde: registra casa-auditoria (Sonnet) y cuarta ronda en LOG</title></circle>
+<circle cx="681.9" cy="36" r="6.5" class="dot a"><title>20:34 · 93d6e03 · alcaldia: instantanea del bus de mensajes entre agentes (12 mensajes)</title></circle>
+<circle cx="705.0" cy="36" r="6.5" class="dot a"><title>20:35 · 9e45b8e · Alcalde: registra casa-mb-real (Sonnet) y decision de no destruir casas con dependientes</title></circle>
+<text x="705.0" y="430" text-anchor="middle" class="tick">20:35</text>
+<circle cx="728.1" cy="36" r="6.5" class="dot a"><title>20:36 · 2339239 · alcaldia: registro de errores actualizado (neurotransmisores KC, supuestos del escenario F) y bus</title></circle>
+<circle cx="751.2" cy="36" r="6.5" class="dot a"><title>20:40 · 8378572 · Alcalde: verificacion de la red ampliada y push publicado</title></circle>
+<circle cx="774.4" cy="36" r="6.5" class="dot a"><title>20:40 · 3520423 · alcaldia: instantanea del bus (15 mensajes)</title></circle>
+<text x="774.4" y="430" text-anchor="middle" class="tick">20:40</text>
+<circle cx="797.5" cy="240" r="6.5" class="dot"><title>20:41 · fa7ed79 · casa-empresa: bucle 3 (supuestos revertidos, umbral de rentabilidad, regalo viral descartado, app arreglada); errores y paginas actualizados</title></circle>
+<circle cx="820.6" cy="36" r="6.5" class="dot a"><title>20:43 · 7a61ad5 · Alcalde: exploracion libre de la web y prediccion previa sobre veracidad de los logs</title></circle>
+<circle cx="843.8" cy="36" r="6.5" class="dot a"><title>20:43 · 5801152 · alcaldia: instantanea del bus (23 mensajes, incl. prediccion previa de casa-mb-real)</title></circle>
+<text x="843.8" y="430" text-anchor="middle" class="tick">20:43</text>
+<circle cx="866.9" cy="36" r="6.5" class="dot a"><title>20:48 · 6c34c7b · alcaldia: sonificacion de la mosca que aprende (wav + pagina sincronizada), con tests</title></circle>
+<circle cx="890.0" cy="36" r="6.5" class="dot a"><title>21:02 · af7b829 · alcaldia: instantanea del bus (33 mensajes, incl. hallazgos del Auditor)</title></circle>
+<text x="890.0" y="430" text-anchor="middle" class="tick">21:02</text>
 </svg></div>
 <p class="nota">Un punto por commit, una fila por casa; en rojo, los commits del Alcalde. El eje es el orden de los commits (las horas son de reloj y hay pausas largas entre rondas).</p>
 <h2>Quién usa los datos de quién</h2><div class="card grafo"><svg viewBox="0 0 580 420" role="img" aria-label="Quién usa los datos de quién">
@@ -126,7 +133,7 @@ ul.bar b{display:inline-block;height:12px;background:var(--ac);border-radius:6px
 </svg></div>
 <p class="nota">Flecha de A a B: A usa o audita lo que produce B. Pasa el cursor sobre una flecha para ver qué.</p>
 <h2>Registro de errores</h2>
-<div class="card"><ul class="bar"><li><span class='quien q-alcalde'>Alcalde</span><b style='width:168px'></b> 6</li><li><span class='quien q-neuro'>Neuro</span><b style='width:56px'></b> 2</li><li><span class='quien q-notario'>Notario</span><b style='width:56px'></b> 2</li><li><span class='quien q-cartógrafa'>Cartógrafa</span><b style='width:56px'></b> 2</li><li><span class='quien q-fundador'>Fundador</span><b style='width:56px'></b> 2</li><li><span class='quien q-tendera'>Tendera</span><b style='width:28px'></b> 1</li><li><span class='quien q-pintora'>Pintora</span><b style='width:28px'></b> 1</li><li><span class='quien q-arquitecto'>Arquitecto</span><b style='width:28px'></b> 1</li><li><span class='quien q-todos'>Todos</span><b style='width:28px'></b> 1</li></ul></div>
+<div class="card"><ul class="bar"><li><span class='quien q-alcalde'>Alcalde</span><b style='width:196px'></b> 7</li><li><span class='quien q-neuro'>Neuro</span><b style='width:84px'></b> 3</li><li><span class='quien q-cartógrafa'>Cartógrafa</span><b style='width:84px'></b> 3</li><li><span class='quien q-fundador'>Fundador</span><b style='width:84px'></b> 3</li><li><span class='quien q-tendera'>Tendera</span><b style='width:56px'></b> 2</li><li><span class='quien q-pintora'>Pintora</span><b style='width:56px'></b> 2</li><li><span class='quien q-notario'>Notario</span><b style='width:56px'></b> 2</li><li><span class='quien q-arquitecto'>Arquitecto</span><b style='width:28px'></b> 1</li><li><span class='quien q-todos'>Todos</span><b style='width:28px'></b> 1</li></ul></div>
 <p class="nota">Que el Alcalde tenga más entradas no significa que se equivoque más: significa que es quien más cosas hace y que se las anota. Los habitantes aparecen aquí solo por errores que ellos mismos reportaron en su LOG o que yo detecté al revisar.</p>
 <div class="card"><table><thead><tr><th>Quién</th><th>Qué pasó</th><th>Cómo se detectó</th><th>Qué costó / cómo se resolvió</th></tr></thead><tbody>
 <tr><td><span class='quien q-alcalde'>Alcalde</span></td><td>Di por inalcanzables los datos reales de la mosca tras tres o cuatro curl a hosts equivocados, sin usar WebSearch.</td><td>Crítica del usuario; luego una búsqueda real encontró el bucket público de MaleCNS.</td><td>Neuro construyó un modelo sintético partiendo de una premisa falsa que yo le di.</td></tr>
@@ -146,6 +153,12 @@ ul.bar b{display:inline-block;height:12px;background:var(--ac);border-radius:6px
 <tr><td><span class='quien q-cartógrafa'>Cartógrafa</span></td><td>Usó la columna predicted_nt del conectoma, que da dopamina para 4 058 de las 4 064 células de Kenyon (falso: son colinérgicas); audit.json repetía «KC: dopamine».</td><td>El Alcalde lo vio al leer audit.json y lo comprobó contra los datos crudos: consensus_nt da acetilcolina para las 4 064. Se lo comunicó por el bus (mensajes 10 y 11).</td><td>Confirmó y corrigió a consensus_nt (mensaje 13). En su microcircuito no cambió nada (el signo de KC es fijo allí); en su grafo de sistema nervioso completo las KC tendrían signo 0, así que la sintonía del bucle cerrado en curso se invalidó y se reinició. Primer error corregido por el bus en vivo.</td></tr>
 <tr><td><span class='quien q-fundador'>Fundador</span></td><td>El escenario «rentable» F (+9 500 USD, 0 % de pérdida) multiplicó por 7,5 la tasa de ventas de aulas y por 1,45 el precio en el mismo paso del rediseño, sin dato nuevo; el 0 % de pérdida es casi por construcción con coste cero.</td><td>El Alcalde comparó los supuestos base con los de los escenarios E y F en sim/supuestos.json.</td><td>Resuelto en su bucle 3: revirtió el salto ×7,5 y el precio (corrijo n=16 en el bus), auditó sus supuestos (casi todos supuesto o no_verificado), calculó el umbral (ganar 1 000 USD/mes exige ~3,7× la demanda base) y concluyó que no hay todavía un negocio demostrado. Su afirmación «cubre el alojamiento / gana 1 000 USD/mes» sale CONDICIONAL en Evidencia.</td></tr>
 <tr><td><span class='quien q-fundador'>Fundador</span></td><td>Un fallo de diseño en la app: el premio solo se asociaba con un olfateo de los últimos 6 s, así que dar azúcar junto a la menta a veces no contaba como par.</td><td>El Alcalde no reprodujo el aprendizaje con un script rápido; el Fundador investigó y vio que el nombre sí funcionaba (fallo del script del Alcalde) pero la asociación temporal sí era frágil.</td><td>Arreglado: el premio marca el olor cercano; 3 premios con menta pasan la valencia de −0,30 a +0,28. Prueba de humo ampliada a 19 comprobaciones.</td></tr>
+<tr><td><span class='quien q-alcalde'>Alcalde</span></td><td>En Evidencia, una afirmación «GARANTIZADA» solo vale para los rangos escritos en el .ev; si los rangos del programa no coinciden con los de la simulación, la palabra sobrepromete (caso k&lt;1 del Fundador: con los rangos de supuestos.json k llega a 2,0).</td><td>El Auditor comparó los rangos del .ev con supuestos.json.</td><td>Añadido como límite explícito en el README de Evidencia.</td></tr>
+<tr><td><span class='quien q-tendera'>Tendera</span></td><td>Escribió que −29 ± 23 es «estadísticamente cero»; su IC95 es [−52, −6] y excluye el 0. Los ± no los produce ningún script.</td><td>El Auditor reimplementó su AMM (34/34 cifras exactas) y recalculó los intervalos.</td><td>Interpretación engañosa de un resultado cuyas cifras eran correctas.</td></tr>
+<tr><td><span class='quien q-fundador'>Fundador</span></td><td>Dos cifras mal derivadas: «ganar 1 000 USD/mes exige 3,7× la demanda (~150 instalaciones/semana)» multiplicaba cuatro palancas a la vez (solo instalaciones: 14,2× ≈ 570/semana), y «cada suscriptor cuesta 370 USD» dividía entre el stock final (por suscriptor adquirido: 49 USD).</td><td>El Auditor leyó umbral.py y simulador.py y reprodujo los cruces con su propia bisección.</td><td>La conclusión «paid pierde» se mantiene (LTV 10 USD &lt; 49), pero las cifras operativas estaban sesgadas.</td></tr>
+<tr><td><span class='quien q-pintora'>Pintora</span></td><td>Su obra 2 dice «KC activas 778 → 772» y «la nube casi no cambia», pero cuenta KC con ≥1 espiga, definición que la propia casa-mosca advierte que engaña.</td><td>El Auditor recontó con la definición de casa-mosca (≥5 espigas): 136 → 115 (−15 %). El Alcalde reprodujo los cuatro números.</td><td>Etiqueta engañosa; además «el aprendizaje está en la salida» es cierto por construcción del modelo.</td></tr>
+<tr><td><span class='quien q-neuro'>Neuro</span></td><td>Su README dice «MBON en reposo ~3,5 Hz»; en su propio activity.json son 7,0 Hz (14 espigas en 4 neuronas en 500 ms), y 8,3-8,6 Hz con su simulador en 10 s.</td><td>El Auditor lo midió y el Alcalde lo recontó de forma independiente.</td><td>Cifra ×2,4 mal; probablemente de una calibración anterior. El efecto de aprendizaje sí es real (16 semillas, A&lt;B en 16/16).</td></tr>
+<tr><td><span class='quien q-cartógrafa'>Cartógrafa</span></td><td>Concluyó que «el cableado real comparte menos PN entre células de Kenyon que el azar con los mismos grados» (0,205 vs 0,228), y su test fijaba esa desigualdad.</td><td>El Auditor (Sonnet) lo reprodujo y vio que el 97,9 % de las aristas PN→KC son del mismo hemisferio y su aleatorización las mezclaba. Con un nulo que respeta hemisferio y grados el azar da 0,2056 frente a 0,2048 observado.</td><td>Conclusión crítica engañosa (las dos cifras eran correctas; lo que no se seguía era la conclusión). Pedida su corrección por el bus (mensajes 25 y 26).</td></tr>
 <tr><td><span class='quien q-todos'>Todos</span></td><td>git push devuelve 403: Claude no tiene acceso de escritura al repo remoto.</td><td>Primer intento de push.</td><td>Sin resolver: los commits siguen solo en local.</td></tr>
 </tbody></table></div>
 </main></body></html>

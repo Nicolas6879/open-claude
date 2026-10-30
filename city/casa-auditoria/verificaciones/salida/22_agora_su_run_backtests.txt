@@ -1,0 +1,74 @@
+== 0. Referencia con datos reales (solo calibracion, no entra en el modelo)
+Vol. anual MSFT mensual 2000-2010 (dato real, 123 meses): 34.4%
+Capital de Tendera: 200,000 y (valor inicial). Comision base: 0.30%
+
+== 1. Sintonizacion de la guardia (semillas de entrenamiento)
+
+LP - HODL medio en entrenamiento (valor final, y)
+      estrategia |           salida |      reentrada x |              GBM |           saltos |            media
+       LP pasivo |                - |                - |             -228 |             -243 |             -236
+         guardia |              30% |              0.5 |                5 |               22 |               14
+         guardia |              30% |             0.75 |                5 |               22 |               14
+         guardia |              30% |              1.0 |                5 |               21 |               13
+         guardia |              40% |              0.5 |                2 |              -16 |               -7
+         guardia |              40% |             0.75 |                2 |              -16 |               -7
+         guardia |              40% |              1.0 |                3 |              -79 |              -38
+         guardia |              50% |              0.5 |              -17 |              -93 |              -55
+         guardia |              50% |             0.75 |              -17 |             -100 |              -58
+         guardia |              50% |              1.0 |              -29 |             -138 |              -84
+         guardia |              70% |              0.5 |             -144 |             -132 |             -138
+         guardia |              70% |             0.75 |             -146 |             -166 |             -156
+         guardia |              70% |              1.0 |             -210 |             -221 |             -216
+         guardia |              90% |              0.5 |             -185 |             -218 |             -202
+         guardia |              90% |             0.75 |             -204 |             -232 |             -218
+         guardia |              90% |              1.0 |             -224 |             -239 |             -231
+Parametros elegidos por entrenamiento: salida=30%, reentrada x0.5
+
+== 2. Evaluacion principal (500 trayectorias por escenario)
+
+Escenario 'gbm': GBM, volatilidad 60% anual
+      estrategia |      valor medio |          mediana |        MDD medio |         P(>HODL) |       comisiones |     perd.imperm. |    LP-HODL medio |      salidas/med
+       LP pasivo |          199,629 |          198,929 |            10.1% |            64.0% |              621 |             -802 |             -181 |             0.00
+ Tendera guardia |          199,781 |          198,372 |            10.1% |            52.4% |               21 |              -50 |              -29 |             1.00
+            HODL |          199,810 |          198,325 |            10.1% |                - |                - |                - |                0 |             0.00
+
+Escenario 'saltos': Difusion 40% + saltos (60/ano, sigma 5%), vol total ~56%
+      estrategia |      valor medio |          mediana |        MDD medio |         P(>HODL) |       comisiones |     perd.imperm. |    LP-HODL medio |      salidas/med
+       LP pasivo |          200,579 |          199,747 |             8.6% |            62.0% |              513 |             -674 |             -161 |             0.00
+ Tendera guardia |          200,733 |          199,326 |             8.6% |            54.6% |               26 |              -33 |               -7 |             1.00
+            HODL |          200,740 |          199,256 |             8.6% |                - |                - |                - |                0 |             0.00
+
+== 3. Sensibilidad (LP pasivo, GBM, 500 trayectorias): LP - HODL medio
+
+Filas: volatilidad anual. Columnas: comision 0.05%, 0.30%, 1.00%
+     volatilidad |        fee 0.05% |        fee 0.30% |        fee 1.00%
+         vol 20% |               -5 |              297 |              900
+         vol 40% |             -247 |              132 |              807
+         vol 60% |             -667 |             -181 |              618
+         vol 80% |           -1,266 |             -660 |              312
+        vol 100% |           -2,047 |           -1,313 |             -130
+
+== 4. Tendera frente a LP pasivo por volatilidad (GBM, comision 0.30%)
+
+LP - HODL medio
+     volatilidad |        LP pasivo |          Tendera |      salidas/med
+         vol 20% |              297 |              268 |             0.10
+         vol 40% |              132 |                6 |             1.00
+         vol 60% |             -181 |              -29 |             1.00
+         vol 80% |             -660 |              -60 |             1.00
+        vol 100% |           -1,313 |             -103 |             1.00
+
+== 5. Sensibilidad al volumen del trader de ruido (LP pasivo, comision 0.30%)
+
+Volumen de ruido x escala de referencia
+     volatilidad |            ruido |       comisiones |     perd.imperm. |    LP-HODL medio |         P(>HODL)
+         vol 40% |             x0.5 |              315 |             -355 |              -39 |            67.8%
+         vol 40% |             x1.0 |              488 |             -356 |              132 |            76.4%
+         vol 40% |             x2.0 |              876 |             -359 |              517 |            87.6%
+         vol 60% |             x0.5 |              458 |             -801 |             -343 |            55.4%
+         vol 60% |             x1.0 |              621 |             -802 |             -181 |            64.0%
+         vol 60% |             x2.0 |              993 |             -806 |              187 |            74.4%
+
+Escrito: /tmp/claude-0/-home-user-open-claude/e7f872ff-c04d-5af4-a3a1-8d2199c39026/scratchpad/auditor/ejecucion/city/casa-agora/out/results.json  (27 KB)
+Tiempo total: 42.6 s
+results.json IDENTICO
