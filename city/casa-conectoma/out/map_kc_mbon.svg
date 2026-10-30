@@ -1,0 +1,559 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="758" height="442" font-family="sans-serif" font-size="10">
+<rect width="758" height="442" fill="#ffffff"/>
+<text x="10" y="18" font-size="13" font-weight="bold">KC -> MBON por tipo (MaleCNS v1.0)</text>
+<text x="10" y="34" fill="#444">sinapsis sumadas por tipo, solo aristas con &gt;= 5 sinapsis (MaleCNS v1.0)</text>
+<text transform="translate(99.0,144) rotate(-70)" text-anchor="start">MBON01</text>
+<text transform="translate(117.0,144) rotate(-70)" text-anchor="start">MBON02</text>
+<text transform="translate(135.0,144) rotate(-70)" text-anchor="start">MBON03</text>
+<text transform="translate(153.0,144) rotate(-70)" text-anchor="start">MBON04</text>
+<text transform="translate(171.0,144) rotate(-70)" text-anchor="start">MBON05</text>
+<text transform="translate(189.0,144) rotate(-70)" text-anchor="start">MBON06</text>
+<text transform="translate(207.0,144) rotate(-70)" text-anchor="start">MBON07</text>
+<text transform="translate(225.0,144) rotate(-70)" text-anchor="start">MBON09</text>
+<text transform="translate(243.0,144) rotate(-70)" text-anchor="start">MBON10</text>
+<text transform="translate(261.0,144) rotate(-70)" text-anchor="start">MBON11</text>
+<text transform="translate(279.0,144) rotate(-70)" text-anchor="start">MBON12</text>
+<text transform="translate(297.0,144) rotate(-70)" text-anchor="start">MBON13</text>
+<text transform="translate(315.0,144) rotate(-70)" text-anchor="start">MBON14</text>
+<text transform="translate(333.0,144) rotate(-70)" text-anchor="start">MBON15</text>
+<text transform="translate(351.0,144) rotate(-70)" text-anchor="start">MBON15-like</text>
+<text transform="translate(369.0,144) rotate(-70)" text-anchor="start">MBON16</text>
+<text transform="translate(387.0,144) rotate(-70)" text-anchor="start">MBON17</text>
+<text transform="translate(405.0,144) rotate(-70)" text-anchor="start">MBON17-like</text>
+<text transform="translate(423.0,144) rotate(-70)" text-anchor="start">MBON18</text>
+<text transform="translate(441.0,144) rotate(-70)" text-anchor="start">MBON19</text>
+<text transform="translate(459.0,144) rotate(-70)" text-anchor="start">MBON20</text>
+<text transform="translate(477.0,144) rotate(-70)" text-anchor="start">MBON21</text>
+<text transform="translate(495.0,144) rotate(-70)" text-anchor="start">MBON22</text>
+<text transform="translate(513.0,144) rotate(-70)" text-anchor="start">MBON23</text>
+<text transform="translate(531.0,144) rotate(-70)" text-anchor="start">MBON24</text>
+<text transform="translate(549.0,144) rotate(-70)" text-anchor="start">MBON25</text>
+<text transform="translate(567.0,144) rotate(-70)" text-anchor="start">MBON25-like</text>
+<text transform="translate(585.0,144) rotate(-70)" text-anchor="start">MBON26</text>
+<text transform="translate(603.0,144) rotate(-70)" text-anchor="start">MBON27</text>
+<text transform="translate(621.0,144) rotate(-70)" text-anchor="start">MBON28</text>
+<text transform="translate(639.0,144) rotate(-70)" text-anchor="start">MBON29</text>
+<text transform="translate(657.0,144) rotate(-70)" text-anchor="start">MBON30</text>
+<text transform="translate(675.0,144) rotate(-70)" text-anchor="start">MBON31</text>
+<text transform="translate(693.0,144) rotate(-70)" text-anchor="start">MBON32</text>
+<text transform="translate(711.0,144) rotate(-70)" text-anchor="start">MBON33</text>
+<text transform="translate(729.0,144) rotate(-70)" text-anchor="start">MBON35</text>
+<text x="84" y="162.6" text-anchor="end">KCa'b'-ap1</text>
+<rect x="90" y="150" width="17" height="17" fill="#aab8d2"><title>KCa'b'-ap1 -> MBON01: 3839</title></rect>
+<rect x="108" y="150" width="17" height="17" fill="#ecedf0"><title>KCa'b'-ap1 -> MBON02: 40</title></rect>
+<rect x="126" y="150" width="17" height="17" fill="#a5b4d0"><title>KCa'b'-ap1 -> MBON03: 4447</title></rect>
+<rect x="144" y="150" width="17" height="17" fill="#c1cbdd"><title>KCa'b'-ap1 -> MBON04: 1813</title></rect>
+<rect x="162" y="150" width="17" height="17" fill="#e9ebef"><title>KCa'b'-ap1 -> MBON05: 79</title></rect>
+<rect x="180" y="150" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-ap1 -> MBON06: 0</title></rect>
+<rect x="198" y="150" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-ap1 -> MBON07: 0</title></rect>
+<rect x="216" y="150" width="17" height="17" fill="#9baccb"><title>KCa'b'-ap1 -> MBON09: 5592</title></rect>
+<rect x="234" y="150" width="17" height="17" fill="#dce0e9"><title>KCa'b'-ap1 -> MBON10: 398</title></rect>
+<rect x="252" y="150" width="17" height="17" fill="#eff0f1"><title>KCa'b'-ap1 -> MBON11: 17</title></rect>
+<rect x="270" y="150" width="17" height="17" fill="#aebbd4"><title>KCa'b'-ap1 -> MBON12: 3510</title></rect>
+<rect x="288" y="150" width="17" height="17" fill="#d1d8e4"><title>KCa'b'-ap1 -> MBON13: 831</title></rect>
+<rect x="306" y="150" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-ap1 -> MBON14: 0</title></rect>
+<rect x="324" y="150" width="17" height="17" fill="#edeef0"><title>KCa'b'-ap1 -> MBON15: 34</title></rect>
+<rect x="342" y="150" width="17" height="17" fill="#f1f1f2"><title>KCa'b'-ap1 -> MBON15-like: 6</title></rect>
+<rect x="360" y="150" width="17" height="17" fill="#cbd3e1"><title>KCa'b'-ap1 -> MBON16: 1183</title></rect>
+<rect x="378" y="150" width="17" height="17" fill="#ebedf0"><title>KCa'b'-ap1 -> MBON17: 47</title></rect>
+<rect x="396" y="150" width="17" height="17" fill="#f1f1f2"><title>KCa'b'-ap1 -> MBON17-like: 5</title></rect>
+<rect x="414" y="150" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-ap1 -> MBON18: 0</title></rect>
+<rect x="432" y="150" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-ap1 -> MBON19: 0</title></rect>
+<rect x="450" y="150" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-ap1 -> MBON20: 0</title></rect>
+<rect x="468" y="150" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-ap1 -> MBON21: 0</title></rect>
+<rect x="486" y="150" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-ap1 -> MBON22: 0</title></rect>
+<rect x="504" y="150" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-ap1 -> MBON23: 0</title></rect>
+<rect x="522" y="150" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-ap1 -> MBON24: 0</title></rect>
+<rect x="540" y="150" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-ap1 -> MBON25: 0</title></rect>
+<rect x="558" y="150" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-ap1 -> MBON25-like: 0</title></rect>
+<rect x="576" y="150" width="17" height="17" fill="#abb9d3"><title>KCa'b'-ap1 -> MBON26: 3754</title></rect>
+<rect x="594" y="150" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-ap1 -> MBON27: 0</title></rect>
+<rect x="612" y="150" width="17" height="17" fill="#c5cede"><title>KCa'b'-ap1 -> MBON28: 1523</title></rect>
+<rect x="630" y="150" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-ap1 -> MBON29: 0</title></rect>
+<rect x="648" y="150" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-ap1 -> MBON30: 0</title></rect>
+<rect x="666" y="150" width="17" height="17" fill="#9aabcb"><title>KCa'b'-ap1 -> MBON31: 5790</title></rect>
+<rect x="684" y="150" width="17" height="17" fill="#bec9db"><title>KCa'b'-ap1 -> MBON32: 2021</title></rect>
+<rect x="702" y="150" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-ap1 -> MBON33: 0</title></rect>
+<rect x="720" y="150" width="17" height="17" fill="#f1f1f2"><title>KCa'b'-ap1 -> MBON35: 5</title></rect>
+<text x="84" y="180.6" text-anchor="end">KCa'b'-ap2</text>
+<rect x="90" y="168" width="17" height="17" fill="#bec9db"><title>KCa'b'-ap2 -> MBON01: 2021</title></rect>
+<rect x="108" y="168" width="17" height="17" fill="#e6e9ee"><title>KCa'b'-ap2 -> MBON02: 123</title></rect>
+<rect x="126" y="168" width="17" height="17" fill="#768eba"><title>KCa'b'-ap2 -> MBON03: 11336</title></rect>
+<rect x="144" y="168" width="17" height="17" fill="#c5cede"><title>KCa'b'-ap2 -> MBON04: 1522</title></rect>
+<rect x="162" y="168" width="17" height="17" fill="#f1f1f2"><title>KCa'b'-ap2 -> MBON05: 5</title></rect>
+<rect x="180" y="168" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-ap2 -> MBON06: 0</title></rect>
+<rect x="198" y="168" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-ap2 -> MBON07: 0</title></rect>
+<rect x="216" y="168" width="17" height="17" fill="#8ea1c5"><title>KCa'b'-ap2 -> MBON09: 7429</title></rect>
+<rect x="234" y="168" width="17" height="17" fill="#e5e8ed"><title>KCa'b'-ap2 -> MBON10: 150</title></rect>
+<rect x="252" y="168" width="17" height="17" fill="#eff0f1"><title>KCa'b'-ap2 -> MBON11: 15</title></rect>
+<rect x="270" y="168" width="17" height="17" fill="#a4b3cf"><title>KCa'b'-ap2 -> MBON12: 4578</title></rect>
+<rect x="288" y="168" width="17" height="17" fill="#9eaecc"><title>KCa'b'-ap2 -> MBON13: 5267</title></rect>
+<rect x="306" y="168" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-ap2 -> MBON14: 0</title></rect>
+<rect x="324" y="168" width="17" height="17" fill="#e9ebef"><title>KCa'b'-ap2 -> MBON15: 81</title></rect>
+<rect x="342" y="168" width="17" height="17" fill="#d5dae5"><title>KCa'b'-ap2 -> MBON15-like: 689</title></rect>
+<rect x="360" y="168" width="17" height="17" fill="#c2ccdd"><title>KCa'b'-ap2 -> MBON16: 1738</title></rect>
+<rect x="378" y="168" width="17" height="17" fill="#c7cfdf"><title>KCa'b'-ap2 -> MBON17: 1449</title></rect>
+<rect x="396" y="168" width="17" height="17" fill="#d6dbe6"><title>KCa'b'-ap2 -> MBON17-like: 639</title></rect>
+<rect x="414" y="168" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-ap2 -> MBON18: 0</title></rect>
+<rect x="432" y="168" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-ap2 -> MBON19: 0</title></rect>
+<rect x="450" y="168" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-ap2 -> MBON20: 0</title></rect>
+<rect x="468" y="168" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-ap2 -> MBON21: 0</title></rect>
+<rect x="486" y="168" width="17" height="17" fill="#eaecef"><title>KCa'b'-ap2 -> MBON22: 60</title></rect>
+<rect x="504" y="168" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-ap2 -> MBON23: 0</title></rect>
+<rect x="522" y="168" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-ap2 -> MBON24: 0</title></rect>
+<rect x="540" y="168" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-ap2 -> MBON25: 0</title></rect>
+<rect x="558" y="168" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-ap2 -> MBON25-like: 0</title></rect>
+<rect x="576" y="168" width="17" height="17" fill="#eaecef"><title>KCa'b'-ap2 -> MBON26: 60</title></rect>
+<rect x="594" y="168" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-ap2 -> MBON27: 0</title></rect>
+<rect x="612" y="168" width="17" height="17" fill="#e0e3ea"><title>KCa'b'-ap2 -> MBON28: 286</title></rect>
+<rect x="630" y="168" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-ap2 -> MBON29: 0</title></rect>
+<rect x="648" y="168" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-ap2 -> MBON30: 0</title></rect>
+<rect x="666" y="168" width="17" height="17" fill="#b2bfd6"><title>KCa'b'-ap2 -> MBON31: 3081</title></rect>
+<rect x="684" y="168" width="17" height="17" fill="#e7e9ee"><title>KCa'b'-ap2 -> MBON32: 112</title></rect>
+<rect x="702" y="168" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-ap2 -> MBON33: 0</title></rect>
+<rect x="720" y="168" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-ap2 -> MBON35: 0</title></rect>
+<text x="84" y="198.6" text-anchor="end">KCa'b'-m</text>
+<rect x="90" y="186" width="17" height="17" fill="#ebedf0"><title>KCa'b'-m -> MBON01: 50</title></rect>
+<rect x="108" y="186" width="17" height="17" fill="#e7e9ee"><title>KCa'b'-m -> MBON02: 114</title></rect>
+<rect x="126" y="186" width="17" height="17" fill="#8ea2c5"><title>KCa'b'-m -> MBON03: 7400</title></rect>
+<rect x="144" y="186" width="17" height="17" fill="#d7dce6"><title>KCa'b'-m -> MBON04: 590</title></rect>
+<rect x="162" y="186" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-m -> MBON05: 0</title></rect>
+<rect x="180" y="186" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-m -> MBON06: 0</title></rect>
+<rect x="198" y="186" width="17" height="17" fill="#f1f1f2"><title>KCa'b'-m -> MBON07: 5</title></rect>
+<rect x="216" y="186" width="17" height="17" fill="#98aaca"><title>KCa'b'-m -> MBON09: 6026</title></rect>
+<rect x="234" y="186" width="17" height="17" fill="#eeeff1"><title>KCa'b'-m -> MBON10: 18</title></rect>
+<rect x="252" y="186" width="17" height="17" fill="#f1f1f2"><title>KCa'b'-m -> MBON11: 6</title></rect>
+<rect x="270" y="186" width="17" height="17" fill="#c2cbdd"><title>KCa'b'-m -> MBON12: 1777</title></rect>
+<rect x="288" y="186" width="17" height="17" fill="#aab8d2"><title>KCa'b'-m -> MBON13: 3874</title></rect>
+<rect x="306" y="186" width="17" height="17" fill="#f0f0f2"><title>KCa'b'-m -> MBON14: 10</title></rect>
+<rect x="324" y="186" width="17" height="17" fill="#eceef0"><title>KCa'b'-m -> MBON15: 39</title></rect>
+<rect x="342" y="186" width="17" height="17" fill="#cfd6e3"><title>KCa'b'-m -> MBON15-like: 981</title></rect>
+<rect x="360" y="186" width="17" height="17" fill="#e9ebef"><title>KCa'b'-m -> MBON16: 79</title></rect>
+<rect x="378" y="186" width="17" height="17" fill="#cfd6e3"><title>KCa'b'-m -> MBON17: 947</title></rect>
+<rect x="396" y="186" width="17" height="17" fill="#d9dee8"><title>KCa'b'-m -> MBON17-like: 490</title></rect>
+<rect x="414" y="186" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-m -> MBON18: 0</title></rect>
+<rect x="432" y="186" width="17" height="17" fill="#e4e7ed"><title>KCa'b'-m -> MBON19: 165</title></rect>
+<rect x="450" y="186" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-m -> MBON20: 0</title></rect>
+<rect x="468" y="186" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-m -> MBON21: 0</title></rect>
+<rect x="486" y="186" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-m -> MBON22: 0</title></rect>
+<rect x="504" y="186" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-m -> MBON23: 0</title></rect>
+<rect x="522" y="186" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-m -> MBON24: 0</title></rect>
+<rect x="540" y="186" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-m -> MBON25: 0</title></rect>
+<rect x="558" y="186" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-m -> MBON25-like: 0</title></rect>
+<rect x="576" y="186" width="17" height="17" fill="#eeeff1"><title>KCa'b'-m -> MBON26: 19</title></rect>
+<rect x="594" y="186" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-m -> MBON27: 0</title></rect>
+<rect x="612" y="186" width="17" height="17" fill="#f0f1f2"><title>KCa'b'-m -> MBON28: 8</title></rect>
+<rect x="630" y="186" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-m -> MBON29: 0</title></rect>
+<rect x="648" y="186" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-m -> MBON30: 0</title></rect>
+<rect x="666" y="186" width="17" height="17" fill="#c8d0e0"><title>KCa'b'-m -> MBON31: 1353</title></rect>
+<rect x="684" y="186" width="17" height="17" fill="#f0f1f2"><title>KCa'b'-m -> MBON32: 9</title></rect>
+<rect x="702" y="186" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-m -> MBON33: 0</title></rect>
+<rect x="720" y="186" width="17" height="17" fill="#f4f4f4"><title>KCa'b'-m -> MBON35: 0</title></rect>
+<text x="84" y="216.6" text-anchor="end">KCab-c</text>
+<rect x="90" y="204" width="17" height="17" fill="#f4f4f4"><title>KCab-c -> MBON01: 0</title></rect>
+<rect x="108" y="204" width="17" height="17" fill="#c1cbdd"><title>KCab-c -> MBON02: 1815</title></rect>
+<rect x="126" y="204" width="17" height="17" fill="#f4f4f4"><title>KCab-c -> MBON03: 0</title></rect>
+<rect x="144" y="204" width="17" height="17" fill="#f4f4f4"><title>KCab-c -> MBON04: 0</title></rect>
+<rect x="162" y="204" width="17" height="17" fill="#f4f4f4"><title>KCab-c -> MBON05: 0</title></rect>
+<rect x="180" y="204" width="17" height="17" fill="#aab8d2"><title>KCab-c -> MBON06: 3895</title></rect>
+<rect x="198" y="204" width="17" height="17" fill="#b3c0d6"><title>KCab-c -> MBON07: 2945</title></rect>
+<rect x="216" y="204" width="17" height="17" fill="#f4f4f4"><title>KCab-c -> MBON09: 0</title></rect>
+<rect x="234" y="204" width="17" height="17" fill="#f4f4f4"><title>KCab-c -> MBON10: 0</title></rect>
+<rect x="252" y="204" width="17" height="17" fill="#bfc9dc"><title>KCab-c -> MBON11: 1951</title></rect>
+<rect x="270" y="204" width="17" height="17" fill="#f4f4f4"><title>KCab-c -> MBON12: 0</title></rect>
+<rect x="288" y="204" width="17" height="17" fill="#f4f4f4"><title>KCab-c -> MBON13: 0</title></rect>
+<rect x="306" y="204" width="17" height="17" fill="#b6c2d7"><title>KCab-c -> MBON14: 2711</title></rect>
+<rect x="324" y="204" width="17" height="17" fill="#f4f4f4"><title>KCab-c -> MBON15: 0</title></rect>
+<rect x="342" y="204" width="17" height="17" fill="#f4f4f4"><title>KCab-c -> MBON15-like: 0</title></rect>
+<rect x="360" y="204" width="17" height="17" fill="#f4f4f4"><title>KCab-c -> MBON16: 0</title></rect>
+<rect x="378" y="204" width="17" height="17" fill="#f4f4f4"><title>KCab-c -> MBON17: 0</title></rect>
+<rect x="396" y="204" width="17" height="17" fill="#f4f4f4"><title>KCab-c -> MBON17-like: 0</title></rect>
+<rect x="414" y="204" width="17" height="17" fill="#b8c3d8"><title>KCab-c -> MBON18: 2580</title></rect>
+<rect x="432" y="204" width="17" height="17" fill="#f4f4f4"><title>KCab-c -> MBON19: 0</title></rect>
+<rect x="450" y="204" width="17" height="17" fill="#f4f4f4"><title>KCab-c -> MBON20: 0</title></rect>
+<rect x="468" y="204" width="17" height="17" fill="#f4f4f4"><title>KCab-c -> MBON21: 0</title></rect>
+<rect x="486" y="204" width="17" height="17" fill="#ced5e2"><title>KCab-c -> MBON22: 1007</title></rect>
+<rect x="504" y="204" width="17" height="17" fill="#f0f0f2"><title>KCab-c -> MBON23: 11</title></rect>
+<rect x="522" y="204" width="17" height="17" fill="#eff0f1"><title>KCab-c -> MBON24: 16</title></rect>
+<rect x="540" y="204" width="17" height="17" fill="#f4f4f4"><title>KCab-c -> MBON25: 0</title></rect>
+<rect x="558" y="204" width="17" height="17" fill="#f4f4f4"><title>KCab-c -> MBON25-like: 0</title></rect>
+<rect x="576" y="204" width="17" height="17" fill="#f4f4f4"><title>KCab-c -> MBON26: 0</title></rect>
+<rect x="594" y="204" width="17" height="17" fill="#f4f4f4"><title>KCab-c -> MBON27: 0</title></rect>
+<rect x="612" y="204" width="17" height="17" fill="#f4f4f4"><title>KCab-c -> MBON28: 0</title></rect>
+<rect x="630" y="204" width="17" height="17" fill="#f4f4f4"><title>KCab-c -> MBON29: 0</title></rect>
+<rect x="648" y="204" width="17" height="17" fill="#f4f4f4"><title>KCab-c -> MBON30: 0</title></rect>
+<rect x="666" y="204" width="17" height="17" fill="#f4f4f4"><title>KCab-c -> MBON31: 0</title></rect>
+<rect x="684" y="204" width="17" height="17" fill="#f4f4f4"><title>KCab-c -> MBON32: 0</title></rect>
+<rect x="702" y="204" width="17" height="17" fill="#f4f4f4"><title>KCab-c -> MBON33: 0</title></rect>
+<rect x="720" y="204" width="17" height="17" fill="#f4f4f4"><title>KCab-c -> MBON35: 0</title></rect>
+<text x="84" y="234.6" text-anchor="end">KCab-m</text>
+<rect x="90" y="222" width="17" height="17" fill="#f4f4f4"><title>KCab-m -> MBON01: 0</title></rect>
+<rect x="108" y="222" width="17" height="17" fill="#b0bdd5"><title>KCab-m -> MBON02: 3253</title></rect>
+<rect x="126" y="222" width="17" height="17" fill="#f4f4f4"><title>KCab-m -> MBON03: 0</title></rect>
+<rect x="144" y="222" width="17" height="17" fill="#f4f4f4"><title>KCab-m -> MBON04: 0</title></rect>
+<rect x="162" y="222" width="17" height="17" fill="#f4f4f4"><title>KCab-m -> MBON05: 0</title></rect>
+<rect x="180" y="222" width="17" height="17" fill="#97a9c9"><title>KCab-m -> MBON06: 6120</title></rect>
+<rect x="198" y="222" width="17" height="17" fill="#9eafcd"><title>KCab-m -> MBON07: 5200</title></rect>
+<rect x="216" y="222" width="17" height="17" fill="#f4f4f4"><title>KCab-m -> MBON09: 0</title></rect>
+<rect x="234" y="222" width="17" height="17" fill="#f4f4f4"><title>KCab-m -> MBON10: 0</title></rect>
+<rect x="252" y="222" width="17" height="17" fill="#adbbd4"><title>KCab-m -> MBON11: 3532</title></rect>
+<rect x="270" y="222" width="17" height="17" fill="#f4f4f4"><title>KCab-m -> MBON12: 0</title></rect>
+<rect x="288" y="222" width="17" height="17" fill="#f4f4f4"><title>KCab-m -> MBON13: 0</title></rect>
+<rect x="306" y="222" width="17" height="17" fill="#9dadcc"><title>KCab-m -> MBON14: 5420</title></rect>
+<rect x="324" y="222" width="17" height="17" fill="#f4f4f4"><title>KCab-m -> MBON15: 0</title></rect>
+<rect x="342" y="222" width="17" height="17" fill="#f4f4f4"><title>KCab-m -> MBON15-like: 0</title></rect>
+<rect x="360" y="222" width="17" height="17" fill="#f4f4f4"><title>KCab-m -> MBON16: 0</title></rect>
+<rect x="378" y="222" width="17" height="17" fill="#f4f4f4"><title>KCab-m -> MBON17: 0</title></rect>
+<rect x="396" y="222" width="17" height="17" fill="#f4f4f4"><title>KCab-m -> MBON17-like: 0</title></rect>
+<rect x="414" y="222" width="17" height="17" fill="#a7b6d1"><title>KCab-m -> MBON18: 4198</title></rect>
+<rect x="432" y="222" width="17" height="17" fill="#f4f4f4"><title>KCab-m -> MBON19: 0</title></rect>
+<rect x="450" y="222" width="17" height="17" fill="#f4f4f4"><title>KCab-m -> MBON20: 0</title></rect>
+<rect x="468" y="222" width="17" height="17" fill="#f4f4f4"><title>KCab-m -> MBON21: 0</title></rect>
+<rect x="486" y="222" width="17" height="17" fill="#bfc9db"><title>KCab-m -> MBON22: 1993</title></rect>
+<rect x="504" y="222" width="17" height="17" fill="#ebecf0"><title>KCab-m -> MBON23: 55</title></rect>
+<rect x="522" y="222" width="17" height="17" fill="#e3e6ec"><title>KCab-m -> MBON24: 201</title></rect>
+<rect x="540" y="222" width="17" height="17" fill="#f4f4f4"><title>KCab-m -> MBON25: 0</title></rect>
+<rect x="558" y="222" width="17" height="17" fill="#f4f4f4"><title>KCab-m -> MBON25-like: 0</title></rect>
+<rect x="576" y="222" width="17" height="17" fill="#f4f4f4"><title>KCab-m -> MBON26: 0</title></rect>
+<rect x="594" y="222" width="17" height="17" fill="#f4f4f4"><title>KCab-m -> MBON27: 0</title></rect>
+<rect x="612" y="222" width="17" height="17" fill="#f4f4f4"><title>KCab-m -> MBON28: 0</title></rect>
+<rect x="630" y="222" width="17" height="17" fill="#f4f4f4"><title>KCab-m -> MBON29: 0</title></rect>
+<rect x="648" y="222" width="17" height="17" fill="#f4f4f4"><title>KCab-m -> MBON30: 0</title></rect>
+<rect x="666" y="222" width="17" height="17" fill="#f4f4f4"><title>KCab-m -> MBON31: 0</title></rect>
+<rect x="684" y="222" width="17" height="17" fill="#f4f4f4"><title>KCab-m -> MBON32: 0</title></rect>
+<rect x="702" y="222" width="17" height="17" fill="#f4f4f4"><title>KCab-m -> MBON33: 0</title></rect>
+<rect x="720" y="222" width="17" height="17" fill="#f4f4f4"><title>KCab-m -> MBON35: 0</title></rect>
+<text x="84" y="252.6" text-anchor="end">KCab-p</text>
+<rect x="90" y="240" width="17" height="17" fill="#f4f4f4"><title>KCab-p -> MBON01: 0</title></rect>
+<rect x="108" y="240" width="17" height="17" fill="#d4dae5"><title>KCab-p -> MBON02: 735</title></rect>
+<rect x="126" y="240" width="17" height="17" fill="#f4f4f4"><title>KCab-p -> MBON03: 0</title></rect>
+<rect x="144" y="240" width="17" height="17" fill="#f4f4f4"><title>KCab-p -> MBON04: 0</title></rect>
+<rect x="162" y="240" width="17" height="17" fill="#f4f4f4"><title>KCab-p -> MBON05: 0</title></rect>
+<rect x="180" y="240" width="17" height="17" fill="#b0bdd5"><title>KCab-p -> MBON06: 3262</title></rect>
+<rect x="198" y="240" width="17" height="17" fill="#bbc6da"><title>KCab-p -> MBON07: 2283</title></rect>
+<rect x="216" y="240" width="17" height="17" fill="#f4f4f4"><title>KCab-p -> MBON09: 0</title></rect>
+<rect x="234" y="240" width="17" height="17" fill="#f4f4f4"><title>KCab-p -> MBON10: 0</title></rect>
+<rect x="252" y="240" width="17" height="17" fill="#dde1e9"><title>KCab-p -> MBON11: 379</title></rect>
+<rect x="270" y="240" width="17" height="17" fill="#f4f4f4"><title>KCab-p -> MBON12: 0</title></rect>
+<rect x="288" y="240" width="17" height="17" fill="#f4f4f4"><title>KCab-p -> MBON13: 0</title></rect>
+<rect x="306" y="240" width="17" height="17" fill="#e8eaee"><title>KCab-p -> MBON14: 94</title></rect>
+<rect x="324" y="240" width="17" height="17" fill="#f4f4f4"><title>KCab-p -> MBON15: 0</title></rect>
+<rect x="342" y="240" width="17" height="17" fill="#f4f4f4"><title>KCab-p -> MBON15-like: 0</title></rect>
+<rect x="360" y="240" width="17" height="17" fill="#f4f4f4"><title>KCab-p -> MBON16: 0</title></rect>
+<rect x="378" y="240" width="17" height="17" fill="#f4f4f4"><title>KCab-p -> MBON17: 0</title></rect>
+<rect x="396" y="240" width="17" height="17" fill="#f4f4f4"><title>KCab-p -> MBON17-like: 0</title></rect>
+<rect x="414" y="240" width="17" height="17" fill="#f0f0f2"><title>KCab-p -> MBON18: 10</title></rect>
+<rect x="432" y="240" width="17" height="17" fill="#d7dde7"><title>KCab-p -> MBON19: 564</title></rect>
+<rect x="450" y="240" width="17" height="17" fill="#f4f4f4"><title>KCab-p -> MBON20: 0</title></rect>
+<rect x="468" y="240" width="17" height="17" fill="#f4f4f4"><title>KCab-p -> MBON21: 0</title></rect>
+<rect x="486" y="240" width="17" height="17" fill="#f4f4f4"><title>KCab-p -> MBON22: 0</title></rect>
+<rect x="504" y="240" width="17" height="17" fill="#e5e8ed"><title>KCab-p -> MBON23: 151</title></rect>
+<rect x="522" y="240" width="17" height="17" fill="#eeeff1"><title>KCab-p -> MBON24: 20</title></rect>
+<rect x="540" y="240" width="17" height="17" fill="#f4f4f4"><title>KCab-p -> MBON25: 0</title></rect>
+<rect x="558" y="240" width="17" height="17" fill="#f4f4f4"><title>KCab-p -> MBON25-like: 0</title></rect>
+<rect x="576" y="240" width="17" height="17" fill="#f4f4f4"><title>KCab-p -> MBON26: 0</title></rect>
+<rect x="594" y="240" width="17" height="17" fill="#f4f4f4"><title>KCab-p -> MBON27: 0</title></rect>
+<rect x="612" y="240" width="17" height="17" fill="#f4f4f4"><title>KCab-p -> MBON28: 0</title></rect>
+<rect x="630" y="240" width="17" height="17" fill="#f4f4f4"><title>KCab-p -> MBON29: 0</title></rect>
+<rect x="648" y="240" width="17" height="17" fill="#f4f4f4"><title>KCab-p -> MBON30: 0</title></rect>
+<rect x="666" y="240" width="17" height="17" fill="#f4f4f4"><title>KCab-p -> MBON31: 0</title></rect>
+<rect x="684" y="240" width="17" height="17" fill="#f4f4f4"><title>KCab-p -> MBON32: 0</title></rect>
+<rect x="702" y="240" width="17" height="17" fill="#f4f4f4"><title>KCab-p -> MBON33: 0</title></rect>
+<rect x="720" y="240" width="17" height="17" fill="#f4f4f4"><title>KCab-p -> MBON35: 0</title></rect>
+<text x="84" y="270.6" text-anchor="end">KCab-s</text>
+<rect x="90" y="258" width="17" height="17" fill="#f4f4f4"><title>KCab-s -> MBON01: 0</title></rect>
+<rect x="108" y="258" width="17" height="17" fill="#97a9c9"><title>KCab-s -> MBON02: 6175</title></rect>
+<rect x="126" y="258" width="17" height="17" fill="#f4f4f4"><title>KCab-s -> MBON03: 0</title></rect>
+<rect x="144" y="258" width="17" height="17" fill="#f4f4f4"><title>KCab-s -> MBON04: 0</title></rect>
+<rect x="162" y="258" width="17" height="17" fill="#f4f4f4"><title>KCab-s -> MBON05: 0</title></rect>
+<rect x="180" y="258" width="17" height="17" fill="#748db9"><title>KCab-s -> MBON06: 11652</title></rect>
+<rect x="198" y="258" width="17" height="17" fill="#8399c0"><title>KCab-s -> MBON07: 9051</title></rect>
+<rect x="216" y="258" width="17" height="17" fill="#f4f4f4"><title>KCab-s -> MBON09: 0</title></rect>
+<rect x="234" y="258" width="17" height="17" fill="#f4f4f4"><title>KCab-s -> MBON10: 0</title></rect>
+<rect x="252" y="258" width="17" height="17" fill="#9fafcd"><title>KCab-s -> MBON11: 5183</title></rect>
+<rect x="270" y="258" width="17" height="17" fill="#f4f4f4"><title>KCab-s -> MBON12: 0</title></rect>
+<rect x="288" y="258" width="17" height="17" fill="#f4f4f4"><title>KCab-s -> MBON13: 0</title></rect>
+<rect x="306" y="258" width="17" height="17" fill="#7990bb"><title>KCab-s -> MBON14: 10844</title></rect>
+<rect x="324" y="258" width="17" height="17" fill="#f4f4f4"><title>KCab-s -> MBON15: 0</title></rect>
+<rect x="342" y="258" width="17" height="17" fill="#f4f4f4"><title>KCab-s -> MBON15-like: 0</title></rect>
+<rect x="360" y="258" width="17" height="17" fill="#f4f4f4"><title>KCab-s -> MBON16: 0</title></rect>
+<rect x="378" y="258" width="17" height="17" fill="#f4f4f4"><title>KCab-s -> MBON17: 0</title></rect>
+<rect x="396" y="258" width="17" height="17" fill="#f4f4f4"><title>KCab-s -> MBON17-like: 0</title></rect>
+<rect x="414" y="258" width="17" height="17" fill="#96a8c9"><title>KCab-s -> MBON18: 6252</title></rect>
+<rect x="432" y="258" width="17" height="17" fill="#eaecef"><title>KCab-s -> MBON19: 61</title></rect>
+<rect x="450" y="258" width="17" height="17" fill="#f4f4f4"><title>KCab-s -> MBON20: 0</title></rect>
+<rect x="468" y="258" width="17" height="17" fill="#f4f4f4"><title>KCab-s -> MBON21: 0</title></rect>
+<rect x="486" y="258" width="17" height="17" fill="#bfcadc"><title>KCab-s -> MBON22: 1941</title></rect>
+<rect x="504" y="258" width="17" height="17" fill="#d8dde7"><title>KCab-s -> MBON23: 547</title></rect>
+<rect x="522" y="258" width="17" height="17" fill="#d9dfe8"><title>KCab-s -> MBON24: 486</title></rect>
+<rect x="540" y="258" width="17" height="17" fill="#f4f4f4"><title>KCab-s -> MBON25: 0</title></rect>
+<rect x="558" y="258" width="17" height="17" fill="#f4f4f4"><title>KCab-s -> MBON25-like: 0</title></rect>
+<rect x="576" y="258" width="17" height="17" fill="#f4f4f4"><title>KCab-s -> MBON26: 0</title></rect>
+<rect x="594" y="258" width="17" height="17" fill="#f4f4f4"><title>KCab-s -> MBON27: 0</title></rect>
+<rect x="612" y="258" width="17" height="17" fill="#f4f4f4"><title>KCab-s -> MBON28: 0</title></rect>
+<rect x="630" y="258" width="17" height="17" fill="#f4f4f4"><title>KCab-s -> MBON29: 0</title></rect>
+<rect x="648" y="258" width="17" height="17" fill="#f4f4f4"><title>KCab-s -> MBON30: 0</title></rect>
+<rect x="666" y="258" width="17" height="17" fill="#f4f4f4"><title>KCab-s -> MBON31: 0</title></rect>
+<rect x="684" y="258" width="17" height="17" fill="#f4f4f4"><title>KCab-s -> MBON32: 0</title></rect>
+<rect x="702" y="258" width="17" height="17" fill="#f4f4f4"><title>KCab-s -> MBON33: 0</title></rect>
+<rect x="720" y="258" width="17" height="17" fill="#f4f4f4"><title>KCab-s -> MBON35: 0</title></rect>
+<text x="84" y="288.6" text-anchor="end">KCg</text>
+<rect x="90" y="276" width="17" height="17" fill="#eceef0"><title>KCg -> MBON01: 36</title></rect>
+<rect x="108" y="276" width="17" height="17" fill="#f4f4f4"><title>KCg -> MBON02: 0</title></rect>
+<rect x="126" y="276" width="17" height="17" fill="#f4f4f4"><title>KCg -> MBON03: 0</title></rect>
+<rect x="144" y="276" width="17" height="17" fill="#f0f0f2"><title>KCg -> MBON04: 11</title></rect>
+<rect x="162" y="276" width="17" height="17" fill="#edeef0"><title>KCg -> MBON05: 33</title></rect>
+<rect x="180" y="276" width="17" height="17" fill="#f4f4f4"><title>KCg -> MBON06: 0</title></rect>
+<rect x="198" y="276" width="17" height="17" fill="#f4f4f4"><title>KCg -> MBON07: 0</title></rect>
+<rect x="216" y="276" width="17" height="17" fill="#ebedf0"><title>KCg -> MBON09: 47</title></rect>
+<rect x="234" y="276" width="17" height="17" fill="#f4f4f4"><title>KCg -> MBON10: 0</title></rect>
+<rect x="252" y="276" width="17" height="17" fill="#eeeff1"><title>KCg -> MBON11: 24</title></rect>
+<rect x="270" y="276" width="17" height="17" fill="#f1f1f2"><title>KCg -> MBON12: 5</title></rect>
+<rect x="288" y="276" width="17" height="17" fill="#f4f4f4"><title>KCg -> MBON13: 0</title></rect>
+<rect x="306" y="276" width="17" height="17" fill="#f4f4f4"><title>KCg -> MBON14: 0</title></rect>
+<rect x="324" y="276" width="17" height="17" fill="#f4f4f4"><title>KCg -> MBON15: 0</title></rect>
+<rect x="342" y="276" width="17" height="17" fill="#f4f4f4"><title>KCg -> MBON15-like: 0</title></rect>
+<rect x="360" y="276" width="17" height="17" fill="#f4f4f4"><title>KCg -> MBON16: 0</title></rect>
+<rect x="378" y="276" width="17" height="17" fill="#f4f4f4"><title>KCg -> MBON17: 0</title></rect>
+<rect x="396" y="276" width="17" height="17" fill="#f4f4f4"><title>KCg -> MBON17-like: 0</title></rect>
+<rect x="414" y="276" width="17" height="17" fill="#f4f4f4"><title>KCg -> MBON18: 0</title></rect>
+<rect x="432" y="276" width="17" height="17" fill="#f4f4f4"><title>KCg -> MBON19: 0</title></rect>
+<rect x="450" y="276" width="17" height="17" fill="#f0f1f2"><title>KCg -> MBON20: 7</title></rect>
+<rect x="468" y="276" width="17" height="17" fill="#f1f1f2"><title>KCg -> MBON21: 5</title></rect>
+<rect x="486" y="276" width="17" height="17" fill="#f4f4f4"><title>KCg -> MBON22: 0</title></rect>
+<rect x="504" y="276" width="17" height="17" fill="#f4f4f4"><title>KCg -> MBON23: 0</title></rect>
+<rect x="522" y="276" width="17" height="17" fill="#f4f4f4"><title>KCg -> MBON24: 0</title></rect>
+<rect x="540" y="276" width="17" height="17" fill="#f4f4f4"><title>KCg -> MBON25: 0</title></rect>
+<rect x="558" y="276" width="17" height="17" fill="#f4f4f4"><title>KCg -> MBON25-like: 0</title></rect>
+<rect x="576" y="276" width="17" height="17" fill="#f4f4f4"><title>KCg -> MBON26: 0</title></rect>
+<rect x="594" y="276" width="17" height="17" fill="#edeef1"><title>KCg -> MBON27: 28</title></rect>
+<rect x="612" y="276" width="17" height="17" fill="#f4f4f4"><title>KCg -> MBON28: 0</title></rect>
+<rect x="630" y="276" width="17" height="17" fill="#f4f4f4"><title>KCg -> MBON29: 0</title></rect>
+<rect x="648" y="276" width="17" height="17" fill="#f4f4f4"><title>KCg -> MBON30: 0</title></rect>
+<rect x="666" y="276" width="17" height="17" fill="#f4f4f4"><title>KCg -> MBON31: 0</title></rect>
+<rect x="684" y="276" width="17" height="17" fill="#edeef1"><title>KCg -> MBON32: 28</title></rect>
+<rect x="702" y="276" width="17" height="17" fill="#eff0f2"><title>KCg -> MBON33: 12</title></rect>
+<rect x="720" y="276" width="17" height="17" fill="#f0f0f2"><title>KCg -> MBON35: 10</title></rect>
+<text x="84" y="306.6" text-anchor="end">KCg-d</text>
+<rect x="90" y="294" width="17" height="17" fill="#acb9d3"><title>KCg-d -> MBON01: 3713</title></rect>
+<rect x="108" y="294" width="17" height="17" fill="#f4f4f4"><title>KCg-d -> MBON02: 0</title></rect>
+<rect x="126" y="294" width="17" height="17" fill="#f4f4f4"><title>KCg-d -> MBON03: 0</title></rect>
+<rect x="144" y="294" width="17" height="17" fill="#eff0f2"><title>KCg-d -> MBON04: 13</title></rect>
+<rect x="162" y="294" width="17" height="17" fill="#a3b3cf"><title>KCg-d -> MBON05: 4602</title></rect>
+<rect x="180" y="294" width="17" height="17" fill="#f4f4f4"><title>KCg-d -> MBON06: 0</title></rect>
+<rect x="198" y="294" width="17" height="17" fill="#f4f4f4"><title>KCg-d -> MBON07: 0</title></rect>
+<rect x="216" y="294" width="17" height="17" fill="#98aaca"><title>KCg-d -> MBON09: 6019</title></rect>
+<rect x="234" y="294" width="17" height="17" fill="#f4f4f4"><title>KCg-d -> MBON10: 0</title></rect>
+<rect x="252" y="294" width="17" height="17" fill="#b0bdd5"><title>KCg-d -> MBON11: 3273</title></rect>
+<rect x="270" y="294" width="17" height="17" fill="#eaecef"><title>KCg-d -> MBON12: 62</title></rect>
+<rect x="288" y="294" width="17" height="17" fill="#f4f4f4"><title>KCg-d -> MBON13: 0</title></rect>
+<rect x="306" y="294" width="17" height="17" fill="#f4f4f4"><title>KCg-d -> MBON14: 0</title></rect>
+<rect x="324" y="294" width="17" height="17" fill="#f4f4f4"><title>KCg-d -> MBON15: 0</title></rect>
+<rect x="342" y="294" width="17" height="17" fill="#f4f4f4"><title>KCg-d -> MBON15-like: 0</title></rect>
+<rect x="360" y="294" width="17" height="17" fill="#f4f4f4"><title>KCg-d -> MBON16: 0</title></rect>
+<rect x="378" y="294" width="17" height="17" fill="#f4f4f4"><title>KCg-d -> MBON17: 0</title></rect>
+<rect x="396" y="294" width="17" height="17" fill="#f4f4f4"><title>KCg-d -> MBON17-like: 0</title></rect>
+<rect x="414" y="294" width="17" height="17" fill="#f4f4f4"><title>KCg-d -> MBON18: 0</title></rect>
+<rect x="432" y="294" width="17" height="17" fill="#f4f4f4"><title>KCg-d -> MBON19: 0</title></rect>
+<rect x="450" y="294" width="17" height="17" fill="#d3d9e5"><title>KCg-d -> MBON20: 773</title></rect>
+<rect x="468" y="294" width="17" height="17" fill="#e5e8ed"><title>KCg-d -> MBON21: 141</title></rect>
+<rect x="486" y="294" width="17" height="17" fill="#dfe3ea"><title>KCg-d -> MBON22: 308</title></rect>
+<rect x="504" y="294" width="17" height="17" fill="#f4f4f4"><title>KCg-d -> MBON23: 0</title></rect>
+<rect x="522" y="294" width="17" height="17" fill="#f4f4f4"><title>KCg-d -> MBON24: 0</title></rect>
+<rect x="540" y="294" width="17" height="17" fill="#f4f4f4"><title>KCg-d -> MBON25: 0</title></rect>
+<rect x="558" y="294" width="17" height="17" fill="#f4f4f4"><title>KCg-d -> MBON25-like: 0</title></rect>
+<rect x="576" y="294" width="17" height="17" fill="#ecedf0"><title>KCg-d -> MBON26: 45</title></rect>
+<rect x="594" y="294" width="17" height="17" fill="#a2b2ce"><title>KCg-d -> MBON27: 4749</title></rect>
+<rect x="612" y="294" width="17" height="17" fill="#f4f4f4"><title>KCg-d -> MBON28: 0</title></rect>
+<rect x="630" y="294" width="17" height="17" fill="#f4f4f4"><title>KCg-d -> MBON29: 0</title></rect>
+<rect x="648" y="294" width="17" height="17" fill="#f0f1f2"><title>KCg-d -> MBON30: 7</title></rect>
+<rect x="666" y="294" width="17" height="17" fill="#eff0f1"><title>KCg-d -> MBON31: 14</title></rect>
+<rect x="684" y="294" width="17" height="17" fill="#b5c1d7"><title>KCg-d -> MBON32: 2760</title></rect>
+<rect x="702" y="294" width="17" height="17" fill="#d9dee7"><title>KCg-d -> MBON33: 521</title></rect>
+<rect x="720" y="294" width="17" height="17" fill="#c6cfdf"><title>KCg-d -> MBON35: 1496</title></rect>
+<text x="84" y="324.6" text-anchor="end">KCg-m</text>
+<rect x="90" y="312" width="17" height="17" fill="#254d95"><title>KCg-m -> MBON01: 30635</title></rect>
+<rect x="108" y="312" width="17" height="17" fill="#f4f4f4"><title>KCg-m -> MBON02: 0</title></rect>
+<rect x="126" y="312" width="17" height="17" fill="#f4f4f4"><title>KCg-m -> MBON03: 0</title></rect>
+<rect x="144" y="312" width="17" height="17" fill="#d9dfe8"><title>KCg-m -> MBON04: 486</title></rect>
+<rect x="162" y="312" width="17" height="17" fill="#264e96"><title>KCg-m -> MBON05: 30269</title></rect>
+<rect x="180" y="312" width="17" height="17" fill="#f4f4f4"><title>KCg-m -> MBON06: 0</title></rect>
+<rect x="198" y="312" width="17" height="17" fill="#f4f4f4"><title>KCg-m -> MBON07: 0</title></rect>
+<rect x="216" y="312" width="17" height="17" fill="#103c8c"><title>KCg-m -> MBON09: 37313</title></rect>
+<rect x="234" y="312" width="17" height="17" fill="#f4f4f4"><title>KCg-m -> MBON10: 0</title></rect>
+<rect x="252" y="312" width="17" height="17" fill="#3c5fa0"><title>KCg-m -> MBON11: 24165</title></rect>
+<rect x="270" y="312" width="17" height="17" fill="#8ca0c4"><title>KCg-m -> MBON12: 7725</title></rect>
+<rect x="288" y="312" width="17" height="17" fill="#f4f4f4"><title>KCg-m -> MBON13: 0</title></rect>
+<rect x="306" y="312" width="17" height="17" fill="#f4f4f4"><title>KCg-m -> MBON14: 0</title></rect>
+<rect x="324" y="312" width="17" height="17" fill="#f4f4f4"><title>KCg-m -> MBON15: 0</title></rect>
+<rect x="342" y="312" width="17" height="17" fill="#f4f4f4"><title>KCg-m -> MBON15-like: 0</title></rect>
+<rect x="360" y="312" width="17" height="17" fill="#f4f4f4"><title>KCg-m -> MBON16: 0</title></rect>
+<rect x="378" y="312" width="17" height="17" fill="#f4f4f4"><title>KCg-m -> MBON17: 0</title></rect>
+<rect x="396" y="312" width="17" height="17" fill="#f4f4f4"><title>KCg-m -> MBON17-like: 0</title></rect>
+<rect x="414" y="312" width="17" height="17" fill="#f4f4f4"><title>KCg-m -> MBON18: 0</title></rect>
+<rect x="432" y="312" width="17" height="17" fill="#f4f4f4"><title>KCg-m -> MBON19: 0</title></rect>
+<rect x="450" y="312" width="17" height="17" fill="#c8d1e0"><title>KCg-m -> MBON20: 1348</title></rect>
+<rect x="468" y="312" width="17" height="17" fill="#96a8c9"><title>KCg-m -> MBON21: 6251</title></rect>
+<rect x="486" y="312" width="17" height="17" fill="#92a5c7"><title>KCg-m -> MBON22: 6850</title></rect>
+<rect x="504" y="312" width="17" height="17" fill="#f4f4f4"><title>KCg-m -> MBON23: 0</title></rect>
+<rect x="522" y="312" width="17" height="17" fill="#f1f1f2"><title>KCg-m -> MBON24: 5</title></rect>
+<rect x="540" y="312" width="17" height="17" fill="#eaecef"><title>KCg-m -> MBON25: 62</title></rect>
+<rect x="558" y="312" width="17" height="17" fill="#edeef0"><title>KCg-m -> MBON25-like: 35</title></rect>
+<rect x="576" y="312" width="17" height="17" fill="#eff0f2"><title>KCg-m -> MBON26: 12</title></rect>
+<rect x="594" y="312" width="17" height="17" fill="#e3e6ec"><title>KCg-m -> MBON27: 204</title></rect>
+<rect x="612" y="312" width="17" height="17" fill="#f4f4f4"><title>KCg-m -> MBON28: 0</title></rect>
+<rect x="630" y="312" width="17" height="17" fill="#c7cfdf"><title>KCg-m -> MBON29: 1441</title></rect>
+<rect x="648" y="312" width="17" height="17" fill="#7990bb"><title>KCg-m -> MBON30: 10857</title></rect>
+<rect x="666" y="312" width="17" height="17" fill="#f1f1f2"><title>KCg-m -> MBON31: 5</title></rect>
+<rect x="684" y="312" width="17" height="17" fill="#96a8c9"><title>KCg-m -> MBON32: 6340</title></rect>
+<rect x="702" y="312" width="17" height="17" fill="#e9ebef"><title>KCg-m -> MBON33: 84</title></rect>
+<rect x="720" y="312" width="17" height="17" fill="#ced5e2"><title>KCg-m -> MBON35: 1019</title></rect>
+<text x="84" y="342.6" text-anchor="end">KCg-s1</text>
+<rect x="90" y="330" width="17" height="17" fill="#e3e6ec"><title>KCg-s1 -> MBON01: 198</title></rect>
+<rect x="108" y="330" width="17" height="17" fill="#f4f4f4"><title>KCg-s1 -> MBON02: 0</title></rect>
+<rect x="126" y="330" width="17" height="17" fill="#f4f4f4"><title>KCg-s1 -> MBON03: 0</title></rect>
+<rect x="144" y="330" width="17" height="17" fill="#f0f1f2"><title>KCg-s1 -> MBON04: 7</title></rect>
+<rect x="162" y="330" width="17" height="17" fill="#e4e7ec"><title>KCg-s1 -> MBON05: 180</title></rect>
+<rect x="180" y="330" width="17" height="17" fill="#f4f4f4"><title>KCg-s1 -> MBON06: 0</title></rect>
+<rect x="198" y="330" width="17" height="17" fill="#f4f4f4"><title>KCg-s1 -> MBON07: 0</title></rect>
+<rect x="216" y="330" width="17" height="17" fill="#dfe3ea"><title>KCg-s1 -> MBON09: 293</title></rect>
+<rect x="234" y="330" width="17" height="17" fill="#f4f4f4"><title>KCg-s1 -> MBON10: 0</title></rect>
+<rect x="252" y="330" width="17" height="17" fill="#e6e8ed"><title>KCg-s1 -> MBON11: 137</title></rect>
+<rect x="270" y="330" width="17" height="17" fill="#f0f1f2"><title>KCg-s1 -> MBON12: 9</title></rect>
+<rect x="288" y="330" width="17" height="17" fill="#f4f4f4"><title>KCg-s1 -> MBON13: 0</title></rect>
+<rect x="306" y="330" width="17" height="17" fill="#f4f4f4"><title>KCg-s1 -> MBON14: 0</title></rect>
+<rect x="324" y="330" width="17" height="17" fill="#f4f4f4"><title>KCg-s1 -> MBON15: 0</title></rect>
+<rect x="342" y="330" width="17" height="17" fill="#f4f4f4"><title>KCg-s1 -> MBON15-like: 0</title></rect>
+<rect x="360" y="330" width="17" height="17" fill="#eff0f1"><title>KCg-s1 -> MBON16: 16</title></rect>
+<rect x="378" y="330" width="17" height="17" fill="#f4f4f4"><title>KCg-s1 -> MBON17: 0</title></rect>
+<rect x="396" y="330" width="17" height="17" fill="#f4f4f4"><title>KCg-s1 -> MBON17-like: 0</title></rect>
+<rect x="414" y="330" width="17" height="17" fill="#f4f4f4"><title>KCg-s1 -> MBON18: 0</title></rect>
+<rect x="432" y="330" width="17" height="17" fill="#f4f4f4"><title>KCg-s1 -> MBON19: 0</title></rect>
+<rect x="450" y="330" width="17" height="17" fill="#ecedf0"><title>KCg-s1 -> MBON20: 41</title></rect>
+<rect x="468" y="330" width="17" height="17" fill="#edeef1"><title>KCg-s1 -> MBON21: 29</title></rect>
+<rect x="486" y="330" width="17" height="17" fill="#f4f4f4"><title>KCg-s1 -> MBON22: 0</title></rect>
+<rect x="504" y="330" width="17" height="17" fill="#f4f4f4"><title>KCg-s1 -> MBON23: 0</title></rect>
+<rect x="522" y="330" width="17" height="17" fill="#f4f4f4"><title>KCg-s1 -> MBON24: 0</title></rect>
+<rect x="540" y="330" width="17" height="17" fill="#f4f4f4"><title>KCg-s1 -> MBON25: 0</title></rect>
+<rect x="558" y="330" width="17" height="17" fill="#f4f4f4"><title>KCg-s1 -> MBON25-like: 0</title></rect>
+<rect x="576" y="330" width="17" height="17" fill="#f1f1f2"><title>KCg-s1 -> MBON26: 6</title></rect>
+<rect x="594" y="330" width="17" height="17" fill="#ebecef"><title>KCg-s1 -> MBON27: 57</title></rect>
+<rect x="612" y="330" width="17" height="17" fill="#f1f1f2"><title>KCg-s1 -> MBON28: 5</title></rect>
+<rect x="630" y="330" width="17" height="17" fill="#f0f1f2"><title>KCg-s1 -> MBON29: 8</title></rect>
+<rect x="648" y="330" width="17" height="17" fill="#eaebef"><title>KCg-s1 -> MBON30: 71</title></rect>
+<rect x="666" y="330" width="17" height="17" fill="#f4f4f4"><title>KCg-s1 -> MBON31: 0</title></rect>
+<rect x="684" y="330" width="17" height="17" fill="#e9ebef"><title>KCg-s1 -> MBON32: 84</title></rect>
+<rect x="702" y="330" width="17" height="17" fill="#edeef0"><title>KCg-s1 -> MBON33: 35</title></rect>
+<rect x="720" y="330" width="17" height="17" fill="#eceef0"><title>KCg-s1 -> MBON35: 39</title></rect>
+<text x="84" y="360.6" text-anchor="end">KCg-s2</text>
+<rect x="90" y="348" width="17" height="17" fill="#ebedf0"><title>KCg-s2 -> MBON01: 52</title></rect>
+<rect x="108" y="348" width="17" height="17" fill="#f4f4f4"><title>KCg-s2 -> MBON02: 0</title></rect>
+<rect x="126" y="348" width="17" height="17" fill="#f4f4f4"><title>KCg-s2 -> MBON03: 0</title></rect>
+<rect x="144" y="348" width="17" height="17" fill="#ebedf0"><title>KCg-s2 -> MBON04: 50</title></rect>
+<rect x="162" y="348" width="17" height="17" fill="#dfe3ea"><title>KCg-s2 -> MBON05: 289</title></rect>
+<rect x="180" y="348" width="17" height="17" fill="#f4f4f4"><title>KCg-s2 -> MBON06: 0</title></rect>
+<rect x="198" y="348" width="17" height="17" fill="#f4f4f4"><title>KCg-s2 -> MBON07: 0</title></rect>
+<rect x="216" y="348" width="17" height="17" fill="#e5e8ed"><title>KCg-s2 -> MBON09: 152</title></rect>
+<rect x="234" y="348" width="17" height="17" fill="#f4f4f4"><title>KCg-s2 -> MBON10: 0</title></rect>
+<rect x="252" y="348" width="17" height="17" fill="#e8eaee"><title>KCg-s2 -> MBON11: 92</title></rect>
+<rect x="270" y="348" width="17" height="17" fill="#eeeff1"><title>KCg-s2 -> MBON12: 22</title></rect>
+<rect x="288" y="348" width="17" height="17" fill="#f4f4f4"><title>KCg-s2 -> MBON13: 0</title></rect>
+<rect x="306" y="348" width="17" height="17" fill="#f4f4f4"><title>KCg-s2 -> MBON14: 0</title></rect>
+<rect x="324" y="348" width="17" height="17" fill="#f4f4f4"><title>KCg-s2 -> MBON15: 0</title></rect>
+<rect x="342" y="348" width="17" height="17" fill="#f4f4f4"><title>KCg-s2 -> MBON15-like: 0</title></rect>
+<rect x="360" y="348" width="17" height="17" fill="#f4f4f4"><title>KCg-s2 -> MBON16: 0</title></rect>
+<rect x="378" y="348" width="17" height="17" fill="#f4f4f4"><title>KCg-s2 -> MBON17: 0</title></rect>
+<rect x="396" y="348" width="17" height="17" fill="#f4f4f4"><title>KCg-s2 -> MBON17-like: 0</title></rect>
+<rect x="414" y="348" width="17" height="17" fill="#f4f4f4"><title>KCg-s2 -> MBON18: 0</title></rect>
+<rect x="432" y="348" width="17" height="17" fill="#f4f4f4"><title>KCg-s2 -> MBON19: 0</title></rect>
+<rect x="450" y="348" width="17" height="17" fill="#f4f4f4"><title>KCg-s2 -> MBON20: 0</title></rect>
+<rect x="468" y="348" width="17" height="17" fill="#ecedf0"><title>KCg-s2 -> MBON21: 43</title></rect>
+<rect x="486" y="348" width="17" height="17" fill="#f0f1f2"><title>KCg-s2 -> MBON22: 7</title></rect>
+<rect x="504" y="348" width="17" height="17" fill="#f4f4f4"><title>KCg-s2 -> MBON23: 0</title></rect>
+<rect x="522" y="348" width="17" height="17" fill="#f4f4f4"><title>KCg-s2 -> MBON24: 0</title></rect>
+<rect x="540" y="348" width="17" height="17" fill="#f4f4f4"><title>KCg-s2 -> MBON25: 0</title></rect>
+<rect x="558" y="348" width="17" height="17" fill="#f4f4f4"><title>KCg-s2 -> MBON25-like: 0</title></rect>
+<rect x="576" y="348" width="17" height="17" fill="#edeef1"><title>KCg-s2 -> MBON26: 31</title></rect>
+<rect x="594" y="348" width="17" height="17" fill="#eff0f1"><title>KCg-s2 -> MBON27: 16</title></rect>
+<rect x="612" y="348" width="17" height="17" fill="#f4f4f4"><title>KCg-s2 -> MBON28: 0</title></rect>
+<rect x="630" y="348" width="17" height="17" fill="#eff0f1"><title>KCg-s2 -> MBON29: 17</title></rect>
+<rect x="648" y="348" width="17" height="17" fill="#f1f1f2"><title>KCg-s2 -> MBON30: 5</title></rect>
+<rect x="666" y="348" width="17" height="17" fill="#f4f4f4"><title>KCg-s2 -> MBON31: 0</title></rect>
+<rect x="684" y="348" width="17" height="17" fill="#ebedf0"><title>KCg-s2 -> MBON32: 52</title></rect>
+<rect x="702" y="348" width="17" height="17" fill="#ebedf0"><title>KCg-s2 -> MBON33: 48</title></rect>
+<rect x="720" y="348" width="17" height="17" fill="#edeef0"><title>KCg-s2 -> MBON35: 35</title></rect>
+<text x="84" y="378.6" text-anchor="end">KCg-s3</text>
+<rect x="90" y="366" width="17" height="17" fill="#eff0f2"><title>KCg-s3 -> MBON01: 12</title></rect>
+<rect x="108" y="366" width="17" height="17" fill="#f4f4f4"><title>KCg-s3 -> MBON02: 0</title></rect>
+<rect x="126" y="366" width="17" height="17" fill="#f4f4f4"><title>KCg-s3 -> MBON03: 0</title></rect>
+<rect x="144" y="366" width="17" height="17" fill="#eeeff1"><title>KCg-s3 -> MBON04: 23</title></rect>
+<rect x="162" y="366" width="17" height="17" fill="#e7e9ee"><title>KCg-s3 -> MBON05: 111</title></rect>
+<rect x="180" y="366" width="17" height="17" fill="#f4f4f4"><title>KCg-s3 -> MBON06: 0</title></rect>
+<rect x="198" y="366" width="17" height="17" fill="#f4f4f4"><title>KCg-s3 -> MBON07: 0</title></rect>
+<rect x="216" y="366" width="17" height="17" fill="#e9ebef"><title>KCg-s3 -> MBON09: 84</title></rect>
+<rect x="234" y="366" width="17" height="17" fill="#f4f4f4"><title>KCg-s3 -> MBON10: 0</title></rect>
+<rect x="252" y="366" width="17" height="17" fill="#ebedf0"><title>KCg-s3 -> MBON11: 49</title></rect>
+<rect x="270" y="366" width="17" height="17" fill="#f4f4f4"><title>KCg-s3 -> MBON12: 0</title></rect>
+<rect x="288" y="366" width="17" height="17" fill="#f4f4f4"><title>KCg-s3 -> MBON13: 0</title></rect>
+<rect x="306" y="366" width="17" height="17" fill="#f4f4f4"><title>KCg-s3 -> MBON14: 0</title></rect>
+<rect x="324" y="366" width="17" height="17" fill="#f4f4f4"><title>KCg-s3 -> MBON15: 0</title></rect>
+<rect x="342" y="366" width="17" height="17" fill="#f4f4f4"><title>KCg-s3 -> MBON15-like: 0</title></rect>
+<rect x="360" y="366" width="17" height="17" fill="#f4f4f4"><title>KCg-s3 -> MBON16: 0</title></rect>
+<rect x="378" y="366" width="17" height="17" fill="#f4f4f4"><title>KCg-s3 -> MBON17: 0</title></rect>
+<rect x="396" y="366" width="17" height="17" fill="#f4f4f4"><title>KCg-s3 -> MBON17-like: 0</title></rect>
+<rect x="414" y="366" width="17" height="17" fill="#f4f4f4"><title>KCg-s3 -> MBON18: 0</title></rect>
+<rect x="432" y="366" width="17" height="17" fill="#f4f4f4"><title>KCg-s3 -> MBON19: 0</title></rect>
+<rect x="450" y="366" width="17" height="17" fill="#f4f4f4"><title>KCg-s3 -> MBON20: 0</title></rect>
+<rect x="468" y="366" width="17" height="17" fill="#eeeff1"><title>KCg-s3 -> MBON21: 20</title></rect>
+<rect x="486" y="366" width="17" height="17" fill="#f1f1f2"><title>KCg-s3 -> MBON22: 6</title></rect>
+<rect x="504" y="366" width="17" height="17" fill="#f4f4f4"><title>KCg-s3 -> MBON23: 0</title></rect>
+<rect x="522" y="366" width="17" height="17" fill="#f4f4f4"><title>KCg-s3 -> MBON24: 0</title></rect>
+<rect x="540" y="366" width="17" height="17" fill="#f4f4f4"><title>KCg-s3 -> MBON25: 0</title></rect>
+<rect x="558" y="366" width="17" height="17" fill="#f4f4f4"><title>KCg-s3 -> MBON25-like: 0</title></rect>
+<rect x="576" y="366" width="17" height="17" fill="#ebecef"><title>KCg-s3 -> MBON26: 56</title></rect>
+<rect x="594" y="366" width="17" height="17" fill="#eff0f2"><title>KCg-s3 -> MBON27: 13</title></rect>
+<rect x="612" y="366" width="17" height="17" fill="#f4f4f4"><title>KCg-s3 -> MBON28: 0</title></rect>
+<rect x="630" y="366" width="17" height="17" fill="#eff0f1"><title>KCg-s3 -> MBON29: 14</title></rect>
+<rect x="648" y="366" width="17" height="17" fill="#f1f1f2"><title>KCg-s3 -> MBON30: 5</title></rect>
+<rect x="666" y="366" width="17" height="17" fill="#f4f4f4"><title>KCg-s3 -> MBON31: 0</title></rect>
+<rect x="684" y="366" width="17" height="17" fill="#eeeff1"><title>KCg-s3 -> MBON32: 24</title></rect>
+<rect x="702" y="366" width="17" height="17" fill="#ecedf0"><title>KCg-s3 -> MBON33: 45</title></rect>
+<rect x="720" y="366" width="17" height="17" fill="#eeeff1"><title>KCg-s3 -> MBON35: 24</title></rect>
+<text x="84" y="396.6" text-anchor="end">KCg-s4</text>
+<rect x="90" y="384" width="17" height="17" fill="#eeeff1"><title>KCg-s4 -> MBON01: 18</title></rect>
+<rect x="108" y="384" width="17" height="17" fill="#f4f4f4"><title>KCg-s4 -> MBON02: 0</title></rect>
+<rect x="126" y="384" width="17" height="17" fill="#f4f4f4"><title>KCg-s4 -> MBON03: 0</title></rect>
+<rect x="144" y="384" width="17" height="17" fill="#f0f0f2"><title>KCg-s4 -> MBON04: 11</title></rect>
+<rect x="162" y="384" width="17" height="17" fill="#ebedf0"><title>KCg-s4 -> MBON05: 52</title></rect>
+<rect x="180" y="384" width="17" height="17" fill="#f4f4f4"><title>KCg-s4 -> MBON06: 0</title></rect>
+<rect x="198" y="384" width="17" height="17" fill="#f4f4f4"><title>KCg-s4 -> MBON07: 0</title></rect>
+<rect x="216" y="384" width="17" height="17" fill="#eaecef"><title>KCg-s4 -> MBON09: 63</title></rect>
+<rect x="234" y="384" width="17" height="17" fill="#f4f4f4"><title>KCg-s4 -> MBON10: 0</title></rect>
+<rect x="252" y="384" width="17" height="17" fill="#edeef1"><title>KCg-s4 -> MBON11: 29</title></rect>
+<rect x="270" y="384" width="17" height="17" fill="#f0f0f2"><title>KCg-s4 -> MBON12: 10</title></rect>
+<rect x="288" y="384" width="17" height="17" fill="#f4f4f4"><title>KCg-s4 -> MBON13: 0</title></rect>
+<rect x="306" y="384" width="17" height="17" fill="#f4f4f4"><title>KCg-s4 -> MBON14: 0</title></rect>
+<rect x="324" y="384" width="17" height="17" fill="#f4f4f4"><title>KCg-s4 -> MBON15: 0</title></rect>
+<rect x="342" y="384" width="17" height="17" fill="#f4f4f4"><title>KCg-s4 -> MBON15-like: 0</title></rect>
+<rect x="360" y="384" width="17" height="17" fill="#f4f4f4"><title>KCg-s4 -> MBON16: 0</title></rect>
+<rect x="378" y="384" width="17" height="17" fill="#f4f4f4"><title>KCg-s4 -> MBON17: 0</title></rect>
+<rect x="396" y="384" width="17" height="17" fill="#f4f4f4"><title>KCg-s4 -> MBON17-like: 0</title></rect>
+<rect x="414" y="384" width="17" height="17" fill="#f4f4f4"><title>KCg-s4 -> MBON18: 0</title></rect>
+<rect x="432" y="384" width="17" height="17" fill="#f4f4f4"><title>KCg-s4 -> MBON19: 0</title></rect>
+<rect x="450" y="384" width="17" height="17" fill="#f4f4f4"><title>KCg-s4 -> MBON20: 0</title></rect>
+<rect x="468" y="384" width="17" height="17" fill="#f4f4f4"><title>KCg-s4 -> MBON21: 0</title></rect>
+<rect x="486" y="384" width="17" height="17" fill="#f4f4f4"><title>KCg-s4 -> MBON22: 0</title></rect>
+<rect x="504" y="384" width="17" height="17" fill="#f4f4f4"><title>KCg-s4 -> MBON23: 0</title></rect>
+<rect x="522" y="384" width="17" height="17" fill="#f4f4f4"><title>KCg-s4 -> MBON24: 0</title></rect>
+<rect x="540" y="384" width="17" height="17" fill="#f4f4f4"><title>KCg-s4 -> MBON25: 0</title></rect>
+<rect x="558" y="384" width="17" height="17" fill="#f4f4f4"><title>KCg-s4 -> MBON25-like: 0</title></rect>
+<rect x="576" y="384" width="17" height="17" fill="#eeeff1"><title>KCg-s4 -> MBON26: 18</title></rect>
+<rect x="594" y="384" width="17" height="17" fill="#f4f4f4"><title>KCg-s4 -> MBON27: 0</title></rect>
+<rect x="612" y="384" width="17" height="17" fill="#f4f4f4"><title>KCg-s4 -> MBON28: 0</title></rect>
+<rect x="630" y="384" width="17" height="17" fill="#f4f4f4"><title>KCg-s4 -> MBON29: 0</title></rect>
+<rect x="648" y="384" width="17" height="17" fill="#f4f4f4"><title>KCg-s4 -> MBON30: 0</title></rect>
+<rect x="666" y="384" width="17" height="17" fill="#f4f4f4"><title>KCg-s4 -> MBON31: 0</title></rect>
+<rect x="684" y="384" width="17" height="17" fill="#eeeff1"><title>KCg-s4 -> MBON32: 22</title></rect>
+<rect x="702" y="384" width="17" height="17" fill="#eff0f1"><title>KCg-s4 -> MBON33: 15</title></rect>
+<rect x="720" y="384" width="17" height="17" fill="#eeeff1"><title>KCg-s4 -> MBON35: 24</title></rect>
+</svg>

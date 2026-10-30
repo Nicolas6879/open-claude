@@ -1,0 +1,169 @@
+{
+ "descripcion": "Auditoria de supuestos de casa-mosca frente a MaleCNS v1.0 (minconf 0.5)",
+ "conteos": {
+  "KC_total": 4064,
+  "KC_por_lado": {
+   "L": 2019,
+   "R": 2045
+  },
+  "APL": 2,
+  "MBON": 97,
+  "MBON_tipos": 37,
+  "DAN": 340,
+  "DAN_tipos": 27,
+  "PN_ALPN_total": 686,
+  "PN_con_salida_a_KC": 314,
+  "ORN_olfativas": 2639
+ },
+ "PN_KC": {
+  "aristas_PN_KC": 22586,
+  "KC_con_al_menos_1_PN": 3812,
+  "KC_sin_PN_en_archivo_significativo": 252,
+  "PN_distintas_por_KC_media_(KC_con_PN)": 5.924973767051417,
+  "PN_distintas_por_KC_mediana_(KC_con_PN)": 6.0,
+  "PN_distintas_por_KC_p10_p90": [
+   4.0,
+   9.0
+  ],
+  "PN_distintas_por_KC_max": 39,
+  "fraccion_KC_con_exactamente_6_PN": 0.1886149003147954,
+  "fraccion_KC_con_4_a_8_PN": 0.8037775445960126,
+  "sinapsis_por_arista_mediana": 16.0,
+  "sinapsis_por_arista_p10_p90": [
+   4.0,
+   31.0
+  ],
+  "sinapsis_por_arista_max": 89,
+  "aristas_mismo_lado": 0.9793234747188524,
+  "PN_out_grado_mediana": 55.5,
+  "PN_out_grado_max": 489,
+  "nt_de_PN_en_sinapsis_a_KC": {
+   "acetylcholine": 390321,
+   "unclear": 285,
+   "gaba": 289,
+   "glutamate": 33
+  }
+ },
+ "solapamiento_entre_pares_de_KC": {
+  "observado_media_PN_compartidas": 0.25556811690330505,
+  "observado_fraccion_pares_con_alguna_PN": 0.20484621888976048,
+  "nulo_conserva_grados_media": 0.25556811690330505,
+  "nulo_conserva_grados_fraccion_pares": 0.22826955971140409,
+  "nulo_conserva_grados_fraccion_pares_sd": 4.5479114610599795e-05,
+  "nulo_uniforme_media": 0.11181816458702087,
+  "nulo_uniforme_fraccion_pares": 0.1062572775609787,
+  "nota": "La media de PN compartidas es identica a la del nulo que conserva grados por construccion (depende solo de los grados de las PN). La fraccion de pares si discrimina."
+ },
+ "APL": {
+  "KC_a_APL_partners": 4063,
+  "KC_a_APL_sinapsis": 210352,
+  "APL_a_KC_partners": 4063,
+  "APL_a_KC_sinapsis": 196200,
+  "nt_APL": {
+   "gaba": 2
+  }
+ },
+ "KC_KC": {
+  "aristas": 642933,
+  "aristas_con_>=5_sinapsis": 33247,
+  "mediana_sinapsis_por_arista": 1.0
+ },
+ "KC_MBON": {
+  "aristas": 61210,
+  "KC_distintas_por_MBON_mediana": 205.0,
+  "MBON_que_reciben_KC_con_>=5_sinapsis": 91
+ },
+ "neurotransmisores": {
+  "KC": {
+   "dopamine": 4058,
+   "unclear": 5,
+   "gaba": 1
+  },
+  "MBON": {
+   "glutamate": 24,
+   "acetylcholine": 50,
+   "unclear": 2,
+   "gaba": 21
+  },
+  "DAN": {
+   "dopamine": 330,
+   "unclear": 8,
+   "serotonin": 2
+  },
+  "ALPN": {
+   "acetylcholine": 461,
+   "gaba": 208,
+   "unclear": 4,
+   "glutamate": 8,
+   "serotonin": 5
+  }
+ },
+ "tipos_MBON": {
+  "MBON01": 2,
+  "MBON06": 2,
+  "MBON14": 4,
+  "MBON05": 2,
+  "MBON35": 2,
+  "MBON11": 2,
+  "MBON20": 2,
+  "MBON31": 2,
+  "MBON21": 2,
+  "MBON26": 2,
+  "MBON32": 2,
+  "MBON15": 4,
+  "MBON33": 2,
+  "MBON22": 2,
+  "MBON13": 2,
+  "MBON07": 4,
+  "MBON12": 4,
+  "MBON18": 2,
+  "MBON24": 2,
+  "MBON09": 4,
+  "MBON23": 2,
+  "MBON28": 2,
+  "MBON19": 4,
+  "MBON17": 2,
+  "MBON15-like": 4,
+  "MBON10": 9,
+  "MBON25-like": 4,
+  "MBON25": 2,
+  "MBON34": 2,
+  "MBON30": 2,
+  "MBON17-like": 2,
+  "MBON27": 2,
+  "MBON03": 2,
+  "MBON29": 2,
+  "MBON16": 2,
+  "MBON02": 2,
+  "MBON04": 2
+ },
+ "tipos_DAN": {
+  "PPL202": 2,
+  "PPL201": 2,
+  "PPL101": 2,
+  "PPL102": 2,
+  "PPL103": 2,
+  "PPL108": 2,
+  "PPL203": 2,
+  "PPL105": 2,
+  "PPL107": 2,
+  "PPL104": 2,
+  "PAM10": 15,
+  "PPL204": 2,
+  "PAM04": 32,
+  "PAM07": 14,
+  "PAM01": 44,
+  "PAM08": 50,
+  "PAM12": 22,
+  "PAM06": 28,
+  "PAM05": 20,
+  "PAM14": 18,
+  "PAM02": 17,
+  "PAM13": 16,
+  "PAM11": 15,
+  "PAM15": 4,
+  "PAM09": 9,
+  "PAM03": 12,
+  "PPL106": 2
+ }
+}

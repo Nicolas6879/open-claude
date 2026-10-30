@@ -47,7 +47,7 @@
       "descripcion": "Explora el conectoma REAL de la mosca macho (MaleCNS v1.0, Google Research + Janelia): audita los supuestos de la Casa Mosca y simula circuitos con datos reales.",
       "carpeta": "city/casa-conectoma/",
       "log": "city/casa-conectoma/LOG.md",
-      "estado": "planeada"
+      "estado": "lista"
     }
   ],
   "relaciones": [
