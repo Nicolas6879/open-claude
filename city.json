@@ -20,7 +20,7 @@
       "descripcion": "Laboratorio simulado de un AMM (estilo Uniswap v2): liquidez, arbitraje y una estrategia de ingresos probada solo en simulación.",
       "carpeta": "city/casa-agora/",
       "log": "city/casa-agora/LOG.md",
-      "estado": "planeada"
+      "estado": "lista"
     },
     {
       "id": "casa-taller",
