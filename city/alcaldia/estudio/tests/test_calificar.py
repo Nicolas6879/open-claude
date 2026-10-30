@@ -39,6 +39,18 @@ class T(unittest.TestCase):
         self.assertEqual(r["Q4"]["puntos"], 0)
         self.assertLessEqual(r["total"], 2)
 
+    def test_mencionar_dopamina_no_es_caer_en_la_trampa(self):
+        b = {k: dict(v) for k, v in BUENO.items()}
+        b["Q1"]["neurotransmisor"] = "acetilcolina (el predicted_nt crudo dice dopamina)"
+        r = C.corrige(b, V)
+        self.assertEqual((r["Q1"]["cayo_trampa"], r["Q1"]["puntos"]), (0, 1))
+
+    def test_respuestas_bajo_la_clave_equivocada_se_recuperan_por_contenido(self):
+        mal = {"Q1": BUENO["Q4"], "Q4": BUENO["Q1"]}
+        rec, n = C.por_contenido(mal)
+        self.assertEqual(n, 2)
+        self.assertIn("neurotransmisor", rec["Q1"])
+
     def test_proxy_etiquetado_vale_la_mitad(self):
         b = dict(BUENO); b["Q6"] = {"fraccion": 0.67, "se_puede_responder": True, "explicacion": "es la fraccion de neuronas PN con ACh, no sinapsis"}
         self.assertEqual(C.corrige(b, V)["Q6"]["puntos"], 1)
