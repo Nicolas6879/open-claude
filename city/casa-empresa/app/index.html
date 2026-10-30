@@ -1,0 +1,1258 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mosquita</title>
+<meta name="description" content="Cria a una mosquita cuyo cerebro es una red neuronal de cuerpo fungiforme cableada con estadisticas del conectoma real de la mosca. Aprende de ti.">
+<meta name="theme-color" content="#f7ecd6">
+<style>
+:root{
+  --bg:#f7ecd6; --ink:#2b2418; --muted:#6f624d; --card:#fffaf0; --line:#e6d8bb;
+  --accent:#c4502a; --accent-2:#2f7a6b; --gold:#e0b030; --bad:#8f3d35; --glass:#dbe9e2;
+  --shadow:0 10px 30px rgba(60,40,10,.10);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#151109; --ink:#f3e9d4; --muted:#b5a585; --card:#1f1a10; --line:#3a3121;
+    --accent:#f08457; --accent-2:#6fd1b8; --gold:#f3c95a; --bad:#e58a80; --glass:#1d2a27;
+    --shadow:0 10px 30px rgba(0,0,0,.4);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#151109; --ink:#f3e9d4; --muted:#b5a585; --card:#1f1a10; --line:#3a3121;
+  --accent:#f08457; --accent-2:#6fd1b8; --gold:#f3c95a; --bad:#e58a80; --glass:#1d2a27;
+  --shadow:0 10px 30px rgba(0,0,0,.4); color-scheme: dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;-webkit-text-size-adjust:100%;overflow-x:hidden}
+.wrap{max-width:940px;margin:0 auto;padding:16px 16px 40px}
+h1{font-size:30px;margin:0;letter-spacing:.2px}
+h2{font-size:18px;margin:0 0 8px}
+p{margin:6px 0}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+.top{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end;justify-content:space-between;margin-bottom:12px}
+.pills{display:flex;flex-wrap:wrap;gap:6px}
+.pill{display:inline-block;padding:4px 10px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:13px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:var(--shadow);margin-bottom:14px}
+.stage{position:relative;width:100%;aspect-ratio:4/3;max-height:520px;border-radius:14px;overflow:hidden;background:var(--glass)}
+.stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:manipulation;cursor:pointer}
+.tools{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.grp{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.lbl{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);min-width:96px}
+button{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:10px 12px;min-height:44px;min-width:44px;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+button:hover{border-color:var(--accent)}
+button:focus-visible{outline:3px solid var(--accent-2);outline-offset:2px}
+button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+button.primary{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:600}
+button.ghost{background:transparent}
+button.ghost[aria-pressed="true"]{background:transparent;color:var(--ink);border-color:var(--accent);font-weight:600}
+.dot{width:12px;height:12px;border-radius:50%;display:inline-block;border:1px solid rgba(0,0,0,.25);flex:none}
+.hint{min-height:2.6em;margin:10px 0 0;font-size:15px}
+.brain{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:14px;align-items:start}
+.kcwrap{position:relative;width:100%;aspect-ratio:5/4;border-radius:12px;overflow:hidden;background:#0f1419}
+.kcwrap canvas{position:absolute;inset:0;width:100%;height:100%}
+.bar{display:grid;grid-template-columns:110px 1fr 46px;gap:8px;align-items:center;margin:6px 0;font-size:14px}
+.bar .val{white-space:nowrap}
+.bar.aprend{grid-template-columns:96px 1fr 96px}
+.track{height:12px;border-radius:999px;background:var(--line);position:relative;overflow:hidden}
+.fill{position:absolute;top:0;bottom:0;border-radius:999px;background:var(--accent-2);transition:width .25s linear}
+.fill.neg{background:var(--bad)}
+.val{font-variant-numeric:tabular-nums;text-align:right;color:var(--muted)}
+.center{position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--muted);opacity:.6}
+ol.diario{list-style:none;margin:0;padding:0;max-height:260px;overflow:auto}
+ol.diario li{padding:8px 0;border-bottom:1px dashed var(--line);font-size:15px}
+ol.diario time{display:block;font-size:12px;color:var(--muted)}
+.traits{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.trait{border:1px solid var(--line);border-radius:14px;padding:10px;background:var(--bg)}
+.trait b{display:block;margin-bottom:4px}
+.lab{position:relative}
+.lab .contenido{transition:filter .3s}
+.lab.bloqueado .contenido{filter:blur(6px);pointer-events:none;user-select:none}
+.lab .candado{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:16px}
+.lab .candado>*{background:var(--card);border-radius:12px;padding:6px 10px;max-width:90%}
+.lab .candado button{background:var(--accent)}
+.lab:not(.bloqueado) .candado{display:none}
+.rastro{width:100%;height:auto;aspect-ratio:16/9;border-radius:12px;background:#0f1419;display:block}
+.nota{font-size:13px;color:var(--muted)}
+.overlay{position:fixed;inset:0;background:rgba(20,15,8,.55);display:flex;align-items:center;justify-content:center;padding:16px;z-index:10}
+.overlay[hidden]{display:none}
+.modal{background:var(--card);border-radius:20px;max-width:440px;width:100%;padding:20px;box-shadow:var(--shadow)}
+.modal input{font:inherit;width:100%;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);min-height:44px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+footer{margin-top:18px;font-size:13px;color:var(--muted)}
+@media (max-width:720px){
+  .brain{grid-template-columns:1fr}
+  h1{font-size:26px}
+  .lbl{min-width:0;width:100%}
+  .bar{grid-template-columns:92px 1fr 40px}
+}
+@media (prefers-reduced-motion: reduce){
+  .fill{transition:none}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+
+  <header class="top">
+    <div>
+      <h1 id="titulo">Mosquita</h1>
+      <p class="muted" id="sub">Una criatura con un cerebro de mosca de verdad.</p>
+    </div>
+    <div class="pills" aria-live="polite">
+      <span class="pill" id="pEtapa">-</span>
+      <span class="pill" id="pDia">-</span>
+      <span class="pill" id="pHambre">-</span>
+    </div>
+  </header>
+
+  <section class="card" aria-label="Escenario">
+    <div class="stage">
+      <canvas id="jar" role="img" aria-label="Mosquita dentro de un frasco"></canvas>
+    </div>
+    <div class="tools" role="toolbar" aria-label="Herramientas">
+      <div class="grp">
+        <span class="lbl">Olores</span>
+        <button type="button" data-tool="platano" aria-pressed="false"><span class="dot" style="background:#f2c53d"></span>Plátano</button>
+        <button type="button" data-tool="levadura" aria-pressed="false"><span class="dot" style="background:#d9c79c"></span>Levadura</button>
+        <button type="button" data-tool="vinagre" aria-pressed="false"><span class="dot" style="background:#c4553f"></span>Vinagre</button>
+        <button type="button" data-tool="menta" aria-pressed="false"><span class="dot" style="background:#5fb27a"></span>Menta</button>
+      </div>
+      <div class="grp">
+        <span class="lbl">Premio y castigo</span>
+        <button type="button" data-tool="azucar" aria-pressed="false"><span class="dot" style="background:#fff"></span>Gota de azúcar</button>
+        <button type="button" data-tool="quinina" aria-pressed="false"><span class="dot" style="background:#c5d13a"></span>Gota de quinina</button>
+      </div>
+      <div class="grp">
+        <span class="lbl">Juego</span>
+        <button type="button" data-tool="luz" aria-pressed="false">Linterna</button>
+        <button type="button" id="btnSoplar">Soplar</button>
+        <button type="button" data-tool="none" aria-pressed="true" class="ghost">Solo mirar</button>
+      </div>
+    </div>
+    <p class="hint" id="hint" aria-live="polite"></p>
+  </section>
+
+  <section class="card" aria-labelledby="hCerebro">
+    <h2 id="hCerebro">Su cerebro, ahora</h2>
+    <div class="brain">
+      <div>
+        <div class="kcwrap"><canvas id="kc" role="img" aria-label="Mapa de 2 000 células de Kenyon encendiéndose"></canvas></div>
+        <p class="nota">Cada cuadrito es una célula de Kenyon (2 000 en total). Se enciende cuando dispara. Aquí casi nunca se encienden muchas a la vez: eso es lo que le permite distinguir olores.</p>
+        <p class="nota" id="kcStat"></p>
+      </div>
+      <div>
+        <h3 style="font-size:15px;margin:0 0 4px">Salida hacia la decisión (MBON)</h3>
+        <div class="bar"><span>Acercar</span><div class="track"><div class="fill" id="bAcercar" style="width:0%"></div></div><span class="val" id="vAcercar">0</span></div>
+        <div class="bar"><span>Evitar</span><div class="track"><div class="fill neg" id="bEvitar" style="width:0%"></div></div><span class="val" id="vEvitar">0</span></div>
+        <div class="bar"><span>Dopamina</span><div class="track"><div class="fill" id="bDopa" style="width:0%;background:var(--gold)"></div></div><span class="val" id="vDopa">0</span></div>
+        <h3 style="font-size:15px;margin:14px 0 4px">Lo que ha aprendido</h3>
+        <div id="aprendido"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" aria-labelledby="hRasgos">
+    <h2 id="hRasgos">Cómo es su cerebro</h2>
+    <p class="nota">Estos rasgos no los escribí yo: se miden en su propio cerebro al nacer, con sus propias conexiones.</p>
+    <div class="traits" id="rasgos"></div>
+  </section>
+
+  <section class="card" aria-labelledby="hLinaje">
+    <h2 id="hLinaje">Linaje</h2>
+    <p class="nota" id="linajeNota"></p>
+    <ol class="diario" id="linaje"></ol>
+  </section>
+
+  <section class="card" aria-labelledby="hDiario">
+    <h2 id="hDiario">Diario</h2>
+    <ol class="diario" id="diario"></ol>
+  </section>
+
+  <section class="card lab bloqueado" id="lab" aria-labelledby="hLab">
+    <h2 id="hLab">Laboratorio</h2>
+    <p class="nota">Ver su actividad neuronal en directo, sus pesos y una lesión virtual del APL.</p>
+    <div class="contenido" id="labContenido">
+      <canvas class="rastro" id="rastro" role="img" aria-label="Espigas de las últimas dos segundos"></canvas>
+      <div class="row">
+        <span class="pill" id="labKC">KC activas: -</span>
+        <span class="pill" id="labAPL">APL: activo</span>
+        <button type="button" id="btnAPL">Quitar el APL (lesión virtual)</button>
+      </div>
+      <p class="nota" id="labTxt"></p>
+    </div>
+    <div class="candado">
+      <strong>Laboratorio (vista de demostración)</strong>
+      <span class="nota">Versión de prueba del producto: no hay cobro. El precio que se plantea en el plan es de US$3,99/mes, solo como supuesto.</span>
+      <button type="button" class="primary" id="btnLab">Activar la vista (demo, sin cobro)</button>
+    </div>
+    <div class="row"><button type="button" class="ghost" id="btnLabOff" hidden>Ocultar la vista de laboratorio</button></div>
+  </section>
+
+  <section class="card" aria-labelledby="hTu">
+    <h2 id="hTu">Tu mosquita</h2>
+    <div class="row">
+      <label for="nombre" class="small">Nombre</label>
+      <input id="nombre" maxlength="16" style="font:inherit;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);min-height:44px">
+      <button type="button" id="btnSonido" aria-pressed="false">Sonido: apagado</button>
+      <button type="button" class="ghost" id="btnNueva">Empezar otra mosquita</button>
+    </div>
+    <p class="nota">Tu mosquita se guarda solo en este navegador. Si la abres dentro de 3 horas, lleva 3 horas viviendo sin ti: olvida lo que no repasaste y tiene hambre.</p>
+  </section>
+
+  <footer>
+    <p>Todo esto es una simulación. El cerebro es una red de neuronas con espigas inspirada en el cuerpo fungiforme de la mosca <em>Drosophila</em>; su cableado se muestrea con estadísticas del conectoma real (MaleCNS v1.0), pero ninguna mosquita copia a una mosca real. Las reglas de aprendizaje y olvido son supuestos del modelo.</p>
+    <p>No hay cuentas, no se envía nada a ningún sitio y no se cobra nada.</p>
+  </footer>
+</main>
+
+<div class="overlay" id="intro" hidden role="dialog" aria-modal="true" aria-labelledby="hIntro">
+  <div class="modal">
+    <h2 id="hIntro">Acaba de salir de la pupa</h2>
+    <p>Es una mosquita. Huele, decide y aprende de lo que le das. Ponle nombre.</p>
+    <input id="nombreIntro" maxlength="16" placeholder="Nombre" aria-label="Nombre de tu mosquita">
+    <div class="row"><button type="button" class="primary" id="btnNacer">Que nazca</button></div>
+  </div>
+</div>
+
+<div class="overlay" id="fin" hidden role="dialog" aria-modal="true" aria-labelledby="hFin">
+  <div class="modal">
+    <h2 id="hFin">Se durmió</h2>
+    <p id="finTxt"></p>
+    <label for="nombreHija" class="small">Nombre de su hija</label>
+    <input id="nombreHija" maxlength="16" placeholder="Nombre" aria-label="Nombre de la hija" style="font:inherit;width:100%;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);min-height:44px;margin-top:6px">
+    <div class="row"><button type="button" class="primary" id="btnHija">Que nazca su hija</button><button type="button" class="ghost" id="btnOtra">Empezar otra línea</button></div>
+    <p class="nota">La hija hereda la mitad de las conexiones de su cerebro, con pequeñas mutaciones. No hereda lo que aprendió: en una mosca real tampoco pasa.</p>
+  </div>
+</div>
+
+<script>
+(function(){
+'use strict';
+
+/* ================= utilidades ================= */
+function $(s){ return document.querySelector(s); }
+function $$(s){ return Array.prototype.slice.call(document.querySelectorAll(s)); }
+function clamp(x,a,b){ return x<a?a:(x>b?b:x); }
+function mulberry32(a){ return function(){ a|=0; a=a+0x6D2B79F5|0; var t=Math.imul(a^a>>>15,1|a); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
+function gauss(R){ var u=0; while(u===0) u=R(); var v=R(); return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v); }
+var HORA_MS=3600000, DIA_MS=86400000, VIDA_DIAS=45;
+var SPEED=(function(){ try{ var n=parseFloat(new URLSearchParams(location.search).get('speed')); return (n>0 && n<=10)?n:1; }catch(e){ return 1; } })();
+var HORA_FORZADA=(function(){ try{ var h=parseInt(new URLSearchParams(location.search).get('hora'),10); return (h>=0&&h<24)?h:null; }catch(e){ return null; } })();
+function horaLocal(){ return HORA_FORZADA!==null? HORA_FORZADA : new Date().getHours(); }
+function esNoche(){ var h=horaLocal(); return h>=23 || h<7; }
+
+/* ================= mundo ================= */
+var NPN=40, NKC=2000, NM=4;             // MBON 0,1 = acercar ; 2,3 = evitar
+var ODORES={
+  platano:{nombre:'plátano', color:'#f2c53d', innato:0.9, semilla:101,
+    frase:'Mmm, plátano.', acerca:'Quiero ir al plátano.', aleja:'Plátano... no me gusta ya.'},
+  levadura:{nombre:'levadura', color:'#d9c79c', innato:0.35, semilla:202,
+    frase:'Algo fermentado.', acerca:'Huele a algo que me interesa.', aleja:'Levadura, mejor no.'},
+  vinagre:{nombre:'vinagre', color:'#c4553f', innato:0.6, semilla:303,
+    frase:'Vinagre.', acerca:'Vinagre: me atrae.', aleja:'Vinagre otra vez, me retiro.'},
+  menta:{nombre:'menta', color:'#5fb27a', innato:-0.5, semilla:404,
+    frase:'Uf, menta.', acerca:'Menta... voy, aunque no me guste.', aleja:'Menta: me alejo.'}
+};
+var ORDEN=['platano','levadura','vinagre','menta'];
+var PERFIL={};
+(function(){
+  ORDEN.forEach(function(id){
+    var R=mulberry32(ODORES[id].semilla), idx=[]; for(var i=0;i<NPN;i++) idx.push(i);
+    for(var i2=NPN-1;i2>0;i2--){ var j=Math.floor(R()*(i2+1)); var t=idx[i2]; idx[i2]=idx[j]; idx[j]=t; }
+    var p=new Float32Array(NPN);
+    for(var c=0;c<12;c++) p[idx[c]]=0.55+0.45*R();
+    PERFIL[id]=p;
+  });
+})();
+
+/* Parametros del cerebro (calibrados en simulacion, ver README) */
+var P={
+  dt:0.5, tauM:10, vTh:1, tRef:2,
+  pnBase:2, pnGain:200, kick:0.25,
+  aplIn:0.02, aplTau:25, aplInh:0.6,
+  tauE:4000, tauMB:60, mbGain:0.012, innGain:0.6,
+  eta:0.035, wMax:2.0, wMin:0, w0:0.3,
+  tauDia:36*HORA_MS, tauNoche:120*HORA_MS,
+  umbral:0.12
+};
+var KDIST=[[4,.12],[5,.16],[6,.19],[7,.20],[8,.15],[9,.08],[10,.04],[11,.03],[12,.02],[13,.01]];
+function muestraK(R){ var u=R(),a=0; for(var i=0;i<KDIST.length;i++){ a+=KDIST[i][1]; if(u<a) return KDIST[i][0]; } return 6; }
+
+/* Cableado: la madre (si la hay) transmite la mitad de sus conexiones PN->KC, con mutaciones.
+   Los recuerdos (pesos aprendidos) NO se heredan: solo el cableado. */
+function muestraKC(R, idx){
+  var n=muestraK(R), pn=[], syn=[];
+  for(var a=0;a<n;a++){
+    var j=a+Math.floor(R()*(NPN-a)); var t=idx[a]; idx[a]=idx[j]; idx[j]=t;
+    pn.push(idx[a]);
+    syn.push(Math.max(1,Math.min(89,Math.round(16*Math.exp(0.6*gauss(R))))));
+  }
+  return {pn:pn, syn:syn};
+}
+function construyeCableado(seed, madre, mezcla){
+  // madre: cableado de la madre ({kcPN,kcSyn}) o null. mezcla: fraccion de KC copiadas.
+  var RH=mulberry32(seed>>>0), RX=mulberry32((seed^0x9e3779b9)>>>0);
+  var idxH=[], i;
+  for(i=0;i<NPN;i++) idxH.push(i);
+  var kcPN=new Array(NKC), kcSyn=new Array(NKC);
+  var outK=[], outW=[];
+  for(var q=0;q<NPN;q++){ outK.push([]); outW.push([]); }
+  var W0=new Float32Array(NKC*4);
+  for(var k=0;k<NKC;k++){
+    var nuevo=muestraKC(RH, idxH);
+    var base=(madre && RX()<mezcla)? {pn:madre.kcPN[k], syn:madre.kcSyn[k]} : nuevo;
+    var pn=base.pn.slice(), syn=base.syn.slice();
+    for(var e=0;e<pn.length;e++){
+      if(RX()<0.02){ syn[e]=clamp(syn[e]+(RX()<0.5?-1:1),1,89); }
+    }
+    kcPN[k]=pn; kcSyn[k]=syn;
+    for(var e2=0;e2<pn.length;e2++){ outK[pn[e2]].push(k); outW[pn[e2]].push(syn[e2]/16); }
+    for(var m=0;m<NM;m++) W0[k*4+m]=clamp(P.w0*(1+0.12*gauss(RH)),0.05,1.5);
+  }
+  for(var r=0;r<NPN;r++){ outK[r]=Int32Array.from(outK[r]); outW[r]=Float32Array.from(outW[r]); }
+  return {outK:outK,outW:outW,W0:W0,kcPN:kcPN,kcSyn:kcSyn};
+}
+/* El cableado de la generación actual, a partir de la cadena de semillas madre->hija. */
+function cableadoDeCadena(cadena){
+  var w=null;
+  for(var i=0;i<cadena.length;i++) w=construyeCableado(cadena[i], w, w? 0.5 : null);
+  return w;
+}
+/* Porcentaje de conexiones PN->KC idénticas entre dos cableados (madre -> hija). */
+function conexionesCompartidas(kcA, kcB){
+  var iguales=0, total=0;
+  for(var k=0;k<NKC;k++){
+    var A_=kcA[k], B_=kcB[k], set={};
+    for(var i=0;i<B_.length;i++) set[B_[i]]=1;
+    for(var j=0;j<A_.length;j++){ total++; if(set[A_[j]]) iguales++; }
+  }
+  return total? iguales/total : 0;
+}
+
+/* ================= cerebro ================= */
+var RN=40000;
+function Cerebro(cab){
+  this.kcPN=cab.kcPN; this.kcSyn=cab.kcSyn;
+  this.outK=cab.outK; this.outW=cab.outW;
+  this.W0=cab.W0; this.W=cab.W0.slice();
+  this.v=new Float32Array(NKC); this.refr=new Float32Array(NKC);
+  this.last=new Float64Array(NKC); for(var i=0;i<NKC;i++) this.last[i]=-1e9;
+  this.elig=new Float32Array(NKC);
+  this.cnt=new Int32Array(NKC);
+  this.mbR=new Float64Array(NM);
+  this.drive=new Float64Array(NPN);
+  this.apl=0; this.t=0; this.mbInn=0;
+  this.aprendiendo=false; this.aplOn=true;
+  this.rt=new Float64Array(RN); this.rk=new Int32Array(RN); this.rh=0; this.rn=0;
+  this.nspLast=0;
+}
+Cerebro.prototype.setEstimulo=function(conc){
+  this.intens=0;
+  for(var p=0;p<NPN;p++) this.drive[p]=0;
+  this.mbInn=0;
+  if(!conc) return;
+  for(var o=0;o<ORDEN.length;o++){
+    var id=ORDEN[o], c=conc[id]||0; if(c<=0) continue;
+    var pf=PERFIL[id];
+    for(var q=0;q<NPN;q++) this.drive[q]+=c*pf[q];
+    this.mbInn+=c*ODORES[id].innato*P.innGain;
+    this.intens+=c;
+  }
+};
+Cerebro.prototype.paso=function(dt){
+  var t=this.t+=dt, p, k, m;
+  var pDisp=Math.exp(-dt/P.tauM), decE=Math.exp(-dt/P.tauE), decMB=Math.exp(-dt/P.tauMB);
+  for(p=0;p<NPN;p++){
+    var tasa=P.pnBase+P.pnGain*this.drive[p];
+    if(Math.random()<tasa*dt*0.001){
+      var ks=this.outK[p], ws=this.outW[p];
+      for(var j=0;j<ks.length;j++) this.v[ks[j]]+=P.kick*ws[j];
+    }
+  }
+  var inh=this.aplOn? P.aplInh*this.apl : 0;
+  var nsp=0, aprend=this.aprendiendo;
+  for(k=0;k<NKC;k++){
+    this.elig[k]*=decE;
+    if(this.refr[k]>0){ this.refr[k]-=dt; continue; }
+    var vv=this.v[k]*pDisp-inh*dt;
+    if(vv<-0.3) vv=-0.3;
+    if(vv>=P.vTh){
+      vv=0; this.refr[k]=P.tRef; this.last[k]=t; nsp++; this.cnt[k]++;
+      if(aprend) this.elig[k]=1;
+      var b=k*4;
+      this.mbR[0]+=P.mbGain*this.W[b]; this.mbR[1]+=P.mbGain*this.W[b+1];
+      this.mbR[2]+=P.mbGain*this.W[b+2]; this.mbR[3]+=P.mbGain*this.W[b+3];
+      this.rt[this.rh]=t; this.rk[this.rh]=k; this.rh=(this.rh+1)%RN; if(this.rn<RN) this.rn++;
+    }
+    this.v[k]=vv;
+  }
+  for(m=0;m<NM;m++) this.mbR[m]*=decMB;
+  this.apl=this.apl*Math.exp(-dt/P.aplTau)+P.aplIn*nsp;
+  this.nspLast=nsp;
+  return nsp;
+};
+Cerebro.prototype.valencia=function(){
+  return (this.mbR[0]+this.mbR[1]+this.mbInn)-(this.mbR[2]+this.mbR[3]);
+};
+// Valencia por unidad de intensidad: el olor de cerca y el de lejos del mismo tipo se leen igual.
+Cerebro.prototype.valenciaNorm=function(){
+  return this.valencia()/Math.max(this.intens||0,0.05);
+};
+Cerebro.prototype.refuerzo=function(D){
+  var d=P.eta*D, W=this.W, e=this.elig;
+  for(var k=0;k<NKC;k++){
+    var x=e[k]; if(x<0.02) continue;
+    var b=k*4, dw=d*x;
+    W[b]=clamp(W[b]+dw,P.wMin,P.wMax);   W[b+1]=clamp(W[b+1]+dw,P.wMin,P.wMax);
+    W[b+2]=clamp(W[b+2]-dw,P.wMin,P.wMax); W[b+3]=clamp(W[b+3]-dw,P.wMin,P.wMax);
+  }
+};
+Cerebro.prototype.olvida=function(dtMs,tau){
+  var f=1-Math.exp(-dtMs/tau), W=this.W, W0=this.W0;
+  for(var i=0;i<W.length;i++) W[i]+=(W0[i]-W[i])*f;
+};
+Cerebro.prototype.activasEn=function(ventana){
+  var n=0, lim=this.t-ventana;
+  for(var k=0;k<NKC;k++) if(this.last[k]>=lim) n++;
+  return n;
+};
+
+/* ================= estado persistente ================= */
+var KEY='mosquita.v1';
+function leeEstado(){ try{ var s=localStorage.getItem(KEY); return s?JSON.parse(s):null; }catch(e){ return null; } }
+function escribeEstado(o){ try{ localStorage.setItem(KEY,JSON.stringify(o)); }catch(e){} }
+function leeFlagLab(){ try{ return localStorage.getItem('mosquita.lab')==='1'; }catch(e){ return false; } }
+function escribeFlagLab(v){ try{ localStorage.setItem('mosquita.lab',v?'1':'0'); }catch(e){} }
+function f32ToB64(f){ var u=new Uint8Array(f.buffer,f.byteOffset,f.byteLength), s='', i; for(i=0;i<u.length;i+=8192) s+=String.fromCharCode.apply(null,u.subarray(i,i+8192)); return btoa(s); }
+function b64ToF32(b){ var s=atob(b), u=new Uint8Array(s.length), i; for(i=0;i<s.length;i++) u[i]=s.charCodeAt(i); return new Float32Array(u.buffer); }
+
+/* ================= estado vivo ================= */
+var cer=null;                 // Cerebro
+var A={                       // vida de la mosquita
+  nombre:'Mosquita', seed:1, edadMs:0.5*DIA_MS, hambre:0.2, naive:{}, pares:{}, diario:[],
+  nacio:Date.now(), visto:Date.now(), rasgos:null, lab:false, sonido:false, ultimoReconoce:-1e12,
+  gen:1, cadena:[], madreSeed:null, madreNombre:null, compartido:null, linaje:[]
+};
+var F={                       // la mosca en el frasco
+  x:0.5, y:0.6, ang:0, modo:'vagar', dest:null, pausa:0, sniff:null, enfriar:0,
+  olfato:null, olfatoT:-1e9, decir:null, animo:null, animoHasta:0, durmiendo:false,
+  volando:0, tTotal:0
+};
+var fuentes=[];               // {tipo, o, x, y, vida, vidaMax}
+var partic=[], corazones=[], zetas=[];
+var herramienta='none', pointer={x:-1,y:-1,activo:false};
+var UMBRAL=P.umbral;
+var ultimoGuardado=0;
+var pausadoPorFin=false;
+var labVisible=false;
+
+/* ================= rasgos al nacer ================= */
+function patronDe(id){
+  // Activa = al menos 5 espigas por segundo durante un olfateo de 2 s, con los pesos actuales.
+  var k, kcs=new Uint8Array(NKC), dur=2, conc={};
+  ORDEN.forEach(function(o){ conc[o]=0; }); conc[id]=1;
+  cer.cnt.fill(0);
+  cer.setEstimulo(conc); cer.aprendiendo=true;
+  var acc=0, n=0, pasos=Math.round(dur*1000/P.dt);
+  for(var s=0;s<pasos;s++){ cer.paso(P.dt); acc+=cer.valencia(); n++; }
+  cer.aprendiendo=false; cer.setEstimulo(null);
+  for(k=0;k<NKC;k++) kcs[k]=cer.cnt[k]>=5*dur?1:0;
+  return {bits:kcs, V:acc/n};
+}
+function interseccion(a,b){ var i=0,u=0,x=0; for(var k=0;k<NKC;k++){ if(a[k]&&b[k]) i++; if(a[k]||b[k]) u++; } return u? i/u:0; }
+function cuentaDisparos(bits){ var n=0; for(var k=0;k<NKC;k++) n+=bits[k]; return n; }
+function miraRasgos(){
+  // Todo se mide con los pesos de nacimiento (W0); al final el cerebro queda limpio.
+  var naive={}, pat={};
+  cer.W=cer.W0.slice(); cer.elig.fill(0);
+  ORDEN.forEach(function(id){ var r=patronDe(id); pat[id]=r.bits; naive[id]=r.V; });
+  // Un par: olor plátano + refuerzo justo después del olfateo.
+  cer.W=cer.W0.slice(); cer.elig.fill(0);
+  var antes=naive.platano;
+  var conc={}; ORDEN.forEach(function(o){ conc[o]=0; }); conc.platano=1;
+  cer.setEstimulo(conc); cer.aprendiendo=true;
+  for(var s=0;s<1200/P.dt;s++) cer.paso(P.dt);
+  cer.aprendiendo=false; cer.setEstimulo(null);
+  cer.refuerzo(1);
+  var despues=patronDe('platano').V;
+  var frac=(cuentaDisparos(pat.platano)+cuentaDisparos(pat.vinagre))/(2*NKC);
+  var solap=interseccion(pat.platano, pat.vinagre);
+  cer.W=cer.W0.slice(); cer.elig.fill(0); cer.setEstimulo(null);
+  cer.apl=0;
+  return {
+    kcPorcentaje: Math.round(frac*1000)/10,
+    solapamiento: Math.round(solap*100)/100,
+    aprendeMedido: Math.round((despues-antes)*100)/100,
+    naive: {platano:naive.platano, levadura:naive.levadura, vinagre:naive.vinagre, menta:naive.menta}
+  };
+}
+
+/* ================= creacion / carga ================= */
+function nuevaMosquita(nombre, madre){
+  // madre: {cadena, seed, nombre, gen} o null. La hija hereda la mitad del cableado de su madre.
+  var seed=(Math.floor(Math.random()*4294967295))>>>0;
+  A.nombre=(nombre||'Mosquita').trim().slice(0,16)||'Mosquita';
+  A.seed=seed; A.edadMs=0.5*DIA_MS; A.hambre=0.2; A.pares={}; A.diario=[];
+  A.nacio=Date.now(); A.visto=Date.now(); A.lab=false; A.ultimoReconoce=-1e12; A.hitos={};
+  A.madreSeed=madre? madre.seed : null;
+  A.madreNombre=madre? madre.nombre : null;
+  A.gen=madre? madre.gen+1 : 1;
+  A.cadena=madre? madre.cadena.concat([seed]) : [seed];
+  var cab=cableadoDeCadena(A.cadena);
+  cer=new Cerebro(cab);
+  A.compartido=null;
+  if(madre){
+    var mc=cableadoDeCadena(madre.cadena).kcPN;
+    A.compartido=conexionesCompartidas(mc, cab.kcPN);
+  }
+  var r=miraRasgos();
+  A.naive=r.naive; A.rasgos=r;
+  cer.W=cer.W0.slice(); cer.elig.fill(0); cer.apl=0; cer.t=0;
+  for(var k=0;k<NKC;k++) cer.last[k]=-1e9;
+  cer.rh=0; cer.rn=0;
+  F.x=0.5; F.y=0.6; F.modo='vagar'; F.dest=null; F.sniff=null; F.enfriar=600; F.olfato=null; F.animo=null;
+  if(madre){
+    diario('Nace '+A.nombre+', generación '+A.gen+', hija de '+madre.nombre+'. Comparte el '+Math.round(A.compartido*100)+' % de sus conexiones con su madre (medido).');
+  } else {
+    diario('Nace '+A.nombre+'. Lo primero que hace es oler.');
+  }
+  diario('Sus rasgos: '+textoRasgos(r).join(' '));
+  guardar();
+}
+function serializa(){
+  return {v:1, nombre:A.nombre, seed:A.seed, edadMs:A.edadMs, hambre:A.hambre, naive:A.naive,
+    pares:A.pares, diario:A.diario.slice(-80), nacio:A.nacio, visto:Date.now(),
+    rasgos:A.rasgos, lab:A.lab, W:f32ToB64(cer.W), sonido:A.sonido,
+    gen:A.gen, cadena:A.cadena, madreSeed:A.madreSeed, madreNombre:A.madreNombre, compartido:A.compartido, linaje:A.linaje, hitos:A.hitos||{}};
+}
+function guardar(){ try{ A.visto=Date.now(); escribeEstado(serializa()); }catch(e){} }
+function cargar(){
+  var s=leeEstado(); if(!s || s.v!==1) return false;
+  try{
+    A.nombre=s.nombre; A.seed=s.seed; A.edadMs=s.edadMs; A.hambre=s.hambre; A.naive=s.naive||{};
+    A.pares=s.pares||{}; A.diario=s.diario||[]; A.nacio=s.nacio; A.visto=s.visto; A.rasgos=s.rasgos;
+    A.lab=!!s.lab; A.sonido=!!s.sonido;
+    A.gen=s.gen||1; A.madreSeed=(s.madreSeed==null?null:s.madreSeed); A.madreNombre=s.madreNombre||null;
+    A.compartido=(s.compartido==null?null:s.compartido); A.linaje=s.linaje||[]; A.hitos=s.hitos||{};
+    A.cadena=s.cadena||[s.seed];
+    cer=new Cerebro(cableadoDeCadena(A.cadena));
+    var Wg=b64ToF32(s.W); if(Wg.length===cer.W.length) cer.W=Wg;
+    var fuera=Math.max(0, Math.min(Date.now()-s.visto, 365*DIA_MS));
+    if(fuera>0){
+      cer.olvida(fuera*(esNoche()?0.5:1), P.tauDia);
+      A.edadMs+=fuera;
+      A.hambre=clamp(A.hambre+fuera/(8*HORA_MS),0,1);
+      if(fuera>2*HORA_MS){
+        diario('Te extrañó: llevabas '+Math.round(fuera/HORA_MS)+' horas fuera.');
+        F.animo='extrana'; F.animoHasta=Date.now()+6000;
+      }
+    }
+    return true;
+  }catch(e){ return false; }
+}
+function diario(txt){
+  var ahora=new Date();
+  A.diario.push({d:Math.floor(A.edadMs/DIA_MS*10)/10, h:ahora.getTime(), t:txt});
+  if(A.diario.length>80) A.diario.splice(0,A.diario.length-80);
+  pintaDiario();
+}
+function textoRasgos(r){
+  var out=[];
+  out.push('Solo el '+r.kcPorcentaje.toFixed(1).replace('.',',')+' % de sus células de Kenyon se encienden por olor.');
+  out.push('Distingue plátano de vinagre con solapamiento de '+String(r.solapamiento).replace('.',',')+'.');
+  var a=r.aprendeMedido; out.push(a>=0.2? 'Aprende rápido: un par de azúcar le cambia mucho la forma de oler.' : (a>=0.12? 'Aprende a un ritmo medio: unos dos pares.' : 'Aprende despacio: necesita varios pares.'));
+  return out;
+}
+
+/* ================= fuentes y olfato ================= */
+function concentraciones(){
+  var c={}; ORDEN.forEach(function(o){ c[o]=0; });
+  fuentes.forEach(function(s){
+    if(s.tipo!=='olor') return;
+    var dx=s.x-F.x, dy=s.y-F.y, d2=dx*dx+dy*dy;
+    c[s.o]+=s.fuerza*Math.exp(-d2/(2*0.2*0.2))*(s.vida/s.vidaMax);
+  });
+  ORDEN.forEach(function(o){ c[o]=clamp(c[o],0,1); });
+  return c;
+}
+function fuenteMasCercana(o){
+  var mejor=null, md=1e9;
+  fuentes.forEach(function(s){ if(s.tipo==='olor' && s.o===o){ var d=Math.hypot(s.x-F.x,s.y-F.y); if(d<md){md=d; mejor=s;} } });
+  return mejor;
+}
+function iniciaOlfateo(o, conc){
+  F.sniff={o:o, t:1200, acc:0, n:0};
+  F.olfato=o; F.olfatoT=cer.t;
+  cer.setEstimulo(conc); cer.aprendiendo=true;
+  F.enfriar=2600;
+  decir(ODORES[o].frase, 1600);
+  F.modo='oler';
+}
+function terminaOlfateo(){
+  var s=F.sniff; F.sniff=null;
+  cer.aprendiendo=false; cer.setEstimulo(null);
+  var V=s.n? s.acc/s.n : 0;
+  F.ultimoV=F.ultimoV||{};
+  F.ultimoV[s.o]=V;
+  if(V>UMBRAL){
+    var f=fuenteMasCercana(s.o);
+    if(f){ F.modo='acercar'; F.olorObj=s.o; F.dest={x:f.x,y:f.y}; }
+    decir(ODORES[s.o].acerca, 1800);
+  } else if(V<-UMBRAL){
+    var away=fuenteMasCercana(s.o);
+    var dx=F.x-(away?away.x:F.x), dy=F.y-(away?away.y:F.y), L=Math.hypot(dx,dy)||1;
+    F.modo='huir';
+    F.dest={x:clamp(F.x+dx/L*0.35,0.05,0.95), y:clamp(F.y+dy/L*0.35,0.08,0.9)};
+    decir(ODORES[s.o].aleja, 1800);
+  } else if(F.modo!=='acercar'){
+    F.modo='vagar'; F.dest=null;
+  }
+  // aprendizaje: registro un cambio notable frente a su estado de nacimiento
+  var delta=V-(A.naive[s.o]||0);
+  A.hitos=A.hitos||{};
+  if((s.intMax||0)>=0.6 && Math.abs(delta)>0.25 && !A.hitos[s.o]){
+    A.hitos[s.o]=true;
+    diario(delta>0? 'Ahora le gusta el '+ODORES[s.o].nombre+' más que al principio.' : 'Ahora evita el '+ODORES[s.o].nombre+'.');
+  }
+}
+
+/* ================= comida y gusto ================= */
+function recompensa(tipo){
+  var conRecuerdo = (cer.t - F.olfatoT) < 6000 && F.olfato;
+  if(tipo==='azucar'){
+    cer.refuerzo(1);
+    A.hambre=clamp(A.hambre-0.6,0,1);
+    setAnimo('feliz',2500);
+    if(conRecuerdo){ A.pares[F.olfato]=(A.pares[F.olfato]||0)+1; diario('Comió azúcar mientras olía '+ODORES[F.olfato].nombre+'. Un par más.'); }
+    else diario('Comió azúcar.');
+    decir('Azúcar.', 1400);
+  } else {
+    cer.refuerzo(-1);
+    setAnimo('asco',2600);
+    if(conRecuerdo){ A.pares[F.olfato]=(A.pares[F.olfato]||0)+1; diario('Probó la quinina mientras olía '+ODORES[F.olfato].nombre+'.'); }
+    else diario('Probó la quinina y se retiró.');
+    decir('Qué asco.', 1400);
+    F.modo='huir'; F.dest={x:clamp(F.x+(F.x<0.5?0.3:-0.3),0.05,0.95), y:clamp(F.y+(F.y<0.5?0.2:-0.2),0.1,0.9)};
+  }
+  guardar();
+}
+function setAnimo(t,ms){ F.animo=t; F.animoHasta=Date.now()+ms; }
+function decir(txt,ms){ F.decir={txt:txt, hasta:Date.now()+ms}; }
+
+/* ================= comportamiento (tiempo de la mosca, ms) ================= */
+var tCerebroAcum=0;
+function tickMosca(dtFly){
+  var sec=dtFly/1000;
+  var noche=esNoche();
+  var enOlfateo=!!F.sniff;
+
+  // ritmo: duerme de noche, despierta de día
+  if(noche && !enOlfateo && F.modo!=='dormir'){ F.modo='dormir'; F.dest={x:0.86,y:0.8}; F.pausa=0; }
+  if(!noche && F.modo==='dormir'){ F.modo='vagar'; F.dest=null; F.durmiendo=false; F.pausa=0.5; }
+
+  // movimiento (solo cuando no huele)
+  if(!enOlfateo){
+    var vel=0.07;
+    if(F.modo==='acercar') vel=0.12;
+    if(F.modo==='huir'||F.modo==='volar') vel=0.27;
+    if(F.modo==='dormir') vel=0.09;
+    if(F.modo==='luz') vel=0.22;
+    if(F.dest){
+      var dx=F.dest.x-F.x, dy=F.dest.y-F.y, d=Math.hypot(dx,dy);
+      if(d<0.012){
+        F.dest=null;
+        F.pausa=0.4+Math.random()*1.2;
+        if(F.modo==='huir'||F.modo==='volar'||F.modo==='luz') F.modo='vagar';
+      } else {
+        var paso=Math.min(d,vel*sec);
+        F.x+=dx/d*paso; F.y+=dy/d*paso; F.ang=Math.atan2(dy,dx);
+      }
+    } else if(F.modo==='dormir'){
+      F.durmiendo=true;
+    } else if(F.pausa>0){
+      F.pausa-=sec;
+    } else if(!noche && A.hambre>0.35 && (F.modo==='vagar'||F.modo==='acercar') && fuentes.some(function(s){ return s.tipo==='azucar'; })){
+      // con hambre va hacia el azúcar más cercano
+      var az=null, dz=1e9;
+      fuentes.forEach(function(s){ if(s.tipo==='azucar'){ var dd=Math.hypot(s.x-F.x,s.y-F.y); if(dd<dz){ dz=dd; az=s; } } });
+      F.dest={x:az.x,y:az.y};
+    } else if(F.modo==='acercar'){
+      // vuelve a la fuente del olor si se quedó lejos; si está junto a ella, se queda oliendo
+      var fz=fuenteMasCercana(F.olorObj);
+      if(!fz){ F.modo='vagar'; F.pausa=0.5; }
+      else if(Math.hypot(fz.x-F.x,fz.y-F.y)>0.03){ F.dest={x:fz.x,y:fz.y}; }
+      else { F.pausa=1+Math.random()*2; if(Math.random()<0.3) F.modo='vagar'; }
+    } else if(F.modo==='vagar' && !noche){
+      F.dest={x:0.12+Math.random()*0.76, y:0.14+Math.random()*0.7};
+      F.pausa=Math.random()*1.5;
+    }
+    if(F.modo!=='dormir') F.durmiendo=false;
+    if(F.modo==='dormir' && F.dest===null) F.durmiendo=true;
+    F.x=clamp(F.x,0.04,0.96); F.y=clamp(F.y,0.06,0.92);
+  }
+
+  // alimento y luz (la luz la persigue si está despierta)
+  fuentes.forEach(function(s){
+    if(s.tipo==='azucar' && !enOlfateo && Math.hypot(s.x-F.x,s.y-F.y)<0.05){ s.gone=true; recompensa('azucar'); }
+    if(s.tipo==='quinina' && !enOlfateo && Math.hypot(s.x-F.x,s.y-F.y)<0.05){ s.gone=true; recompensa('quinina'); }
+    if(s.tipo==='luz' && !noche && !enOlfateo && F.modo!=='huir' && Math.hypot(s.x-F.x,s.y-F.y)>0.03){
+      F.modo='luz'; F.dest={x:s.x,y:s.y};
+    }
+  });
+  fuentes=fuentes.filter(function(s){ return !s.gone; });
+
+  // hambre y ritmo de vida
+  A.hambre=clamp(A.hambre+dtFly/(8*HORA_MS),0,1);
+  A.edadMs+=dtFly;
+
+  // olfateo
+  if(enOlfateo){
+    F.sniff.t-=dtFly;
+    F.sniff.acc+=cer.valenciaNorm(); F.sniff.n++; F.sniff.intMax=Math.max(F.sniff.intMax||0, cer.intens||0);
+    if(F.sniff.t<=0) terminaOlfateo();
+  } else {
+    F.enfriar-=dtFly;
+    if(F.enfriar<=0){
+      if(noche){ F.enfriar=1000; }
+      else {
+        var c=concentraciones(), mejor=null, mv=0.08;
+        ORDEN.forEach(function(o){ if(c[o]>mv){ mv=c[o]; mejor=o; } });
+        if(mejor) iniciaOlfateo(mejor, c);
+        else F.enfriar=300;
+      }
+    }
+  }
+}
+function pasosCerebro(dtFly){
+  var n=Math.max(1,Math.round(dtFly/P.dt));
+  var noche=esNoche();
+  for(var i=0;i<n;i++){ cer.paso(P.dt); }
+  // olvido: awake vs sleeping
+  cer.olvida(dtFly, noche? P.tauNoche : P.tauDia);
+}
+
+/* ================= eventos del usuario ================= */
+var canvas, g, W=0, H=0, DPR=1;
+var kcCanvas, kcG, rasCanvas, rasG;
+function ajustaCanvas(c){
+  var r=c.getBoundingClientRect(); var d=Math.min(2,window.devicePixelRatio||1);
+  var w=Math.max(10,Math.round(r.width)), h=Math.max(10,Math.round(r.height));
+  if(c.width!==Math.round(w*d) || c.height!==Math.round(h*d)){ c.width=Math.round(w*d); c.height=Math.round(h*d); }
+  return {w:w,h:h,d:d};
+}
+function aNormal(ev){
+  var r=canvas.getBoundingClientRect();
+  var u=(ev.clientX-r.left)/r.width, v=(ev.clientY-r.top)/r.height;
+  return {u:u, v:v};
+}
+function vistaJarra(){
+  return {x0:0.07, x1:0.93, y0:0.08, y1:0.9};
+}
+function aJarra(u,v){ var j=vistaJarra(); return {x:clamp((u-j.x0)/(j.x1-j.x0),0,1), y:clamp((v-j.y0)/(j.y1-j.y0),0,1)}; }
+function onPointer(ev){
+  if(!cer || pausadoPorFin) return;
+  var p=aNormal(ev), q=aJarra(p.u,p.v);
+  if(p.u<0||p.u>1||p.v<0||p.v>1) return;
+  var cerca=Math.hypot(q.x-F.x, q.y-F.y)<0.09;
+  if(herramienta==='none' || (cerca && herramienta==='none')){
+    if(cerca){ F.ang=Math.atan2(q.y-F.y,q.x-F.x); corazones.push({x:F.x,y:F.y,t:0}); setAnimo('mira',1500);
+      if(Date.now()-A.ultimoReconoce>30*60000){ A.ultimoReconoce=Date.now(); diario('Te reconoció cuando te acercaste el dedo.'); }
+    }
+    return;
+  }
+  if(herramienta==='platano'||herramienta==='levadura'||herramienta==='vinagre'||herramienta==='menta'){
+    var nuevas=fuentes.filter(function(s){ return s.tipo==='olor'; });
+    if(nuevas.length>=3){ var quitar=nuevas[0]; fuentes=fuentes.filter(function(s){ return s!==quitar; }); }
+    fuentes.push({tipo:'olor', o:herramienta, x:q.x, y:q.y, fuerza:1, vida:110000, vidaMax:110000});
+    diario('Pusiste '+ODORES[herramienta].nombre+' en el frasco.');
+    setHint('El '+ODORES[herramienta].nombre+' se difunde. Ella se acercará o se alejará según lo que haya aprendido.');
+  } else if(herramienta==='azucar'){
+    fuentes.push({tipo:'azucar', x:q.x, y:q.y, vida:180000, vidaMax:180000});
+    setHint('Una gota de azúcar. Si la pones junto a un olor y se la come, lo recordará.');
+  } else if(herramienta==='quinina'){
+    fuentes.push({tipo:'quinina', x:q.x, y:q.y, vida:180000, vidaMax:180000});
+    setHint('Quinina: amarga. Si la prueba junto a un olor, aprenderá a evitarlo.');
+  } else if(herramienta==='luz'){
+    fuentes=fuentes.filter(function(s){ return s.tipo!=='luz'; });
+    fuentes.push({tipo:'luz', x:q.x, y:q.y, vida:15000, vidaMax:15000});
+    setHint('Una luz. Ella la persigue un rato.');
+  }
+  guardar();
+}
+function setHint(t){ $('#hint').textContent=t; }
+function soplar(){
+  if(!cer) return;
+  F.modo='volar'; F.dest={x:0.1+Math.random()*0.8, y:0.12+Math.random()*0.75};
+  F.sniff=null; F.enfriar=1200; cer.aprendiendo=false; cer.setEstimulo(null);
+  setAnimo('asusta',1800); decir('¡Uy!', 1200);
+  diario('Le soplaste y voló a otro rincón.');
+  if(audio.on) beep(680,0.12);
+  setHint('Voló. Ya se le pasará.');
+  guardar();
+}
+function herramientaSel(t){
+  herramienta=t;
+  $$('[data-tool]').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-tool')===t?'true':'false'); });
+  var txt={none:'Toca para mirarla, o elige algo para ponerlo en el frasco.', platano:'Toca el frasco para poner plátano.', levadura:'Toca el frasco para poner levadura.', vinagre:'Toca el frasco para poner vinagre.', menta:'Toca el frasco para poner menta.', azucar:'Toca el frasco para dejar una gota de azúcar.', quinina:'Toca el frasco para dejar una gota de quinina.', luz:'Toca el frasco: una linterna que ella persigue.'};
+  setHint(txt[t]||'');
+}
+
+/* ================= sonido ================= */
+var audio={ctx:null,on:false,osc:null,gain:null};
+function asegCtx(){
+  if(audio.ctx) return audio.ctx;
+  var AC=window.AudioContext||window.webkitAudioContext; if(!AC) return null;
+  audio.ctx=new AC(); return audio.ctx;
+}
+function beep(f,dur){
+  try{ var c=asegCtx(); if(!c) return; var o=c.createOscillator(), gn=c.createGain();
+    o.type='sine'; o.frequency.value=f; gn.gain.value=0.0001;
+    o.connect(gn); gn.connect(c.destination); o.start();
+    gn.gain.exponentialRampToValueAtTime(0.05, c.currentTime+0.01);
+    gn.gain.exponentialRampToValueAtTime(0.0001, c.currentTime+dur);
+    o.stop(c.currentTime+dur+0.02);
+  }catch(e){}
+}
+function arrancaZumbido(){
+  try{ var c=asegCtx(); if(!c || audio.osc) return;
+    var o=c.createOscillator(), gn=c.createGain();
+    o.type='triangle'; o.frequency.value=190; gn.gain.value=0.0; o.connect(gn); gn.connect(c.destination); o.start();
+    audio.osc=o; audio.gain=gn;
+  }catch(e){}
+}
+function actualizaZumbido(volar){
+  if(!audio.osc) return;
+  var t=audio.ctx.currentTime;
+  audio.osc.frequency.setTargetAtTime(volar?230:190, t, 0.1);
+  audio.gain.gain.setTargetAtTime(audio.on && !esNoche()? (volar?0.012:0.006):0, t, 0.1);
+}
+
+/* ================= dibujo ================= */
+function rrect(c,x,y,w,h,r){ c.beginPath(); c.moveTo(x+r,y); c.arcTo(x+w,y,x+w,y+h,r); c.arcTo(x+w,y+h,x,y+h,r); c.arcTo(x,y+h,x,y,r); c.arcTo(x,y,x+w,y,r); c.closePath(); }
+
+var MOTAS=[];
+(function(){ var R=mulberry32(77); for(var i=0;i<90;i++) MOTAS.push({x:R(),y:R(),r:0.6+R()*1.6}); })();
+
+function dibujaFrasco(time){
+  var m=ajustaCanvas(canvas); W=m.w; H=m.h; DPR=m.d;
+  g.setTransform(DPR,0,0,DPR,0,0);
+  var noche=esNoche();
+  var grad=g.createLinearGradient(0,0,0,H);
+  if(noche){ grad.addColorStop(0,'#0c1622'); grad.addColorStop(1,'#1a2a2e'); }
+  else { grad.addColorStop(0,'#f8efd8'); grad.addColorStop(1,'#e8dcc0'); }
+  g.fillStyle=grad; g.fillRect(0,0,W,H);
+  var j=vistaJarra();
+  var X0=j.x0*W, X1=j.x1*W, Y0=j.y0*H, Y1=j.y1*H;
+  // halo de olores: difusión
+  fuentes.forEach(function(s){
+    if(s.tipo==='olor'){
+      var cx=X0+s.x*(X1-X0), cy=Y0+s.y*(Y1-Y0), R=Math.min(X1-X0,Y1-Y0)*0.22;
+      var gr=g.createRadialGradient(cx,cy,0,cx,cy,R);
+      var col=ODORES[s.o].color;
+      gr.addColorStop(0,hexA(col,0.20*(s.vida/s.vidaMax)+0.03)); gr.addColorStop(1,hexA(col,0));
+      g.fillStyle=gr; g.beginPath(); g.arc(cx,cy,R,0,Math.PI*2); g.fill();
+    }
+  });
+  // vidrio
+  rrect(g,X0,Y0,X1-X0,Y1-Y0,22);
+  var gl=g.createLinearGradient(X0,Y0,X1,Y1);
+  gl.addColorStop(0, noche?'rgba(160,200,210,0.10)':'rgba(255,255,255,0.45)');
+  gl.addColorStop(1, noche?'rgba(80,120,130,0.08)':'rgba(190,220,210,0.25)');
+  g.fillStyle=gl; g.fill();
+  g.lineWidth=3; g.strokeStyle=noche?'rgba(170,210,220,0.35)':'rgba(70,95,90,0.45)'; g.stroke();
+  // suelo
+  g.save(); rrect(g,X0,Y0,X1-X0,Y1-Y0,22); g.clip();
+  var sg=g.createLinearGradient(0,Y1-(Y1-Y0)*0.12,0,Y1);
+  sg.addColorStop(0,'rgba(0,0,0,0)'); sg.addColorStop(1, noche?'rgba(80,60,40,0.35)':'rgba(170,140,95,0.35)');
+  g.fillStyle=sg; g.fillRect(X0,Y0,X1-X0,Y1-Y0);
+  // motas de arena
+  for(var i=0;i<MOTAS.length;i++){ var mt=MOTAS[i]; g.fillStyle=noche?'rgba(230,220,190,0.12)':'rgba(120,90,50,0.16)';
+    g.beginPath(); g.arc(X0+mt.x*(X1-X0), Y1-(Y1-Y0)*0.12*mt.y, mt.r, 0, Math.PI*2); g.fill(); }
+  // luz de noche
+  if(noche){ g.fillStyle='rgba(20,30,40,0.25)'; g.fillRect(X0,Y0,X1-X0,Y1-Y0); }
+  g.restore();
+  // fuentes
+  fuentes.forEach(function(s){ dibujaFuente(s, X0+s.x*(X1-X0), Y0+s.y*(Y1-Y0), time, X0,X1,Y0,Y1); });
+  // partículas de olor
+  partic.forEach(function(p){ g.globalAlpha=Math.max(0,p.life*0.7); g.fillStyle=p.c; g.beginPath(); g.arc(X0+p.px*(X1-X0), Y0+p.py*(Y1-Y0), p.r, 0, Math.PI*2); g.fill(); });
+  g.globalAlpha=1;
+  // corazones
+  corazones.forEach(function(h){ dibujaCorazon(X0+h.x*(X1-X0), Y0+h.y*(Y1-Y0)-h.t*0.05, h.a); });
+  // mosca
+  var fx=X0+F.x*(X1-X0), fy=Y0+F.y*(Y1-Y0);
+  var est={duerme: F.durmiendo || (F.modo==='dormir' && !F.dest), vuela: F.modo==='huir'||F.modo==='volar', feliz: F.animo==='feliz', asco: F.animo==='asco', mira: F.animo==='mira'};
+  var escala=Math.max(0.9, Math.min(W,H)/340);
+  dibujaMosca(g, fx, fy, F.ang, escala*1.25, time, est);
+  // zetas al dormir
+  if(est.duerme){
+    g.fillStyle=noche?'#e8e2d0':'#4a3e2a'; g.font='bold 14px system-ui';
+    for(var zi=0;zi<2;zi++){ var zp=((time/900)+zi*0.5)%1; g.globalAlpha=Math.sin(zp*Math.PI)*0.9; g.fillText('z', fx+10+zi*6+zp*8, fy-12-zp*26); }
+    g.globalAlpha=1;
+  }
+  // globo de texto
+  if(F.decir && Date.now()<F.decir.hasta) dibujaGlobo(F.decir.txt, fx, fy-26*escala-6, X0, X1, Y0);
+  // nombre sobre el frasco
+  g.fillStyle=noche?'rgba(230,230,210,0.85)':'rgba(60,45,25,0.85)'; g.font='600 14px system-ui,sans-serif'; g.textAlign='left';
+  g.fillText(A.nombre, X0+10, Y0+20);
+  if(F.animo==='extrana' && Date.now()<F.animoHasta){ g.font='600 13px system-ui'; g.fillText('te extrañó', X0+10, Y0+38); }
+  g.textAlign='start';
+  if(noche){ g.fillStyle='rgba(230,240,255,0.7)'; g.font='12px system-ui'; g.fillText('de noche', W-86, 22); }
+}
+function hexA(hex,a){ var n=parseInt(hex.slice(1),16); return 'rgba('+((n>>16)&255)+','+((n>>8)&255)+','+(n&255)+','+a+')'; }
+function dibujaFuente(s,cx,cy,time,X0,X1,Y0,Y1){
+  g.save(); g.translate(cx,cy);
+  if(s.tipo==='olor'){
+    var o=s.o, a=clamp(s.vida/s.vidaMax,0,1)*0.95+0.05;
+    g.globalAlpha=a;
+    if(o==='platano'){ g.strokeStyle='#e7b428'; g.lineWidth=7; g.lineCap='round'; g.beginPath(); g.arc(0,0,11,0.2,2.6); g.stroke(); g.strokeStyle='#8a5a1c'; g.lineWidth=2.5; g.beginPath(); g.arc(0,0,11,2.5,2.75); g.stroke(); }
+    if(o==='levadura'){ g.fillStyle='#d9c79c'; [[0,0,8],[9,3,6],[-8,4,6],[3,-8,5]].forEach(function(c){ g.beginPath(); g.arc(c[0],c[1],c[2],0,Math.PI*2); g.fill(); }); g.fillStyle='rgba(255,255,255,0.6)'; g.beginPath(); g.arc(-2,-2,2,0,Math.PI*2); g.fill(); }
+    if(o==='vinagre'){ g.fillStyle='#c4553f'; rrect(g,-6,-8,12,16,3); g.fill(); g.fillStyle='#7a2f22'; g.fillRect(-3,-12,6,5); g.fillStyle='rgba(255,255,255,0.5)'; g.fillRect(-4,-4,2,8); }
+    if(o==='menta'){ g.fillStyle='#5fb27a'; g.beginPath(); g.ellipse(0,0,11,6,0.5,0,Math.PI*2); g.fill(); g.strokeStyle='#2f6a44'; g.lineWidth=1.2; g.beginPath(); g.moveTo(-9,2); g.lineTo(8,-3); g.stroke(); }
+    g.globalAlpha=1;
+  } else if(s.tipo==='azucar'){
+    g.fillStyle='#ffffff'; g.strokeStyle='rgba(120,110,90,0.5)'; g.lineWidth=1.2;
+    g.beginPath(); g.arc(0,0,7,0,Math.PI*2); g.fill(); g.stroke();
+    g.fillStyle='rgba(255,255,255,0.9)'; g.beginPath(); g.arc(-2.5,-2.5,2,0,Math.PI*2); g.fill();
+  } else if(s.tipo==='quinina'){
+    g.fillStyle='#c5d13a'; g.strokeStyle='#5d6a14'; g.lineWidth=1.4;
+    g.beginPath(); g.arc(0,0,7,0,Math.PI*2); g.fill(); g.stroke();
+    g.fillStyle='rgba(255,255,255,0.45)'; g.beginPath(); g.arc(-2.5,-2.5,1.8,0,Math.PI*2); g.fill();
+  } else if(s.tipo==='luz'){
+    var R=34+6*Math.sin(time*0.005);
+    var gr=g.createRadialGradient(0,0,0,0,0,R); gr.addColorStop(0,'rgba(255,240,170,0.9)'); gr.addColorStop(1,'rgba(255,240,170,0)');
+    g.fillStyle=gr; g.beginPath(); g.arc(0,0,R,0,Math.PI*2); g.fill();
+  }
+  g.restore();
+}
+function dibujaCorazon(x,y,a){
+  g.save(); g.globalAlpha=Math.max(0,a); g.fillStyle='#d9485f'; g.translate(x,y); g.scale(0.8,0.8);
+  g.beginPath(); g.moveTo(0,4); g.bezierCurveTo(-10,-4,-6,-12,0,-6); g.bezierCurveTo(6,-12,10,-4,0,4); g.fill(); g.restore();
+}
+function dibujaGlobo(txt,x,y,X0,X1,Y0){
+  g.font='600 13px system-ui,sans-serif';
+  var w=g.measureText(txt).width+18, h=26;
+  var bx=clamp(x-w/2, X0+4, X1-w-4), by=Math.max(Y0+4, y-h);
+  g.fillStyle='rgba(255,252,240,0.96)'; g.strokeStyle='rgba(60,45,25,0.45)'; g.lineWidth=1.2;
+  rrect(g,bx,by,w,h,10); g.fill(); g.stroke();
+  g.fillStyle='#2b2418'; g.textBaseline='middle'; g.fillText(txt,bx+9,by+h/2); g.textBaseline='alphabetic';
+}
+function dibujaMosca(c,x,y,ang,sc,tm,est){
+  c.save(); c.translate(x,y); c.rotate(ang); c.scale(sc,sc);
+  var duerme=est.duerme, vuela=est.vuela;
+  var fr=duerme? 0 : (vuela? 0.22 : 0.07);
+  var fase=tm*fr;
+  var batido=duerme? 0.25 : (0.15+0.85*Math.abs(Math.sin(fase*Math.PI*2)));
+  // sombra
+  c.fillStyle='rgba(0,0,0,0.13)'; c.beginPath(); c.ellipse(-2,12,15,4,0,0,Math.PI*2); c.fill();
+  // patas
+  c.strokeStyle='#3b2e1d'; c.lineWidth=1.3; c.lineCap='round';
+  for(var i=0;i<3;i++){
+    var ox=-5+i*5, a=duerme?0:Math.sin(tm*0.012+i*2.1)*0.5;
+    c.beginPath(); c.moveTo(ox,3); c.lineTo(ox+4+a*5, 10); c.lineTo(ox+8+a*8, 14); c.stroke();
+    c.beginPath(); c.moveTo(ox,-3); c.lineTo(ox+4-a*5, -10); c.lineTo(ox+8-a*8, -14); c.stroke();
+  }
+  // alas
+  for(var s=-1;s<=1;s+=2){
+    c.save(); c.translate(-3,s*4.5); c.rotate(s*(-0.12+(duerme?0.3:0)));
+    c.fillStyle='rgba(205,232,250,0.5)'; c.strokeStyle='rgba(110,150,185,0.8)'; c.lineWidth=0.8;
+    c.beginPath(); c.ellipse(0,0,12,Math.max(1.2,5.6*batido),0,0,Math.PI*2); c.fill(); c.stroke();
+    c.restore();
+  }
+  // abdomen
+  var ab=c.createRadialGradient(-13,-2,1,-13,0,11);
+  ab.addColorStop(0,'#c9a25a'); ab.addColorStop(1,'#6e4f25');
+  c.fillStyle=ab; c.beginPath(); c.ellipse(-13,0,10,6.2,0,0,Math.PI*2); c.fill();
+  c.fillStyle='rgba(35,22,8,0.55)';
+  for(var b=0;b<3;b++){ c.beginPath(); c.ellipse(-8-4*b,0,1.3,5.5-b*0.6,0,0,Math.PI*2); c.fill(); }
+  // torax
+  var th=c.createRadialGradient(-1,-2,1,0,0,8);
+  th.addColorStop(0,'#8b7046'); th.addColorStop(1,'#4d3b23');
+  c.fillStyle=th; c.beginPath(); c.arc(0,0,7.6,0,Math.PI*2); c.fill();
+  // cabeza
+  c.fillStyle='#3d2e1f'; c.beginPath(); c.arc(9.5,0,5.6,0,Math.PI*2); c.fill();
+  // ojos
+  if(duerme){
+    c.strokeStyle='#2b1d10'; c.lineWidth=1.2;
+    c.beginPath(); c.moveTo(10.5,-4.2); c.lineTo(13,-3.4); c.stroke();
+    c.beginPath(); c.moveTo(10.5,4.2); c.lineTo(13,3.4); c.stroke();
+  } else {
+    var glow=est.feliz? 'rgba(255,120,140,0.9)' : (est.asco? '#7a3a2a' : null);
+    if(glow){ c.shadowColor=glow; c.shadowBlur=10; }
+    for(var e=-1;e<=1;e+=2){
+      var eg=c.createRadialGradient(11.8,e*3.6-0.6*e,0.5,12,e*3.6,4.2);
+      eg.addColorStop(0,'#ffb0a0'); eg.addColorStop(0.4,'#d64b3c'); eg.addColorStop(1,'#5a1a14');
+      c.fillStyle=eg; c.beginPath(); c.arc(11.8,e*3.6,4.1,0,Math.PI*2); c.fill();
+    }
+    c.shadowBlur=0; c.shadowColor='transparent';
+    c.fillStyle='rgba(255,255,255,0.8)'; c.beginPath(); c.arc(13.2,-4.8,0.9,0,Math.PI*2); c.fill();
+  }
+  // antenas
+  c.strokeStyle='#2b1d10'; c.lineWidth=0.9;
+  var ax=duerme?0:Math.sin(tm*0.01)*1.5;
+  c.beginPath(); c.moveTo(13,-2.5); c.quadraticCurveTo(16,-8+ax,19,-6); c.stroke();
+  c.beginPath(); c.moveTo(13,2.5); c.quadraticCurveTo(16,8-ax,19,6); c.stroke();
+  c.restore();
+}
+
+/* ---- rastro de la mosca: parte de la actividad ---- */
+function dibujaKC(time){
+  var m=ajustaCanvas(kcCanvas); var w=m.w, h=m.h;
+  kcG.setTransform(m.d,0,0,m.d,0,0);
+  kcG.fillStyle='#0f1419'; kcG.fillRect(0,0,w,h);
+  var cols=50, rows=40, cw=(w-6)/cols, ch=(h-6)/rows, t=cer.t;
+  for(var k=0;k<NKC;k++){
+    var dt=t-cer.last[k];
+    var a= dt<250? Math.max(0,1-dt/250) : 0;
+    var col=k%cols, row=Math.floor(k/cols);
+    var x=3+col*cw, y=3+row*ch;
+    kcG.fillStyle= a>0? 'rgba(255,190,90,'+(0.25+0.75*a).toFixed(3)+')' : 'rgba(120,150,170,0.22)';
+    kcG.fillRect(x+0.3,y+0.3,Math.max(1,cw-0.6),Math.max(1,ch-0.6));
+  }
+  var act=cer.activasEn(200);
+  $('#kcStat').textContent='Ahora: '+act+' de 2 000 células activas en los últimos 200 ms ('+(act/NKC*100).toFixed(1).replace('.',',')+' %).';
+}
+
+function dibujaRastro(){
+  if(!rasCanvas) return;
+  var m=ajustaCanvas(rasCanvas); var w=m.w, h=m.h;
+  rasG.setTransform(m.d,0,0,m.d,0,0);
+  rasG.fillStyle='#0f1419'; rasG.fillRect(0,0,w,h);
+  var ventana=2000, t=cer.t, filas=120;
+  rasG.fillStyle='#ffd27a';
+  var n=cer.rn, idx=cer.rh;
+  for(var i=0;i<n;i++){
+    var j=(idx-1-i+RN)%RN; var tt=cer.rt[j]; if(t-tt>ventana) break;
+    var k=cer.rk[j];
+    var x=w*(1-(t-tt)/ventana), y=(k*filas/NKC)*(h/filas)+1;
+    rasG.fillRect(x, Math.floor(y), 1.5, 1.5);
+  }
+  rasG.fillStyle='rgba(255,255,255,0.45)'; rasG.font='11px system-ui'; rasG.fillText('espigas de células de Kenyon, últimos 2 s', 8, h-8);
+}
+
+/* ---- barras ---- */
+function barra(id,vid,v,max){
+  var pct=clamp(Math.abs(v)/max,0,1)*100;
+  var el=$(id); el.style.width=pct+'%';
+  $(vid).textContent=(v).toFixed(2).replace('.',',');
+}
+function pintaCerebroUI(){
+  var ac=(cer.mbR[0]+cer.mbR[1]+cer.mbInn), ev=(cer.mbR[2]+cer.mbR[3]);
+  var max=1.2;
+  barra('#bAcercar','#vAcercar', ac, max);
+  barra('#bEvitar','#vEvitar', ev, max);
+  barra('#bDopa','#vDopa', cer.nspLast? Math.min(1,cer.nspLast/200):0, 1);
+}
+var ultimaPintaAp=0;
+function pintaAprendido(){
+  var cont=$('#aprendido'); var html='';
+  ORDEN.forEach(function(o){
+    var v=F.ultimoV && F.ultimoV[o]!==undefined? F.ultimoV[o] : (A.naive[o]||0);
+    var naive=A.naive[o]||0;
+    var pares=A.pares[o]||0;
+    var gusto = v>UMBRAL? 'le gusta' : (v<-UMBRAL? 'lo evita' : 'le es indiferente');
+    html+='<div class="bar aprend"><span>'+ODORES[o].nombre+'</span><div class="track"><div class="fill'+(v<0?' neg':'')+'" style="width:'+(clamp(Math.abs(v)/0.9,0,1)*100).toFixed(0)+'%"></div></div><span class="val">'+gusto+'</span></div>';
+    html+='<p class="nota" style="margin:0 0 6px 118px">'+pares+' par'+(pares===1?'':'es')+' con azúcar o quinina; naciendo: '+(naive>=0?'+':'')+naive.toFixed(2).replace('.',',')+', ahora: '+(v>=0?'+':'')+v.toFixed(2).replace('.',',')+'</p>';
+  });
+  if(cont.innerHTML!==html) cont.innerHTML=html;
+}
+function pintaRasgos(){
+  var r=A.rasgos; if(!r) return;
+  var lista=textoRasgos(r);
+  var etiq=['Pocas células por olor','Distingue los olores','Memoria'];
+  $('#rasgos').innerHTML=lista.map(function(t,i){ return '<div class="trait"><b>'+etiq[i]+'</b>'+t+'</div>'; }).join('');
+}
+function pintaDiario(){
+  var ol=$('#diario'); if(!ol) return;
+  var items=A.diario.slice(-40).reverse().map(function(e){
+    var f=new Date(e.h);
+    var hh=f.getHours()<10?'0'+f.getHours():f.getHours();
+    var mm=f.getMinutes()<10?'0'+f.getMinutes():f.getMinutes();
+    return '<li><time datetime="'+f.toISOString()+'">Día '+Math.max(0,Math.floor(e.d))+' · '+hh+':'+mm+'</time>'+escapaHTML(e.t)+'</li>';
+  });
+  ol.innerHTML=items.join('')||'<li class="muted">Todavía sin notas.</li>';
+}
+function escapaHTML(s){ return String(s).replace(/[&<>"]/g,function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+function pintaCabecera(){
+  var dias=A.edadMs/DIA_MS;
+  var etapa= dias<2? 'joven' : (dias<40? 'adulta' : 'vieja');
+  $('#titulo').textContent=A.nombre;
+  $('#pEtapa').textContent='Etapa: '+etapa;
+  $('#pDia').textContent='Día '+Math.floor(dias)+' de '+VIDA_DIAS;
+  var h=A.hambre;
+  $('#pHambre').textContent= h<0.3? 'saciada' : (h<0.6? 'un poco hambrienta' : (h<0.85? 'hambrienta':'muy hambrienta'));
+  $('#sub').textContent= (A.gen>1? 'Generación '+A.gen+', hija de '+(A.madreNombre||'su madre')+'. ' : '')+noche_txt();
+}
+function noche_txt(){ return esNoche()? 'Duerme. Lo que aprendió hoy se consolida.' : 'Está despierta. Huele, decide y aprende de lo que le das.'; }
+
+/* ================= bucle ================= */
+var last=0, acum=0, tGuardado=0;
+function frame(now){
+  if(!last) last=now;
+  var dtReal=Math.min(100, now-last); last=now;
+  if(cer && !pausadoPorFin){
+    var dtFly=dtReal*SPEED;
+    // cerebro y mosca en pasos de 16 ms de tiempo de mosca
+    var resto=dtFly;
+    while(resto>0){
+      var paso=Math.min(resto,16);
+      tickMosca(paso);
+      pasosCerebro(paso);
+      resto-=paso;
+    }
+    if(A.edadMs>=VIDA_DIAS*DIA_MS){ morir(); }
+    // partículas y globos
+    fuentes.forEach(function(s){
+      var ratio=s.vida/s.vidaMax;
+      if(s.tipo==='olor' && Math.random()<dtReal/1000*7*ratio){
+        partic.push({px:s.x+(Math.random()-0.5)*0.05, py:s.y+(Math.random()-0.5)*0.04, r:1.2+Math.random()*2.2, life:1, c:ODORES[s.o].color});
+      }
+      s.vida-=dtReal*SPEED*(s.tipo==='olor'?0.5:0.6);
+      if(s.vida<=0) s.gone=true;
+    });
+    fuentes=fuentes.filter(function(s){ return !s.gone; });
+    // partículas de olor: suben y se desvanecen (coordenadas normalizadas del frasco)
+    partic=partic.filter(function(p){ return p.life>0; });
+    partic.forEach(function(p){
+      p.life-=dtReal/2600; p.py-=dtReal/1000*0.035; p.px+=dtReal/1000*(Math.random()-0.5)*0.02;
+    });
+    corazones.forEach(function(h){ h.t+=dtReal; h.a=Math.max(0,1-h.t/1200); });
+    corazones=corazones.filter(function(h){ return h.t<1200; });
+    // ajusta el zumbido a su estado
+    actualizaZumbido(F.modo==='huir'||F.modo==='volar');
+    if(audio.on && !audio.osc) arrancaZumbido();
+    // globos y animo
+    if(F.animo && Date.now()>F.animoHasta){ F.animo=null; }
+    if(F.decir && Date.now()>F.decir.hasta){ F.decir=null; }
+    // dibujo
+    dibujaFrasco(now);
+    if(now-acum>120){ acum=now; pintaCerebroUI(); pintaCabecera(); }
+    dibujaKC(now);
+    if(labVisible && now-ultimaPintaAp>200){ ultimaPintaAp=now; dibujaRastro(); pintaLab(); }
+    if(now-tGuardado>4000){ tGuardado=now; guardar(); }
+  } else if(cer){
+    dibujaFrasco(now);
+  }
+  requestAnimationFrame(frame);
+}
+function pintaLab(){
+  var act=cer.activasEn(100);
+  $('#labKC').textContent='KC activas: '+(act/NKC*100).toFixed(1).replace('.',',')+' %';
+  $('#labAPL').textContent= cer.aplOn? 'APL: activo' : 'APL: quitado';
+  $('#btnAPL').textContent= cer.aplOn? 'Quitar el APL (lesión virtual)' : 'Devolver el APL';
+  $('#labTxt').textContent= cer.aplOn? 'Con el APL, la inhibición mantiene pocas células encendidas. Quitarlo las enciende casi todas: es lo que hace un inhibidor.' : 'Sin APL, muchas células se encienden a la vez. Las huellas de olores distintos se parecen más: la mosca confunde lo que antes distinguía.';
+}
+
+/* ================= vida y muerte ================= */
+function morir(){
+  pausadoPorFin=true;
+  if(!A.linaje.some(function(x){ return x.gen===A.gen && x.nombre===A.nombre; })){
+    A.linaje.push({nombre:A.nombre, gen:A.gen, madre:A.madreNombre, compartido:A.compartido, pares:JSON.parse(JSON.stringify(A.pares)), kc:A.rasgos.kcPorcentaje});
+    diario(A.nombre+' se durmió a los '+VIDA_DIAS+' días. Lo que aprendió queda en su diario.');
+  }
+  guardar();
+  var aprendio=ORDEN.filter(function(o){ return (A.pares[o]||0)>0; }).map(function(o){ return ODORES[o].nombre; });
+  var txt=A.nombre+' vivió '+VIDA_DIAS+' días. '+(aprendio.length? 'Aprendió sobre: '+aprendio.join(', ')+'.' : 'No llegó a aprender nada con azúcar o quinina.')+' Su cerebro nació con '+A.rasgos.kcPorcentaje.toFixed(1).replace('.',',')+' % de células activas por olor y con las conexiones que le tocaron, que ya no se repetirán.';
+  $('#finTxt').textContent=txt;
+  $('#fin').hidden=false;
+  pintaLinaje();
+}
+function pintaLinaje(){
+  var ol=$('#linaje'); if(!ol) return;
+  var items=A.linaje.map(function(x){
+    var aprendio=Object.keys(x.pares||{}).filter(function(o){ return x.pares[o]>0; }).map(function(o){ return ODORES[o].nombre; });
+    var cab='Generación '+x.gen+': '+escapaHTML(x.nombre)+' ('+VIDA_DIAS+' días)';
+    var det=(x.madre? 'hija de '+escapaHTML(x.madre)+' · comparte '+Math.round((x.compartido||0)*100)+' % de conexiones · ' : '')+(aprendio.length? 'aprendió sobre '+aprendio.join(', ') : 'no aprendió con azúcar ni quinina')+'.';
+    return '<li><time>'+cab+'</time>'+det+'</li>';
+  });
+  ol.innerHTML=items.join('')||'<li class="muted">Aún no hay generaciones terminadas.</li>';
+  var nota=$('#linajeNota');
+  if(nota) nota.textContent=A.gen>1? 'Ahora vive la generación '+A.gen+' ('+A.nombre+'). Cada hija hereda la mitad de las conexiones de su madre; lo que aprendió cada una no se hereda.' : 'Aquí aparecerán las generaciones cuando una mosquita se duerma y nazca su hija.';
+}
+function nuevaHija(){
+  var n=($('#nombreHija').value||'').trim()||(A.nombre+' II');
+  var madre={seed:A.seed, cadena:A.cadena, nombre:A.nombre, gen:A.gen};
+  $('#fin').hidden=true; pausadoPorFin=false;
+  nuevaMosquita(n, madre); arrancaVida();
+}
+
+/* ================= arranque ================= */
+function reflejaLab(){
+  var on=A.lab;
+  $('#lab').classList.toggle('bloqueado', !on);
+  labVisible=on;
+  $('#btnLabOff').hidden=!on;
+  $('#btnLab').hidden=on;
+}
+function init(){
+  canvas=$('#jar'); g=canvas.getContext('2d');
+  kcCanvas=$('#kc'); kcG=kcCanvas.getContext('2d');
+  rasCanvas=$('#rastro'); rasG=rasCanvas.getContext('2d');
+
+  $$('[data-tool]').forEach(function(b){ b.addEventListener('click', function(){ herramientaSel(b.getAttribute('data-tool')); }); });
+  canvas.addEventListener('pointerdown', onPointer);
+  $('#btnSoplar').addEventListener('click', soplar);
+  $('#btnSonido').addEventListener('click', function(){
+    audio.on=!audio.on; A.sonido=audio.on; $('#btnSonido').textContent='Sonido: '+(audio.on?'encendido':'apagado');
+    $('#btnSonido').setAttribute('aria-pressed', audio.on?'true':'false');
+    if(audio.on){ asegCtx(); if(audio.ctx && audio.ctx.state==='suspended') audio.ctx.resume(); arrancaZumbido(); }
+    guardar();
+  });
+  $('#btnLab').addEventListener('click', function(){ A.lab=true; escribeFlagLab(true); reflejaLab(); guardar(); });
+  $('#btnLabOff').addEventListener('click', function(){ A.lab=false; reflejaLab(); guardar(); });
+  $('#btnAPL').addEventListener('click', function(){ cer.aplOn=!cer.aplOn; pintaLab(); });
+  $('#btnNacer').addEventListener('click', function(){
+    var n=$('#nombreIntro').value; nuevaMosquita(n, null); $('#intro').hidden=true; arrancaVida(); });
+  $('#btnHija').addEventListener('click', nuevaHija);
+  $('#btnOtra').addEventListener('click', function(){ $('#fin').hidden=true; pausadoPorFin=false; A.linaje=[]; nuevaMosquita($('#nombre').value||'Mosquita', null); arrancaVida(); });
+  $('#btnNueva').addEventListener('click', function(){
+    if(confirm('¿Empezar otra mosquita? Esta se queda guardada en el diario, pero deja de ser tu mosquita.')){
+      pausadoPorFin=false; A.linaje=[]; nuevaMosquita($('#nombre').value||'Mosquita', null); arrancaVida();
+    }
+  });
+  $('#nombre').addEventListener('change', function(){ A.nombre=($('#nombre').value.trim().slice(0,16))||A.nombre; $('#titulo').textContent=A.nombre; guardar(); });
+  window.addEventListener('pagehide', guardar);
+  document.addEventListener('visibilitychange', function(){ if(document.visibilityState==='hidden') guardar(); else last=0; });
+  window.addEventListener('resize', function(){});
+
+  var fl=leeFlagLab(); A.lab=A.lab||fl;
+
+  if(cargar()){
+    $('#nombre').value=A.nombre;
+    if(A.edadMs>=VIDA_DIAS*DIA_MS){ morir(); }
+    else arrancaVida();
+  } else {
+    $('#intro').hidden=false;
+    setTimeout(function(){ $('#nombreIntro').focus(); },50);
+  }
+  herramientaSel('none');
+  reflejaLab();
+  pintaRasgos();
+  pintaDiario();
+  pintaAprendido();
+  requestAnimationFrame(frame);
+}
+function arrancaVida(){
+  $('#nombre').value=A.nombre;
+  pintaRasgos(); pintaDiario(); pintaAprendido(); pintaLinaje();
+  herramientaSel('none');
+  reflejaLab();
+  // refresco de la lista de aprendizaje cada 2 s
+  setInterval(pintaAprendido, 2000);
+  setTimeout(pintaRasgos,100);
+  guardar();
+}
+// Ganchos para pruebas (no afectan al juego)
+window.__mosquita={get cer(){return cer;}, get F(){return F;}, get A(){return A;}, P:P, ODORES:ODORES, ORDEN:ORDEN, get fuentes(){return fuentes;}, recompensa:recompensa, iniciaOlfateo:iniciaOlfateo, tickMosca:tickMosca, pasosCerebro:pasosCerebro, medirRasgos:miraRasgos, nuevaMosquita:nuevaMosquita, setFuentes:function(f){fuentes=f;}, morir:morir};
+init();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,234 @@
+{
+  "descripcion": "Supuestos del modelo de negocio de Mosquita. Todo es SUPUESTO salvo que se indique otra etiqueta. Distribuciones: tri(min,moda,max) o lognorm(mediana,sigma).",
+  "parametros": {
+    "instalaciones_organicas_semana": {
+      "dist": "lognorm",
+      "mediana": 40,
+      "sigma": 0.8,
+      "etiqueta": "supuesto",
+      "nota": "Sin marketing, lanzamiento modesto. Rango p10-p90 aprox. 15-120."
+    },
+    "viral_K": {
+      "dist": "tri",
+      "min": 0.0,
+      "moda": 0.05,
+      "max": 0.25,
+      "etiqueta": "supuesto",
+      "nota": "Nuevas instalaciones por usuario activo y semana por invitacion o boca a boca."
+    },
+    "cpi_usd": {
+      "dist": "lognorm",
+      "mediana": 1.5,
+      "sigma": 0.6,
+      "etiqueta": "supuesto",
+      "nota": "Coste por instalacion en paid social para app casual. Referencia no verificada en profundidad."
+    },
+    "activacion": {
+      "dist": "tri",
+      "min": 0.3,
+      "moda": 0.45,
+      "max": 0.65,
+      "etiqueta": "supuesto",
+      "nota": "Fraccion de instalaciones que completan el primer cuidado (olfatear y dar un premio)."
+    },
+    "retencion_c": {
+      "dist": "tri",
+      "min": 0.35,
+      "moda": 0.5,
+      "max": 0.7,
+      "etiqueta": "supuesto",
+      "nota": "S(k) = c*(1+k)^(-b): fraccion activa k semanas despues de instalar."
+    },
+    "retencion_b": {
+      "dist": "tri",
+      "min": 0.3,
+      "moda": 0.5,
+      "max": 0.9,
+      "etiqueta": "supuesto",
+      "nota": "Exponente de la curva de retencion (cuanto mas alto, mas abandono)."
+    },
+    "lab_conversion_semana": {
+      "dist": "tri",
+      "min": 0.002,
+      "moda": 0.006,
+      "max": 0.02,
+      "etiqueta": "supuesto",
+      "nota": "Fraccion de usuarios activos que se suscriben al Laboratorio cada semana. Referencia: freemium a pago 2-5 % en apps de consumo; entretenimiento 1-3 % (fuentes de referencia, no verificadas en profundidad)."
+    },
+    "lab_abandono_semana": {
+      "dist": "tri",
+      "min": 0.03,
+      "moda": 0.06,
+      "max": 0.12,
+      "etiqueta": "supuesto",
+      "nota": "Abandono semanal de suscriptores del Laboratorio."
+    },
+    "lab_precio_mes_efectivo": {
+      "dist": "tri",
+      "min": 2.5,
+      "moda": 3.2,
+      "max": 3.99,
+      "etiqueta": "supuesto",
+      "nota": "US$3,99/mes de lista; el minimo incluye descuentos anuales y promociones."
+    },
+    "cosmeticos_compra_semana": {
+      "dist": "tri",
+      "min": 0.001,
+      "moda": 0.003,
+      "max": 0.008,
+      "etiqueta": "supuesto",
+      "nota": "Fraccion de usuarios activos que compra un cosmetico cada semana."
+    },
+    "cosmeticos_precio": {
+      "dist": "tri",
+      "min": 0.99,
+      "moda": 1.99,
+      "max": 2.99,
+      "etiqueta": "supuesto",
+      "nota": "Precio de un cosmetico, US$."
+    },
+    "aula_ventas_semana": {
+      "dist": "tri",
+      "min": 0.01,
+      "moda": 0.04,
+      "max": 0.12,
+      "etiqueta": "supuesto",
+      "nota": "Aulas vendidas por semana (solo escenarios con Aula). Sin dato de mercado propio."
+    },
+    "aula_precio_anio": {
+      "dist": "tri",
+      "min": 59,
+      "moda": 89,
+      "max": 149,
+      "etiqueta": "supuesto",
+      "nota": "Licencia anual por aula, US$."
+    },
+    "aula_abandono_anio": {
+      "dist": "tri",
+      "min": 0.15,
+      "moda": 0.25,
+      "max": 0.4,
+      "etiqueta": "supuesto",
+      "nota": "Fraccion de aulas que no renuevan cada anio."
+    },
+    "comision_pago": {
+      "dist": "tri",
+      "min": 0.025,
+      "moda": 0.03,
+      "max": 0.05,
+      "etiqueta": "supuesto",
+      "nota": "Comision de pagos web; si se publica en tiendas de apps seria 15-30 %."
+    },
+    "equipo_mes_usd": {
+      "dist": "tri",
+      "min": 1500,
+      "moda": 2500,
+      "max": 4000,
+      "etiqueta": "supuesto",
+      "nota": "Coste fijo de equipo (una persona a tiempo parcial, sin salario del fundador)."
+    },
+    "soporte_por_pago_semana": {
+      "dist": "tri",
+      "min": 0.01,
+      "moda": 0.03,
+      "max": 0.08,
+      "etiqueta": "supuesto",
+      "nota": "Coste de soporte y servidores por suscriptor y semana."
+    },
+    "alojamiento_mes_usd": {
+      "dist": "tri",
+      "min": 20,
+      "moda": 30,
+      "max": 60,
+      "etiqueta": "supuesto",
+      "nota": "Alojamiento estatico mas servicios basicos."
+    }
+  },
+  "escenarios": {
+    "A_organico": {
+      "presupuesto_paid_semana": 0,
+      "aula": false,
+      "descripcion": "Solo organico y viral. Sin Aula."
+    },
+    "B_paid": {
+      "presupuesto_paid_semana": 750,
+      "aula": false,
+      "descripcion": "Paid social de 3.000 USD/mes. Sin Aula."
+    },
+    "C_organico_aula": {
+      "presupuesto_paid_semana": 0,
+      "aula": true,
+      "descripcion": "Organico mas venta de Aula."
+    },
+    "D_todo": {
+      "presupuesto_paid_semana": 750,
+      "aula": true,
+      "descripcion": "Paid social de 3.000 USD/mes mas Aula."
+    },
+    "E_aula_primero": {
+      "presupuesto_paid_semana": 0,
+      "aula": true,
+      "descripcion": "REDISENO: sin paid; Aula como producto principal (venta a centros educativos), equipo a tiempo parcial.",
+      "overrides": {
+        "aula_ventas_semana": {
+          "dist": "tri",
+          "min": 0.1,
+          "moda": 0.3,
+          "max": 0.6,
+          "etiqueta": "supuesto",
+          "nota": "Aulas vendidas por semana con ventas directas a profesores y centros; supuesto sin dato propio."
+        },
+        "aula_precio_anio": {
+          "dist": "tri",
+          "min": 89,
+          "moda": 129,
+          "max": 199,
+          "etiqueta": "supuesto",
+          "nota": "Licencia de aula con panel del profesor y guias de clase."
+        },
+        "equipo_mes_usd": {
+          "dist": "tri",
+          "min": 1000,
+          "moda": 1500,
+          "max": 2500,
+          "etiqueta": "supuesto",
+          "nota": "Equipo a tiempo parcial; el fundador no cobra en el modelo."
+        }
+      }
+    },
+    "F_aula_sin_salario": {
+      "presupuesto_paid_semana": 0,
+      "aula": true,
+      "descripcion": "REDISENO sin coste de equipo: el fundador no cobra. Es una cifra de contabilidad, no de rentabilidad real.",
+      "overrides": {
+        "aula_ventas_semana": {
+          "dist": "tri",
+          "min": 0.1,
+          "moda": 0.3,
+          "max": 0.6,
+          "etiqueta": "supuesto",
+          "nota": "Aulas vendidas por semana con ventas directas a profesores y centros; supuesto sin dato propio."
+        },
+        "aula_precio_anio": {
+          "dist": "tri",
+          "min": 89,
+          "moda": 129,
+          "max": 199,
+          "etiqueta": "supuesto",
+          "nota": "Licencia de aula con panel del profesor y guias de clase."
+        },
+        "equipo_mes_usd": {
+          "dist": "tri",
+          "min": 0,
+          "moda": 0,
+          "max": 0,
+          "etiqueta": "supuesto",
+          "nota": "Sin salario del fundador ni equipo. Oportunidad perdida no contabilizada."
+        }
+      }
+    }
+  },
+  "horizonte_semanas": 156,
+  "trayectorias": 4000,
+  "semilla": 20260
+}
