@@ -1,0 +1,10 @@
+a,b,budget,n,mean_pp,min_pp,max_pp
+fly_lin_real,fly_lin_null,10000,2,-0.14,-0.3,0.02
+fly_lin_real,fly_lin_null,20000,2,-0.96,-1.48,-0.44
+fly_lin_real,fly_lin_null,40000,2,0.1,0.08,0.12
+fly_lin_f6,fly_lin_real,10000,2,-5.66,-5.78,-5.54
+fly_lin_f6,fly_lin_real,20000,2,-4.11,-4.4,-3.82
+fly_lin_f6,fly_lin_real,40000,2,-4.4,-4.4,-4.4
+rf_lin,fly_lin_f6,10000,2,14.66,14.24,15.08
+rf_lin,fly_lin_f6,20000,2,12.06,12.02,12.1
+rf_lin,fly_lin_f6,40000,2,9.03,8.8,9.26

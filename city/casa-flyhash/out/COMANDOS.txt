@@ -1,0 +1,4 @@
+E1: exp.py --dataset digits --mapper proj --reps 0:15 y 15:30 --frac 0.05 --variants real_b,real_w,null_b,null_w,nullsh_w,realtop_shw,nullbl_b,null_nb_b,f6,kcdeg_b,gauss,sgauss,sgauss_f6,sim_k,sim_st,sim_m,noexp,raw --tag E1 (seed0=1000)
+E2: exp.py --dataset mnist --mapper proj --reps 0:12 --seed0 1000 --sizes 3000,3000,400,2000 (laneA.sh);  E9: plus10..100 + E3 frac sweep (laneB.sh); scripts en run_all.sh/lanes
+E3 sweep, E5,E6,E11,E4,E7,E8,E2f,E2n,E7n,E10: ver scratchpad lane*.sh (copiados a run_all.sh al final)
+E3: se reutilizan las filas de E1 (mismas semillas, reps 0-9) como punto frac=0.05
