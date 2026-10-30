@@ -15,7 +15,8 @@
 
 ## Hallazgos que cambiaron el diseño
 
-- La nube de KC casi no cambia: 2199 espigas antes de A, 2041 después (−7 %), con 778 → 772 KC activas. En cambio, las MBON ante A pasan de 90 a 31 espigas, y ante B de 88 a 77. El aprendizaje está en la salida. Por eso la obra 2 lo dice en el texto de pie, en rojo, y no sólo lo sugiere.
+- Las espigas totales de las KC bajan un 7 % (2199 → 2041). Las KC activas, con la definición de casa-mosca (al menos 5 espigas en 1 s), bajan un 15 % (136 → 115). En cambio, las MBON ante A pasan de 90 a 31 espigas, y ante B de 88 a 77. La salida cambia mucho más que la entrada.
+- Que el aprendizaje esté en la salida es cierto por construcción del modelo: la plasticidad solo está en KC→MBON. No es un hallazgo sobre la mosca. La obra 2 lo dice así.
 - El precio marginal del pool (y/x) sigue al precio de mercado con una brecha media de 0.22 y máxima de 0.32, que es 0.30 % del precio. Esa magnitud se parece a la comisión de 0.30 %. Lo dejo como observación ("se parece"), no como causa demostrada.
 - k sube de forma monótona: 2.5000 → 2.5156 · 10⁹ (+0.62 %). Lo describo como "consistente con comisiones que se quedan en el pool", porque el dato sólo muestra la tendencia.
 - La caminata sobre la hipérbola casi parece recta en el rango visitado (x de 4870 a 5830). Es honesto, pero la obra es más bien sutil. No la forcé con ejes logarítmicos.
@@ -28,6 +29,7 @@
 4. **Obra 5:** las etiquetas "0 s" y "23 s" se pisaban arriba. Dejé una sola "0 s = 23 s". La primera línea de la leyenda se cortaba por la derecha. Partí la leyenda en cuatro líneas, y bajé el centro del anillo 40 px (cy 520 → 560) para que la etiqueta no chocara con el subtítulo.
 5. **Tildes y erratas:** corregí "sintetica", "posicion", "celula", "numero", "esta en", "Ninguna elemento", "dias", "hiperbola" y "teal" (lo cambié por "turquesa"). Mi primer intento de corregir "hiperbola" con sustitución de texto también cambió el nombre del archivo de la obra 3 a `hipérbola`; lo revertí a `03-caminata-hiperbola.svg` y borré el archivo duplicado. Los nombres de archivo quedan en ASCII.
 6. **Texto causal:** en la página y en el desc de la obra 3 escribí que las comisiones "son" la causa del crecimiento de k. Lo suavicé a "consistente con". Las observaciones deben quedar a nivel de dato.
+8. **Corrección tras la auditoría:** "KC activas: 778 → 772" contaba KC con al menos 1 espiga, y casa-mosca advierte que esa definición engaña. Pasé a su definición (al menos 5 espigas en 1 s): 136 → 115 (−15 %). Ajusté la obra 2 (pie y desc), el índice, el README y este LOG. La cifra de 1 espiga queda en el pie, marcada como engañosa. Regenerado; dos ejecuciones dan los mismos hashes.
 7. Un intento de parche al script abortó en una aserción antes de escribir nada; el archivo quedó intacto y lo rehice con las sustituciones completas.
 
 ## Qué no funcionó o queda pendiente

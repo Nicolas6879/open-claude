@@ -58,6 +58,9 @@ Antes de tocar la casa, midi con scripts en el scratchpad. Pasos y fallos, en or
    BLAS en matrices pequenas. Solucion: documentarlo en el README.
 3. **Barrido de excitacion** (`bias_kc`, `w_pn_kc`, `w_apl_kc`): elegi `bias_kc=0`, `w_pn_kc=2.0`,
    `w_apl_kc=1.5` (inhibicion APL->KC), que dan ~5% de KC activas (>= 5 Hz) y ~0.2% en reposo.
+   Nota sobre reposo del MBON: un valor de ~3.5 Hz que aparecio en una ejecucion de calibracion salio de la
+   configuracion con el error del punto 4 (APL a 247 Hz). No es valido. Medido despues con la configuracion
+   final: 7.0 Hz en los primeros 500 ms sin olor de out/activity.json y 8.2 Hz en 10 s sin olor (semilla 7).
 4. **Error mio** al fijar los defaults: `w_apl_kc` (inhibicion APL->KC) y `w_kc_apl` (KC->APL) quedaron
    invertidos. Lo detecte porque el APL no coincidia con la calibracion; lo corregi y re-verifique.
 5. **Tasa de aprendizaje**: `eta` de 3e-4 a 3e-3 (lineal) saturaba todos los pesos. Bajar a 1e-5 - 1e-6
@@ -93,12 +96,14 @@ Nadie. Trabaje sin ayuda, solo con las herramientas de la sesion; no consulte a 
 
 ## 6. Literatura citada de memoria (sin verificar, sin enlaces)
 
-- Caron, Ruta, Abbott, Axel (2013), sobre convergencia aleatoria de entradas olfativas en el MB:
-  motiva los 6 PN por KC.
+- Caron, Ruta, Abbott, Axel (2013, Nature), convergencia aleatoria de entradas olfativas en el MB. De memoria:
+  media de ~7 PN por KC (rango ~2-11). Mi modelo usa 6 PN por KC porque lo fija el encargo, no por la literatura.
 - Aso et al. (2014, eLife), arquitectura del cuerpo fungiforme y de las neuronas de salida (MBON) y
   dopaminergicas (DAN): motiva el papel de los DAN de recompensa y de castigo.
-- Hige, Aso, Rubin, Turner (2015, Nature): la dopamina deprime las sinapsis KC->MBON de las MBON que
-  promueven evitar el olor. Es la base de la regla de plasticidad que uso.
+- Hige, Aso, Modi, Rubin, Turner (2015, Neuron), depresion heterosinaptica en el aprendizaje aversivo de la
+  mosca: el castigo deprime un MBON que promueve la atraccion. Es inspiracion para la idea de depresion
+  dopaminergica de las sinapsis KC->MBON. La regla exacta que uso (recompensa, elegibilidad con umbral y
+  coincidencia no lineal) es mia y no reproduce ese articulo.
 - Turner, Bazhenov, Laurent (2008): representacion de olores en las KC (dispersion).
 - Eichler et al. (2017, Nature): conectoma del centro de aprendizaje de la larva, para la idea general
   de la conectividad.

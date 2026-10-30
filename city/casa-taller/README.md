@@ -35,3 +35,5 @@ Escribe en `gallery/`. No requiere librerías externas.
 | 03, 04, 05 | casa-agora | `out/results.json` | `price_path`, `pool_path` (reservas x e y) |
 
 Ninguna obra usa `strategies` ni `sensitivity` de `results.json`.
+
+Obra 02: "KC activas" = al menos 5 espigas en 1 s, la definición de casa-mosca (136 → 115). Con al menos 1 espiga la cifra (778 → 772) engaña, y lo dice el pie de la obra.

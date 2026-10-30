@@ -6,7 +6,7 @@ conectividad, los olores y la mayoria de los parametros son inventados o aproxim
 medidos de ninguna mosca.
 
 > **Aviso:** no hay datos reales en esta casa. No se pudo acceder a conectomas (ver `LOG.md`), asi que
-> la anatomia es aleatoria con la estructura de la literatura (50 glomerulos, 6 PN por KC, 2000 KC,
+> la anatomia es aleatoria con la estructura de la literatura (50 glomerulos, 6 PN por KC (encargo; la literatura da ~7 de media), 2000 KC,
 > un APL, MBON y DAN). Ningun numero de aqui debe presentarse como medicion biologica.
 
 ## Que modela
@@ -66,7 +66,7 @@ Cada ensayo: 1000 ms de olor y 500 ms en blanco. Respuesta del MBON = espigas/s 
 | C | control (olor nuevo) | 23.8 | 17.0 | -28.4% | 6.0% |
 
 - Discriminacion (cambio A menos cambio B): **-54 puntos porcentuales**.
-- Actividad del MBON en reposo: ~3.5 Hz (medida en mi calibracion, no la imprime `run_experiment.py`); con olor: ~22 Hz.
+- Actividad del MBON en reposo: 7.0 Hz (primeros 500 ms sin olor de `out/activity.json`, 14 espigas en 4 MBON) y 8.2 Hz en una simulacion de 10 s sin olor (semilla 7; no la imprime `run_experiment.py`). Con olor, ~22 Hz: cociente olor/reposo ~2.7. Un valor anterior de ~3.5 Hz salio de una calibracion con la inhibicion del APL mal fijada; no es valido.
 - Solapamiento de KC activas (Jaccard, antes de aprender): A-B 0.03, A-C 0.05, B-C 0.08. Repetir A da 0.49.
   Las KC codifican los olores de forma distinta, aunque la repeticion no es perfecta (ruido).
 - Peso KC->MBON medio: KC de A -76%, KC de B -14%.
@@ -114,9 +114,9 @@ No hay parametros medidos. Todos son aproximaciones que ajuste a mano hasta obte
 
 | Parametro | Valor | Nota |
 |-----------|-------|------|
-| `n_kc`, `k_pn_per_kc` | 2000, 6 | Dimensiones de la literatura (Caron et al. 2013, de memoria) |
+| `n_kc`, `k_pn_per_kc` | 2000, 6 | 2000 KC del encargo. Caron et al. 2013 (de memoria) dan ~7 PN por KC de media (rango ~2-11); uso 6 porque lo fija el encargo |
 | `w_pn_kc`, `bias_kc`, `w_apl_kc`, `w_kc_apl` | 2.0, 0.0, 1.5, 0.2 | Calibrados para ~5% de KC activas |
-| `bias_mbon` | 0.5 | Calibrado para ~22 Hz con olor y ~3.5 Hz en reposo |
+| `bias_mbon` | 0.5 | Calibrado para ~22 Hz con olor y ~7-8 Hz en reposo (ver nota de reposo arriba) |
 | `eta_dep` | 3e-5 | Calibrado para que A baje ~2/3 con 4 pares |
 | `elig_thr` | 4.0 | Umbral de coincidencia de la traza de elegibilidad |
 

@@ -261,7 +261,7 @@ def fig_cielo(fly: Fly):
 
 # ---------------------------------------------------------------- obra 2: nube KC antes y despues
 def fig_kc(fly: Fly):
-    W, H = 1200, 640
+    W, H = 1200, 680
     BG = "#0b0d14"
     S = 330.0
     PX = [70.0, 435.0, 800.0]
@@ -304,8 +304,11 @@ def fig_kc(fly: Fly):
     tot_pre = sum(pre[i] for i in kc_ids)
     tot_post = sum(post[i] for i in kc_ids)
     chg = (tot_post / tot_pre - 1) * 100
-    act_pre = sum(1 for i in kc_ids if pre[i] > 0)
-    act_post = sum(1 for i in kc_ids if post[i] > 0)
+    act1_pre = sum(1 for i in kc_ids if pre[i] > 0)
+    act1_post = sum(1 for i in kc_ids if post[i] > 0)
+    act5_pre = sum(1 for i in kc_ids if pre[i] >= 5)  # definicion de casa-mosca: >= 5 espigas en 1 s
+    act5_post = sum(1 for i in kc_ids if post[i] >= 5)
+    chg5 = (act5_post / act5_pre - 1) * 100
     m_pre, m_post = fly.mbon_total("pre_A"), fly.mbon_total("post_A")
 
     body.insert(0, text(70, 60, "Nube de Kenyon iluminada por el olor A", size=32, fill="#f2efe6",
@@ -331,20 +334,28 @@ def fig_kc(fly: Fly):
     body.append(text(800 + S, ly + 28, "+5 (más)", size=12, fill="#aab2c5", anchor="end"))
 
     body.append(text(70, 596,
-                     f"Espigas de las 2000 KC: {tot_pre} antes, {tot_post} después ({chg:+.0f} %). "
-                     f"KC activas: {act_pre} → {act_post}.",
+                     f"Espigas totales de las 2000 KC: {tot_pre} → {tot_post} ({chg:+.0f} %). "
+                     f"KC activas (≥5 espigas en 1 s, definición de casa-mosca): {act5_pre} → {act5_post} ({chg5:+.0f} %).",
                      size=15, fill="#e7e3d8"))
-    body.append(text(70, 618,
-                     f"La nube casi no cambia, pero la salida sí: MBON ante A pasa de {m_pre} a {m_post} espigas. "
-                     "El aprendizaje está en la salida, no en la entrada.",
+    body.append(text(70, 616,
+                     f"Con «al menos 1 espiga» saldrían {act1_pre} → {act1_post} KC activas, pero casi toda KC con "
+                     "actividad de fondo contaría: esa cifra engaña.",
+                     size=14, fill="#aab2c5"))
+    body.append(text(70, 640,
+                     f"La salida sí cambia: MBON ante A pasa de {m_pre} a {m_post} espigas.",
                      size=15, fill="#ff9b9b"))
+    body.append(text(70, 660,
+                     "Que el aprendizaje esté en la salida es cierto por construcción del modelo (la plasticidad "
+                     "solo está en KC→MBON), no un hallazgo sobre la mosca.",
+                     size=14, fill="#aab2c5"))
 
     desc = ("Tres paneles de la nube de 2000 células de Kenyon de la mosca sintética (activity.json). "
             "Posicion: coordenadas x,y de cada KC. Panel izquierdo: espigas de cada KC en la ventana pre_A (1 s, "
             "olor A antes del entrenamiento), color de oscuro (0) a amarillo (8 o más, recortado). Panel central: "
             "lo mismo en post_A (1 s, olor A despues del entrenamiento). Panel derecho: diferencia post_A menos pre_A "
             "por KC, azul si baja, naranja si sube, recortado a ±5. Las cifras de la parte inferior son totales de esas "
-            "ventanas, incluido el conteo de MBON.")
+            "ventanas, incluido el conteo de MBON. Las KC activas se cuentan con la definición de casa-mosca "
+            "(al menos 5 espigas en 1 s); con al menos 1 espiga la cifra engaña, porque casi toda KC con actividad de fondo cuenta.")
     return svg_doc(W, H, "Nube de células de Kenyon antes y despues del olor A", desc, body, BG)
 
 
