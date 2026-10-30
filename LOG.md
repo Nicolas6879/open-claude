@@ -42,3 +42,41 @@ Ciudad de agentes. Yo (el Alcalde, Claude) planeo, reparto, reviso y mantengo `L
 - Añado `relaciones` a `city.json` (Taller→Mosca, Taller→Ágora, Notaría→las tres) para que el mapa dibuje caminos con significado real.
 - **Casa Notaría (Notario) — revisada y aprobada.** Brief: cadena de bloques local simulada, Merkle, PoW trivial, verificador de manipulación, sin red ni claves. Revisé en copia: 22/22 tests; `verify.py` sobre las tres casas = OK (exit 0) y su salida es idéntica entre ejecuciones; hice yo mismo tres manipulaciones en la copia (modificar un README, añadir un archivo, borrar otro) y las detectó las tres, nombrando casa y archivo, con exit 1; `prove.py` valida una inclusión. Decisiones suyas que me parecieron buenas: hojas impares promovidas (evita la colisión tipo CVE-2012-2459), la ruta dentro de la hoja (renombrar cambia la raíz), sin reloj para que el ledger sea determinista, y arreglar el minado de 4,7 s a 0,04 s. No incluyó el experimento Lamport porque no salió limpio: correcto según el brief. Una errata en su LOG: atribuye a Neuro el error de conteo de neuronas (2 059 → 2 109), pero ese error fue **mío** (Alcalde) al escribir mi LOG; no toqué su casa para no invalidar el sello ni invadir su proyecto. **Importante:** el sello cubre mosca, ágora y taller tal como están en este commit; cualquier cambio posterior en esas casas hará fallar `verify.py` hasta volver a sellar.
 - **Arquitecto (`index.html`) — revisado y aprobado.** Brief: mapa gráfico clicable, un solo archivo sin dependencias, leyendo `city.json`, con modo vivo (fetch) y respaldo por instantánea para `file://`. Revisé yo mismo con Chromium: servido por HTTP (escritorio 1280 y móvil 390) y por `file://`; los 5 edificios (4 casas + Ayuntamiento) son enfocables por teclado, abren su panel con el LOG real (15–16 mil caracteres por casa), Enter abre, Esc cierra; sin scroll horizontal; sin errores de página. En `file://` muestra el aviso de instantánea y funciona completo. Los únicos errores de consola son las sondas HEAD de galería a casas sin galería (404 esperado) y el fetch que `file://` prohíbe (esperado). Él mismo probó robustez con un `city.json` falso (casa nueva, casa sin campos, LOG con `<img onerror>`/`<script>`/`javascript:` → escapado) y rutas con `..` rechazadas. Reconoce como débil: las etiquetas de relación solo aparecen al pasar/enfocar, la instantánea queda fija hasta regenerar y el anillo se aprieta con >6 casas; no probó Firefox ni Safari. Su `build.py` y plantilla viven en el scratchpad de la sesión, **no** en el repo (limitación: no puedo escribir ahí y él solo podía escribir `index.html`); para regenerar la instantánea hay que pedírselo a un Arquitecto de nuevo o servir el repo por HTTP.
+
+## Resumen final del Alcalde
+
+### Qué construyó la ciudad
+Cinco habitantes Haiku (de seis posibles), cuatro casas y un mapa. Todo se revisó antes de commitear, una casa por commit.
+- **Casa Mosca (Neuro):** circuito del cuerpo fungiforme de *Drosophila* con espigas (50 ORN → 50 PN → 2 000 KC → APL/MBON/DAN, 2 109 neuronas), con aprendizaje por dopamina. Tras 4 emparejamientos, la respuesta del MBON al olor reforzado baja un 66 %, la del no reforzado un 13 %. Es **sintético** y lo declara en todas partes.
+- **Casa Ágora (Tendera):** laboratorio simulado de un AMM x\*y=k con arbitrajista, trader de ruido y backtests de 500 trayectorias por escenario. Es el proyecto "dinero": la estrategia diseñada **no** supera a HODL (LP−HODL −29 ± 23 con guardia de volatilidad; −181 ± 111 con LP pasivo), y el resultado depende sobre todo del volumen que se suponga. Hallazgo útil y honesto: ser LP solo compensa con volatilidad baja o mucho volumen.
+- **Casa Taller (Pintora):** cinco SVG deterministas hechos con datos de las dos casas anteriores, incluida una obra que cruza ambos mundos (la mosca "lee" el precio del mercado como anillo radial).
+- **Casa Notaría (Notario):** cadena de bloques local simulada con Merkle, PoW de 4 ceros, `verify`/`prove`, 22 tests. Sella las tres casas (bloque 1, raíz de casas `def1f7f4…`).
+- **Mapa `index.html` (Arquitecto):** ciudad ilustrada con edificios clicables y accesibles, paneles con el LOG y el README reales, sello notarial leído del ledger, galería incrustada, modo vivo por HTTP y respaldo por instantánea para `file://`.
+Las casas sí se aprovechan entre sí: el Taller consume `activity.json` y `results.json`; la Notaría sella a las tres; el mapa lee `city.json` y el ledger.
+
+### Qué me sorprendió
+**Del trabajo de Haiku:**
+- La honestidad. Los cinco informaron resultados incómodos sin que se lo pidiera nadie: la estrategia que no gana, el control olfativo que también baja sin explicación, la nube de Kenyon que casi no cambia (el aprendizaje está en la salida), la semilla 8 con discriminación de solo 14 puntos. Sus resultados se reprodujeron al relanzarlos.
+- Decisiones de ingeniería que no esperaba de un modelo pequeño: promover hojas impares en el Merkle citando el fallo de Bitcoin de 2012, meter la ruta en la hoja, no usar reloj para que el ledger sea determinista, extraer un dataset real de un wheel de PyPI sin ejecutarlo, y sanear el markdown de los logs en el mapa.
+- Neuro se negó a "arreglar" la semilla mala con parámetros a medida y no forzó `add_repo` para saltarse el bloqueo de GitHub.
+
+**De mi trabajo como Alcalde:**
+- Me equivoqué yo, no ellos: escribí "2 059 neuronas" (la suma es 2 109) y la Pintora lo contaba bien. Lo corregí, pero el Notario atribuyó el error a Neuro en su LOG porque leyó mi corrección; esa errata sigue en su casa porque no la edito.
+- Diseñé una tensión sin darme cuenta: sellar casas y a la vez poder pedir correcciones. Cualquier cambio posterior en Mosca, Ágora o Taller hace fallar `verify.py` hasta volver a sellar.
+- Las restricciones que me puse (solo escribir LOG, city.json y commits) dejaron al Arquitecto con su generador de instantánea fuera del repo.
+
+### Qué falló
+- **`git push` devuelve 403:** Claude no tiene acceso de escritura a `Nicolas6879/open-claude`. Los commits están **solo en local**, en la rama `claude/jolly-davinci-9s1e9l`. Hay que reconectar GitHub en https://claude.ai/connect-github e instalar la app de Claude en el repo; luego basta `git push -u origin claude/jolly-davinci-9s1e9l`.
+- **Datos reales de la mosca:** inalcanzables. neuPrint, FlyWire, arXiv y Wikipedia están bloqueados, `flybody` no está en PyPI y el GitHub de DeepMind da 403. No se simuló el modelo publicado por Google, sino un circuito sintético inspirado en la anatomía conocida. Es la mayor deuda científica de la ciudad.
+- La regla de plasticidad de Neuro es una suposición suya, y las citas de literatura de todos están "de memoria" sin verificar.
+- La instantánea del mapa es fija: su script de construcción vive en el scratchpad de la sesión, no en el repo.
+- El Lamport opcional del Notario no se hizo (no salió limpio); el Taller no volvió a mirar entera la obra 1 tras el último cambio de tildes. Firefox y Safari no se probaron.
+- Los 403 de varios servidores MCP de marketing no afectaron a nada.
+
+### Qué haría después
+1. Arreglar el push y publicar; activar GitHub Pages para ver el mapa en vivo.
+2. Conectoma real: buscar una vía permitida a hemibrain/FlyWire (un mirror en PyPI o un paquete con datos), sustituir la conectividad sintética y explicar el control C. Probar el castigo (DAN aversivos).
+3. Ágora: liquidez concentrada, volumen calibrado con datos reales y un análisis de sensibilidad al supuesto de ruido, que es lo que más decide el resultado. Sigue siendo simulación, sin tocar cadenas reales.
+4. Notaría: firmas Lamport de juguete, un `reseal` documentado y sellar también `city.json` y el LOG raíz.
+5. Mapa: mover el generador de la instantánea a una casa (o a una GitHub Action) para que se regenere sola, y añadir un segundo ciclo de Taller que dibuje con los datos de las casas nuevas.
+6. Si la ciudad crece, una casa que se dedique a revisar a las demás (tests cruzados), porque hoy esa tarea la hago yo sola.
