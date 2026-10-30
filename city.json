@@ -38,7 +38,7 @@
       "descripcion": "Cadena de bloques local simulada que sella con hashes lo que produce cada casa y verifica que nadie lo haya alterado.",
       "carpeta": "city/casa-notaria/",
       "log": "city/casa-notaria/LOG.md",
-      "estado": "planeada"
+      "estado": "lista"
     }
   ],
   "relaciones": [
