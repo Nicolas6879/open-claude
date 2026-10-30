@@ -37,8 +37,8 @@
 6. Calculé errores estándar para las diferencias principales.
 
 ## Resultados clave (ver README para tablas completas)
-- GBM 60%: LP pasivo frente a HODL, -181 ± 111. Tendera, -29 ± 23. P(> HODL): 64% frente
-  a 52%.
+- GBM 60%: LP pasivo frente a HODL, -181 ± 111. Tendera, -29 ± 23 (IC95 [-52, -6], negativa
+  al 95%). P(> HODL): 64% frente a 52%.
 - Saltos: LP pasivo, -161 ± 101. Tendera, -7 ± 24.
 - Sensibilidad: el LP pasivo gana frente a HODL con vol ~<48% y comisión 0,30%. Con 0,05%
   el umbral baja a ~20%. Con 1% sube a ~94%.
@@ -71,9 +71,11 @@
 ## Qué aprendí
 - En este modelo, el LP pasivo pierde frente a HODL con volatilidad alta, y la pérdida
   crece con el cuadrado de la volatilidad (356 con 40%, 802 con 60%: razón 2,25).
-- Las comisiones casi no dependen de la volatilidad: dependen del volumen, y el volumen
-  aquí es un supuesto del trader de ruido. Es el supuesto que más decide el resultado. Con
-  el doble de ruido, el LP pasivo pasa de -181 a +187 con vol 60%.
+- Las comisiones totales sí crecen con la volatilidad, ×2,4 de 20% a 100% (386 a 930),
+  pero a través del arbitraje (169 a 713). La parte del ruido es plana (216). El supuesto
+  que más decide el resultado es el volumen del ruido: con el doble de ruido, el LP pasivo
+  pasa de -181 a +187 con vol 60%. (Corrección de una versión anterior de este LOG y del
+  README, que atribuía la falta de crecimiento al ruido.)
 - P(> HODL) puede ser 64% aunque la media sea negativa: la distribución es asimétrica.
   Conviene reportar la media con error, no solo la probabilidad.
 - Una guardia de volatilidad no es una fuente de valor en sí: solo cambia cuándo se está

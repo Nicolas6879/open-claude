@@ -58,14 +58,23 @@ def correr(precios, fee, semilla_ruido, guardia=None, serie=False, tam_ruido=TAM
     valores = [CAP_X * p_prev + CAP_Y]
     rx, ry = [pool.x], [pool.y]
     fees = 0.0
+    fees_ruido = 0.0   # desglose: comisiones del trader de ruido
+    fees_arb = 0.0     # desglose: comisiones del arbitrajista
     salidas = 0
     v_final = valores[0]
 
     for p in precios[1:]:
         frac = pool.share_of(DUENO_TENDERA)
-        eventos = ruido.paso(pool) + arbitrar(pool, p)[1]
-        for token, fe in eventos:
-            fees += frac * (fe if token == "y" else fe * p)
+        ev_ruido = ruido.paso(pool)
+        ev_arb = arbitrar(pool, p)[1]
+        eventos = ev_ruido + ev_arb
+        for i, (token, fe) in enumerate(eventos):
+            valor = frac * (fe if token == "y" else fe * p)
+            fees += valor
+            if i < len(ev_ruido):
+                fees_ruido += valor
+            else:
+                fees_arb += valor
 
         if guardia is not None:
             accion = guardia.decidir(math.log(p / p_prev), en_pool)
@@ -95,6 +104,8 @@ def correr(precios, fee, semilla_ruido, guardia=None, serie=False, tam_ruido=TAM
         "valor_final": v_final,
         "hodl_final": h_final,
         "fees": fees,
+        "fees_ruido": fees_ruido,
+        "fees_arb": fees_arb,
         "mdd": _mdd(valores),
         "salidas": salidas,
     }

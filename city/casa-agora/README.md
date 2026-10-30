@@ -24,6 +24,7 @@ Requisitos: Python 3.13. Solo biblioteca estándar (no usa numpy).
 cd city/casa-agora
 PYTHONDONTWRITEBYTECODE=1 python3 tests/test_amm.py     # 9 pruebas, unos 0.1 s
 PYTHONDONTWRITEBYTECODE=1 python3 run_backtests.py      # todas las tablas, unos 40 s
+PYTHONDONTWRITEBYTECODE=1 python3 intervalos.py           # IC95 de los ± y desglose de comisiones, unos 30 s
 ```
 
 `run_backtests.py` imprime las tablas y escribe `out/results.json` (contrato para otros
@@ -39,7 +40,8 @@ habitantes). Las semillas son fijas, así que la salida es reproducible.
 | `estrategias.py` | LP pasivo y guardia de volatilidad (EWMA de retornos con histéresis). |
 | `simulacion.py` | Motor: por paso, ruido, arbitraje, decisión del LP y marcado a mercado. |
 | `run_backtests.py` | Sintonización, evaluación, sensibilidad y escritura de `out/results.json`. |
-| `tests/test_amm.py` | Pruebas (ver lista abajo). |
+| `tests/test_amm.py` | Pruebas (9: conservación, k no decreciente, swap inverso, arbitraje alineado y óptimo, reproducibilidad, añadir y retirar liquidez, identidad contable, guardia). |
+| `intervalos.py` | IC95 de las diferencias (los "±" del README) y desglose de comisiones por origen y volatilidad. |
 | `data/msft_mensual_2000_2010.csv` | Dato real público de referencia (solo calibración, ver "Datos reales"). |
 | `out/results.json` | Salida contrato: una trayectoria representativa, estadísticas y sensibilidad. |
 
@@ -97,6 +99,11 @@ LP-HODL, calculado sobre trayectorias emparejadas.
 |---|---:|---:|---:|---:|---:|---:|---:|
 | LP pasivo | 199 629 | 198 929 | 10,1% | 64,0% | 621 | -802 | **-181 ± 111** |
 | Tendera (guardia) | 199 781 | 198 372 | 10,1% | 52,4% | 21 | -50 | **-29 ± 23** |
+
+Los "±" son el semiancho del IC95 de LP - HODL: IC95 = media ± 1,96 · sd / √500. Para
+LP pasivo con GBM, [-292, -71]; para Tendera, [-52, -6]. Las cifras de la sección
+"Resultados" se reproducen con `intervalos.py`, no con `results.json`, que no lleva
+intervalos.
 | HODL | 199 810 | 198 325 | 10,1% | n/a | n/a | n/a | 0 |
 
 **Escenario de saltos (vol. total ~56%)**
@@ -105,15 +112,17 @@ LP-HODL, calculado sobre trayectorias emparejadas.
 |---|---:|---:|---:|---:|---:|---:|---:|
 | LP pasivo | 200 579 | 199 747 | 8,6% | 62,0% | 513 | -674 | **-161 ± 101** |
 | Tendera (guardia) | 200 733 | 199 326 | 8,6% | 54,6% | 26 | -33 | **-7 ± 24** |
+
+(Con saltos, Tendera: IC95 [-31, +17].)
 | HODL | 200 740 | 199 256 | 8,6% | n/a | n/a | n/a | 0 |
 
 Lectura:
 - El LP pasivo **pierde dinero frente a HODL en el escenario base**, con significación
   estadística (-181 ± 111). Su P(> HODL) es 64%, pero la media es negativa: gana a menudo
   por poco y pierde mucho en pocas trayectorias.
-- **La guardia no gana frente a HODL.** Su diferencia respecto de HODL es -29 ± 23 en GBM
-  y -7 ± 24 en saltos, o sea, estadísticamente cero. Su P(> HODL) de 52% y 55% es
-  indistinguible de una moneda al aire. Sí reduce la pérdida del LP pasivo, de -181 a -29,
+- **La guardia no gana frente a HODL.** Su diferencia respecto de HODL es -29 ± 23 en GBM,
+  IC95 [-52, -6]: negativa al 95%, aunque pequeña. Con saltos es -7 ± 24, IC95 [-31, +17],
+  que incluye el cero. Su P(> HODL) de 52% y 55% es casi una moneda al aire. Sí reduce la pérdida del LP pasivo, de -181 a -29,
   porque sale del pool en los tramos volátiles.
 - La sintonización (sobre semillas de entrenamiento) eligió salir con volatilidad por
   encima de 30% y reentrar bajo 15%. La curva es plana por debajo de 30%: con umbrales de
@@ -158,11 +167,27 @@ Ser LP gana frente a HODL cuando las comisiones superan la pérdida impermanente
 - Con comisión 0,30%, el punto de equilibrio está en torno a una volatilidad anual del
   **48%** (interpolado). Con 0,05% está en torno al 20%. Con 1% está en torno al 94%.
 - La pérdida impermanente crece con el cuadrado de la volatilidad. Las comisiones
-  dependen sobre todo del **volumen**, y aquí el volumen lo fija el trader de ruido. Por
-  eso las comisiones casi no suben con la volatilidad (488 con 40%, 621 con 60%).
-- Conclusión práctica: **ser LP tiene sentido cuando el volumen anual que atraviesa el pool
-  es alto respecto al capital (volumen / TVL) y la volatilidad es baja.** Un pool poco
-  volátil y muy usado es lo que paga. En este modelo, un pool volátil con poco volumen
+  crecen con la volatilidad, pero a través del arbitraje: el volumen del arbitrajista sube
+  con la volatilidad. Medido con LP pasivo, GBM, comisión 0,30% (500 trayectorias):
+
+  | Volatilidad | Comisiones totales | Del arbitraje | Del ruido |
+  |---|---:|---:|---:|
+  | 20% | 386 | 169 | 216 |
+  | 40% | 488 | 271 | 216 |
+  | 60% | 621 | 404 | 216 |
+  | 80% | 771 | 554 | 216 |
+  | 100% | 930 | 713 | 216 |
+
+  Las comisiones totales se multiplican por 2,4 entre 20% y 100%. La parte del ruido es
+  plana porque su volumen no depende de la volatilidad. Su importe (216) cuadra con el
+  volumen de ruido de la configuración: unos 500 y por paso sobre un pool de unos 1 M,
+  con una cuota de 20%. El supuesto decisivo sigue siendo el volumen del ruido, que no se
+  calibra con datos reales.
+- Conclusión práctica: las comisiones crecen lentamente con la volatilidad (lineal en el
+  arbitraje, constante en el ruido), mientras que la pérdida impermanente crece con su
+  cuadrado. **Ser LP tiene sentido cuando el volumen que atraviesa el pool es alto respecto
+  al capital (volumen / TVL) y la volatilidad es baja.** Un pool poco volátil y muy usado
+  es lo que paga. En este modelo, un pool volátil con poco volumen
   pierde frente a HODL.
 - Esta conclusión depende del supuesto de volumen. Es el supuesto más débil del modelo: en
   el mundo real el volumen por unidad de liquidez varía en órdenes de magnitud.

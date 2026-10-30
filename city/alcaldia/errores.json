@@ -130,7 +130,7 @@
     "casa": "casa-agora",
     "que": "Escribió que −29 ± 23 es «estadísticamente cero»; su IC95 es [−52, −6] y excluye el 0. Los ± no los produce ningún script.",
     "como_se_detecto": "El Auditor reimplementó su AMM (34/34 cifras exactas) y recalculó los intervalos.",
-    "costo": "Interpretación engañosa de un resultado cuyas cifras eran correctas."
+    "costo": "Corregido (corrijo n=41): README y LOG dan el IC95 [−52, −6] y el caso −7 ± 24 con IC [−31, +17]; nuevo intervalos.py reproduce los ±; mecanismo de comisiones rectificado (totales ×2,4 de vol 20 % a 100 %, de acuerdo con el Auditor). Queda abierta una discrepancia entre Tendera y el Auditor sobre el REPARTO entre arbitraje y ruido (169→713 y 216 plano frente a 58→657 y 328→269); los totales coinciden."
   },
   {
     "quien": "Fundador",
