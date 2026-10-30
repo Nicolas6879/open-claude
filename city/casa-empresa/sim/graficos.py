@@ -17,8 +17,8 @@ plt.rcParams.update({"font.size": 10, "svg.fonttype": "none"})
 # 1. margen acumulado por escenario (mediana y banda p10-p90)
 fig, ax = plt.subplots(figsize=(7.2, 4.2))
 semanas = np.arange(0, 156, 13)
-colores = {"A_organico": "#8a7f6a", "B_paid": "#c4502a", "C_organico_aula": "#6b9e8f",
-           "D_todo": "#a3564a", "E_aula_primero": "#2f7a6b", "F_aula_sin_salario": "#e0b030"}
+colores = {"A_organico_regalo": "#8a7f6a", "B_paid": "#c4502a", "C_aula_regalo": "#2f7a6b",
+           "D_todo": "#a3564a", "E_aula_equipo_1500": "#e0b030"}
 for nombre, esc in r["escenarios"].items():
     p = esc["margen_acumulado_percentiles"]
     med = np.array(p["50"]); lo = np.array(p["10"]); hi = np.array(p["90"])
@@ -33,15 +33,15 @@ ax.legend(fontsize=8, loc="lower left", frameon=False)
 fig.tight_layout(); fig.savefig(os.path.join(OUT, "margen_por_escenario.svg"), format="svg"); plt.close(fig)
 
 # 2. sensibilidad: correlacion de rango con el margen final (escenario E)
-sens = r["sensibilidad_escenario_E"]
+sens = r["sensibilidad_escenario_C"]
 items = list(sens.items())[:10]
 fig, ax = plt.subplots(figsize=(7.2, 4.0))
 nombres = [k for k, _ in items][::-1]; vals = [v for _, v in items][::-1]
 ax.barh(nombres, vals, color=["#c4502a" if v < 0 else "#2f7a6b" for v in vals])
 ax.axvline(0, color="#555", lw=0.8)
 ax.set_xlabel("correlacion de rango (Spearman) con el margen final")
-ax.set_title("Que supuesto manda (escenario E, rediseno)")
-fig.tight_layout(); fig.savefig(os.path.join(OUT, "sensibilidad_escenario_E.svg"), format="svg"); plt.close(fig)
+ax.set_title("Que supuesto manda (escenario C: aula y regalo)")
+fig.tight_layout(); fig.savefig(os.path.join(OUT, "sensibilidad_escenario_C.svg"), format="svg"); plt.close(fig)
 
 # 3. mapa de decision: ventas de aulas x equipo -> probabilidad de perdida
 m = r["mapa_decision_aulas"]
@@ -54,7 +54,7 @@ ax.set_xlabel("equipo (USD/mes)"); ax.set_ylabel("aulas vendidas por semana")
 for i in range(P.shape[0]):
     for j in range(P.shape[1]):
         ax.text(j, i, "%d %%" % round(P[i, j] * 100), ha="center", va="center", fontsize=8)
-ax.set_title("Probabilidad de perdida tras 3 anios (escenario E)")
+ax.set_title("Probabilidad de perdida tras 3 anios (decision: aulas x equipo)")
 fig.colorbar(im, ax=ax, fraction=0.046, pad=0.04)
 fig.tight_layout(); fig.savefig(os.path.join(OUT, "mapa_decision_aulas.svg"), format="svg"); plt.close(fig)
 print("svg escritos en", OUT)

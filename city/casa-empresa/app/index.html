@@ -626,21 +626,35 @@ function terminaOlfateo(){
 
 /* ================= comida y gusto ================= */
 function recompensa(tipo){
-  var conRecuerdo = (cer.t - F.olfatoT) < 6000 && F.olfato;
+  // El premio (o castigo) se asocia con el olor que tiene cerca, o con el último olfateo reciente.
+  var c=concentraciones(), best=null, bv=0.3;
+  ORDEN.forEach(function(o){ if(c[o]>bv){ bv=c[o]; best=o; } });
+  var reciente=F.olfato && (cer.t-F.olfatoT)<12000;
+  var o= best || (reciente? F.olfato : null);
+  if(o){
+    // breve olfateo para marcar las celulas activas por ese olor en el momento del premio
+    var conc={}; ORDEN.forEach(function(x){ conc[x]=0; });
+    conc[o]=Math.max(c[o]||0, 0.6);
+    cer.setEstimulo(conc); cer.aprendiendo=true;
+    for(var s=0;s<300/P.dt;s++) cer.paso(P.dt);
+    cer.aprendiendo=false; cer.setEstimulo(null);
+  }
+  var D= tipo==='azucar'? 1 : -1;
+  cer.refuerzo(D);
   if(tipo==='azucar'){
-    cer.refuerzo(1);
     A.hambre=clamp(A.hambre-0.6,0,1);
     setAnimo('feliz',2500);
-    if(conRecuerdo){ A.pares[F.olfato]=(A.pares[F.olfato]||0)+1; diario('Comió azúcar mientras olía '+ODORES[F.olfato].nombre+'. Un par más.'); }
-    else diario('Comió azúcar.');
     decir('Azúcar.', 1400);
   } else {
-    cer.refuerzo(-1);
     setAnimo('asco',2600);
-    if(conRecuerdo){ A.pares[F.olfato]=(A.pares[F.olfato]||0)+1; diario('Probó la quinina mientras olía '+ODORES[F.olfato].nombre+'.'); }
-    else diario('Probó la quinina y se retiró.');
     decir('Qué asco.', 1400);
     F.modo='huir'; F.dest={x:clamp(F.x+(F.x<0.5?0.3:-0.3),0.05,0.95), y:clamp(F.y+(F.y<0.5?0.2:-0.2),0.1,0.9)};
+  }
+  if(o){
+    A.pares[o]=(A.pares[o]||0)+1;
+    diario((tipo==='azucar'? 'Comió azúcar mientras olía ' : 'Probó la quinina mientras olía ')+ODORES[o].nombre+'. Un par más.');
+  } else {
+    diario(tipo==='azucar'? 'Comió azúcar.' : 'Probó la quinina y se retiró.');
   }
   guardar();
 }

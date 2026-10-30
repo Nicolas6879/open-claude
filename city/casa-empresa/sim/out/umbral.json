@@ -1,0 +1,191 @@
+{
+ "bucle_viral": {
+  "instalaciones_generadas_por_usuaria_media": 0.11779824069327136,
+  "semanas_activas_por_instalacion_medianas": 11.779824069327134,
+  "aceptacion_critica_para_k_igual_1": 2.1222727820779754,
+  "nota": "k = P(regalo) x P(acepta) x h x L. Con k < 1 el regalo solo suma una fraccion; k >= 1 exige aceptacion mayor que 1 con los medianos."
+ },
+ "descripcion": "Umbral: factor m sobre la demanda base (escenario C, equipo cero). Margen mensual mediano del anio 3.",
+ "demanda_multiplicada": [
+  "instalaciones_organicas_semana",
+  "lab_conversion_semana",
+  "cosmeticos_compra_semana",
+  "aula_ventas_semana"
+ ],
+ "tabla_toda_la_demanda": [
+  {
+   "m": 1,
+   "margen_mes_mediana": 79.77421775071011,
+   "p_negativo": 0.041
+  },
+  {
+   "m": 2,
+   "margen_mes_mediana": 335.6523776592617,
+   "p_negativo": 0.0
+  },
+  {
+   "m": 3,
+   "margen_mes_mediana": 728.6878593974812,
+   "p_negativo": 0.0
+  },
+  {
+   "m": 5,
+   "margen_mes_mediana": 1910.4689770190605,
+   "p_negativo": 0.0
+  },
+  {
+   "m": 10,
+   "margen_mes_mediana": 7306.0816138724,
+   "p_negativo": 0.0
+  },
+  {
+   "m": 20,
+   "margen_mes_mediana": 28476.710214993094,
+   "p_negativo": 0.0
+  },
+  {
+   "m": 30,
+   "margen_mes_mediana": 63377.808053664165,
+   "p_negativo": 0.0
+  },
+  {
+   "m": 50,
+   "margen_mes_mediana": 174262.23449380993,
+   "p_negativo": 0.0
+  },
+  {
+   "m": 100,
+   "margen_mes_mediana": 695082.092060331,
+   "p_negativo": 0.0
+  },
+  {
+   "m": 200,
+   "margen_mes_mediana": 2774995.4763503354,
+   "p_negativo": 0.0
+  },
+  {
+   "m": 500,
+   "margen_mes_mediana": 17303130.430292644,
+   "p_negativo": 0.0
+  }
+ ],
+ "tabla_solo_adquisicion": [
+  {
+   "m": 1,
+   "margen_mes_mediana": 79.77421775071011,
+   "p_negativo": 0.041
+  },
+  {
+   "m": 2,
+   "margen_mes_mediana": 149.18336489810056,
+   "p_negativo": 0.01
+  },
+  {
+   "m": 3,
+   "margen_mes_mediana": 215.63087556824354,
+   "p_negativo": 0.005
+  },
+  {
+   "m": 5,
+   "margen_mes_mediana": 356.8112095598043,
+   "p_negativo": 0.001
+  },
+  {
+   "m": 10,
+   "margen_mes_mediana": 696.733664126064,
+   "p_negativo": 0.0
+  },
+  {
+   "m": 20,
+   "margen_mes_mediana": 1397.6240410648152,
+   "p_negativo": 0.0
+  },
+  {
+   "m": 30,
+   "margen_mes_mediana": 2082.343138282617,
+   "p_negativo": 0.0
+  },
+  {
+   "m": 50,
+   "margen_mes_mediana": 3459.624377672776,
+   "p_negativo": 0.0
+  },
+  {
+   "m": 100,
+   "margen_mes_mediana": 6899.930111024305,
+   "p_negativo": 0.0
+  },
+  {
+   "m": 200,
+   "margen_mes_mediana": 13832.043520095347,
+   "p_negativo": 0.0
+  },
+  {
+   "m": 500,
+   "margen_mes_mediana": 34512.45183856574,
+   "p_negativo": 0.0
+  }
+ ],
+ "tabla_solo_aulas": [
+  {
+   "m": 1,
+   "margen_mes_mediana": 79.77421775071011,
+   "p_negativo": 0.041
+  },
+  {
+   "m": 2,
+   "margen_mes_mediana": 124.2279768785891,
+   "p_negativo": 0.01
+  },
+  {
+   "m": 3,
+   "margen_mes_mediana": 170.1651139253878,
+   "p_negativo": 0.001
+  },
+  {
+   "m": 5,
+   "margen_mes_mediana": 264.201221277956,
+   "p_negativo": 0.0
+  },
+  {
+   "m": 10,
+   "margen_mes_mediana": 463.7122978681448,
+   "p_negativo": 0.0
+  },
+  {
+   "m": 20,
+   "margen_mes_mediana": 882.9529874495522,
+   "p_negativo": 0.0
+  },
+  {
+   "m": 30,
+   "margen_mes_mediana": 1274.7717832950984,
+   "p_negativo": 0.0
+  },
+  {
+   "m": 50,
+   "margen_mes_mediana": 2095.620429383224,
+   "p_negativo": 0.0
+  },
+  {
+   "m": 100,
+   "margen_mes_mediana": 4050.0360489411596,
+   "p_negativo": 0.0
+  },
+  {
+   "m": 200,
+   "margen_mes_mediana": 8119.314493290491,
+   "p_negativo": 0.0
+  },
+  {
+   "m": 500,
+   "margen_mes_mediana": 20237.44141056732,
+   "p_negativo": 0.0
+  }
+ ],
+ "umbral_no_perder_toda_demanda": 1,
+ "umbral_1000_mes_toda_demanda": 5,
+ "umbral_no_perder_solo_aulas": 1,
+ "umbral_1000_mes_solo_aulas": 30,
+ "nota": "Monte Carlo con los supuestos de sim/supuestos.json; el factor se aplica a la mediana de cada supuesto de demanda."
+}

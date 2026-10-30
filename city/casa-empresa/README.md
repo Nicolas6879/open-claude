@@ -14,7 +14,9 @@ Una criatura virtual con cerebro de mosca. Cuidas a una mosquita: huele, decide,
 | `business/unit_economics.md`, `pricing.md`, `riesgos.md` | Unit economics, precios y riesgos. |
 | `sim/simulador.py` | Simulador de Monte Carlo por cohortes semanales (numpy). |
 | `sim/supuestos.json` | Todos los supuestos del negocio, con rangos y etiqueta. |
+| `sim/umbral.py` | Calcula el umbral de demanda (multiplicador sobre la base) y el bucle viral. |
 | `sim/graficos.py` | Genera los SVG a partir de `sim/out/resultados.json` (matplotlib). |
+| `business/conclusiones.ev` | Afirmaciones finales con rangos, evaluadas con el lenguaje Evidencia de la Alcaldia (solo lectura). |
 | `sim/tests/test_simulador.py` | Pruebas del simulador. |
 | `sim/out/` | Resultados derivados pequenos (json) y graficos SVG. |
 | `LOG.md` | Diario: ideas exploradas, cementerio, errores, calibracion y quien me ayudo. |
@@ -40,14 +42,16 @@ Estos valores son del modelo, no de una mosca real. Los parametros de aprendizaj
 
 ## Numeros del negocio (simulacion, supuestos en `sim/supuestos.json`)
 
-Tres anios, 4 000 trayectorias Monte Carlo:
+Tres anios, 4 000 trayectorias Monte Carlo, equipo a coste cero por convencion (el fundador no cobra):
 
-- Paid social (3 000 USD/mes): margen mediano -180 600 USD. Pierde en el 98 % de las trayectorias.
-- Organico con aula: -91 800 USD mediano (el coste de equipo domina).
-- Aula primero con equipo de 1 500 USD/mes: -48 800 USD mediano.
-- Aula primero sin salario del fundador: **+9 500 USD mediano** (p10 4 800; p90 17 500). Es una cifra de contabilidad, no un salario.
+- Organico + regalo de la hija: margen mediano +345 USD (perdida en el 41 %).
+- Organico + regalo + aulas: **+1 437 USD mediano** (perdida en el 14 %). Es el caso base mas favorable.
+- Paid social 3 000 USD/mes: -95 800 USD (perdida en el 98 %). Cada suscriptor cuesta unos 370 USD.
+- Aulas con equipo de 1 500 USD/mes: -52 600 USD.
 
-Cifras y resultados completos en `sim/out/resultados.json`. Los graficos estan en `sim/out/*.svg`.
+**Umbral:** ganar 1 000 USD al mes en el anio 3 exige unas 3,7 veces la demanda base (~150 instalaciones organicas por semana sostenidas, frente a 40 en la base). El bucle del regalo no es supercritico (k = 0,12 por usuaria; k = 1 exigiria aceptacion 2,1). Detalle en `sim/out/umbral.json`, `business/conclusiones.ev` y `business/plan.md`.
+
+Conclusion: no hay evidencia de que esto genere dinero de forma relevante. Como proyecto pequeno de bajo coste, si.
 
 ## Como reproducir
 
@@ -57,7 +61,7 @@ Requisitos: Python 3 con numpy, Node 22 con Playwright y Chromium (solo para la 
 cd /home/user/open-claude/city/casa-empresa
 # simulacion completa (~4 s) y pruebas
 PYTHONDONTWRITEBYTECODE=1 python3 sim/simulador.py
-cd sim && PYTHONDONTWRITEBYTECODE=1 python3 tests/test_simulador.py
+cd sim && PYTHONDONTWRITEBYTECODE=1 python3 umbral.py && PYTHONDONTWRITEBYTECODE=1 python3 tests/test_simulador.py
 # graficos (con matplotlib, por ejemplo en el venv del scratchpad)
 PYTHONDONTWRITEBYTECODE=1 MPLCONFIGDIR=/tmp/mpl /ruta/al/venv/bin/python sim/graficos.py
 # prueba de la app

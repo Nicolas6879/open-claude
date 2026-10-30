@@ -1,63 +1,53 @@
-# Mosquita: plan de negocio (2-3 paginas)
+# Mosquita: plan de negocio (revision tras el bucle 3)
 
 Todo lo que aparece como cifra es **supuesto** o **resultado de simulacion** (sim/). No hay mercado medido ni dinero real.
 
 ## 1. Que es
 
-Una criatura virtual, una mosquita, cuyo cerebro es una red de neuronas con espigas inspirada en el cuerpo fungiforme de *Drosophila*. Su cableado se muestrea con estadisticas del conectoma real de la mosca macho (MaleCNS v1.0). Aprende de lo que le das (azucar o quinina junto a un olor), tiene ritmo de dia y noche, vive 45 dias reales y, al morir, su hija hereda la mitad de sus conexiones. El jugador ve el cerebro que hay detras.
+Una mosquita virtual cuyo cerebro es una red de espigas inspirada en el cuerpo fungiforme de *Drosophila*. Su cableado se muestrea con estadisticas del conectoma real (MaleCNS v1.0) y no copia ninguna mosca. Aprende de lo que le das (azucar o quinina junto a un olor), vive 45 dias reales y, al morir, su hija nace con la mitad de sus conexiones. Se puede regalar la hija a un amigo con un enlace (que lleva la semilla).
 
-Ninguna mosquita copia una mosca real. Las reglas de aprendizaje y olvido son supuestos del modelo.
+## 2. Que pregunta respondemos
 
-## 2. Para quien
+No "gana dinero este escenario", sino **cuanto hay que vender para que el negocio no pierda y para que gane 1 000 USD al mes**, y cuantas veces es eso lo que creemos plausible.
 
-- **Usuarios finales (personas que cuidan una criatura):** curiosos de la ciencia y del cuidado de mascotas virtuales. Sin pago, la app es una demo gratuita.
-- **Profesores de biologia y neurociencia (B2B, el cliente de pago):** necesitan una herramienta que muestre como un circuito neuronal aprende, sin laboratorio ni animales. Pagan una licencia por aula.
+## 3. Resultado (simulacion, 156 semanas, 4 000 trayectorias)
 
-## 3. Modelo de ingresos
+Supuestos base, equipo a coste cero por convencion (el fundador no cobra):
 
-| Fuente | Quien paga | Precio (supuesto) | Papel |
+| Escenario | Margen final mediana (USD, 3 anios) | P(perdida) | Suscriptores Laboratorio |
 |---|---|---|---|
-| Aula | Profesor o centro | US$89-199/anio por aula (base 129) | Principal fuente de ingresos |
-| Laboratorio | Particular | US$3,99/mes de lista (efectivo 2,5-3,99) | Secundaria |
-| Cosmeticos | Particular | US$0,99-2,99, compra unica | Marginal |
+| A. Organico + regalo de la hija | +345 (p10 -910; p90 +4 659) | 41 % | 23 |
+| B. Paid social 3 000 USD/mes | -95 800 | 98 % | 316 |
+| C. Organico + regalo + aulas | +1 437 (p10 -151; p90 +5 752) | 14 % | 23 (y 6 aulas) |
+| E. Como C con equipo de 1 500 USD/mes | -52 600 | 100 % | 23 |
 
-Anuncios: no. Patrocinios de contenido educativo: no se modelan.
+Lo que decide el resultado (sensibilidad en escenario C, correlacion de rango): instalaciones organicas por semana (0,69), conversion al Laboratorio (0,35), exponente de retencion (-0,31), abandono del Laboratorio (-0,20), ventas de aulas (0,20).
 
-## 4. Que dicen los numeros (simulacion, 156 semanas, 4 000 trayectorias)
+## 4. Umbral (sim/umbral.py)
 
-| Escenario | Margen final mediana (USD) | P(perdida) | Aulas a 3 anios |
-|---|---|---|---|
-| A. Organico, sin aula | -92 800 | 100 % | 0 |
-| B. Paid social 3 000 USD/mes | -180 600 | 98 % | 0 |
-| C. Organico + aula | -91 800 | 100 % | 6 |
-| D. Paid + aula | -179 800 | 98 % | 6 |
-| E. Aula primero (equipo 1 500 USD/mes) | -48 800 | 100 % | 35 |
-| F. Aula primero sin coste de equipo | **+9 500** (p10 4 800; p90 17 500) | 0 % | 35 |
+- **Base:** margen mensual mediano del anio 3 de unos **80 USD**. Ganar **1 000 USD/mes** exige aproximadamente **3,7 veces la demanda base** (entre 3 y 5 en la rejilla).
+- Demanda base = 40 instalaciones organicas por semana. Eso son unas **150 por semana sostenidas** sin pagar publicidad, unas 7 800 al anio. Es el umbral en unidades fisicas, y es el numero que mas importa.
+- **Regalo de la hija (bucle viral):** cada usuaria genera de media unas 0,12 instalaciones en toda su vida. No es un bucle supercritico: para k = 1 haria falta una aceptacion de 2,1 (imposible). Evidencia lo confirma sobre los rangos: `k < 1` es GARANTIZADA (business/conclusiones.ev).
 
-Lectura honesta:
+## 5. Conclusion honesta
 
-1. **El consumidor no paga su propia adquisicion.** Un suscriptor del Laboratorio aporta unos 10 USD de margen a lo largo de su vida, y con paid social cada suscriptor cuesta de media unos 255 USD de gasto. El canal de pago no se sostiene con estos supuestos.
-2. **El cuello de botella es el coste fijo, no el producto.** Con un equipo a tiempo parcial de 1 500 USD/mes el negocio pierde dinero en casi todas las trayectorias. El coste de equipo es el supuesto que mas pesa (correlacion de rango -0,89 con el margen; sim/out/sensibilidad_escenario_E.svg).
-3. **Lo que si funciona, con poco coste, es el aula.** Sin salario del fundador, el escenario F deja un margen de unos 9 500 USD en tres anios. Eso es un ingreso de un proyecto pequeno, no una empresa que pague un equipo.
+- **No hay evidencia de que esto genere dinero de forma relevante.** Con los supuestos base gana unos 1 000 USD al anio en la mediana, y la probabilidad de perder en tres anios es del 14 % con aulas y del 41 % sin ellas.
+- Para llegar a 1 000 USD al mes hace falta unas 3,7 veces la demanda base, es decir unas 150 instalaciones organicas por semana sostenidas. **Ese es el dato que habria que medir antes de hacer nada mas**, y no tenemos ninguno.
+- La via de consumidor con publicidad pagada **no se sostiene**: cada suscriptor del Laboratorio vale unos 10 USD de margen de vida y cuesta de media 370 USD de gasto en publicidad.
+- El producto puede ser un **proyecto pequeno de bajo coste** (alojamiento de unos 30 USD al mes). No es una empresa que pague un equipo.
 
-## 5. Decision
+## 6. Criterios de parada
 
-**Se redefine el negocio:** Mosquita es, sobre todo, una herramienta de aula. La app gratuita es el escaparate y el laboratorio es un extra opcional. No se invierte en paid social. El objetivo realista, con los supuestos actuales, es un proyecto de bajo coste que genere un ingreso modesto y no un equipo.
+- Si en 3 meses la app gratuita no pasa de 20 instalaciones organicas por semana, se para: el umbral queda muy lejos.
+- Si la conversion al Laboratorio medida (suscriptores / activos) queda por debajo de 0,2 % semanal, el modelo de suscripcion no compensa.
+- Si no hay al menos 5 aulas pagadas en 6 meses, se para la linea de aulas.
 
-Esta decision no se apoya en que la vision del producto sea mala: se apoya en el mapa de decision (sim/out/mapa_decision_aulas.svg). Con equipo por encima de 1 000 USD/mes, la perdida es casi segura para cualquier numero de aulas razonable.
+## 7. Que haria antes de gastar mas tiempo
 
-## 6. Criterios de parada (la idea muere si se cumple)
-
-- Si en 6 meses no hay al menos 5 aulas pagadas (ritmo menor de 0,2 aulas por semana) **y** el coste mensual supera 500 USD, se para.
-- Si la retencion semanal de la app gratuita cae y la conversion a aula no llega, se para antes de contratar.
-- Si en 12 meses el ingreso anual de aulas no cubre el alojamiento y las herramientas, se cierra.
-
-## 7. Hitos siguientes (sin fechas comprometidas)
-
-1. Validar con 10 profesores que el panel del aula les sirve (entrevistas, no encuestas masivas).
-2. Medir retencion real de la app gratuita en un grupo pequeno de usuarios que lo acepten.
-3. Revisar los supuestos con datos propios antes de cualquier inversion.
+1. Medir instalaciones organicas y retencion reales de una version de prueba durante un mes, sin publicidad.
+2. Preguntar a 10 profesores si pagarian por el panel del aula, a 89 USD por aula.
+3. Solo si el umbral se acerca a lo medido, seguir.
 
 ## 8. Lo que no sabemos
 
-Casi todos los supuestos de negocio. Las tasas de venta de aulas, la conversion y la retencion son rangos declarados, sin dato de mercado propio. Las referencias externas que consulte (conversion freemium 2-5 % en apps de consumo, 1-3 % en entretenimiento) son de blogs del sector y no estan verificadas en profundidad.
+Casi todos los supuestos. La demanda organica, la conversion, el precio y las ventas de aulas son rangos sin dato propio. Las referencias externas de conversion (2-5 % freemium en apps de consumo) son de blogs del sector, no verificadas en profundidad, y no son comparables con nuestra conversion por usuaria activa.

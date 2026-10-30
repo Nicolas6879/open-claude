@@ -1,0 +1,34 @@
+# Conclusiones de Mosquita con rangos. Estado estacionario del ano 3 (aproximacion analitica
+# de las mismas formulas que sim/simulador.py). Todo es SUPUESTO: no hay medicion de mercado.
+supuesto m en [1, 5]                 porque "factor sobre la demanda base; en sim el umbral de 1000 USD/mes cae entre 3 y 5 (sim/out/umbral.json)"
+supuesto inst_org en [15, 120]       porque "instalaciones organicas por semana (supuesto; sim usa mediana 40)"
+supuesto activ en [0.30, 0.65]       porque "fraccion de instalaciones que cuidan su mosquita (supuesto)"
+supuesto L en [6, 14]                porque "semanas-usuaria activas por instalacion; sim: mediana 11,8 con c=0,5 y b=0,5"
+supuesto conv en [0.002, 0.02]       porque "conversion semanal de activos a Laboratorio (supuesto)"
+supuesto aband_lab en [0.03, 0.12]   porque "abandono semanal del Laboratorio (supuesto)"
+supuesto precio_mes en [2.5, 3.99]   porque "precio efectivo mensual del Laboratorio (supuesto)"
+supuesto fee en [0.025, 0.05]        porque "comision de pagos web (supuesto)"
+supuesto soporte_sem en [0.01, 0.08] porque "coste de soporte por suscriptor y semana (supuesto)"
+supuesto cosm_c en [0.001, 0.008]    porque "fraccion de activos que compra un cosmetico por semana (supuesto)"
+supuesto cosm_p en [0.99, 2.99]      porque "precio de un cosmetico, USD (supuesto)"
+supuesto aula_v en [0.01, 0.12]      porque "aulas vendidas por semana; sin dato de mercado propio (supuesto)"
+supuesto aula_p en [59, 149]         porque "licencia anual por aula, USD (supuesto)"
+supuesto aula_ab en [0.15, 0.40]     porque "abandono anual de aulas (supuesto)"
+supuesto alojam_mes en [20, 60]      porque "alojamiento y herramientas, USD/mes (supuesto)"
+supuesto regalo_p en [0.2, 0.6]      porque "probabilidad de regalar la hija al final de la vida (supuesto)"
+supuesto regalo_a en [0.1, 0.5]      porque "probabilidad de que el amigo instale tras el enlace (supuesto)"
+supuesto h en [0.05, 0.2]            porque "probabilidad semanal de que una mosquita termine su vida (supuesto)"
+
+def act = m * inst_org * activ * L
+def subs = act * conv / aband_lab
+def m_lab = subs * (precio_mes * (1 - fee) - soporte_sem * 4.33)
+def m_cos = act * 4.33 * cosm_c * cosm_p * (1 - fee)
+def aulas = m * aula_v * 52 / aula_ab
+def m_aula = aulas * aula_p * (1 - fee) / 12
+def margen_mes = m_lab + m_cos + m_aula - alojam_mes
+def k = regalo_p * regalo_a * h * L
+
+afirmar margen_mes > 0 llamado "la demanda supuesta cubre el alojamiento al menos en el ano 3"
+afirmar margen_mes > 1000 llamado "la demanda supuesta gana 1000 USD/mes en el ano 3"
+afirmar k < 1 llamado "el regalo de la hija no es un bucle viral supercritico"
+afirmar margen_mes < 5000 llamado "el margen mensual no supera 5000 USD con demanda entre 1 y 5 veces la base"

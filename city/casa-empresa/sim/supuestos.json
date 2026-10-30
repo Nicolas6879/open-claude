@@ -8,14 +8,6 @@
       "etiqueta": "supuesto",
       "nota": "Sin marketing, lanzamiento modesto. Rango p10-p90 aprox. 15-120."
     },
-    "viral_K": {
-      "dist": "tri",
-      "min": 0.0,
-      "moda": 0.05,
-      "max": 0.25,
-      "etiqueta": "supuesto",
-      "nota": "Nuevas instalaciones por usuario activo y semana por invitacion o boca a boca."
-    },
     "cpi_usd": {
       "dist": "lognorm",
       "mediana": 1.5,
@@ -93,7 +85,7 @@
       "moda": 0.04,
       "max": 0.12,
       "etiqueta": "supuesto",
-      "nota": "Aulas vendidas por semana (solo escenarios con Aula). Sin dato de mercado propio."
+      "nota": "Aulas vendidas por semana. Sin dato de mercado propio. Revertido a la base tras la objecion del Alcalde (el salto x7,5 no tenia evidencia)."
     },
     "aula_precio_anio": {
       "dist": "tri",
@@ -101,7 +93,7 @@
       "moda": 89,
       "max": 149,
       "etiqueta": "supuesto",
-      "nota": "Licencia anual por aula, US$."
+      "nota": "Licencia anual por aula. Sin dato de mercado propio."
     },
     "aula_abandono_anio": {
       "dist": "tri",
@@ -121,11 +113,11 @@
     },
     "equipo_mes_usd": {
       "dist": "tri",
-      "min": 1500,
-      "moda": 2500,
-      "max": 4000,
+      "min": 0,
+      "moda": 0,
+      "max": 0,
       "etiqueta": "supuesto",
-      "nota": "Coste fijo de equipo (una persona a tiempo parcial, sin salario del fundador)."
+      "nota": "CONVENCION: el fundador no cobra en el caso base; el coste de oportunidad no se cuenta. Escenario E muestra 1500 USD/mes."
     },
     "soporte_por_pago_semana": {
       "dist": "tri",
@@ -142,88 +134,65 @@
       "max": 60,
       "etiqueta": "supuesto",
       "nota": "Alojamiento estatico mas servicios basicos."
+    },
+    "regalo_prob": {
+      "dist": "tri",
+      "min": 0.2,
+      "moda": 0.4,
+      "max": 0.6,
+      "etiqueta": "supuesto",
+      "nota": "Probabilidad de que la usuaria regale la hija (enlace con la semilla) al final de la vida de su mosquita."
+    },
+    "regalo_aceptacion": {
+      "dist": "tri",
+      "min": 0.1,
+      "moda": 0.25,
+      "max": 0.5,
+      "etiqueta": "supuesto",
+      "nota": "Probabilidad de que el amigo que recibe el enlace instale la app."
+    },
+    "abandono_final": {
+      "dist": "tri",
+      "min": 0.05,
+      "moda": 0.1,
+      "max": 0.2,
+      "etiqueta": "supuesto",
+      "nota": "Probabilidad semanal de que una mosquita termine su vida (cada usuaria activa tiene una mosquita)."
     }
   },
   "escenarios": {
-    "A_organico": {
+    "A_organico_regalo": {
       "presupuesto_paid_semana": 0,
       "aula": false,
-      "descripcion": "Solo organico y viral. Sin Aula."
+      "descripcion": "Organico mas el bucle del regalo de la hija. Sin paid, sin aula, equipo cero por convencion."
     },
     "B_paid": {
       "presupuesto_paid_semana": 750,
       "aula": false,
-      "descripcion": "Paid social de 3.000 USD/mes. Sin Aula."
+      "descripcion": "Paid social 3000 USD/mes. Sin aula, equipo cero."
     },
-    "C_organico_aula": {
+    "C_aula_regalo": {
       "presupuesto_paid_semana": 0,
       "aula": true,
-      "descripcion": "Organico mas venta de Aula."
+      "descripcion": "Organico, regalo y venta de aulas en supuestos base. Equipo cero."
     },
     "D_todo": {
       "presupuesto_paid_semana": 750,
       "aula": true,
-      "descripcion": "Paid social de 3.000 USD/mes mas Aula."
+      "descripcion": "Paid social mas aula. Equipo cero."
     },
-    "E_aula_primero": {
+    "E_aula_equipo_1500": {
       "presupuesto_paid_semana": 0,
       "aula": true,
-      "descripcion": "REDISENO: sin paid; Aula como producto principal (venta a centros educativos), equipo a tiempo parcial.",
+      "descripcion": "Como C con equipo a tiempo parcial de 1500 USD/mes.",
       "overrides": {
-        "aula_ventas_semana": {
-          "dist": "tri",
-          "min": 0.1,
-          "moda": 0.3,
-          "max": 0.6,
-          "etiqueta": "supuesto",
-          "nota": "Aulas vendidas por semana con ventas directas a profesores y centros; supuesto sin dato propio."
-        },
-        "aula_precio_anio": {
-          "dist": "tri",
-          "min": 89,
-          "moda": 129,
-          "max": 199,
-          "etiqueta": "supuesto",
-          "nota": "Licencia de aula con panel del profesor y guias de clase."
-        },
         "equipo_mes_usd": {
           "dist": "tri",
-          "min": 1000,
+          "min": 1500,
           "moda": 1500,
-          "max": 2500,
+          "max": 1500,
           "etiqueta": "supuesto",
-          "nota": "Equipo a tiempo parcial; el fundador no cobra en el modelo."
-        }
-      }
-    },
-    "F_aula_sin_salario": {
-      "presupuesto_paid_semana": 0,
-      "aula": true,
-      "descripcion": "REDISENO sin coste de equipo: el fundador no cobra. Es una cifra de contabilidad, no de rentabilidad real.",
-      "overrides": {
-        "aula_ventas_semana": {
-          "dist": "tri",
-          "min": 0.1,
-          "moda": 0.3,
-          "max": 0.6,
-          "etiqueta": "supuesto",
-          "nota": "Aulas vendidas por semana con ventas directas a profesores y centros; supuesto sin dato propio."
-        },
-        "aula_precio_anio": {
-          "dist": "tri",
-          "min": 89,
-          "moda": 129,
-          "max": 199,
-          "etiqueta": "supuesto",
-          "nota": "Licencia de aula con panel del profesor y guias de clase."
-        },
-        "equipo_mes_usd": {
-          "dist": "tri",
-          "min": 0,
-          "moda": 0,
-          "max": 0,
-          "etiqueta": "supuesto",
-          "nota": "Sin salario del fundador ni equipo. Oportunidad perdida no contabilizada."
+          "nota": "Un profesional a tiempo parcial."
         }
       }
     }

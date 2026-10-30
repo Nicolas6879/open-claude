@@ -37,7 +37,7 @@ check(np.allclose(r1["margen_acumulado"][:, -1], r1["margen_semanal"].sum(axis=1
 
 # 4. retencion: la curva decrece con la edad (cohorte unica, sin viral)
 par_t = S.muestra_parametros(sup, 50, np.random.default_rng(2))
-par_t["viral_K"] = np.zeros(50); par_t["instalaciones_organicas_semana"] = np.zeros(50)
+par_t["regalo_prob"] = np.zeros(50); par_t["instalaciones_organicas_semana"] = np.zeros(50)
 par_t["retencion_b"] = np.full(50, 0.6)
 par_t["retencion_c"] = np.full(50, 0.5)
 par_t["activacion"] = np.full(50, 1.0)
@@ -70,9 +70,9 @@ if os.path.exists(ruta):
     check(all(0 <= e["resumen"]["prob_margen_final_negativo"] <= 1 for e in esc.values()), "probabilidades dentro de [0,1]")
     check(all(e["resumen"]["margen_final_p10"] <= e["resumen"]["margen_final_mediana"] <= e["resumen"]["margen_final_p90"] for e in esc.values()),
           "percentiles ordenados (p10 <= mediana <= p90)")
-    check(esc["F_aula_sin_salario"]["resumen"]["margen_final_mediana"] > esc["E_aula_primero"]["resumen"]["margen_final_mediana"],
-          "quitar el coste de equipo mejora el margen (sanidad)")
-    check(esc["B_paid"]["resumen"]["margen_final_mediana"] < esc["A_organico"]["resumen"]["margen_final_mediana"],
+    check(esc["E_aula_equipo_1500"]["resumen"]["margen_final_mediana"] < esc["C_aula_regalo"]["resumen"]["margen_final_mediana"],
+          "anadir equipo de 1500 USD/mes empeora el margen (sanidad)")
+    check(esc["B_paid"]["resumen"]["margen_final_mediana"] < esc["A_organico_regalo"]["resumen"]["margen_final_mediana"],
           "el paid social empeora el margen con estos supuestos (resultado a reportar)")
     mapa = R_["mapa_decision_aulas"]
     check(len(mapa["prob_perdida"]) == len(mapa["aulas_por_semana"]), "mapa de decision con dimension correcta")

@@ -109,7 +109,14 @@
     "casa": "casa-empresa",
     "que": "El escenario «rentable» F (+9 500 USD, 0 % de pérdida) multiplicó por 7,5 la tasa de ventas de aulas y por 1,45 el precio en el mismo paso del rediseño, sin dato nuevo; el 0 % de pérdida es casi por construcción con coste cero.",
     "como_se_detecto": "El Alcalde comparó los supuestos base con los de los escenarios E y F en sim/supuestos.json.",
-    "costo": "Pendiente: se le pidió un tercer bucle (umbral de rentabilidad, mecánica viral, revisar los supuestos)."
+    "costo": "Resuelto en su bucle 3: revirtió el salto ×7,5 y el precio (corrijo n=16 en el bus), auditó sus supuestos (casi todos supuesto o no_verificado), calculó el umbral (ganar 1 000 USD/mes exige ~3,7× la demanda base) y concluyó que no hay todavía un negocio demostrado. Su afirmación «cubre el alojamiento / gana 1 000 USD/mes» sale CONDICIONAL en Evidencia."
+  },
+  {
+    "quien": "Fundador",
+    "casa": "casa-empresa",
+    "que": "Un fallo de diseño en la app: el premio solo se asociaba con un olfateo de los últimos 6 s, así que dar azúcar junto a la menta a veces no contaba como par.",
+    "como_se_detecto": "El Alcalde no reprodujo el aprendizaje con un script rápido; el Fundador investigó y vio que el nombre sí funcionaba (fallo del script del Alcalde) pero la asociación temporal sí era frágil.",
+    "costo": "Arreglado: el premio marca el olor cercano; 3 premios con menta pasan la valencia de −0,30 a +0,28. Prueba de humo ampliada a 19 comprobaciones."
   },
   {
     "quien": "Todos",

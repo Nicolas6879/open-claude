@@ -43,6 +43,15 @@ function ok(cond, msg) { console.log((cond ? 'OK   ' : 'FALLO') + ' ' + msg); if
   ok(await p.isVisible('#fin'), 'al cumplir 45 dias aparece el final de vida');
   const txtFin = await p.textContent('#finTxt');
   ok(txtFin.indexOf('Prueba') >= 0, 'el final menciona su nombre');
+  // premio junto a un olor: cuenta como par y mueve la valencia del olor
+  const pares0 = await p.evaluate(() => __mosquita.A.pares.menta || 0);
+  await p.evaluate(() => { const M = __mosquita; M.setFuentes([]); M.F.enfriar = 1e12; M.F.olfato = null; });
+  const v0 = await p.evaluate(() => { const M = __mosquita; M.setFuentes([{tipo:'olor', o:'menta', x:M.F.x, y:M.F.y, fuerza:1, vida:110000, vidaMax:110000}]); M.iniciaOlfateo('menta', {platano:0,levadura:0,vinagre:0,menta:1}); M.tickMosca(1300); return M.F.ultimoV.menta; });
+  for (let i = 0; i < 3; i++) await p.evaluate(() => { const M = __mosquita; M.setFuentes([{tipo:'olor', o:'menta', x:M.F.x, y:M.F.y, fuerza:1, vida:110000, vidaMax:110000}]); M.iniciaOlfateo('menta', {platano:0,levadura:0,vinagre:0,menta:1}); M.tickMosca(1300); M.recompensa('azucar'); });
+  const pm = await p.evaluate(() => __mosquita.A.pares.menta || 0);
+  const v1 = await p.evaluate(() => { const M = __mosquita; M.setFuentes([{tipo:'olor', o:'menta', x:M.F.x, y:M.F.y, fuerza:1, vida:110000, vidaMax:110000}]); M.iniciaOlfateo('menta', {platano:0,levadura:0,vinagre:0,menta:1}); M.tickMosca(1300); return M.F.ultimoV.menta; });
+  ok(pm - pares0 === 3, 'tres premios junto a la menta cuentan como tres pares (+' + (pm - pares0) + ')');
+  ok(v1 > v0 + 0.3, 'la menta pasa de evitada a apetecible tras los pares (' + v0.toFixed(2) + ' -> ' + v1.toFixed(2) + ')');
   // linaje: la hija nace de la madre, con cableado heredado y sin recuerdos
   await p.fill('#nombreHija', 'Hija');
   await p.click('#btnHija');

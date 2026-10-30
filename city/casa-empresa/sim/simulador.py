@@ -61,7 +61,8 @@ def simula(par, presupuesto_semana, aula, T=156, seed=0):
     lab_stock = np.zeros(n)
     esc_stock = np.zeros(n)
     for t in range(T):
-        viral = par["viral_K"] * act[:, t - 1] if t > 0 else 0.0
+        k_viral = par["regalo_prob"] * par["regalo_aceptacion"] * par["abandono_final"]
+        viral = k_viral * act[:, t - 1] if t > 0 else 0.0
         org = muestrea_org(par, R, n)
         pag = presupuesto_semana / par["cpi_usd"]
         paid_inst[:, t] = pag
@@ -178,6 +179,7 @@ def mapa_aula(sup, n, seed, T):
             par = muestra_parametros(sup, n, R)
             par["aula_ventas_semana"] = np.full(n, v)
             par["equipo_mes_usd"] = np.full(n, float(e))
+            par["aula_ventas_semana"] = np.full(n, v)
             res = simula(par, 0, True, T=T, seed=seed + 11 * i + j)
             fin = res["margen_acumulado"][:, -1]
             P_loss[i, j] = np.mean(fin < 0)
@@ -213,9 +215,9 @@ def main():
                 for p in (10, 50, 90)},
         }
     # sensibilidad sobre el escenario D (el que contiene todos los canales)
-    esc_e = sup["escenarios"]["E_aula_primero"]
+    esc_e = sup["escenarios"]["C_aula_regalo"]
     sup_e = con_overrides(sup, esc_e.get("overrides"))
-    resultados["sensibilidad_escenario_E"] = sensibilidad(sup_e, min(n, 2000), seed, 0, True, T)
+    resultados["sensibilidad_escenario_C"] = sensibilidad(sup_e, min(n, 2000), seed, 0, True, T)
     # criterio de muerte: mapa de decision de aulas (ventas frente a equipo)
     resultados["mapa_decision_aulas"] = mapa_aula(sup, min(n, 300), seed, T)
     os.makedirs(os.path.dirname(args.out), exist_ok=True)

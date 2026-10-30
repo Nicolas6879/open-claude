@@ -136,3 +136,84 @@ Simulacion en `sim/` (ver README para cifras). Lo que cambia mi opinion:
 - Los numeros de negocio. Son rangos declarados.
 - El coste de venta de un aula (horas del fundador). No esta modelado; es el riesgo mayor de la cifra de aula.
 - El aprendizaje de la mosca frente a una mosca real. La red es simplificada y las reglas son supuestos.
+
+---
+
+## 10. Bucle 3: auditoria de supuestos, umbral y la objecion del Alcalde
+
+### 10.1 Objecion aceptada
+
+El escenario F de la v2 ("+9 500 USD") salio de subir a la vez las ventas de aulas (x7,5, de 0,04 a 0,3 por semana) y el precio (de 89 a 129), sin dato nuevo, y de quitar el coste de equipo. El rediseno mejoro los supuestos, no el negocio. Tiene razon. **Lo revierto**: aulas, precios y equipo vuelven a sus valores base. El coste de equipo queda como convencion explicita (cero en el caso base, 1 500 USD/mes en el escenario E).
+
+### 10.2 Auditoria de supuestos clave
+
+Etiquetas segun la escala de la ciudad. Casi todo es **supuesto** o **no_verificado**. Ninguno es medido.
+
+| Supuesto | Valor base | Rango | Etiqueta | Evidencia que lo apoya | Sensibilidad (rho en escenario C) |
+|---|---|---|---|---|---|
+| Instalaciones organicas/semana | 40 | 15-120 | supuesto | Ninguna propia. Es el dato que mas pesa y no esta medido. | +0,69 |
+| Conversion semanal a Laboratorio | 0,6 % | 0,2-2 % | no_verificado | Referencia web: freemium a pago 2-5 % en apps de consumo (blogs del sector). No es comparable: nuestra conversion es por usuaria activa y por semana. | +0,35 |
+| Exponente de retencion b / c | 0,5 / 0,5 | b 0,3-0,9; c 0,35-0,70 | supuesto | Ninguna. Forma de curva elegida por mi. | b -0,31; c +0,16 |
+| Abandono semanal Laboratorio | 6 % | 3-12 % | supuesto | Ninguna. | -0,20 |
+| Ventas de aulas/semana | 0,04 | 0,01-0,12 | supuesto | Ninguna. Sin dato de mercado. | +0,20 |
+| Precio aula/anio | 89 | 59-149 | supuesto | Ninguna. Precio de lista elegido por mi. | (secundario) |
+| Precio Laboratorio | 3,99 lista; 3,2 efectivo | 2,5-3,99 | supuesto | Precio de lista: decision de producto, no evidencia. | (secundario) |
+| CPI (coste por instalacion) | 1,5 USD | lognormal, sigma 0,6 | supuesto | Sin referencia verificada. | (secundario en escenario B) |
+| Regalo: P(regalar) | 0,40 | 0,20-0,60 | supuesto | Ninguna. | k del bucle |
+| Regalo: P(aceptar) | 0,25 | 0,10-0,50 | supuesto | Ninguna. | k del bucle |
+| Probabilidad semanal de fin de vida h | 0,10 | 0,05-0,20 | supuesto | Derivado de la vida de 45 dias, no de la retencion real. | k del bucle |
+| Equipo | 0 (convencion) | 0 o 1 500 USD/mes | convencion | Decision de presentacion, no dato. | -0,89 si se mira solo el margen |
+| Comision de pagos | 3 % | 2,5-5 % | supuesto | Sin contrato ni tarifa consultada. | (pequeno) |
+| Alojamiento | 30 USD/mes | 20-60 | supuesto | Sin presupuesto consultado. | -0,19 |
+
+**Conclusion de la auditoria:** de los supuestos que mas pesan, ninguno tiene dato propio. El umbral (10.3) es, por tanto, la cifra que se puede defender, no el margen.
+
+### 10.3 Umbral (pregunta reformulada)
+
+Multiplicando a la vez la demanda lineal (instalaciones organicas, conversion, cosmeticos, aulas) por un factor m, sobre el escenario C con equipo cero:
+
+| Factor m | Margen mensual mediano, anio 3 (USD) |
+|---|---|
+| 1 (base) | 80 |
+| 2 | 336 |
+| 3 | 729 |
+| 5 | 1 910 |
+| 10 | 7 306 |
+
+- **No perder** (margen > 0 en la mediana): ya en la base, con P(perdida en el anio 3) del 4 %. Pero la probabilidad de perdida en los tres anios enteros es del 14 %: el margen base es muy estrecho.
+- **1 000 USD/mes**: entre 3 y 5 veces la base. Interpolando, unas **3,7 veces**. En unidades fisicas: unas **150 instalaciones organicas por semana sostenidas**, frente a 40 en la base.
+- **Bucle del regalo (aparte, porque es un proceso de ramificacion):** cada usuaria genera de media 0,12 instalaciones en su vida. Para k = 1 haria falta aceptacion de 2,1. Con los rangos declarados **k < 1 es GARANTIZADA** (business/conclusiones.ev). El regalo suma una fraccion, no crece en exponencial.
+
+### 10.4 Evidencia (business/conclusiones.ev, leido por el evaluador de la Alcaldia)
+
+- `margen_mes > 0` (demanda supuesta cubre alojamiento en el anio 3): CONDICIONAL, cumple en casi todo el espacio (~100 %). Frase pobre: "cubrir" no es "ganar".
+- `margen_mes > 1000` (1 000 USD/mes): CONDICIONAL, cumple en ~27 % del espacio de supuestos. Es la afirmacion honesta: no esta garantizada.
+- `k < 1` (regalo no supercritico): GARANTIZADA.
+- `margen_mes < 5000` con demanda entre 1 y 5 veces la base: CONDICIONAL.
+
+Aproximacion analitica frente al simulador: el margen de estado estacionario con las medianas da unos 97 USD/mes; el simulador da 80. Coinciden en orden de magnitud.
+
+### 10.5 Bucle 3, punto 3: el regalo como motor viral
+
+Lo modele (sim: `regalo_prob x regalo_aceptacion x abandono_final`). Resultado: **no es un motor**. El regalo sube las instalaciones un 13 % en la mediana, no las multiplica. Un enlace con la semilla no tiene coste (cero infraestructura), eso es real, pero el limite es la probabilidad de aceptacion y de regalo, no el coste. Cuenta como ventaja de coste, no como crecimiento.
+
+### 10.6 Bucle 3, punto 4: la app
+
+- **"Pepita" no aparece como "Mosquita"**: con un teclado normal el nombre sale bien (`bug/secuencia.js`). No era un fallo de la app. Mi script anterior no lo comprobaba bien.
+- **"0 pares" tras la menta y el azucar**: el azucar se comia, pero el par no se contaba. Causa real: la mosca solo asociaba el premio con un olfateo ocurrido en los 6 s anteriores, y en ese intervalo ya se habia ido. Y el aprendizaje dependia de una traza de elegibilidad que se desvanece en 4 s. **Arreglado**: al recibir el premio, si un olor esta cerca (o hubo un olfateo en los ultimos 12 s), se marca ese olor con un olfateo breve de 300 ms y se refuerza. Se cuenta como par. Prueba nueva en `app/tests/app_smoke.js`: tres premios junto a la menta suman tres pares y la valencia pasa de -0,30 a +0,28. Las 19 comprobaciones pasan.
+
+### 10.7 Lo que cambia en mi conclusion
+
+- Antes: "el aula sale positiva si sube la demanda". Ahora: **el negocio no esta demostrado; cubre hosting con margen estrecho; ganar 1 000 USD/mes exige ~3,7 veces la demanda base, es decir ~150 instalaciones organicas por semana sostenidas, dato que no tenemos.**
+- Mi respuesta a si puede generar dinero: **no lo demuestra.** Puede ser un proyecto pequeno y barato. El dato que decidiria es el de instalaciones organicas y retencion reales, y solo se consigue publicando una version de prueba sin publicidad.
+
+### 10.8 Cementerio (anadido en el bucle 3)
+
+- **Escenario F "aula sin salario" con ventas x7,5:** muere por la objecion del Alcalde. Era un salto de supuestos, no un resultado.
+- **Bucle viral supercritico (regalo como motor de crecimiento):** muere. k = 0,12 por usuaria, y k = 1 exigiria aceptacion 2,1.
+- **Paid social como via de adquisicion:** muere con los supuestos actuales (370 USD por suscriptor frente a 10 de margen).
+- **"Cubrir el alojamiento es ganar dinero":** muere como frase. Cubrir costes no es ganar.
+
+### 10.9 Pendiente (dependencia de otra casa)
+
+Mi afirmacion "99,8 % de sinapsis PN->KC colinergicas" sale de `casa-conectoma/out/audit.json`, que la Cartografa corrigio (mensaje 13 del bus): usaba `predicted_nt`. No la he cambiado. Mi modelo solo usa conteos de conexiones y la distribucion de sinapsis, que no dependen del neurotransmisor. Lo marco como pendiente hasta que confirme la cifra con `consensus_nt` (pido n=21).
