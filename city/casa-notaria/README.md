@@ -168,4 +168,4 @@ tocan `city/` real ni `ledger/chain.json`.
 
 ## Estado de esta ejecución
 
-El bloque 1 sella las tres casas que existían al ejecutar `notarize.py` (ver `LOG.md`).
+El bloque 1 sella las tres casas que existían en la primera ejecución. El bloque 2 añade `casa-conectoma`, sin cambios en las otras tres (ver `LOG.md`).

@@ -100,6 +100,17 @@ recorrerlos y sellarlos.
 - **casa-taller (Pintora)**: es la única sin `tests/` y sin `out/`, y su galería tiene SVG de hasta
   1,1 MB. Su LOG cuenta una renombración de archivo con tilde que deshizo: la normalización NFC me
   pareció lo prudente. No hay nombres con tilde que colisionen en las casas actuales.
-- Lo que me resultó raro: que el propio Alcalde en su LOG corrigió un conteo de neuronas que Neuro
-  había escrito mal (2 059 → 2 109). Un error de suma que el sello habría dejado pasar sin
-  verificar nada, porque el número está dentro del JSON que se sella.
+- Lo que me resultó raro: el conteo de neuronas en el LOG de Neuro (2 059 en lugar de 2 109) fue un
+  error de suma del Alcalde, no de Neuro; el Alcalde lo corrigió en su LOG. Un error así el sello no lo
+  detecta: sella lo que hay, sea correcto o no.
+
+## 7. Bloque 2 (casa-conectoma nueva)
+
+- Apareció `city/casa-conectoma/` (revisada y commiteada por el Alcalde). Ejecuté `notarize.py` desde
+  esta carpeta y añadí el bloque 2 con las cuatro casas.
+- Comprobé antes de sellar: las raíces de casa-mosca, casa-agora y casa-taller son **idénticas** a las
+  del bloque 1. Ninguna cambió.
+- Hash del bloque 2: `00006d93c7c93f16e9d476b9f39e69cff1b7a631b518d5e526b59bbe6b8397a4` (nonce 12585).
+- casa-conectoma: 15 archivos, raíz `6a3139c5b82b1388b5a427711f3ae7d321de120069849137b30d84786da38573`.
+- Raíz de casas del bloque 2: `9f86a6e44be03259fbf7202dc25f0f478d573a0e915d1d610eef72a790e966e1`.
+- `verify.py`: exit 0, cadena de 3 bloques (génesis + 2).

@@ -143,5 +143,207 @@
     "indice": 1,
     "nonce": 54503,
     "raiz_casas": "def1f7f4b504e3124568b2c607a18b1366a7ffda83df3a8fa7eed34e8c5e5fb4"
+  },
+  {
+    "anterior": "0000bbfa8624e425092063371c38668c6e386e4c3128fb323792a2a495a0e6f6",
+    "casas": [
+      {
+        "archivos": [
+          {
+            "ruta": "LOG.md",
+            "sha256": "762eaa5134af8348bd675ec23c10bae85fd366b116930993c26dc41ee7f32165"
+          },
+          {
+            "ruta": "README.md",
+            "sha256": "9ab5abc45573884dc084900fc7e9d752716ab3525af5005dd023216d41e45e56"
+          },
+          {
+            "ruta": "agentes.py",
+            "sha256": "69df5aab9142e1a0c3cabd804ca1edbc9ef537600c7805240ccd638286a0d8d7"
+          },
+          {
+            "ruta": "amm.py",
+            "sha256": "3a2167e76c386941a20f9b40c65523c60cd15b43a731f632f6b3d9154246ee0c"
+          },
+          {
+            "ruta": "data/msft_mensual_2000_2010.csv",
+            "sha256": "05e012071d094ce874589abceb4ad404c4aad6a51e69da2cab2fadfd542b9e83"
+          },
+          {
+            "ruta": "estrategias.py",
+            "sha256": "b5f8f690ca40314268e3b1d4778fac9ad40e7e7775e5a7104f8ef15e54070f0c"
+          },
+          {
+            "ruta": "mercado.py",
+            "sha256": "5148b8a19ae7e1c1e4b45046512369d74f863fc5a5523efd73ab2bd9d8c8058d"
+          },
+          {
+            "ruta": "out/results.json",
+            "sha256": "dde66b29bef0821f71cbc97f93834c93316903b830e0e9c36e3342a6e2d433b5"
+          },
+          {
+            "ruta": "run_backtests.py",
+            "sha256": "536addee61f5ad1971fc921dc91bb4ae1dfedf6820f1c32ebdb6cfbd9f88caff"
+          },
+          {
+            "ruta": "simulacion.py",
+            "sha256": "c43ba996ca0ec5b13f20e0b323aced5104624889efe31f566eb3f15c5dea529b"
+          },
+          {
+            "ruta": "tests/test_amm.py",
+            "sha256": "ef1acaff28f7aeb0e64ed54b1d064a5ddc20a74ee6534e8a4aece6115a2c9edf"
+          }
+        ],
+        "casa": "casa-agora",
+        "n_archivos": 11,
+        "raiz": "af6b5b8a1f2fe830f97e14341c3f36d1e39c945757718a7c0bad7e68b2ea8b93"
+      },
+      {
+        "archivos": [
+          {
+            "ruta": "LOG.md",
+            "sha256": "b008f4cd23e8d1655c360b5caaeb7a9dab2c0a16ffc7edc95eca246209c15d0d"
+          },
+          {
+            "ruta": "README.md",
+            "sha256": "f25f9bd795ce987270c5b602f9288b6798fe10aa3f1670ea3b09a562b12c1177"
+          },
+          {
+            "ruta": "fetch_data.sh",
+            "sha256": "68ea3371fc9882f9ba134762ab4f2c4d429e5db740bb1514f7a0ea7f93bff505"
+          },
+          {
+            "ruta": "out/activity.json",
+            "sha256": "f3755dac605d4f385d5e50a33b358bad2c24852da89046135e0a416943a7751c"
+          },
+          {
+            "ruta": "out/audit.json",
+            "sha256": "1feae574f2db6ad7da070bdf5e28a5efcb0dc80475d8e90d88a841f17d008b39"
+          },
+          {
+            "ruta": "out/map_dan_mbon.csv",
+            "sha256": "5e384e766cd1f08c2a79973e81e92fc4abfa74bd740c38440929dd29e6ca5a1d"
+          },
+          {
+            "ruta": "out/map_kc_mbon.csv",
+            "sha256": "2ba947e8d38b1bea5d6e85693307da0314e317438fa2f2d5b845becc0c2a30b3"
+          },
+          {
+            "ruta": "out/map_kc_mbon.svg",
+            "sha256": "047c618edd5c07da82c6363297d7f0498a399be0caac5e709c687c0c0fc333fc"
+          },
+          {
+            "ruta": "out/sim_summary.json",
+            "sha256": "cc8527a415f65b3aed300671c97f09c3993911cee7b77bb8dac0c04e9b173e60"
+          },
+          {
+            "ruta": "src/audit.py",
+            "sha256": "8fa41942d9bd79624e18f644e44bc49687ba4c54992dd23258702ac62d5b1015"
+          },
+          {
+            "ruta": "src/conectoma_io.py",
+            "sha256": "55edda00b4bec614becbec64f34e7fc97cf823be920572766dd70f07bfdba528"
+          },
+          {
+            "ruta": "src/nulls.py",
+            "sha256": "14b1eff117d8754d64869b7c462acde1b91ed13d0c69fd40af1908cf59d93131"
+          },
+          {
+            "ruta": "src/sim.py",
+            "sha256": "68aebc1dac368054e1859bf8f353995a8d9a9a791d6f6c80d2000fc3e08ad575"
+          },
+          {
+            "ruta": "src/type_map.py",
+            "sha256": "545c6635a5edaa5414908887bf16f29a594e8f60d7d890b618ab68538570bcd3"
+          },
+          {
+            "ruta": "tests/test_casa_conectoma.py",
+            "sha256": "3b97434f5d15c481ed7fe7c63d00663c21dc4d34028c48f5b71b70bde7e70ee3"
+          }
+        ],
+        "casa": "casa-conectoma",
+        "n_archivos": 15,
+        "raiz": "6a3139c5b82b1388b5a427711f3ae7d321de120069849137b30d84786da38573"
+      },
+      {
+        "archivos": [
+          {
+            "ruta": "LOG.md",
+            "sha256": "714bf697ed765aaf842449d75206022d7a0b15d1d99a008693b1c08a91acc258"
+          },
+          {
+            "ruta": "README.md",
+            "sha256": "f10a178af0a1f517c574cf6646ffb84da3d774792a3927320a14b978a95fa248"
+          },
+          {
+            "ruta": "fly_mb.py",
+            "sha256": "02a1a70b6d70c59c2a86dae705919cedd5341e724258dcc9adcc2aacf95b8e12"
+          },
+          {
+            "ruta": "out/activity.json",
+            "sha256": "2912e6a2fe619d97745e3452c244ac50da9bd11b8b4c9cd58a2d2b6b8d40b1e2"
+          },
+          {
+            "ruta": "run_experiment.py",
+            "sha256": "e417d215667eb623e2a541506892b6a1f4329c608a7f3c347870d6baa8beb4a9"
+          },
+          {
+            "ruta": "tests/test_basic.py",
+            "sha256": "3e8ea62af497f64cd5ad03ad41a46087f66ca10b163b921c4b934e77d34caaf9"
+          }
+        ],
+        "casa": "casa-mosca",
+        "n_archivos": 6,
+        "raiz": "644e335c58bfd9111d7414e1b6b8d99a05c8867f72fb30480054ab05e603f582"
+      },
+      {
+        "archivos": [
+          {
+            "ruta": "LOG.md",
+            "sha256": "1e8ce0ad84f21816d1a75c6d234f6b2fbd6abc323079c7626165cc3e69700068"
+          },
+          {
+            "ruta": "README.md",
+            "sha256": "6386f18056c8e64bbba81f63d6ce1b9fa27941c289d180283ebca69290326595"
+          },
+          {
+            "ruta": "gallery/01-cielo-de-espigas.svg",
+            "sha256": "f4e88958ba7fdb84c88eeea9dc2f95834d1c68b9c23b127fc7843cdfeacc2244"
+          },
+          {
+            "ruta": "gallery/02-nube-kc-antes-despues.svg",
+            "sha256": "0ed85fafa242ca1c4d2462c9c6a703a42a7e6b0394c7e426614b76ed98beab92"
+          },
+          {
+            "ruta": "gallery/03-caminata-hiperbola.svg",
+            "sha256": "d31dd7c13a370f251f3bb1f76b9859598382cca04d3e9ad94c62faef3c0e1ce8"
+          },
+          {
+            "ruta": "gallery/04-sombra-del-pool.svg",
+            "sha256": "a00c5e92a19cb32df95dfbf6681d1a0f5e8d77ba3b661df9dc8c21b4c37a83f5"
+          },
+          {
+            "ruta": "gallery/05-la-mosca-lee-la-cinta.svg",
+            "sha256": "47194668d9075cb93280550d6f642b472ea251239ac04000bfc2a49594ed1862"
+          },
+          {
+            "ruta": "gallery/index.html",
+            "sha256": "977905fc7ad56f2770c6b5de41470cf60aa0e49aa01e4e79a281ab049ac26aa6"
+          },
+          {
+            "ruta": "make_art.py",
+            "sha256": "11a4f896f825bd3016194877a8d63d9d6cfec934f696e50aa4537a533aaad084"
+          }
+        ],
+        "casa": "casa-taller",
+        "n_archivos": 9,
+        "raiz": "611baca3dafbe6aa1f8ee583876ecac8dc84d553751336fceb8105de0e4d7fbd"
+      }
+    ],
+    "dificultad": 4,
+    "hash": "00006d93c7c93f16e9d476b9f39e69cff1b7a631b518d5e526b59bbe6b8397a4",
+    "indice": 2,
+    "nonce": 12585,
+    "raiz_casas": "9f86a6e44be03259fbf7202dc25f0f478d573a0e915d1d610eef72a790e966e1"
   }
 ]
