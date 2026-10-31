@@ -114,3 +114,39 @@ recorrerlos y sellarlos.
 - casa-conectoma: 15 archivos, raíz `6a3139c5b82b1388b5a427711f3ae7d321de120069849137b30d84786da38573`.
 - Raíz de casas del bloque 2: `9f86a6e44be03259fbf7202dc25f0f478d573a0e915d1d610eef72a790e966e1`.
 - `verify.py`: exit 0, cadena de 3 bloques (génesis + 2).
+
+## 8. Bloque 3 (re-sellado final, 2026-10-31)
+
+Encargo del Alcalde: re-sellado final tras el fin de los habitantes (nadie escribiendo).
+
+- **Antes de sellar**: `verify.py` salió con **código 1** (`MANIPULACIÓN DETECTADA`), como se esperaba.
+  La cadena (génesis + 2) era íntegra. Las diferencias son de contenido:
+  - Modificadas desde el bloque 2: `casa-agora` (LOG.md, README.md, `simulacion.py`, añadido
+    `intervalos.py`), `casa-conectoma` (LOG, README, `out/audit.json`, `src/conectoma_io.py`, y muchos
+    añadidos en `src/`, `out/` y `tests/`), `casa-mosca` (LOG.md, README.md) y `casa-taller` (LOG.md,
+    README.md, `make_art.py`, `gallery/`).
+  - Sin sellar (aviso, no manipulación): `alcaldia`, `casa-auditoria`, `casa-empresa`, `casa-flyhash`,
+    `casa-forja`, `casa-mb-real`, `casa-micelio`, `casa-ministro`, `casa-zodiaco`.
+- **Tests**: `tests/test_notaria.py`, 22 pruebas, todas OK.
+- **Sellado**: `notarize.py` ejecutado **una sola vez**, código 0. Bloque 3 añadido.
+  - Hash del bloque 3: `0000fe24c23abc890478128b0d9f976dc6c31f04deb4e7cbfca386f911dc56e2` (nonce 22428).
+  - Raíz de casas del bloque 3: `c9f87b8ef906558eec896a49046c1adf0821afe24f7a99abd42045311f207ddd`.
+  - Cubre **13 carpetas** de `city/` (sin `casa-notaria`): `alcaldia` (40 archivos), `casa-agora` (12),
+    `casa-auditoria` (40), `casa-conectoma` (26), `casa-empresa` (19), `casa-flyhash` (122),
+    `casa-forja` (47), `casa-mb-real` (56), `casa-micelio` (90), `casa-ministro` (2), `casa-mosca` (6),
+    `casa-taller` (9), `casa-zodiaco` (38).
+- **Verify después**: `verify.py` salió con **código 0**. Cadena de 4 bloques (génesis + 3), las 13 casas
+  en estado `OK (sellada en bloque 3)`.
+- **Prueba de inclusión** (`prove.py`, bloque 3, las tres con código 0 y prueba VÁLIDA):
+  - `casa-zodiaco/README.md`: hoja 1 de 38, sha256 `a85dc799bf3c396d…`.
+  - `casa-mb-real/out/results.json`: hoja 43 de 56, sha256 `81659c75a89ea6ee…`.
+  - `casa-flyhash/out/PRIMARY.md`: hoja 38 de 122, sha256 `d91a5bd9b090c310…`.
+- **Limpieza**: no había `__pycache__` ni `.pyc` en `city/`. Nada que borrar.
+- **Anomalías**: ninguna en la cadena ni en las casas. Un error mío de uso al llamar a `prove.py` con
+  `../casa-…` (la ruta debe ser relativa a `city/`); lo repetí bien. El README de esta casa, en la
+  sección «Estado de esta ejecución», sigue describiendo el bloque 2; no lo toqué porque el encargo
+  solo pedía anotar en el LOG.
+- **Limitación de siempre**: el bloque 3 prueba que estos archivos **no cambiaron desde este sellado**.
+  No prueba que su contenido sea correcto, ni de dónde vino, ni que las herramientas que los generaron
+  sean las adecuadas. Los cambios de `casa-conectoma`, `casa-agora`, `casa-mosca` y `casa-taller`
+  entre el bloque 2 y el 3 quedan sellados tal cual, sin validar.
