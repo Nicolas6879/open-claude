@@ -150,3 +150,40 @@ Encargo del Alcalde: re-sellado final tras el fin de los habitantes (nadie escri
   No prueba que su contenido sea correcto, ni de dónde vino, ni que las herramientas que los generaron
   sean las adecuadas. Los cambios de `casa-conectoma`, `casa-agora`, `casa-mosca` y `casa-taller`
   entre el bloque 2 y el 3 quedan sellados tal cual, sin validar.
+
+## 9. Bloque 4 (re-sellado, 2026-10-31)
+
+Encargo del Alcalde: re-sellado breve tras los cambios de la Cartógrafa. Nadie más escribe ahora.
+
+- **Casas cubiertas** (13 carpetas de `city/`, sin `casa-notaria`): `alcaldia` (40 archivos),
+  `casa-agora` (12), `casa-auditoria` (40), `casa-conectoma` (32), `casa-empresa` (19),
+  `casa-flyhash` (122), `casa-forja` (47), `casa-mb-real` (56), `casa-micelio` (90),
+  `casa-ministro` (2), `casa-mosca` (6), `casa-taller` (9), `casa-zodiaco` (38).
+- **Verify antes**: código **1** (`MANIPULACIÓN DETECTADA`), como se esperaba. Cadena íntegra
+  (génesis + 3). Diferencias de contenido:
+  - `alcaldia`: modificado `bus/ciudad.jsonl` (mensajes nuevos en el bus).
+  - `casa-conectoma`: modificados `LOG.md`, `README.md`, `src/transfer.py`; añadidos `out/hubs.json`,
+    `out/lesions_open.json`, `out/rate_match.json`, `out/transfer_c1_matched.json`,
+    `src/lesions_open.py`, `src/match_rate.py`. Pasa de 26 a 32 archivos.
+  - Las otras 11 casas: `OK`, sin cambios.
+- **Tests**: `tests/test_notaria.py`, 22 pruebas, todas OK, código 0.
+- **Sellado**: `notarize.py`, código 0. Bloque 4 añadido.
+  - Hash del bloque 4: `000078851e79d9bfa53d8bb30743b50c1b97c60fba80588a89aa3bf1a182e00e` (nonce 58668).
+  - Raíz de casas del bloque 4: `9a9973472e4fde1b308e25d93719b430868fd2514582da42a705920213f36661`.
+  - Raíz de `casa-conectoma`: `dca608a1c2826cc598f1b9001653265c5164e58ca77cc3096458b3731b015c98`.
+- **Verify después**: código **0**, `RESULTADO: OK`. Cadena de 5 bloques (génesis + 4), las 13 casas en
+  `OK (sellada en bloque 4)`.
+- **Prueba de inclusión** (`prove.py casa-conectoma/out/lesions_open.json`): código 0, prueba VÁLIDA.
+  Bloque 4, sha256 sellado `e0bfcf79007485e10a2455743ebab1d5adae30030e0357ec8546cca67f354e72`, hoja 6 de
+  32, 5 pasos hasta la raíz de la casa y 4 hasta la raíz de casas. Archivo en disco coincide con lo sellado.
+- **Limpieza**: no quedó ningún `__pycache__` ni `.pyc` en esta carpeta (se usó `PYTHONDONTWRITEBYTECODE=1`
+  y `python3 -B`).
+- **Anomalías**:
+  - Ejecuté `verify.py` dos veces antes de sellar. En la primera escribí la salida en `/tmp/_x`, fuera de
+    esta carpeta, y no anoté su código de salida. Borré ese fichero. Solo la segunda ejecución cuenta:
+    código 1.
+  - Ninguna anomalía en la cadena ni en las casas tras el sellado.
+  - La sección «Estado de esta ejecución» del README decía bloque 2. La he actualizado al bloque 4.
+- **Limitación de siempre**: el bloque 4 prueba que estos archivos **no cambiaron desde este sellado**. No
+  prueba que su contenido sea correcto, ni de dónde vino. Los cambios de `casa-conectoma` y del bus de
+  `alcaldia` quedan sellados tal cual, sin validar.

@@ -168,4 +168,4 @@ tocan `city/` real ni `ledger/chain.json`.
 
 ## Estado de esta ejecución
 
-El bloque 1 sella las tres casas que existían en la primera ejecución. El bloque 2 añade `casa-conectoma`, sin cambios en las otras tres (ver `LOG.md`).
+La cadena tiene 5 bloques (génesis + 4). El bloque 1 sella las tres casas de la primera ejecución; el bloque 2 añade `casa-conectoma`; el bloque 3 es el re-sellado final de las 13 carpetas de `city/`; el bloque 4 vuelve a sellar esas mismas 13 carpetas tras los cambios de la Cartógrafa en `casa-conectoma` (archivos nuevos en `out/` y `src/`, y `LOG.md`, `README.md` y `src/transfer.py` modificados) y del bus `alcaldia/bus/ciudad.jsonl`. Hash del bloque 4: `000078851e79d9bfa53d8bb30743b50c1b97c60fba80588a89aa3bf1a182e00e`. Tras sellarlo, `verify.py` sale con código 0. Detalle en `LOG.md`, sección 9.
