@@ -1,0 +1,1736 @@
+{
+ "descripcion": "Validacion anatomica de compartimentos con conectividad MaleCNS v1.0 (medido).",
+ "MBON_tipos": {
+  "MBON01": {
+   "n": 2,
+   "nt": "glutamate",
+   "valence": -1,
+   "comp": [
+    "g5",
+    "b'2"
+   ],
+   "sec": []
+  },
+  "MBON02": {
+   "n": 2,
+   "nt": "glutamate",
+   "valence": -1,
+   "comp": [
+    "b2",
+    "b'2"
+   ],
+   "sec": []
+  },
+  "MBON03": {
+   "n": 2,
+   "nt": "glutamate",
+   "valence": -1,
+   "comp": [
+    "b'2"
+   ],
+   "sec": []
+  },
+  "MBON04": {
+   "n": 2,
+   "nt": "glutamate",
+   "valence": -1,
+   "comp": [
+    "b'2"
+   ],
+   "sec": []
+  },
+  "MBON05": {
+   "n": 2,
+   "nt": "glutamate",
+   "valence": -1,
+   "comp": [
+    "g4"
+   ],
+   "sec": [
+    "g1",
+    "g2"
+   ]
+  },
+  "MBON06": {
+   "n": 2,
+   "nt": "glutamate",
+   "valence": -1,
+   "comp": [
+    "b1"
+   ],
+   "sec": []
+  },
+  "MBON07": {
+   "n": 4,
+   "nt": "glutamate",
+   "valence": -1,
+   "comp": [
+    "a1"
+   ],
+   "sec": []
+  },
+  "MBON09": {
+   "n": 4,
+   "nt": "gaba",
+   "valence": 1,
+   "comp": [
+    "g3",
+    "b'1"
+   ],
+   "sec": []
+  },
+  "MBON10": {
+   "n": 9,
+   "nt": "gaba",
+   "valence": 1,
+   "comp": [
+    "b'1"
+   ],
+   "sec": []
+  },
+  "MBON11": {
+   "n": 2,
+   "nt": "gaba",
+   "valence": 1,
+   "comp": [
+    "g1"
+   ],
+   "sec": []
+  },
+  "MBON12": {
+   "n": 4,
+   "nt": "acetylcholine",
+   "valence": 1,
+   "comp": [
+    "g2",
+    "a'1"
+   ],
+   "sec": []
+  },
+  "MBON13": {
+   "n": 2,
+   "nt": "acetylcholine",
+   "valence": 1,
+   "comp": [
+    "a'2"
+   ],
+   "sec": []
+  },
+  "MBON14": {
+   "n": 4,
+   "nt": "acetylcholine",
+   "valence": 1,
+   "comp": [
+    "a3"
+   ],
+   "sec": []
+  },
+  "MBON15": {
+   "n": 4,
+   "nt": "acetylcholine",
+   "valence": 1,
+   "comp": [
+    "a'1"
+   ],
+   "sec": []
+  },
+  "MBON15-like": {
+   "n": 4,
+   "nt": "acetylcholine",
+   "valence": 1,
+   "comp": [
+    "a'1",
+    "a'2"
+   ],
+   "sec": []
+  },
+  "MBON16": {
+   "n": 2,
+   "nt": "acetylcholine",
+   "valence": 1,
+   "comp": [
+    "a'3"
+   ],
+   "sec": []
+  },
+  "MBON17": {
+   "n": 2,
+   "nt": "acetylcholine",
+   "valence": 1,
+   "comp": [
+    "a'3"
+   ],
+   "sec": []
+  },
+  "MBON17-like": {
+   "n": 2,
+   "nt": "acetylcholine",
+   "valence": 1,
+   "comp": [
+    "a'2",
+    "a'3"
+   ],
+   "sec": []
+  },
+  "MBON18": {
+   "n": 2,
+   "nt": "acetylcholine",
+   "valence": 1,
+   "comp": [
+    "a2"
+   ],
+   "sec": []
+  },
+  "MBON19": {
+   "n": 4,
+   "nt": "acetylcholine",
+   "valence": 1,
+   "comp": [
+    "a2",
+    "a3"
+   ],
+   "sec": []
+  },
+  "MBON20": {
+   "n": 2,
+   "nt": "gaba",
+   "valence": 1,
+   "comp": [
+    "g1",
+    "g2"
+   ],
+   "sec": []
+  },
+  "MBON21": {
+   "n": 2,
+   "nt": "acetylcholine",
+   "valence": 1,
+   "comp": [
+    "g4",
+    "g5"
+   ],
+   "sec": []
+  },
+  "MBON22": {
+   "n": 2,
+   "nt": "acetylcholine",
+   "valence": 1,
+   "comp": [
+    "calyx"
+   ],
+   "sec": []
+  },
+  "MBON23": {
+   "n": 2,
+   "nt": "acetylcholine",
+   "valence": 1,
+   "comp": [
+    "a2"
+   ],
+   "sec": []
+  },
+  "MBON24": {
+   "n": 2,
+   "nt": "acetylcholine",
+   "valence": 1,
+   "comp": [
+    "b2",
+    "g5"
+   ],
+   "sec": []
+  },
+  "MBON25": {
+   "n": 2,
+   "nt": "glutamate",
+   "valence": -1,
+   "comp": [
+    "g1",
+    "g2"
+   ],
+   "sec": []
+  },
+  "MBON25-like": {
+   "n": 4,
+   "nt": "glutamate",
+   "valence": -1,
+   "comp": [
+    "g2"
+   ],
+   "sec": []
+  },
+  "MBON26": {
+   "n": 2,
+   "nt": "acetylcholine",
+   "valence": 1,
+   "comp": [
+    "b'2"
+   ],
+   "sec": []
+  },
+  "MBON27": {
+   "n": 2,
+   "nt": "acetylcholine",
+   "valence": 1,
+   "comp": [
+    "g5"
+   ],
+   "sec": []
+  },
+  "MBON28": {
+   "n": 2,
+   "nt": "acetylcholine",
+   "valence": 1,
+   "comp": [
+    "a'3"
+   ],
+   "sec": []
+  },
+  "MBON29": {
+   "n": 2,
+   "nt": "acetylcholine",
+   "valence": 1,
+   "comp": [
+    "g4",
+    "g5"
+   ],
+   "sec": []
+  },
+  "MBON30": {
+   "n": 2,
+   "nt": "glutamate",
+   "valence": -1,
+   "comp": [
+    "g1",
+    "g2",
+    "g3"
+   ],
+   "sec": []
+  },
+  "MBON31": {
+   "n": 2,
+   "nt": "gaba",
+   "valence": 1,
+   "comp": [
+    "a'1"
+   ],
+   "sec": []
+  },
+  "MBON32": {
+   "n": 2,
+   "nt": "gaba",
+   "valence": 1,
+   "comp": [
+    "g2"
+   ],
+   "sec": []
+  },
+  "MBON33": {
+   "n": 2,
+   "nt": "acetylcholine",
+   "valence": 1,
+   "comp": [
+    "g2",
+    "g3"
+   ],
+   "sec": []
+  },
+  "MBON34": {
+   "n": 2,
+   "nt": "glutamate",
+   "valence": -1,
+   "comp": [
+    "g2"
+   ],
+   "sec": []
+  },
+  "MBON35": {
+   "n": 2,
+   "nt": "acetylcholine",
+   "valence": 1,
+   "comp": [
+    "g2"
+   ],
+   "sec": []
+  }
+ },
+ "MBON_NT_conteo_neuronas": {
+  "glutamate": 26,
+  "acetylcholine": 50,
+  "gaba": 21
+ },
+ "KC_subtipo_a_MBON": {
+  "MBON01": {
+   "frac": {
+    "g": "0.849",
+    "a'b'": "0.151",
+    "ab": "0.0"
+   },
+   "dominante": "g",
+   "anotado": [
+    "a'b'",
+    "g"
+   ],
+   "coincide": true,
+   "sinapsis": 40888
+  },
+  "MBON02": {
+   "frac": {
+    "g": "0.002",
+    "a'b'": "0.097",
+    "ab": "0.901"
+   },
+   "dominante": "ab",
+   "anotado": [
+    "a'b'",
+    "ab"
+   ],
+   "coincide": true,
+   "sinapsis": 18671
+  },
+  "MBON03": {
+   "frac": {
+    "g": "0.001",
+    "a'b'": "0.999",
+    "ab": "0.0"
+   },
+   "dominante": "a'b'",
+   "anotado": [
+    "a'b'"
+   ],
+   "coincide": true,
+   "sinapsis": 24004
+  },
+  "MBON04": {
+   "frac": {
+    "g": "0.322",
+    "a'b'": "0.678",
+    "ab": "0.0"
+   },
+   "dominante": "a'b'",
+   "anotado": [
+    "a'b'"
+   ],
+   "coincide": true,
+   "sinapsis": 6803
+  },
+  "MBON05": {
+   "frac": {
+    "g": "0.991",
+    "a'b'": "0.009",
+    "ab": "0.0"
+   },
+   "dominante": "g",
+   "anotado": [
+    "g"
+   ],
+   "coincide": true,
+   "sinapsis": 36320
+  },
+  "MBON06": {
+   "frac": {
+    "g": "0.002",
+    "a'b'": "0.005",
+    "ab": "0.993"
+   },
+   "dominante": "ab",
+   "anotado": [
+    "ab"
+   ],
+   "coincide": true,
+   "sinapsis": 25465
+  },
+  "MBON07": {
+   "frac": {
+    "g": "0.001",
+    "a'b'": "0.005",
+    "ab": "0.994"
+   },
+   "dominante": "ab",
+   "anotado": [
+    "ab"
+   ],
+   "coincide": true,
+   "sinapsis": 22840
+  },
+  "MBON09": {
+   "frac": {
+    "g": "0.696",
+    "a'b'": "0.304",
+    "ab": "0.0"
+   },
+   "dominante": "g",
+   "anotado": [
+    "a'b'",
+    "g"
+   ],
+   "coincide": true,
+   "sinapsis": 63579
+  },
+  "MBON10": {
+   "frac": {
+    "g": "0.015",
+    "a'b'": "0.984",
+    "ab": "0.001"
+   },
+   "dominante": "a'b'",
+   "anotado": [
+    "a'b'"
+   ],
+   "coincide": true,
+   "sinapsis": 2695
+  },
+  "MBON11": {
+   "frac": {
+    "g": "0.671",
+    "a'b'": "0.012",
+    "ab": "0.317"
+   },
+   "dominante": "g",
+   "anotado": [
+    "g"
+   ],
+   "coincide": true,
+   "sinapsis": 41460
+  },
+  "MBON12": {
+   "frac": {
+    "g": "0.527",
+    "a'b'": "0.473",
+    "ab": "0.0"
+   },
+   "dominante": "g",
+   "anotado": [
+    "a'b'",
+    "g"
+   ],
+   "coincide": true,
+   "sinapsis": 22603
+  },
+  "MBON13": {
+   "frac": {
+    "g": "0.0",
+    "a'b'": "1.0",
+    "ab": "0.0"
+   },
+   "dominante": "a'b'",
+   "anotado": [
+    "a'b'"
+   ],
+   "coincide": true,
+   "sinapsis": 10194
+  },
+  "MBON14": {
+   "frac": {
+    "g": "0.0",
+    "a'b'": "0.002",
+    "ab": "0.998"
+   },
+   "dominante": "ab",
+   "anotado": [
+    "ab"
+   ],
+   "coincide": true,
+   "sinapsis": 22217
+  },
+  "MBON15": {
+   "frac": {
+    "g": "0.001",
+    "a'b'": "0.999",
+    "ab": "0.0"
+   },
+   "dominante": "a'b'",
+   "anotado": [
+    "a'b'"
+   ],
+   "coincide": true,
+   "sinapsis": 1306
+  },
+  "MBON15-like": {
+   "frac": {
+    "g": "0.0",
+    "a'b'": "0.999",
+    "ab": "0.001"
+   },
+   "dominante": "a'b'",
+   "anotado": [
+    "a'b'"
+   ],
+   "coincide": true,
+   "sinapsis": 3235
+  },
+  "MBON16": {
+   "frac": {
+    "g": "0.004",
+    "a'b'": "0.994",
+    "ab": "0.001"
+   },
+   "dominante": "a'b'",
+   "anotado": [
+    "a'b'"
+   ],
+   "coincide": true,
+   "sinapsis": 3610
+  },
+  "MBON17": {
+   "frac": {
+    "g": "0.001",
+    "a'b'": "0.999",
+    "ab": "0.0"
+   },
+   "dominante": "a'b'",
+   "anotado": [
+    "a'b'"
+   ],
+   "coincide": true,
+   "sinapsis": 3020
+  },
+  "MBON17-like": {
+   "frac": {
+    "g": "0.001",
+    "a'b'": "0.999",
+    "ab": "0.001"
+   },
+   "dominante": "a'b'",
+   "anotado": [
+    "a'b'"
+   ],
+   "coincide": true,
+   "sinapsis": 1889
+  },
+  "MBON18": {
+   "frac": {
+    "g": "0.0",
+    "a'b'": "0.003",
+    "ab": "0.997"
+   },
+   "dominante": "ab",
+   "anotado": [
+    "ab"
+   ],
+   "coincide": true,
+   "sinapsis": 13925
+  },
+  "MBON19": {
+   "frac": {
+    "g": "0.0",
+    "a'b'": "0.269",
+    "ab": "0.731"
+   },
+   "dominante": "ab",
+   "anotado": [
+    "ab"
+   ],
+   "coincide": true,
+   "sinapsis": 1985
+  },
+  "MBON20": {
+   "frac": {
+    "g": "0.999",
+    "a'b'": "0.0",
+    "ab": "0.001"
+   },
+   "dominante": "g",
+   "anotado": [
+    "g"
+   ],
+   "coincide": true,
+   "sinapsis": 4604
+  },
+  "MBON21": {
+   "frac": {
+    "g": "0.986",
+    "a'b'": "0.0",
+    "ab": "0.013"
+   },
+   "dominante": "g",
+   "anotado": [
+    "g"
+   ],
+   "coincide": true,
+   "sinapsis": 8383
+  },
+  "MBON22": {
+   "frac": {
+    "g": "0.552",
+    "a'b'": "0.008",
+    "ab": "0.44"
+   },
+   "dominante": "g",
+   "anotado": [],
+   "coincide": null,
+   "sinapsis": 16084
+  },
+  "MBON23": {
+   "frac": {
+    "g": "0.0",
+    "a'b'": "0.019",
+    "ab": "0.981"
+   },
+   "dominante": "ab",
+   "anotado": [
+    "ab"
+   ],
+   "coincide": true,
+   "sinapsis": 2934
+  },
+  "MBON24": {
+   "frac": {
+    "g": "0.054",
+    "a'b'": "0.006",
+    "ab": "0.94"
+   },
+   "dominante": "ab",
+   "anotado": [
+    "ab",
+    "g"
+   ],
+   "coincide": true,
+   "sinapsis": 3634
+  },
+  "MBON25": {
+   "frac": {
+    "g": "0.999",
+    "a'b'": "0.001",
+    "ab": "0.0"
+   },
+   "dominante": "g",
+   "anotado": [
+    "g"
+   ],
+   "coincide": true,
+   "sinapsis": 1071
+  },
+  "MBON25-like": {
+   "frac": {
+    "g": "0.964",
+    "a'b'": "0.035",
+    "ab": "0.001"
+   },
+   "dominante": "g",
+   "anotado": [
+    "g"
+   ],
+   "coincide": true,
+   "sinapsis": 924
+  },
+  "MBON26": {
+   "frac": {
+    "g": "0.111",
+    "a'b'": "0.889",
+    "ab": "0.0"
+   },
+   "dominante": "a'b'",
+   "anotado": [
+    "a'b'"
+   ],
+   "coincide": true,
+   "sinapsis": 4557
+  },
+  "MBON27": {
+   "frac": {
+    "g": "0.987",
+    "a'b'": "0.013",
+    "ab": "0.0"
+   },
+   "dominante": "g",
+   "anotado": [
+    "g"
+   ],
+   "coincide": true,
+   "sinapsis": 5609
+  },
+  "MBON28": {
+   "frac": {
+    "g": "0.004",
+    "a'b'": "0.996",
+    "ab": "0.0"
+   },
+   "dominante": "a'b'",
+   "anotado": [
+    "a'b'"
+   ],
+   "coincide": true,
+   "sinapsis": 2279
+  },
+  "MBON29": {
+   "frac": {
+    "g": "0.997",
+    "a'b'": "0.003",
+    "ab": "0.0"
+   },
+   "dominante": "g",
+   "anotado": [
+    "g"
+   ],
+   "coincide": true,
+   "sinapsis": 5005
+  },
+  "MBON30": {
+   "frac": {
+    "g": "0.998",
+    "a'b'": "0.002",
+    "ab": "0.0"
+   },
+   "dominante": "g",
+   "anotado": [
+    "g"
+   ],
+   "coincide": true,
+   "sinapsis": 11859
+  },
+  "MBON31": {
+   "frac": {
+    "g": "0.006",
+    "a'b'": "0.994",
+    "ab": "0.0"
+   },
+   "dominante": "a'b'",
+   "anotado": [
+    "a'b'"
+   ],
+   "coincide": true,
+   "sinapsis": 10493
+  },
+  "MBON32": {
+   "frac": {
+    "g": "0.807",
+    "a'b'": "0.193",
+    "ab": "0.0"
+   },
+   "dominante": "g",
+   "anotado": [
+    "g"
+   ],
+   "coincide": true,
+   "sinapsis": 13164
+  },
+  "MBON33": {
+   "frac": {
+    "g": "1.0",
+    "a'b'": "0.0",
+    "ab": "0.0"
+   },
+   "dominante": "g",
+   "anotado": [
+    "g"
+   ],
+   "coincide": true,
+   "sinapsis": 1596
+  },
+  "MBON34": {
+   "frac": {
+    "g": "1.0",
+    "a'b'": "0.0",
+    "ab": "0.0"
+   },
+   "dominante": "g",
+   "anotado": [
+    "g"
+   ],
+   "coincide": true,
+   "sinapsis": 80
+  },
+  "MBON35": {
+   "frac": {
+    "g": "0.993",
+    "a'b'": "0.007",
+    "ab": "0.0"
+   },
+   "dominante": "g",
+   "anotado": [
+    "g"
+   ],
+   "coincide": true,
+   "sinapsis": 4655
+  }
+ },
+ "KC_subtipo_coincidencia": {
+  "coinciden": 36,
+  "total": 36,
+  "discrepancias": []
+ },
+ "DAN_a_MBON_validacion": {
+  "n_tipos_anotados": 20,
+  "frac_media_observada": 0.891,
+  "frac_mediana": 0.919,
+  "frac_media_w3": 0.92,
+  "nulo_permutando_etiquetas_MBON": {
+   "media": 0.112,
+   "p95": 0.231,
+   "max": 0.428,
+   "p_valor": 0.0
+  },
+  "principal_en_su_compartimento": 19,
+  "por_tipo": {
+   "PAM01": {
+    "compartimento_anotado": [
+     "g5"
+    ],
+    "frac_sinapsis_a_MBON_del_mismo_compartimento": 0.952,
+    "MBON_principal": "MBON01",
+    "frac_principal": 0.665,
+    "principal_en_su_compartimento": true,
+    "sinapsis_a_MBON": 2402
+   },
+   "PAM02": {
+    "compartimento_anotado": [
+     "b'2"
+    ],
+    "frac_sinapsis_a_MBON_del_mismo_compartimento": 0.979,
+    "MBON_principal": "MBON01",
+    "frac_principal": 0.616,
+    "principal_en_su_compartimento": true,
+    "sinapsis_a_MBON": 893
+   },
+   "PAM03": {
+    "compartimento_anotado": [
+     "b2",
+     "b'2"
+    ],
+    "frac_sinapsis_a_MBON_del_mismo_compartimento": 0.989,
+    "MBON_principal": "MBON03",
+    "frac_principal": 0.484,
+    "principal_en_su_compartimento": true,
+    "sinapsis_a_MBON": 190
+   },
+   "PAM04": {
+    "compartimento_anotado": [
+     "b2"
+    ],
+    "frac_sinapsis_a_MBON_del_mismo_compartimento": 0.948,
+    "MBON_principal": "MBON02",
+    "frac_principal": 0.653,
+    "principal_en_su_compartimento": true,
+    "sinapsis_a_MBON": 1788
+   },
+   "PAM05": {
+    "compartimento_anotado": [
+     "b'2"
+    ],
+    "frac_sinapsis_a_MBON_del_mismo_compartimento": 0.973,
+    "MBON_principal": "MBON26",
+    "frac_principal": 0.388,
+    "principal_en_su_compartimento": true,
+    "sinapsis_a_MBON": 2918
+   },
+   "PAM06": {
+    "compartimento_anotado": [
+     "b'2"
+    ],
+    "frac_sinapsis_a_MBON_del_mismo_compartimento": 0.981,
+    "MBON_principal": "MBON03",
+    "frac_principal": 0.799,
+    "principal_en_su_compartimento": true,
+    "sinapsis_a_MBON": 4123
+   },
+   "PAM07": {
+    "compartimento_anotado": [
+     "g4"
+    ],
+    "frac_sinapsis_a_MBON_del_mismo_compartimento": 0.875,
+    "MBON_principal": "MBON05",
+    "frac_principal": 0.666,
+    "principal_en_su_compartimento": true,
+    "sinapsis_a_MBON": 1292
+   },
+   "PAM08": {
+    "compartimento_anotado": [
+     "g4"
+    ],
+    "frac_sinapsis_a_MBON_del_mismo_compartimento": 0.767,
+    "MBON_principal": "MBON05",
+    "frac_principal": 0.537,
+    "principal_en_su_compartimento": true,
+    "sinapsis_a_MBON": 4088
+   },
+   "PAM09": {
+    "compartimento_anotado": [
+     "b1"
+    ],
+    "frac_sinapsis_a_MBON_del_mismo_compartimento": 0.878,
+    "MBON_principal": "MBON06",
+    "frac_principal": 0.878,
+    "principal_en_su_compartimento": true,
+    "sinapsis_a_MBON": 434
+   },
+   "PAM10": {
+    "compartimento_anotado": [
+     "b1"
+    ],
+    "frac_sinapsis_a_MBON_del_mismo_compartimento": 0.938,
+    "MBON_principal": "MBON06",
+    "frac_principal": 0.938,
+    "principal_en_su_compartimento": true,
+    "sinapsis_a_MBON": 3490
+   },
+   "PAM11": {
+    "compartimento_anotado": [
+     "a1"
+    ],
+    "frac_sinapsis_a_MBON_del_mismo_compartimento": 0.876,
+    "MBON_principal": "MBON07",
+    "frac_principal": 0.876,
+    "principal_en_su_compartimento": true,
+    "sinapsis_a_MBON": 2190
+   },
+   "PAM12": {
+    "compartimento_anotado": [
+     "g3"
+    ],
+    "frac_sinapsis_a_MBON_del_mismo_compartimento": 0.887,
+    "MBON_principal": "MBON09",
+    "frac_principal": 0.813,
+    "principal_en_su_compartimento": true,
+    "sinapsis_a_MBON": 2218
+   },
+   "PAM13": {
+    "compartimento_anotado": [
+     "b'1"
+    ],
+    "frac_sinapsis_a_MBON_del_mismo_compartimento": 0.897,
+    "MBON_principal": "MBON09",
+    "frac_principal": 0.707,
+    "principal_en_su_compartimento": true,
+    "sinapsis_a_MBON": 1233
+   },
+   "PAM14": {
+    "compartimento_anotado": [
+     "b'1"
+    ],
+    "frac_sinapsis_a_MBON_del_mismo_compartimento": 0.856,
+    "MBON_principal": "MBON09",
+    "frac_principal": 0.728,
+    "principal_en_su_compartimento": true,
+    "sinapsis_a_MBON": 1116
+   },
+   "PAM15": {
+    "compartimento_anotado": [
+     "g5",
+     "b'2"
+    ],
+    "frac_sinapsis_a_MBON_del_mismo_compartimento": 0.895,
+    "MBON_principal": "MBON01",
+    "frac_principal": 0.427,
+    "principal_en_su_compartimento": true,
+    "sinapsis_a_MBON": 171
+   },
+   "PPL101": {
+    "compartimento_anotado": [
+     "g1"
+    ],
+    "frac_sinapsis_a_MBON_del_mismo_compartimento": 0.941,
+    "MBON_principal": "MBON11",
+    "frac_principal": 0.845,
+    "principal_en_su_compartimento": true,
+    "sinapsis_a_MBON": 2736
+   },
+   "PPL102": {
+    "compartimento_anotado": [
+     "g1"
+    ],
+    "frac_sinapsis_a_MBON_del_mismo_compartimento": 0.369,
+    "MBON_principal": "MBON35",
+    "frac_principal": 0.264,
+    "principal_en_su_compartimento": false,
+    "sinapsis_a_MBON": 613
+   },
+   "PPL103": {
+    "compartimento_anotado": [
+     "g2",
+     "a'1"
+    ],
+    "frac_sinapsis_a_MBON_del_mismo_compartimento": 0.985,
+    "MBON_principal": "MBON32",
+    "frac_principal": 0.245,
+    "principal_en_su_compartimento": true,
+    "sinapsis_a_MBON": 3974
+   },
+   "PPL104": {
+    "compartimento_anotado": [
+     "a'3"
+    ],
+    "frac_sinapsis_a_MBON_del_mismo_compartimento": 0.911,
+    "MBON_principal": "MBON16",
+    "frac_principal": 0.433,
+    "principal_en_su_compartimento": true,
+    "sinapsis_a_MBON": 698
+   },
+   "PPL105": {
+    "compartimento_anotado": [
+     "a'2",
+     "a2"
+    ],
+    "frac_sinapsis_a_MBON_del_mismo_compartimento": 0.926,
+    "MBON_principal": "MBON13",
+    "frac_principal": 0.434,
+    "principal_en_su_compartimento": true,
+    "sinapsis_a_MBON": 1513
+   }
+  }
+ },
+ "DAN_sin_anotar_inferidos": {
+  "PPL106": {
+   "sinapsis_a_MBON": 899,
+   "neuronas": 2,
+   "principales": [
+    [
+     "MBON14",
+     860,
+     [
+      "a3"
+     ]
+    ],
+    [
+     "MBON06",
+     13,
+     [
+      "b1"
+     ]
+    ],
+    [
+     "MBON11",
+     7,
+     [
+      "g1"
+     ]
+    ],
+    [
+     "MBON29",
+     6,
+     [
+      "g4",
+      "g5"
+     ]
+    ]
+   ]
+  },
+  "PPL107": {
+   "sinapsis_a_MBON": 470,
+   "neuronas": 2,
+   "principales": [
+    [
+     "MBON04",
+     265,
+     [
+      "b'2"
+     ]
+    ],
+    [
+     "MBON26",
+     40,
+     [
+      "b'2"
+     ]
+    ],
+    [
+     "MBON10",
+     27,
+     [
+      "b'1"
+     ]
+    ],
+    [
+     "MBON33",
+     23,
+     [
+      "g2",
+      "g3"
+     ]
+    ]
+   ]
+  },
+  "PPL108": {
+   "sinapsis_a_MBON": 167,
+   "neuronas": 2,
+   "principales": [
+    [
+     "MBON35",
+     107,
+     [
+      "g2"
+     ]
+    ],
+    [
+     "MBON30",
+     9,
+     [
+      "g1",
+      "g2",
+      "g3"
+     ]
+    ],
+    [
+     "MBON33",
+     9,
+     [
+      "g2",
+      "g3"
+     ]
+    ],
+    [
+     "MBON20",
+     8,
+     [
+      "g1",
+      "g2"
+     ]
+    ]
+   ]
+  },
+  "PPL201": {
+   "sinapsis_a_MBON": 49,
+   "neuronas": 2,
+   "principales": [
+    [
+     "MBON18",
+     14,
+     [
+      "a2"
+     ]
+    ],
+    [
+     "MBON02",
+     11,
+     [
+      "b2",
+      "b'2"
+     ]
+    ],
+    [
+     "MBON22",
+     6,
+     [
+      "calyx"
+     ]
+    ],
+    [
+     "MBON24",
+     4,
+     [
+      "b2",
+      "g5"
+     ]
+    ]
+   ]
+  },
+  "PPL202": {
+   "sinapsis_a_MBON": 45,
+   "neuronas": 2,
+   "principales": [
+    [
+     "MBON22",
+     30,
+     [
+      "calyx"
+     ]
+    ],
+    [
+     "MBON17",
+     5,
+     [
+      "a'3"
+     ]
+    ],
+    [
+     "MBON16",
+     2,
+     [
+      "a'3"
+     ]
+    ],
+    [
+     "MBON28",
+     2,
+     [
+      "a'3"
+     ]
+    ]
+   ]
+  },
+  "PPL203": {
+   "sinapsis_a_MBON": 1,
+   "neuronas": 2,
+   "principales": [
+    [
+     "MBON23",
+     1,
+     [
+      "a2"
+     ]
+    ]
+   ]
+  },
+  "PPL204": {
+   "sinapsis_a_MBON": 0,
+   "neuronas": 2,
+   "principales": []
+  }
+ },
+ "DAN_a_KC_subtipo": {
+  "base": {
+   "g": "0.46643895",
+   "a'b'": "0.25477174",
+   "ab": "0.27878487"
+  },
+  "por_tipo": {
+   "PAM01": {
+    "frac": {
+     "g": "0.992",
+     "a'b'": "0.007",
+     "ab": "0.001"
+    },
+    "enriquecimiento_vs_base": {
+     "g": "2.13",
+     "a'b'": "0.03",
+     "ab": "0.0"
+    },
+    "anotado": [
+     "g"
+    ],
+    "dominante": "g",
+    "coincide": true,
+    "sinapsis": 24037
+   },
+   "PAM02": {
+    "frac": {
+     "g": "0.124",
+     "a'b'": "0.875",
+     "ab": "0.0"
+    },
+    "enriquecimiento_vs_base": {
+     "g": "0.27",
+     "a'b'": "3.43",
+     "ab": "0.0"
+    },
+    "anotado": [
+     "a'b'"
+    ],
+    "dominante": "a'b'",
+    "coincide": true,
+    "sinapsis": 4933
+   },
+   "PAM03": {
+    "frac": {
+     "g": "0.0",
+     "a'b'": "0.4",
+     "ab": "0.6"
+    },
+    "enriquecimiento_vs_base": {
+     "g": "0.0",
+     "a'b'": "1.57",
+     "ab": "2.15"
+    },
+    "anotado": [
+     "a'b'",
+     "ab"
+    ],
+    "dominante": "ab",
+    "coincide": true,
+    "sinapsis": 1556
+   },
+   "PAM04": {
+    "frac": {
+     "g": "0.001",
+     "a'b'": "0.002",
+     "ab": "0.997"
+    },
+    "enriquecimiento_vs_base": {
+     "g": "0.0",
+     "a'b'": "0.01",
+     "ab": "3.58"
+    },
+    "anotado": [
+     "ab"
+    ],
+    "dominante": "ab",
+    "coincide": true,
+    "sinapsis": 12497
+   },
+   "PAM05": {
+    "frac": {
+     "g": "0.023",
+     "a'b'": "0.977",
+     "ab": "0.0"
+    },
+    "enriquecimiento_vs_base": {
+     "g": "0.05",
+     "a'b'": "3.83",
+     "ab": "0.0"
+    },
+    "anotado": [
+     "a'b'"
+    ],
+    "dominante": "a'b'",
+    "coincide": true,
+    "sinapsis": 11034
+   },
+   "PAM06": {
+    "frac": {
+     "g": "0.001",
+     "a'b'": "0.999",
+     "ab": "0.0"
+    },
+    "enriquecimiento_vs_base": {
+     "g": "0.0",
+     "a'b'": "3.92",
+     "ab": "0.0"
+    },
+    "anotado": [
+     "a'b'"
+    ],
+    "dominante": "a'b'",
+    "coincide": true,
+    "sinapsis": 18418
+   },
+   "PAM07": {
+    "frac": {
+     "g": "1.0",
+     "a'b'": "0.0",
+     "ab": "0.0"
+    },
+    "enriquecimiento_vs_base": {
+     "g": "2.14",
+     "a'b'": "0.0",
+     "ab": "0.0"
+    },
+    "anotado": [
+     "g"
+    ],
+    "dominante": "g",
+    "coincide": true,
+    "sinapsis": 11865
+   },
+   "PAM08": {
+    "frac": {
+     "g": "0.998",
+     "a'b'": "0.002",
+     "ab": "0.0"
+    },
+    "enriquecimiento_vs_base": {
+     "g": "2.14",
+     "a'b'": "0.01",
+     "ab": "0.0"
+    },
+    "anotado": [
+     "g"
+    ],
+    "dominante": "g",
+    "coincide": true,
+    "sinapsis": 32030
+   },
+   "PAM09": {
+    "frac": {
+     "g": "0.002",
+     "a'b'": "0.003",
+     "ab": "0.995"
+    },
+    "enriquecimiento_vs_base": {
+     "g": "0.0",
+     "a'b'": "0.01",
+     "ab": "3.57"
+    },
+    "anotado": [
+     "ab"
+    ],
+    "dominante": "ab",
+    "coincide": true,
+    "sinapsis": 6030
+   },
+   "PAM10": {
+    "frac": {
+     "g": "0.002",
+     "a'b'": "0.002",
+     "ab": "0.997"
+    },
+    "enriquecimiento_vs_base": {
+     "g": "0.0",
+     "a'b'": "0.01",
+     "ab": "3.58"
+    },
+    "anotado": [
+     "ab"
+    ],
+    "dominante": "ab",
+    "coincide": true,
+    "sinapsis": 18882
+   },
+   "PAM11": {
+    "frac": {
+     "g": "0.003",
+     "a'b'": "0.02",
+     "ab": "0.977"
+    },
+    "enriquecimiento_vs_base": {
+     "g": "0.01",
+     "a'b'": "0.08",
+     "ab": "3.5"
+    },
+    "anotado": [
+     "ab"
+    ],
+    "dominante": "ab",
+    "coincide": true,
+    "sinapsis": 9049
+   },
+   "PAM12": {
+    "frac": {
+     "g": "0.999",
+     "a'b'": "0.001",
+     "ab": "0.0"
+    },
+    "enriquecimiento_vs_base": {
+     "g": "2.14",
+     "a'b'": "0.0",
+     "ab": "0.0"
+    },
+    "anotado": [
+     "g"
+    ],
+    "dominante": "g",
+    "coincide": true,
+    "sinapsis": 10456
+   },
+   "PAM13": {
+    "frac": {
+     "g": "0.014",
+     "a'b'": "0.986",
+     "ab": "0.0"
+    },
+    "enriquecimiento_vs_base": {
+     "g": "0.03",
+     "a'b'": "3.87",
+     "ab": "0.0"
+    },
+    "anotado": [
+     "a'b'"
+    ],
+    "dominante": "a'b'",
+    "coincide": true,
+    "sinapsis": 5002
+   },
+   "PAM14": {
+    "frac": {
+     "g": "0.002",
+     "a'b'": "0.997",
+     "ab": "0.002"
+    },
+    "enriquecimiento_vs_base": {
+     "g": "0.0",
+     "a'b'": "3.91",
+     "ab": "0.01"
+    },
+    "anotado": [
+     "a'b'"
+    ],
+    "dominante": "a'b'",
+    "coincide": true,
+    "sinapsis": 6574
+   },
+   "PAM15": {
+    "frac": {
+     "g": "0.736",
+     "a'b'": "0.263",
+     "ab": "0.001"
+    },
+    "enriquecimiento_vs_base": {
+     "g": "1.58",
+     "a'b'": "1.03",
+     "ab": "0.0"
+    },
+    "anotado": [
+     "a'b'",
+     "g"
+    ],
+    "dominante": "g",
+    "coincide": true,
+    "sinapsis": 1426
+   },
+   "PPL101": {
+    "frac": {
+     "g": "0.692",
+     "a'b'": "0.001",
+     "ab": "0.307"
+    },
+    "enriquecimiento_vs_base": {
+     "g": "1.48",
+     "a'b'": "0.0",
+     "ab": "1.1"
+    },
+    "anotado": [
+     "g"
+    ],
+    "dominante": "g",
+    "coincide": true,
+    "sinapsis": 11482
+   },
+   "PPL102": {
+    "frac": {
+     "g": "1.0",
+     "a'b'": "0.0",
+     "ab": "0.0"
+    },
+    "enriquecimiento_vs_base": {
+     "g": "2.14",
+     "a'b'": "0.0",
+     "ab": "0.0"
+    },
+    "anotado": [
+     "g"
+    ],
+    "dominante": "g",
+    "coincide": true,
+    "sinapsis": 590
+   },
+   "PPL103": {
+    "frac": {
+     "g": "0.728",
+     "a'b'": "0.271",
+     "ab": "0.001"
+    },
+    "enriquecimiento_vs_base": {
+     "g": "1.56",
+     "a'b'": "1.06",
+     "ab": "0.0"
+    },
+    "anotado": [
+     "a'b'",
+     "g"
+    ],
+    "dominante": "g",
+    "coincide": true,
+    "sinapsis": 20538
+   },
+   "PPL104": {
+    "frac": {
+     "g": "0.005",
+     "a'b'": "0.994",
+     "ab": "0.0"
+    },
+    "enriquecimiento_vs_base": {
+     "g": "0.01",
+     "a'b'": "3.9",
+     "ab": "0.0"
+    },
+    "anotado": [
+     "a'b'"
+    ],
+    "dominante": "a'b'",
+    "coincide": true,
+    "sinapsis": 2198
+   },
+   "PPL105": {
+    "frac": {
+     "g": "0.0",
+     "a'b'": "0.345",
+     "ab": "0.655"
+    },
+    "enriquecimiento_vs_base": {
+     "g": "0.0",
+     "a'b'": "1.35",
+     "ab": "2.35"
+    },
+    "anotado": [
+     "a'b'",
+     "ab"
+    ],
+    "dominante": "ab",
+    "coincide": true,
+    "sinapsis": 8147
+   },
+   "PPL106": {
+    "frac": {
+     "g": "0.0",
+     "a'b'": "0.004",
+     "ab": "0.996"
+    },
+    "enriquecimiento_vs_base": {
+     "g": "0.0",
+     "a'b'": "0.02",
+     "ab": "3.57"
+    },
+    "anotado": [],
+    "dominante": "ab",
+    "coincide": null,
+    "sinapsis": 6287
+   },
+   "PPL201": {
+    "frac": {
+     "g": "0.333",
+     "a'b'": "0.177",
+     "ab": "0.491"
+    },
+    "enriquecimiento_vs_base": {
+     "g": "0.71",
+     "a'b'": "0.69",
+     "ab": "1.76"
+    },
+    "anotado": [],
+    "dominante": "ab",
+    "coincide": null,
+    "sinapsis": 538
+   },
+   "PPL202": {
+    "frac": {
+     "g": "0.744",
+     "a'b'": "0.114",
+     "ab": "0.142"
+    },
+    "enriquecimiento_vs_base": {
+     "g": "1.6",
+     "a'b'": "0.45",
+     "ab": "0.51"
+    },
+    "anotado": [],
+    "dominante": "g",
+    "coincide": null,
+    "sinapsis": 1501
+   }
+  },
+  "coincide_dominante": 20,
+  "evaluados": 20
+ },
+ "DAN_clase_vs_valencia_MBON": {
+  "valencia_media_de_objetivos_por_tipo": {
+   "PAM01": -0.396,
+   "PAM02": -0.933,
+   "PAM03": -0.726,
+   "PAM04": -0.348,
+   "PAM05": -0.18,
+   "PAM06": -0.943,
+   "PAM07": -0.387,
+   "PAM08": -0.268,
+   "PAM09": -0.926,
+   "PAM10": -0.934,
+   "PAM11": -0.942,
+   "PAM12": 0.766,
+   "PAM13": 0.861,
+   "PAM14": 0.769,
+   "PAM15": -0.45,
+   "PPL101": 0.823,
+   "PPL102": 0.69,
+   "PPL103": 0.858,
+   "PPL104": 0.96,
+   "PPL105": 0.948,
+   "PPL106": 0.971,
+   "PPL107": -0.191,
+   "PPL108": 0.796,
+   "PPL201": 0.429,
+   "PPL202": 1.0,
+   "PPL203": 1.0
+  },
+  "PAM_media": -0.336,
+  "PPL1_media": 0.732,
+  "diferencia_PAM_menos_PPL1": -1.068,
+  "nulo_p95": 0.603,
+  "nulo_p05": -0.616,
+  "p_valor_dos_colas": 0.004,
+  "lectura": "Si PAM->MBON de evitacion (valencia -1) y PPL1->MBON de atraccion (+1), esperamos PAM negativo y PPL1 positivo."
+ },
+ "clustering_MBON_por_DAN": {
+  "mejor_F1_pares": 0.691,
+  "k": 10,
+  "precision": 0.609,
+  "recall": 0.798,
+  "nota": "Pares de MBON: ¿mismo cluster por perfil de DAN <-> comparten compartimento anotado?"
+ }
+}
