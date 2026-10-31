@@ -27,21 +27,21 @@ W_SYN = 0.275
 DT = 1.0
 
 
-def build(variant):
+def build(variant, w_syn=W_SYN):
     G = cns_graph.load_graph()
     N = G["ids"].shape[0]
-    if variant == "rewired":
+    if variant.startswith("rewired"):
         G = dict(G)
         G["indices"], _ = rewire.swap_targets(G, factor=10, seed=7)
     elif variant == "signshuffle":
         G = dict(G)
         G["sign"] = rewire.shuffle_signs(G["sign"], seed=11)
-    net = lif_engine.Network(G, bias_mV_per_ms=np.zeros(N), seed=1, w_syn=W_SYN, dt=DT)
+    net = lif_engine.Network(G, bias_mV_per_ms=np.zeros(N), seed=1, w_syn=w_syn, dt=DT)
     return G, net
 
 
-def run_variant(variant, seeds, levels, win_ms=1000.0, warm_ms=300.0):
-    G, net = build(variant)
+def run_variant(variant, seeds, levels, win_ms=1000.0, warm_ms=300.0, w_syn=W_SYN):
+    G, net = build(variant, w_syn)
     w = fa.FlyWorld(G, net)
     N = net.N
     sideL = w.orn_side == "L"
@@ -49,6 +49,7 @@ def run_variant(variant, seeds, levels, win_ms=1000.0, warm_ms=300.0):
     for sd in seeds:
         for c in levels:
             A = {}
+            R_ = {}
             for side in ("L", "R"):
                 rng = np.random.default_rng(1000 * sd + (0 if side == "L" else 1))
                 net.V[:] = rng.uniform(-52.0, -45.0, N)
@@ -64,8 +65,10 @@ def run_variant(variant, seeds, levels, win_ms=1000.0, warm_ms=300.0):
                 net.advance(win_ms)
                 cnt = net.counts.astype(float) / (win_ms / 1000.0)
                 A[side] = float(cnt[w.dn_L].mean() - cnt[w.dn_R].mean())
+                R_[side] = float(0.5 * (cnt[w.dn_L].mean() + cnt[w.dn_R].mean()))
             out.append(dict(seed=sd, level=c, A_L=A["L"], A_R=A["R"],
-                            G=(A["L"] - A["R"]) / 2.0, M=(A["L"] + A["R"]) / 2.0))
+                            G=(A["L"] - A["R"]) / 2.0, M=(A["L"] + A["R"]) / 2.0,
+                            DN_media_Hz=(R_["L"] + R_["R"]) / 2.0))
     net.ext[:] = 0.0
     return variant, out
 
@@ -85,14 +88,19 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--seeds", type=int, default=5)
     ap.add_argument("--variants", default="connectome,rewired,signshuffle")
+    ap.add_argument("--rewired-wsyn", type=float, default=None,
+                    help="W_syn del aleatorizado (si se omite, igual que el conectoma)")
+    ap.add_argument("--levels", default="0.25,1.0")
+    ap.add_argument("--out", default="transfer.json")
     a = ap.parse_args()
     t0 = time.time()
     variants = a.variants.split(",")
     seeds = list(range(1, a.seeds + 1))
-    levels = [0.25, 1.0]
+    levels = [float(x) for x in a.levels.split(",")]
+    ws = {v: (a.rewired_wsyn if (v.startswith("rewired") and a.rewired_wsyn is not None) else W_SYN) for v in variants}
     ctx = mp.get_context("spawn")
     with ctx.Pool(len(variants)) as pool:
-        res = pool.map(_job, [(v, seeds, levels) for v in variants], chunksize=1)
+        res = pool.map(_job, [(v, seeds, levels, 1000.0, 300.0, ws[v]) for v in variants], chunksize=1)
     summary = {}
     for v, rows in res:
         summary[v] = {}
@@ -100,16 +108,19 @@ def main():
             r = [x for x in rows if x["level"] == c]
             G_ = [x["G"] for x in r]
             M_ = [x["M"] for x in r]
+            D_ = [x["DN_media_Hz"] for x in r]
             summary[v][f"c={c}"] = dict(
+                W_syn=ws[v], DN_media_Hz=round(float(np.mean(D_)), 3), DN_media_ic95=[round(v_, 3) for v_ in bootstrap_ci(D_)],
                 G_media=round(float(np.mean(G_)), 4), G_ic95=[round(v_, 4) for v_ in bootstrap_ci(G_)],
                 M_media=round(float(np.mean(M_)), 4), M_ic95=[round(v_, 4) for v_ in bootstrap_ci(M_)],
                 G_por_semilla=[round(g, 4) for g in G_])
     doc = dict(descripcion="Ganancia sensoriomotora ORN->DN en bucle abierto. G = ganancia ipsilateral (Hz por asimetria "
                            "de olor), M = sesgo L-R comun. Controles: cableado aleatorizado conservando grados, "
                            "neurotransmisores barajados.",
-               w_syn=W_SYN, seeds=seeds, levels=levels, resultados=summary, wall_s=round(time.time() - t0, 1))
+               w_syn_conectoma=W_SYN, w_syn_aleatorizado=a.rewired_wsyn, seeds=seeds, levels=levels,
+               resultados=summary, wall_s=round(time.time() - t0, 1))
     os.makedirs(os.path.join(HERE, "out"), exist_ok=True)
-    with open(os.path.join(HERE, "out", "transfer.json"), "w", encoding="utf-8") as fh:
+    with open(os.path.join(HERE, "out", a.out), "w", encoding="utf-8") as fh:
         json.dump(doc, fh, indent=1)
         fh.write("\n")
     for v in summary:

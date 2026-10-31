@@ -1,0 +1,72 @@
+{
+ "descripcion": "Ganancia sensoriomotora ORN->DN en bucle abierto. G = ganancia ipsilateral (Hz por asimetria de olor), M = sesgo L-R comun. Controles: cableado aleatorizado conservando grados, neurotransmisores barajados.",
+ "w_syn_conectoma": 0.275,
+ "w_syn_aleatorizado": 0.26,
+ "seeds": [
+  1,
+  2,
+  3,
+  4,
+  5
+ ],
+ "levels": [
+  1.0
+ ],
+ "resultados": {
+  "connectome": {
+   "c=1.0": {
+    "W_syn": 0.275,
+    "DN_media_Hz": 16.123,
+    "DN_media_ic95": [
+     15.987,
+     16.26
+    ],
+    "G_media": 0.5503,
+    "G_ic95": [
+     0.5143,
+     0.5866
+    ],
+    "M_media": 0.1281,
+    "M_ic95": [
+     0.0607,
+     0.1924
+    ],
+    "G_por_semilla": [
+     0.6176,
+     0.5319,
+     0.548,
+     0.566,
+     0.488
+    ]
+   }
+  },
+  "rewired": {
+   "c=1.0": {
+    "W_syn": 0.26,
+    "DN_media_Hz": 5.171,
+    "DN_media_ic95": [
+     1.436,
+     9.309
+    ],
+    "G_media": 0.4752,
+    "G_ic95": [
+     0.1446,
+     0.8234
+    ],
+    "M_media": -0.918,
+    "M_ic95": [
+     -1.2725,
+     -0.5856
+    ],
+    "G_por_semilla": [
+     0.8934,
+     0.2793,
+     0.1622,
+     0.0597,
+     0.9814
+    ]
+   }
+  }
+ },
+ "wall_s": 106.5
+}

@@ -142,3 +142,31 @@
 - Cache del grafo y descargas fuera del repo. `PYTHONDONTWRITEBYTECODE=1` en todas las ejecuciones.
 - 7 de 7 pruebas pasan (`tests/test_cns_closedloop.py`).
 - No hice `git add` ni `git commit`.
+
+## B7. Ronda de cierre (Alcalde)
+
+- 00:44 UTC: inicio paso 1 (igualar tasa basal DN del aleatorizado al conectoma real, c=1, 5 semillas).
+- 00:45 UTC: expectativa publicada en el bus (paso 1): G igualado del aleatorizado < 0.2 a c=1.
+- 00:47 UTC: barrido fino W aleatorizado 0.21-0.27 (rejilla 1 en 0.05-0.275 dio saltos: 80 Hz a 0.275, 0.26 Hz a 0.2).
+- 00:48 UTC: lanzado control igualado (aleatorizado W=0.26 -> DN ~9.7 Hz vs conectoma 15.9 Hz a c=1; W no iguala exactamente; no se encontro W que de 15.9 en la rejilla).
+- 00:50 UTC: resultado paso 1: aleatorizado W=0.26 DN 5.2 Hz G=0.48 [0.14,0.82] vs conectoma G=0.55 [0.51,0.59] a c=1. Expectativa (G<0.2) NO cumplida. Corregido en bus (responde a n=81).
+- 00:52 UTC: hubs ORN->DN con 200 fuentes (Dijkstra 0.3 s por fuente, sin submuestreo).
+- 00:52 UTC: hubs ok (200 fuentes, 61 s). Lanzadas lesiones en bucle abierto (6 condiciones, 5 semillas, c=1).
+- 00:59 UTC: lesiones en bucle abierto listas (6 condiciones, 390 s). Consolidado out/rate_match.json con todos los puntos; W elegido 0.26 (9.7 Hz, dif 6.2).
+
+## B8. Resultados de la ronda de cierre (con horas UTC)
+
+- 00:45 inicio. 00:45 expectativa publicada en el bus (G igualado < 0.2 a c=1).
+- 00:45-00:48 `match_rate.py`: rejilla 1 (0.275, 0.2, 0.15, 0.1, 0.05): DN aleatorizado 80.2, 0.26, 0.11, 0.02, 0.0 Hz frente a 15.9 Hz del conectoma. Sin igualacion.
+- 00:48 rejilla 2 (0.27-0.21): 37.4, 9.7, 0.65, 0.49, 0.41, 0.36, 0.34 Hz. Elegido 0.26 entre 0.26 y 0.262 (dif 6.2 frente a 6.9 Hz).
+- 00:49 rejilla 3 (0.265, 0.262, 0.258, 0.255): 33.0, 22.8, 1.2, 0.8 Hz. La rejilla devolvio 0.262 por error de criterio; el criterio global elige 0.26 (ver `out/rate_match.json`, consolidado).
+- 00:49-00:50 `transfer.py --rewired-wsyn 0.26 --levels 1.0`, 5 semillas: conectoma DN 16.1 Hz, G 0.55 [0.51, 0.59]; aleatorizado DN 5.2 Hz [1.4, 9.3], G 0.48 [0.14, 0.82], M -0.92 [-1.27, -0.59]. Expectativa G<0.2 NO cumplida. Corregido en bus (responde a n=81).
+- 00:50-00:51 hubs ORN->DN: sin submuestreo (Dijkstra 0.3 s/fuente). 200 fuentes ORN, 1314 DN, 262 800 parejas alcanzables. Top 15: 10 ALLN, 2 ALPN (MZ_lv2PN), 3 otras.
+- 00:52-00:59 `lesions_open.py`, 5 semillas, c=1: control G 0.55 [0.51, 0.59]; 10 hubs G 0.16 [0.05, 0.26] con DN 16.0 Hz; 10 aleatorias de mismo grado G 0.47 [0.38, 0.58]; todas las DN y todas las ORN G=0 (trivial); DN izquierdas G 1.34 [0.06, 2.56] con signo variable (artefacto del indice, no interpretado).
+- Bucle cerrado: no se ejecuto. Justificacion: paso 1 no estableció ventaja del cableado real, y la mosca no navega en sintonias previas.
+
+### Que no pude hacer en esta ronda
+- Igualar la tasa de DN con W_syn: la tasa salta de ~0.3 a ~80 Hz. Un control exacto requiere otro parametro (p. ej. ganancia de entrada o sesgo por neurona) y no lo he probado porque el Alcalde pidio no ajustar parametros sin resultado esperado.
+- Lesion hub a hub; solo una seleccion de 10 hubs y una de 10 aleatorias.
+- Bucle cerrado con lesiones.
+- Animacion.

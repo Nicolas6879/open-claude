@@ -2,9 +2,9 @@
 
 Dos partes. La **parte A** (abajo, sin cambios de conclusion) audita el modelo de casa-mosca y simula el cuerpo
 fungiforme con cableado real. La **parte B** (siguiente) intenta el experimento grande: el SNC completo en bucle
-cerrado con una mosca virtual. El resultado de la parte B es mixto: la red real transmite la asimetria del olor
-a las neuronas descendentes mejor que el cableado aleatorizado, pero **la mosca no navega** con ninguna de las
-lecturas motoras que probe. Todo lo de aqui es de MaleCNS v1.0 (CC-BY), salvo que se indique.
+cerrado con una mosca virtual. Tras la ronda de cierre, la ventaja del cableado real sobre el aleatorizado **no se sostiene** al igualar el regimen
+de actividad (G 0.55 frente a 0.48, IC95 solapados). Ademas **la mosca no navega** con ninguna de las lecturas motoras
+que probe, y los hubs ORN->DN (interneuronas locales del lobulo antenal) son el unico efecto medido de lesion. Todo lo de aqui es de MaleCNS v1.0 (CC-BY), salvo que se indique.
 
 ## Parte B. SNC completo en bucle cerrado (v3)
 
@@ -43,13 +43,57 @@ Olor solo a un lado; G = (A_izq - A_der)/2 en Hz por unidad de asimetria de olor
 | Cableado aleatorizado (grados conservados) | 0.07 [0.06, 0.08] | 0.05 [-0.07, 0.15] | -6.3 [-6.5, -6.2] |
 | Neurotransmisores barajados | 0.19 [0.02, 0.32] | -0.06 [-0.12, 0.00] | -2.3 [-2.5, -2.1] |
 
-Lectura: a concentracion alta, el cableado real transmite la asimetria del olor a las DN con una ganancia ~10 veces
-mayor que el aleatorizado, y con IC95 que no se solapan. Medido, con 5 semillas. Los controles de neurotransmisores
+Lectura **original** (antes del control igualado; ver la ronda de cierre mas abajo, que la revisa): a concentracion alta,
+el cableado real transmitia la asimetria del olor con una ganancia ~10 veces mayor que el aleatorizado, con IC95 sin solape.
+Medido con 5 semillas, pero el aleatorizado estaba en otro regimen. Los controles de neurotransmisores
 barajados pierden esa transmision a concentracion alta: el signo de cada neurona importa para la transmision
 ipsilateral (medido, no interpretado mecanicamente). A concentracion baja no hay diferencia clara.
 
 Advertencia: el sesgo L-R comun de la red aleatorizada (-6.3 Hz) es enorme; esa red esta en otro regimen y la
 comparacion de ganancia podria reflejar la diferencia de regimen, no solo la de cableado. No lo he separado.
+
+### Ronda de cierre (paso 1): control de regimen y resultado revisado
+Hipotesis del Alcalde: el sesgo L-R comun del aleatorizado (-6.3 Hz) hace que la comparacion sea de regimen, no de
+cableado. Prueba: igualar la tasa media de DN a c = 1 ajustando solo W_syn del aleatorizado (`src/match_rate.py`,
+`out/rate_match.json`). **Resultado: no se consigue una igualacion exacta**: la tasa salta de 0.3 a 80 Hz en la rejilla
+(W = 0.275 -> 80 Hz; 0.26 -> 9.7 Hz; 0.255 -> 0.8 Hz). Elegido W = 0.26 (9.7 Hz frente a 15.9 Hz del conectoma, la
+diferencia mas pequena en los puntos probados).
+
+Medido, c = 1, 5 semillas, IC95 bootstrap (`out/transfer_c1_matched.json`):
+
+| Red | DN media (Hz) | G (Hz/unidad) | Sesgo L-R comun M |
+|---|---|---|---|
+| Conectoma real (W 0.275) | 16.1 [16.0, 16.3] | **0.55 [0.51, 0.59]** | 0.13 [0.06, 0.19] |
+| Aleatorizado, W 0.275 (sin igualar) | 80.2 (1 semilla, saturada) | 0.05 [-0.07, 0.15] | -6.3 [-6.5, -6.2] |
+| Aleatorizado, W 0.26 (igualado en lo posible) | 5.2 [1.4, 9.3] | **0.48 [0.14, 0.82]** | -0.92 [-1.27, -0.59] |
+
+**Lo que cambia**: la diferencia grande (0.55 frente a 0.05) depende en buena parte del regimen de actividad. Con el
+aleatorizado en un regimen parecido, G se solapa con el del conectoma real. **No hay ventaja del cableado real
+demostrada con este control.** Mi expectativa previa (G < 0.2 con el control igualado) no se cumplio; lo publique
+antes de medir. Las 5 semillas dan un IC muy ancho en el aleatorizado (G por semilla 0.89, 0.28, 0.16, 0.06, 0.98):
+la estimacion es debil. La tasa no esta igualada del todo (5.2 frente a 16.1 Hz).
+
+### Hubs ORN->DN y lesiones virtuales (paso 2)
+- **Hubs** (`src/hubs.py`, `out/hubs.json`): caminos mas cortos con coste 1/n_sinapsis desde 200 ORN (muestra al azar
+  de 2639) hasta las 1314 DN. Sin submuestreo de aristas: Dijkstra tarda 0.3 s por fuente. Las 262 800 parejas son
+  alcanzables. Las 15 neuronas con mas uso: 10 son interneuronas locales del lobulo antenal (ALLN, p. ej. v2LN30 11722,
+  uso 104 813; lLN2T_c 10201, uso 46 459), 2 son PN multiglomerulares (MZ_lv2PN 10402 y 10472) y 3 son otras
+  (AVLP597, PS100, ALON). Medido, pero el ranking depende del coste 1/sinapsis y del grado de salida; no es una
+  betweenness exacta.
+- **Lesiones virtuales en bucle abierto** (`src/lesions_open.py`, `out/lesions_open.json`), c = 1, 5 semillas:
+
+| Lesion (silenciada) | G (IC95) | DN media (Hz) | Lectura |
+|---|---|---|---|
+| Ninguna (control) | 0.55 [0.51, 0.59] | 16.1 | - |
+| 10 hubs (top ORN->DN) | **0.16 [0.05, 0.26]** | 16.0 [15.8, 16.4] | G baja; la tasa de DN no cambia |
+| 10 neuronas aleatorias, mismo grado de salida | 0.47 [0.38, 0.58] | 16.3 | solapa el control |
+| Todas las DN | 0 | 0 | trivial (sin lectura) |
+| Todas las ORN | 0 | 0 | trivial (sin entrada) |
+| DN izquierdas (656) | 1.34 [0.06, 2.56] | 8.4 | **artefacto del indice**: G con signo variable entre semillas; no lo interpreto |
+
+Lectura: silenciar 10 hubs baja G a ~30% del control, con la tasa de DN intacta, y el efecto no aparece al silenciar
+10 neuronas aleatorias del mismo grado. Es un resultado medido con una sola seleccion de hubs y de aleatorias
+(una semilla de seleccion). No he comprobado hub a hub.
 
 ### Calibracion de la escala sinaptica (sin tomar W_syn de Shiu)
 Con el signo de Shiu y W_syn = 0.275 mV, la red satura con el olor: a c = 1, el 4.2% de las neuronas
@@ -77,9 +121,12 @@ para la tabla de arriba, y lo anoto como limite.
 - Coste: 20-40 s de CPU por segundo simulado con 4 nucleos compartidos con otras casas; por eso no hice barridos grandes.
 
 ### No hecho (declarado)
-- Lesiones virtuales (DN, ORN, hubs) y cableado aleatorizado en bucle cerrado: escritas, no ejecutadas.
-- Analisis de hubs ORN->DN (`src/hubs.py`): escrito, no ejecutado (coste de dijkstra sobre 25 M aristas).
+- **Lesiones y navegacion en bucle cerrado**: no ejecutadas. Justificacion: el paso 1 no establecio una ventaja del
+  cableado real, y la mosca de conectoma no navega en ninguna sintonia previa (0/6, 0/6, 0/4). Correr lesiones en bucle
+  cerrado sobre una mosca que no navega no daria una comparacion util.
+- Lesion hub a hub y barrido de hubs: no hecho (una sola seleccion de 10).
 - Animacion HTML/SVG de la mosca: no hecha.
+- Usar tipos DN identificados (DNa02, DNp09, MDN) como mando: no hecho (funcion no verificada).
 
 ### Reproducir la parte B
 ```bash

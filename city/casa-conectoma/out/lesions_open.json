@@ -1,0 +1,133 @@
+{
+ "descripcion": "Lesiones virtuales en bucle abierto (c=1, W_syn 0.275, 5 semillas). G = ganancia ipsilateral; DN_media_Hz = tasa media de DN.",
+ "seeds": [
+  1,
+  2,
+  3,
+  4,
+  5
+ ],
+ "resultados": {
+  "none": {
+   "neuronas_silenciadas": 0,
+   "G_media": 0.5503,
+   "G_ic95": [
+    0.5143,
+    0.5866
+   ],
+   "DN_media_Hz": 16.123,
+   "DN_ic95": [
+    15.9865,
+    16.2598
+   ],
+   "G_por_semilla": [
+    0.6176,
+    0.5319,
+    0.548,
+    0.566,
+    0.488
+   ]
+  },
+  "DN_all": {
+   "neuronas_silenciadas": 1304,
+   "G_media": 0.0,
+   "G_ic95": [
+    0.0,
+    0.0
+   ],
+   "DN_media_Hz": 0.0,
+   "DN_ic95": [
+    0.0,
+    0.0
+   ],
+   "G_por_semilla": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "DN_L": {
+   "neuronas_silenciadas": 656,
+   "G_media": 1.337,
+   "G_ic95": [
+    0.0631,
+    2.556
+   ],
+   "DN_media_Hz": 8.437,
+   "DN_ic95": [
+    7.7623,
+    9.0996
+   ],
+   "G_por_semilla": [
+    2.3573,
+    2.2963,
+    -0.213,
+    -0.6096,
+    2.8542
+   ]
+  },
+  "ORN_all": {
+   "neuronas_silenciadas": 2628,
+   "G_media": 0.0,
+   "G_ic95": [
+    0.0,
+    0.0
+   ],
+   "DN_media_Hz": 0.0,
+   "DN_ic95": [
+    0.0,
+    0.0
+   ],
+   "G_por_semilla": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "hubs_top10": {
+   "neuronas_silenciadas": 10,
+   "G_media": 0.162,
+   "G_ic95": [
+    0.048,
+    0.2647
+   ],
+   "DN_media_Hz": 16.047,
+   "DN_ic95": [
+    15.8132,
+    16.3627
+   ],
+   "G_por_semilla": [
+    0.2638,
+    0.1728,
+    0.1165,
+    0.3117,
+    -0.0548
+   ]
+  },
+  "random_top10": {
+   "neuronas_silenciadas": 10,
+   "G_media": 0.4735,
+   "G_ic95": [
+    0.3822,
+    0.5787
+   ],
+   "DN_media_Hz": 16.306,
+   "DN_ic95": [
+    15.861,
+    16.6865
+   ],
+   "G_por_semilla": [
+    0.6887,
+    0.5166,
+    0.3735,
+    0.3751,
+    0.4137
+   ]
+  }
+ },
+ "wall_s": 390.7
+}

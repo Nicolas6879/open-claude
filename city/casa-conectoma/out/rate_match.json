@@ -1,0 +1,26 @@
+{
+ "descripcion": "Barrido de W_syn del aleatorizado (c=1, olor simetrico izq/der, 1 s tras 300 ms). Objetivo: tasa media de DN del conectoma real. W no iguala exactamente la tasa (salto de ~0.3 a ~80 Hz).",
+ "target_rate_Hz": 15.901,
+ "connectome_W": 0.275,
+ "rewired_DN_media_Hz": {
+  "0.275": 80.225,
+  "0.27": 37.419,
+  "0.265": 32.959,
+  "0.262": 22.84,
+  "0.26": 9.716,
+  "0.258": 1.232,
+  "0.255": 0.834,
+  "0.25": 0.646,
+  "0.24": 0.486,
+  "0.23": 0.405,
+  "0.22": 0.361,
+  "0.21": 0.34,
+  "0.2": 0.259,
+  "0.15": 0.114,
+  "0.1": 0.016,
+  "0.05": 0.0
+ },
+ "W_elegido": 0.26,
+ "diferencia_Hz": 6.185,
+ "nota": "Puntos probados en tres rejillas: 0.275,0.2,0.15,0.1,0.05; 0.27-0.21; 0.265,0.262,0.258,0.255. Eleccion: el punto con menor |tasa - objetivo|. El script devolvio 0.262 en la ultima rejilla (ver LOG)."
+}

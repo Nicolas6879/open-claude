@@ -1,0 +1,490 @@
+{
+ "info": {
+  "n_src": 200,
+  "n_dn": 1314,
+  "pairs_reachable": 262800,
+  "pairs_total": 262800
+ },
+ "top": [
+  {
+   "id": 10402,
+   "type": "MZ_lv2PN",
+   "cls": "ALPN",
+   "superclass": "cb_intrinsic",
+   "usage": 133943,
+   "out_degree": 527
+  },
+  {
+   "id": 11722,
+   "type": "v2LN30",
+   "cls": "ALLN",
+   "superclass": "cb_intrinsic",
+   "usage": 104813,
+   "out_degree": 676
+  },
+  {
+   "id": 11546,
+   "type": "v2LN30",
+   "cls": "ALLN",
+   "superclass": "cb_intrinsic",
+   "usage": 65930,
+   "out_degree": 591
+  },
+  {
+   "id": 10472,
+   "type": "MZ_lv2PN",
+   "cls": "ALPN",
+   "superclass": "cb_intrinsic",
+   "usage": 46916,
+   "out_degree": 564
+  },
+  {
+   "id": 10201,
+   "type": "lLN2T_c",
+   "cls": "ALLN",
+   "superclass": "cb_intrinsic",
+   "usage": 46459,
+   "out_degree": 1066
+  },
+  {
+   "id": 11517,
+   "type": "lLN2T_c",
+   "cls": "ALLN",
+   "superclass": "cb_intrinsic",
+   "usage": 38176,
+   "out_degree": 948
+  },
+  {
+   "id": 10473,
+   "type": "il3LN6",
+   "cls": "ALLN",
+   "superclass": "cb_intrinsic",
+   "usage": 32240,
+   "out_degree": 2576
+  },
+  {
+   "id": 10646,
+   "type": "AVLP597",
+   "cls": "",
+   "superclass": "cb_intrinsic",
+   "usage": 25157,
+   "out_degree": 1441
+  },
+  {
+   "id": 10461,
+   "type": "AL-AST1",
+   "cls": "ALON",
+   "superclass": "cb_intrinsic",
+   "usage": 23364,
+   "out_degree": 404
+  },
+  {
+   "id": 10515,
+   "type": "lLN2F_b",
+   "cls": "ALLN",
+   "superclass": "cb_intrinsic",
+   "usage": 23213,
+   "out_degree": 2619
+  },
+  {
+   "id": 527470,
+   "type": "lLN2T_c",
+   "cls": "ALLN",
+   "superclass": "cb_intrinsic",
+   "usage": 17568,
+   "out_degree": 921
+  },
+  {
+   "id": 10101,
+   "type": "PS100",
+   "cls": "",
+   "superclass": "cb_intrinsic",
+   "usage": 17062,
+   "out_degree": 732
+  },
+  {
+   "id": 10376,
+   "type": "lLN2F_b",
+   "cls": "ALLN",
+   "superclass": "cb_intrinsic",
+   "usage": 16024,
+   "out_degree": 2288
+  },
+  {
+   "id": 10650,
+   "type": "lLN2T_c",
+   "cls": "ALLN",
+   "superclass": "cb_intrinsic",
+   "usage": 15194,
+   "out_degree": 886
+  },
+  {
+   "id": 523591,
+   "type": "il3LN6",
+   "cls": "ALLN",
+   "superclass": "cb_intrinsic",
+   "usage": 14896,
+   "out_degree": 2601
+  },
+  {
+   "id": 13336,
+   "type": "AVLP437",
+   "cls": "",
+   "superclass": "cb_intrinsic",
+   "usage": 13935,
+   "out_degree": 445
+  },
+  {
+   "id": 10113,
+   "type": "GNG106",
+   "cls": "",
+   "superclass": "cb_intrinsic",
+   "usage": 10850,
+   "out_degree": 429
+  },
+  {
+   "id": 10005,
+   "type": "AOTU019",
+   "cls": "",
+   "superclass": "cb_intrinsic",
+   "usage": 10458,
+   "out_degree": 528
+  },
+  {
+   "id": 10567,
+   "type": "M_l2PNl20",
+   "cls": "ALPN",
+   "superclass": "cb_intrinsic",
+   "usage": 9763,
+   "out_degree": 909
+  },
+  {
+   "id": 267437,
+   "type": "lLN2P_c",
+   "cls": "ALLN",
+   "superclass": "cb_intrinsic",
+   "usage": 9479,
+   "out_degree": 435
+  },
+  {
+   "id": 918582,
+   "type": "lLN2P_a",
+   "cls": "ALLN",
+   "superclass": "cb_intrinsic",
+   "usage": 9266,
+   "out_degree": 450
+  },
+  {
+   "id": 16083,
+   "type": "VM2_adPN",
+   "cls": "ALPN",
+   "superclass": "cb_intrinsic",
+   "usage": 9197,
+   "out_degree": 479
+  },
+  {
+   "id": 11156,
+   "type": "GNG102",
+   "cls": "",
+   "superclass": "cb_intrinsic",
+   "usage": 9169,
+   "out_degree": 641
+  },
+  {
+   "id": 10629,
+   "type": "AL-AST1",
+   "cls": "ALON",
+   "superclass": "cb_intrinsic",
+   "usage": 9130,
+   "out_degree": 385
+  },
+  {
+   "id": 10806,
+   "type": "GNG494",
+   "cls": "",
+   "superclass": "cb_intrinsic",
+   "usage": 8594,
+   "out_degree": 520
+  },
+  {
+   "id": 10702,
+   "type": "M_l2PNl20",
+   "cls": "ALPN",
+   "superclass": "cb_intrinsic",
+   "usage": 8583,
+   "out_degree": 839
+  },
+  {
+   "id": 18016,
+   "type": "lLN2P_c",
+   "cls": "ALLN",
+   "superclass": "cb_intrinsic",
+   "usage": 8562,
+   "out_degree": 591
+  },
+  {
+   "id": 11925,
+   "type": "PS309",
+   "cls": "",
+   "superclass": "cb_intrinsic",
+   "usage": 8521,
+   "out_degree": 450
+  },
+  {
+   "id": 24396,
+   "type": "SIP022",
+   "cls": "",
+   "superclass": "cb_intrinsic",
+   "usage": 8275,
+   "out_degree": 221
+  },
+  {
+   "id": 15884,
+   "type": "AN17A076",
+   "cls": "",
+   "superclass": "ascending_neuron",
+   "usage": 8195,
+   "out_degree": 292
+  },
+  {
+   "id": 520916,
+   "type": "VM6_adPN",
+   "cls": "ALPN",
+   "superclass": "cb_intrinsic",
+   "usage": 7775,
+   "out_degree": 774
+  },
+  {
+   "id": 10094,
+   "type": "AVLP597",
+   "cls": "",
+   "superclass": "cb_intrinsic",
+   "usage": 7516,
+   "out_degree": 1371
+  },
+  {
+   "id": 10867,
+   "type": "PVLP076",
+   "cls": "",
+   "superclass": "cb_intrinsic",
+   "usage": 7504,
+   "out_degree": 932
+  },
+  {
+   "id": 13750,
+   "type": "AVLP749m",
+   "cls": "",
+   "superclass": "cb_intrinsic",
+   "usage": 7239,
+   "out_degree": 317
+  },
+  {
+   "id": 11397,
+   "type": "SAD013",
+   "cls": "",
+   "superclass": "cb_intrinsic",
+   "usage": 6649,
+   "out_degree": 929
+  },
+  {
+   "id": 10039,
+   "type": "VL2a_adPN",
+   "cls": "ALPN",
+   "superclass": "cb_intrinsic",
+   "usage": 6568,
+   "out_degree": 881
+  },
+  {
+   "id": 10253,
+   "type": "AN07B004",
+   "cls": "",
+   "superclass": "ascending_neuron",
+   "usage": 6391,
+   "out_degree": 2395
+  },
+  {
+   "id": 173968,
+   "type": "SIP022",
+   "cls": "",
+   "superclass": "cb_intrinsic",
+   "usage": 6286,
+   "out_degree": 261
+  },
+  {
+   "id": 11672,
+   "type": "PS307",
+   "cls": "",
+   "superclass": "cb_intrinsic",
+   "usage": 6280,
+   "out_degree": 468
+  },
+  {
+   "id": 10070,
+   "type": "AOTU019",
+   "cls": "",
+   "superclass": "cb_intrinsic",
+   "usage": 6247,
+   "out_degree": 605
+  },
+  {
+   "id": 10203,
+   "type": "PS100",
+   "cls": "",
+   "superclass": "cb_intrinsic",
+   "usage": 5867,
+   "out_degree": 697
+  },
+  {
+   "id": 10561,
+   "type": "VA2_adPN",
+   "cls": "ALPN",
+   "superclass": "cb_intrinsic",
+   "usage": 5686,
+   "out_degree": 1019
+  },
+  {
+   "id": 12508,
+   "type": "PVLP149",
+   "cls": "",
+   "superclass": "cb_intrinsic",
+   "usage": 5643,
+   "out_degree": 502
+  },
+  {
+   "id": 10169,
+   "type": "lLN2F_b",
+   "cls": "ALLN",
+   "superclass": "cb_intrinsic",
+   "usage": 5584,
+   "out_degree": 2498
+  },
+  {
+   "id": 11390,
+   "type": "VL1_ilPN",
+   "cls": "ALPN",
+   "superclass": "cb_intrinsic",
+   "usage": 5525,
+   "out_degree": 651
+  },
+  {
+   "id": 10559,
+   "type": "GNG106",
+   "cls": "",
+   "superclass": "cb_intrinsic",
+   "usage": 5505,
+   "out_degree": 475
+  },
+  {
+   "id": 11514,
+   "type": "DL4_adPN",
+   "cls": "ALPN",
+   "superclass": "cb_intrinsic",
+   "usage": 5246,
+   "out_degree": 500
+  },
+  {
+   "id": 16228,
+   "type": "DL3_lPN",
+   "cls": "ALPN",
+   "superclass": "cb_intrinsic",
+   "usage": 5244,
+   "out_degree": 324
+  },
+  {
+   "id": 519850,
+   "type": "DA4m_adPN",
+   "cls": "ALPN",
+   "superclass": "cb_intrinsic",
+   "usage": 5197,
+   "out_degree": 671
+  },
+  {
+   "id": 10297,
+   "type": "LHAD1g1",
+   "cls": "",
+   "superclass": "cb_intrinsic",
+   "usage": 5036,
+   "out_degree": 1628
+  },
+  {
+   "id": 10987,
+   "type": "CL311",
+   "cls": "",
+   "superclass": "cb_intrinsic",
+   "usage": 5008,
+   "out_degree": 289
+  },
+  {
+   "id": 521581,
+   "type": "v2LN36",
+   "cls": "ALLN",
+   "superclass": "cb_intrinsic",
+   "usage": 4955,
+   "out_degree": 507
+  },
+  {
+   "id": 513537,
+   "type": "PS265",
+   "cls": "",
+   "superclass": "cb_intrinsic",
+   "usage": 4918,
+   "out_degree": 381
+  },
+  {
+   "id": 10390,
+   "type": "VA2_adPN",
+   "cls": "ALPN",
+   "superclass": "cb_intrinsic",
+   "usage": 4815,
+   "out_degree": 1018
+  },
+  {
+   "id": 22166,
+   "type": "lLN2P_c",
+   "cls": "ALLN",
+   "superclass": "cb_intrinsic",
+   "usage": 4797,
+   "out_degree": 507
+  },
+  {
+   "id": 16141,
+   "type": "VM4_adPN",
+   "cls": "ALPN",
+   "superclass": "cb_intrinsic",
+   "usage": 4764,
+   "out_degree": 538
+  },
+  {
+   "id": 13672,
+   "type": "AVLP437",
+   "cls": "",
+   "superclass": "cb_intrinsic",
+   "usage": 4678,
+   "out_degree": 366
+  },
+  {
+   "id": 10904,
+   "type": "VC1_lPN",
+   "cls": "ALPN",
+   "superclass": "cb_intrinsic",
+   "usage": 4602,
+   "out_degree": 668
+  },
+  {
+   "id": 533529,
+   "type": "PS124",
+   "cls": "",
+   "superclass": "cb_intrinsic",
+   "usage": 4484,
+   "out_degree": 559
+  },
+  {
+   "id": 10084,
+   "type": "DP1m_adPN",
+   "cls": "ALPN",
+   "superclass": "cb_intrinsic",
+   "usage": 4371,
+   "out_degree": 1313
+  }
+ ]
+}
